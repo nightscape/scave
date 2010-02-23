@@ -40,10 +40,12 @@ public class FastWaveletTransform extends BasicTransform {
   Wavelet _wavelet;
 
   /**
-   * Constructor
+   * Constructor receiving a Wavelet object.
    * 
    * @date 10.02.2010 08:10:42
    * @author Christian Scheiblich
+   * @param wavelet
+   *          object of type Wavelet; Haar02, Daub04, Coif06, ...
    */
   public FastWaveletTransform( Wavelet wavelet ) {
     _wavelet = wavelet;
