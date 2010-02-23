@@ -53,4 +53,10 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
+    <target name="JWave">
+        <java classname="cs.jwave.JWave" failonerror="true" fork="yes">
+            <arg line="FWT Haar02"/>
+            <classpath refid="JWave.classpath"/>
+        </java>
+    </target>
 </project>
