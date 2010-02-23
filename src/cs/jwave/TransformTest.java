@@ -41,7 +41,7 @@ import cs.jwave.handlers.wavelets.Wavelet;
 public class TransformTest {
 
   /**
-   * Test method for {@link elfe.numerics.trafo.Transform#forward(double[])}.
+   * Test method for {@link cs.jwave.Transform#forward(double[])}.
    */
   @Test
   public void testFastWaveletTransformForwardHaar02Array( ) {
@@ -66,7 +66,7 @@ public class TransformTest {
   }
 
   /**
-   * Test method for {@link elfe.numerics.trafo.Transform#reverse(double[])}.
+   * Test method for {@link cs.jwave.Transform#reverse(double[])}.
    */
   @Test
   public void testFastWaveletTransformReverseHaar02Array( ) {
@@ -91,7 +91,7 @@ public class TransformTest {
   }
 
   /**
-   * Test method for {@link elfe.numerics.trafo.Transform#forward(double[])}.
+   * Test method for {@link cs.jwave.Transform#forward(double[])}.
    */
   @Test
   public void testFastWaveletTransformForwardHaar02Matrix( ) {
@@ -118,7 +118,7 @@ public class TransformTest {
   }
 
   /**
-   * Test method for {@link elfe.numerics.trafo.Transform#reverse(double[])}.
+   * Test method for {@link cs.jwave.Transform#reverse(double[])}.
    */
   @Test
   public void testFastWaveletTransformHaarReverseMatrix( ) {
@@ -145,7 +145,7 @@ public class TransformTest {
   }
 
   /**
-   * Test method for {@link elfe.numerics.trafo.Transform#forward(double[])}.
+   * Test method for {@link cs.jwave.Transform#forward(double[])}.
    */
   @Test
   public void testFastWaveletTransformForwardDaub04Array( ) {
@@ -170,7 +170,7 @@ public class TransformTest {
   }
 
   /**
-   * Test method for {@link elfe.numerics.trafo.Transform#reverse(double[])}.
+   * Test method for {@link cs.jwave.Transform#reverse(double[])}.
    */
   @Test
   public void testFastWaveletTransformReverseDaub04Array( ) {
@@ -195,7 +195,7 @@ public class TransformTest {
   }
 
   /**
-   * Test method for {@link elfe.numerics.trafo.Transform#forward(double[])}.
+   * Test method for {@link cs.jwave.Transform#forward(double[])}.
    */
   @Test
   public void testFastWaveletTransformForwardCoif06Array( ) {
@@ -220,7 +220,7 @@ public class TransformTest {
   }
 
   /**
-   * Test method for {@link elfe.numerics.trafo.Transform#reverse(double[])}.
+   * Test method for {@link cs.jwave.Transform#reverse(double[])}.
    */
   @Test
   public void testFastWaveletTransformReverseCoif06Array( ) {
