@@ -165,7 +165,7 @@ public class TransformTest {
     showHilb( arrHilb );
 
     double[ ] expected = { 2., 2., 0., 0., 0., 0., 0., 0. };
-    assertArray( expected, arrTime, delta );
+    assertArray( expected, arrHilb, delta );
 
   }
 
