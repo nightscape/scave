@@ -52,7 +52,9 @@ public class WaveletPacketTransform extends BasicTransform {
   } // WaveletPacketTransform
 
   /**
-   * TODO Christian Scheiblich explainMeShortly
+   * Implementation of the 1-D forward wavelet packet transform by filtering
+   * with the longest wavelet first and the always both sub bands -- low and
+   * high -- by the next smaller wavelet.
    * 
    * @date 23.02.2010 13:44:05
    * @author Christian Scheiblich
@@ -60,21 +62,94 @@ public class WaveletPacketTransform extends BasicTransform {
    */
   @Override
   public double[ ] forward( double[ ] arrTime ) {
-    // TODO Christian Scheiblich should implement this method
-    return null;
+
+    // TODO think about not to allocating new MEM; return arrTime as arrHilb
+    double[ ] arrHilb = new double[ arrTime.length ];
+    for( int i = 0; i < arrTime.length; i++ )
+      arrHilb[ i ] = arrTime[ i ];
+
+    int level = 0;
+    int k = arrTime.length;
+    int h = arrTime.length;
+    int minWaveLength = _wavelet.getWaveLength( );
+    if( h >= minWaveLength ) {
+
+      while( h >= minWaveLength ) {
+
+        int g = k / h; // 1 -> 2 -> 4 -> 8 -> ...
+
+        for( int p = 0; p < g; p++ ) {
+
+          double[ ] iBuf = new double[ h ];
+          for( int i = 0; i < h; i++ )
+            iBuf[ i ] = arrHilb[ i + ( p * h ) ];
+
+          double[ ] oBuf = _wavelet.forward( iBuf );
+
+          for( int i = 0; i < h; i++ )
+            arrHilb[ i + ( p * h ) ] = oBuf[ i ];
+
+        } // packets
+
+        h = h >> 1;
+
+        level++;
+
+      } // levels
+
+    } // if
+
+    return arrHilb;
   } // forward
 
   /**
-   * TODO Christian Scheiblich explainMeShortly
+   * Implementation of the 1-D reverse wavelet packet transform by filtering
+   * with the smallest wavelet for all sub bands -- low and high bands -- and
+   * the by the next greater wavelet combining two smaller and sub bands.
    * 
    * @date 23.02.2010 13:44:05
    * @author Christian Scheiblich
    * @see cs.jwave.handlers.BasicTransform#reverse(double[])
    */
   @Override
-  public double[ ] reverse( double[ ] arrFreq ) {
-    // TODO Christian Scheiblich should implement this method
-    return null;
+  public double[ ] reverse( double[ ] arrHilb ) {
+
+    // TODO think about not to allocating new MEM; return arrHilb as arrTime
+    double[ ] arrTime = new double[ arrHilb.length ];
+
+    for( int i = 0; i < arrHilb.length; i++ )
+      arrTime[ i ] = arrHilb[ i ];
+
+    int level = 0;
+    int minWaveLength = _wavelet.getWaveLength( );
+    int k = arrTime.length;
+    int h = minWaveLength;
+    if( arrHilb.length >= minWaveLength ) {
+
+      while( h <= arrTime.length && h >= minWaveLength ) {
+
+        int g = k / h; // ... -> 8 -> 4 -> 2 -> 1
+
+        for( int p = 0; p < g; p++ ) {
+
+          double[ ] iBuf = new double[ h ];
+          for( int i = 0; i < h; i++ )
+            iBuf[ i ] = arrTime[ i + ( p * h ) ];
+
+          double[ ] oBuf = _wavelet.reverse( iBuf );
+
+          for( int i = 0; i < h; i++ )
+            arrTime[ i + ( p * h ) ] = oBuf[ i ];
+        } // packets
+
+        h = h << 1;
+
+        level++;
+      } // levels
+
+    } // if
+
+    return arrTime;
   } // reverse
 
   /**

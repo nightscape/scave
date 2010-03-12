@@ -27,6 +27,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import cs.jwave.handlers.FastWaveletTransform;
+import cs.jwave.handlers.WaveletPacketTransform;
 import cs.jwave.handlers.wavelets.Coif06;
 import cs.jwave.handlers.wavelets.Daub04;
 import cs.jwave.handlers.wavelets.Haar02;
@@ -86,6 +87,56 @@ public class TransformTest {
     showTime( arrTime );
 
     double[ ] expected = { 1., 1., 1., 1. };
+    assertArray( expected, arrTime, delta );
+
+  }
+
+  /**
+   * Test method for {@link cs.jwave.Transform#forward(double[])}.
+   */
+  @Test
+  public void testWaveletPacketTransformForwardHaar02Array( ) {
+
+    System.out.println( "" );
+    System.out.println( "testWaveletPacketTransformForwardHaar02Array" );
+
+    double delta = 1.e-12;
+
+    double[ ] arrTime = { 2., 4., 7., 11. };
+
+    showTime( arrTime );
+
+    Transform t = new Transform( new WaveletPacketTransform( new Haar02( ) ) );
+    double[ ] arrHilb = t.forward( arrTime );
+
+    showHilb( arrHilb );
+
+    double[ ] expected = { 12., -6., -3., 1. };
+    assertArray( expected, arrHilb, delta );
+
+  }
+
+  /**
+   * Test method for {@link cs.jwave.Transform#reverse(double[])}.
+   */
+  @Test
+  public void testWaveletPacketTransformReverseHaar02Array( ) {
+
+    System.out.println( "" );
+    System.out.println( "testWaveletPacketTransformReverseHaar02Array" );
+
+    double delta = 1e-12;
+
+    double[ ] arrHilb = { 12., -6., -3., 1. };
+
+    showHilb( arrHilb );
+
+    Transform t = new Transform( new WaveletPacketTransform( new Haar02( ) ) );
+    double[ ] arrTime = t.reverse( arrHilb );
+
+    showTime( arrTime );
+
+    double[ ] expected = { 2., 4., 7., 11. };
     assertArray( expected, arrTime, delta );
 
   }
