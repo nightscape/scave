@@ -26,7 +26,7 @@ package cs.jwave.handlers;
 import cs.jwave.handlers.wavelets.Wavelet;
 
 /**
- * Base class for the forward and reverse Wavelet Packet Transform using a
+ * Base class for the forward and reverse Wavelet Packet Transform (WPT) using a
  * specified Wavelet by inheriting class.
  * 
  * @date 23.02.2010 13:44:05
@@ -63,7 +63,6 @@ public class WaveletPacketTransform extends BasicTransform {
   @Override
   public double[ ] forward( double[ ] arrTime ) {
 
-    // TODO think about not to allocating new MEM; return arrTime as arrHilb
     double[ ] arrHilb = new double[ arrTime.length ];
     for( int i = 0; i < arrTime.length; i++ )
       arrHilb[ i ] = arrTime[ i ];
@@ -114,7 +113,6 @@ public class WaveletPacketTransform extends BasicTransform {
   @Override
   public double[ ] reverse( double[ ] arrHilb ) {
 
-    // TODO think about not to allocating new MEM; return arrHilb as arrTime
     double[ ] arrTime = new double[ arrHilb.length ];
 
     for( int i = 0; i < arrHilb.length; i++ )
@@ -178,4 +176,4 @@ public class WaveletPacketTransform extends BasicTransform {
     return null;
   } // reverse
 
-}
+} // class

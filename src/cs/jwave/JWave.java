@@ -71,11 +71,11 @@ public class JWave {
 
     String wType = args[ 1 ];
     Wavelet wavelet = null;
-    if( wType.toLowerCase( ).compareTo( "haar02" ) == 0 )
+    if( wType.equalsIgnoreCase( "haar02" ) )
       wavelet = new Haar02( );
-    else if( wType.toLowerCase( ).compareTo( "daub04" ) == 0 )
+    else if( wType.equalsIgnoreCase( "daub04" ) )
       wavelet = new Daub04( );
-    else if( wType.toLowerCase( ).compareTo( "coif06" ) == 0 )
+    else if( wType.equalsIgnoreCase( "coif06" ) )
       wavelet = new Coif06( );
     else {
       System.err.println( "usage: JWave [transformType] [waveletType]" );
@@ -86,9 +86,9 @@ public class JWave {
 
     String tType = args[ 0 ];
     BasicTransform bWave = null;
-    if( tType.toLowerCase( ).compareTo( "fwt" ) == 0 )
+    if( tType.equalsIgnoreCase( "fwt" ) )
       bWave = new FastWaveletTransform( wavelet );
-    else if( tType.toLowerCase( ).compareTo( "wpt" ) == 0 )
+    else if( tType.equalsIgnoreCase( "wpt" ) )
       bWave = new WaveletPacketTransform( wavelet );
     else {
       System.err.println( "usage: JWave [transformType] [waveletType]" );
