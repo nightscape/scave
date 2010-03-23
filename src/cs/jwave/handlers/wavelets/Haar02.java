@@ -33,7 +33,7 @@ public class Haar02 extends Wavelet {
 
   /**
    * Constructor setting up the orthonormal Haar02 wavelet coeffs and the
-   * scales; normed, due to ||*||2.
+   * scales; normed, due to ||*||2 - euclidean norm.
    * 
    * @date 08.02.2010 12:46:34
    * @author Christian Scheiblich
@@ -45,8 +45,8 @@ public class Haar02 extends Wavelet {
     _coeffs = new double[ _waveLength ]; // can be done in static way also; faster?
     _scales = new double[ _waveLength ]; // can be done in static way also; faster?
 
-    _coeffs[ 0 ] = 1. / 1.4142135623730951; // w0
-    _coeffs[ 1 ] = -1. / 1.4142135623730951; // w1
+    _coeffs[ 0 ] = 1. / 1.4142135623730951; // w0 - normed by sqrt( 2 )
+    _coeffs[ 1 ] = -1. / 1.4142135623730951; // w1 - normed by sqrt( 2 )
 
     _scales[ 0 ] = -_coeffs[ 1 ]; // -w1
     _scales[ 1 ] = _coeffs[ 0 ]; // w0
@@ -56,7 +56,7 @@ public class Haar02 extends Wavelet {
   /**
    * The forward Fast Wavelet Transform using the Alfred Haar02's wavelet. The
    * arrTime array keeping coefficients of time domain should be of length 2 to
-   * the power of k - 2^k.
+   * the power of p -- length = 2^p where p is a positive integer.
    * 
    * @date 10.02.2010 08:26:06
    * @author Christian Scheiblich
@@ -91,7 +91,7 @@ public class Haar02 extends Wavelet {
   /**
    * The reverse Fast Wavelet Transform using the Alfred Haar02's wavelet. The
    * arrHilb array keeping coefficients of Hilbert domain should be of length 2
-   * to the power of k - 2^k.
+   * to the power of p -- length = 2^p where p is a positive integer.
    * 
    * @date 10.02.2010 08:26:06
    * @author Christian Scheiblich
