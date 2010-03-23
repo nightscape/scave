@@ -53,8 +53,8 @@ public class WaveletPacketTransform extends BasicTransform {
 
   /**
    * Implementation of the 1-D forward wavelet packet transform by filtering
-   * with the longest wavelet first and the always both sub bands -- low and
-   * high -- by the next smaller wavelet.
+   * with the longest wavelet first and then always with both sub bands -- low
+   * and high -- by the next smaller wavelet.
    * 
    * @date 23.02.2010 13:44:05
    * @author Christian Scheiblich
@@ -104,7 +104,8 @@ public class WaveletPacketTransform extends BasicTransform {
   /**
    * Implementation of the 1-D reverse wavelet packet transform by filtering
    * with the smallest wavelet for all sub bands -- low and high bands -- and
-   * the by the next greater wavelet combining two smaller and sub bands.
+   * the by the next greater wavelet combining two smaller and all other sub
+   * bands.
    * 
    * @date 23.02.2010 13:44:05
    * @author Christian Scheiblich
@@ -151,7 +152,9 @@ public class WaveletPacketTransform extends BasicTransform {
   } // reverse
 
   /**
-   * TODO Christian Scheiblich explainMeShortly
+   * Implementation of the 2-D forward wavelet packet transform by filtering
+   * with the longest wavelet first and then always with both sub bands -- low
+   * and high -- by the next smaller wavelet.
    * 
    * @date 23.02.2010 13:44:05
    * @author Christian Scheiblich
@@ -159,21 +162,74 @@ public class WaveletPacketTransform extends BasicTransform {
    */
   @Override
   public double[ ][ ] forward( double[ ][ ] matrixTime ) {
-    // TODO Christian Scheiblich should implement this method
-    return null;
+
+    // TODO Christian Scheiblich should implement a test method
+
+    int noOfRows = matrixTime.length;
+    int noOfCols = matrixTime[ 0 ].length;
+
+    double[ ][ ] matrixHilb = new double[ noOfRows ][ noOfCols ];
+
+    for( int i = 0; i < noOfRows; i++ ) {
+      double[ ] row = new double[ noOfCols ];
+      for( int j = 0; j < noOfCols; j++ )
+        row[ j ] = matrixTime[ i ][ j ];
+      row = forward( row );
+      for( int j = 0; j < noOfCols; j++ )
+        matrixHilb[ i ][ j ] = row[ j ];
+    } // rows
+
+    for( int j = 0; j < noOfCols; j++ ) {
+      double[ ] col = new double[ noOfRows ];
+      for( int i = 0; i < noOfRows; i++ )
+        col[ i ] = matrixHilb[ i ][ j ];
+      col = forward( col );
+      for( int i = 0; i < noOfCols; i++ )
+        matrixHilb[ i ][ j ] = col[ i ];
+    } // cols
+
+    return matrixHilb;
   } // forward
 
   /**
-   * TODO Christian Scheiblich explainMeShortly
+   * Implementation of the 2-D reverse wavelet packet transform by filtering
+   * with the smallest wavelet for all sub bands -- low and high bands -- and
+   * the by the next greater wavelet combining two smaller and all other sub
+   * bands.
    * 
    * @date 23.02.2010 13:44:05
    * @author Christian Scheiblich
    * @see cs.jwave.handlers.BasicTransform#reverse(double[][])
    */
   @Override
-  public double[ ][ ] reverse( double[ ][ ] matrixFreq ) {
+  public double[ ][ ] reverse( double[ ][ ] matrixHilb ) {
+
     // TODO Christian Scheiblich should implement this method
-    return null;
+
+    int noOfRows = matrixHilb.length;
+    int noOfCols = matrixHilb[ 0 ].length;
+
+    double[ ][ ] matrixTime = new double[ noOfRows ][ noOfCols ];
+
+    for( int j = 0; j < noOfCols; j++ ) {
+      double[ ] col = new double[ noOfRows ];
+      for( int i = 0; i < noOfRows; i++ )
+        col[ i ] = matrixHilb[ i ][ j ];
+      col = reverse( col );
+      for( int i = 0; i < noOfCols; i++ )
+        matrixTime[ i ][ j ] = col[ i ];
+    } // cols
+
+    for( int i = 0; i < noOfRows; i++ ) {
+      double[ ] row = new double[ noOfCols ];
+      for( int j = 0; j < noOfCols; j++ )
+        row[ j ] = matrixTime[ i ][ j ];
+      row = reverse( row );
+      for( int j = 0; j < noOfCols; j++ )
+        matrixTime[ i ][ j ] = row[ j ];
+    } // rows
+
+    return matrixTime;
   } // reverse
 
 } // class
