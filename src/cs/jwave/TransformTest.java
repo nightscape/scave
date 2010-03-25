@@ -30,6 +30,7 @@ import cs.jwave.handlers.FastWaveletTransform;
 import cs.jwave.handlers.WaveletPacketTransform;
 import cs.jwave.handlers.wavelets.Coif06;
 import cs.jwave.handlers.wavelets.Daub04;
+import cs.jwave.handlers.wavelets.Daub06;
 import cs.jwave.handlers.wavelets.Haar02;
 import cs.jwave.handlers.wavelets.Wavelet;
 
@@ -236,6 +237,56 @@ public class TransformTest {
     showHilb( arrHilb );
 
     Transform t = new Transform( new FastWaveletTransform( new Coif06( ) ) );
+    double[ ] arrTime = t.reverse( arrHilb );
+
+    showTime( arrTime );
+
+    double[ ] expected = { 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1. };
+    assertArray( expected, arrTime, delta );
+
+  }
+
+  /**
+   * Test method for {@link cs.jwave.Transform#forward(double[])}.
+   */
+  @Test
+  public void testFastWaveletTransformForwardDaub06Array( ) {
+
+    System.out.println( "" );
+    System.out.println( "testFastWaveletTransformForwardDaub06Array" );
+
+    double delta = 1.e-12;
+
+    double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1. };
+
+    showTime( arrTime );
+
+    Transform t = new Transform( new FastWaveletTransform( new Daub06( ) ) );
+    double[ ] arrHilb = t.forward( arrTime );
+
+    showHilb( arrHilb );
+
+    double[ ] expected = { 2., 2., 2., 0., 0., 0., 0., 0., 0., 0., 0., 0. };
+    assertArray( expected, arrHilb, delta );
+
+  }
+
+  /**
+   * Test method for {@link cs.jwave.Transform#reverse(double[])}.
+   */
+  @Test
+  public void testFastWaveletTransformReverseDaub06Array( ) {
+
+    System.out.println( "" );
+    System.out.println( "testFastWaveletTransformReverseDaub06Array" );
+
+    double delta = 1.e-12;
+
+    double[ ] arrHilb = { 2., 2., 2., 0., 0., 0., 0., 0., 0., 0., 0., 0. };
+
+    showHilb( arrHilb );
+
+    Transform t = new Transform( new FastWaveletTransform( new Daub06( ) ) );
     double[ ] arrTime = t.reverse( arrHilb );
 
     showTime( arrTime );

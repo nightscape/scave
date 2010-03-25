@@ -15,45 +15,47 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file Coif06.java is part of JWave.
+ * This file Daub06.java is part of JWave.
  *
- * @author Christian Scheiblich
- * date 23.02.2010 05:42:23
+ * @author itechsch
+ * date 25.03.2010 14:03:20
  * contact source@linux23.de
  */
 package cs.jwave.handlers.wavelets;
 
 /**
- * Ingrid Daubechies's orthonormal Coiflet wavelet of six coefficients and the
- * scales; normed, due to ||*||2 - euclidean norm.
+ * Ingrid Daubechies's orthonormal wavelet of six coefficients and the scales;
+ * normed, due to ||*||2 - euclidean norm.
  * 
- * @date 10.02.2010 16:32:38
+ * @date 25.03.2010 14:03:20
  * @author Christian Scheiblich
  */
-public class Coif06 extends Wavelet {
+public class Daub06 extends Wavelet {
 
   /**
-   * Constructor setting up the orthonormal Coiflet6 wavelet coeffs and the
+   * Constructor setting up the orthonormal Daubechie6 wavelet coeffs and the
    * scales; normed, due to ||*||2 - euclidean norm.
    * 
-   * @date 10.02.2010 16:32:38
+   * @date 25.03.2010 14:03:20
    * @author Christian Scheiblich
    */
-  public Coif06( ) {
+  public Daub06( ) {
 
-    _waveLength = 6; // minimal array size for transform
+    _waveLength = 6;
 
     _coeffs = new double[ _waveLength ]; // can be done in static way also; faster?
     _scales = new double[ _waveLength ]; // can be done in static way also; faster?
 
-    double sqrt15 = Math.sqrt( 15. );
+    double sqrt02 = 1.4142135623730951;
+    double sqrt10 = Math.sqrt( 10. );
+    double constA = Math.sqrt( 5. + 2. * sqrt10 );
 
-    _scales[ 0 ] = 1.4142135623730951 * ( sqrt15 - 3. ) / 32.;
-    _scales[ 1 ] = 1.4142135623730951 * ( 1. - sqrt15 ) / 32.;
-    _scales[ 2 ] = 1.4142135623730951 * ( 6. - 2 * sqrt15 ) / 32.;
-    _scales[ 3 ] = 1.4142135623730951 * ( 2. * sqrt15 + 6. ) / 32.;
-    _scales[ 4 ] = 1.4142135623730951 * ( sqrt15 + 13. ) / 32.;
-    _scales[ 5 ] = 1.4142135623730951 * ( 9. - sqrt15 ) / 32.;
+    _scales[ 0 ] = ( 1. + 1. * sqrt10 + 1. * constA ) / 16. / sqrt02; // h0
+    _scales[ 1 ] = ( 5. + 1. * sqrt10 + 3. * constA ) / 16. / sqrt02; // h1
+    _scales[ 2 ] = ( 10. - 2. * sqrt10 + 2. * constA ) / 16. / sqrt02; // h2
+    _scales[ 3 ] = ( 10. - 2. * sqrt10 - 2. * constA ) / 16. / sqrt02; // h3
+    _scales[ 4 ] = ( 5. + 1. * sqrt10 - 3. * constA ) / 16. / sqrt02; // h4
+    _scales[ 5 ] = ( 1. + 1. * sqrt10 - 1. * constA ) / 16. / sqrt02; // h5
 
     _coeffs[ 0 ] = _scales[ 5 ]; //    h5
     _coeffs[ 1 ] = -_scales[ 4 ]; //  -h4
@@ -62,20 +64,21 @@ public class Coif06 extends Wavelet {
     _coeffs[ 4 ] = _scales[ 1 ]; //    h1
     _coeffs[ 5 ] = -_scales[ 0 ]; //  -h0
 
-  }
+  } // Daub06
 
   /**
-   * The forward Fast Wavelet Transform using the Ingrid Daubechies' coiflet
-   * wavelet of six coefficients. The arrHilb array keeping coefficients of
-   * Hilbert domain should be of length 2 to the power of p -- length = 2^p
-   * where p is a positive integer.
+   * The forward Fast Wavelet Transform using the Ingrid Daubechies' wavelet of
+   * six coefficients. The arrHilb array keeping coefficients of Hilbert domain
+   * should be of length 2 to the power of p -- length = 2^p where p is a
+   * positive integer.
    * 
-   * @date 10.02.2010 16:32:38
+   * @date 25.03.2010 14:03:20
    * @author Christian Scheiblich
    * @see cs.jwave.handlers.wavelets.Wavelet#forward(double[])
    */
   @Override
   public double[ ] forward( double[ ] arrTime ) {
+
     double[ ] arrHilb = new double[ arrTime.length ];
 
     int k = 0;
@@ -100,12 +103,12 @@ public class Coif06 extends Wavelet {
   } // forward
 
   /**
-   * The reverse Fast Wavelet Transform using the Ingrid Daubechies' coiflet
-   * wavelet of six coefficients. The arrHilb array keeping coefficients of
-   * Hilbert domain should be of length 2 to the power of p -- length = 2^p
-   * where p is a positive integer.
+   * The reverse Fast Wavelet Transform using the Ingrid Daubechies' wavelet of
+   * six coefficients. The arrHilb array keeping coefficients of Hilbert domain
+   * should be of length 2 to the power of p -- length = 2^p where p is a
+   * positive integer.
    * 
-   * @date 10.02.2010 16:32:38
+   * @date 25.03.2010 14:03:20
    * @author Christian Scheiblich
    * @see cs.jwave.handlers.wavelets.Wavelet#reverse(double[])
    */

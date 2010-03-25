@@ -163,8 +163,6 @@ public class WaveletPacketTransform extends BasicTransform {
   @Override
   public double[ ][ ] forward( double[ ][ ] matrixTime ) {
 
-    // TODO Christian Scheiblich should implement a test method
-
     int noOfRows = matrixTime.length;
     int noOfCols = matrixTime[ 0 ].length;
 
@@ -203,8 +201,6 @@ public class WaveletPacketTransform extends BasicTransform {
    */
   @Override
   public double[ ][ ] reverse( double[ ][ ] matrixHilb ) {
-
-    // TODO Christian Scheiblich should implement this method
 
     int noOfRows = matrixHilb.length;
     int noOfCols = matrixHilb[ 0 ].length;
