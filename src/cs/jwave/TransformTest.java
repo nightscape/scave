@@ -52,7 +52,7 @@ public class TransformTest {
     System.out.println( "" );
     System.out.println( "testDiscreteFourierTransformForwardArray" );
 
-    double delta = 1.e-8;
+    double delta = 1.e-12;
 
     double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1., 1. };
 
@@ -77,7 +77,7 @@ public class TransformTest {
     System.out.println( "" );
     System.out.println( "testDiscreteFourierTransformReverseArray" );
 
-    double delta = 1e-8;
+    double delta = 1e-12;
 
     double[ ] arrFreq = { 1., 1., 0., 0., 0., 0, 0., 0. };
 

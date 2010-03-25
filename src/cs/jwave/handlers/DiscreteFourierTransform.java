@@ -36,16 +36,13 @@ package cs.jwave.handlers;
  */
 public class DiscreteFourierTransform extends BasicTransform {
 
-  protected double _pi;
-
   /**
-   * Constructor setting initializes member variables for DFT; herePI
+   * Constructor
    * 
    * @date 25.03.2010 19:56:29
    * @author Christian Scheiblich
    */
   public DiscreteFourierTransform( ) {
-    _pi = 3.141592654;
   } // DiscreteFourierTransform
 
   /**
@@ -71,7 +68,7 @@ public class DiscreteFourierTransform extends BasicTransform {
       int iC = i * 2 + 1;
       arrFreq[ iR ] = 0.;
       arrFreq[ iC ] = 0.;
-      double arg = -2. * _pi * (double)i / (double)n;
+      double arg = -2. * Math.PI * (double)i / (double)n;
       for( int k = 0; k < n; k++ ) {
         int kR = k * 2;
         int kC = k * 2 + 1;
@@ -110,7 +107,7 @@ public class DiscreteFourierTransform extends BasicTransform {
       int iC = i * 2 + 1;
       arrTime[ iR ] = 0.;
       arrTime[ iC ] = 0.;
-      double arg = 2. * _pi * (double)i / (double)n;
+      double arg = 2. * Math.PI * (double)i / (double)n;
       for( int k = 0; k < n; k++ ) {
         int kR = k * 2;
         int kC = k * 2 + 1;
