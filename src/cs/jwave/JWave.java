@@ -17,7 +17,7 @@
  *
  * This file JWave.java is part of JWave.
  *
- * @author itechsch
+ * @author Christian Scheiblich
  * date 23.02.2010 14:26:47
  * contact source@linux23.de
  */

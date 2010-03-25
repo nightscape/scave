@@ -17,7 +17,7 @@
  *
  * This file Daub06.java is part of JWave.
  *
- * @author itechsch
+ * @author Christian Scheiblich
  * date 25.03.2010 14:03:20
  * contact source@linux23.de
  */
