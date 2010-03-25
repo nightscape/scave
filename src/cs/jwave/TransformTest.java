@@ -26,6 +26,7 @@ package cs.jwave;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import cs.jwave.handlers.DiscreteFourierTransform;
 import cs.jwave.handlers.FastWaveletTransform;
 import cs.jwave.handlers.WaveletPacketTransform;
 import cs.jwave.handlers.wavelets.Coif06;
@@ -41,6 +42,56 @@ import cs.jwave.handlers.wavelets.Wavelet;
  * @author Christian Scheiblich
  */
 public class TransformTest {
+
+  /**
+   * Test method for {@link cs.jwave.Transform#forward(double[])}.
+   */
+  @Test
+  public void testDiscreteFourierTransformForwardArray( ) {
+
+    System.out.println( "" );
+    System.out.println( "testDiscreteFourierTransformForwardArray" );
+
+    double delta = 1.e-8;
+
+    double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1., 1. };
+
+    showTime( arrTime );
+
+    Transform t = new Transform( new DiscreteFourierTransform( ) );
+    double[ ] arrFreq = t.forward( arrTime );
+
+    showFreq( arrFreq );
+
+    double[ ] expected = { 1., 1., 0., 0., 0., 0, 0., 0. };
+    assertArray( expected, arrFreq, delta );
+
+  }
+
+  /**
+   * Test method for {@link cs.jwave.Transform#reverse(double[])}.
+   */
+  @Test
+  public void testDiscreteFourierTransformReverseArray( ) {
+
+    System.out.println( "" );
+    System.out.println( "testDiscreteFourierTransformReverseArray" );
+
+    double delta = 1e-8;
+
+    double[ ] arrFreq = { 1., 1., 0., 0., 0., 0, 0., 0. };
+
+    showHilb( arrFreq );
+
+    Transform t = new Transform( new DiscreteFourierTransform( ) );
+    double[ ] arrTime = t.reverse( arrFreq );
+
+    showTime( arrTime );
+
+    double[ ] expected = { 1., 1., 1., 1., 1., 1., 1., 1. };
+    assertArray( expected, arrTime, delta );
+
+  }
 
   /**
    * Test method for {@link cs.jwave.Transform#forward(double[])}.

@@ -24,6 +24,7 @@
 package cs.jwave;
 
 import cs.jwave.handlers.BasicTransform;
+import cs.jwave.handlers.DiscreteFourierTransform;
 import cs.jwave.handlers.FastWaveletTransform;
 import cs.jwave.handlers.WaveletPacketTransform;
 import cs.jwave.handlers.wavelets.Coif06;
@@ -63,9 +64,9 @@ public class JWave {
   public static void main( String[ ] args ) {
 
     if( args.length != 2 ) {
-      System.err.println( "usage: JWave [transformType] [waveletType]" );
+      System.err.println( "usage: JWave [transformType] {waveletType}" );
       System.err.println( "" );
-      System.err.println( "transformType: FWT, WPT" );
+      System.err.println( "transformType: DFT, FWT, WPT" );
       System.err.println( "waveletType  : Haar02, Daub04, Daub06, Coif06" );
       return;
     }
@@ -81,7 +82,7 @@ public class JWave {
     else if( wType.equalsIgnoreCase( "coif06" ) )
       wavelet = new Coif06( );
     else {
-      System.err.println( "usage: JWave [transformType] [waveletType]" );
+      System.err.println( "usage: JWave [transformType] {waveletType}" );
       System.err.println( "" );
       System.err
           .println( "available wavelets are Haar02, Daub04, Daub06, Coif06" );
@@ -90,14 +91,16 @@ public class JWave {
 
     String tType = args[ 0 ];
     BasicTransform bWave = null;
-    if( tType.equalsIgnoreCase( "fwt" ) )
+    if( tType.equalsIgnoreCase( "dft" ) )
+      bWave = new DiscreteFourierTransform( );
+    else if( tType.equalsIgnoreCase( "fwt" ) )
       bWave = new FastWaveletTransform( wavelet );
     else if( tType.equalsIgnoreCase( "wpt" ) )
       bWave = new WaveletPacketTransform( wavelet );
     else {
-      System.err.println( "usage: JWave [transformType] [waveletType]" );
+      System.err.println( "usage: JWave [transformType] {waveletType}" );
       System.err.println( "" );
-      System.err.println( "available transforms are FWT, WPT" );
+      System.err.println( "available transforms are DFT, FWT, WPT" );
       return;
     } // if tType
 
@@ -111,14 +114,17 @@ public class JWave {
       System.out.printf( "%9.6f", arrTime[ p ] );
     System.out.println( "" );
 
-    double[ ] arrHilb = t.forward( arrTime ); // 1-D FWT Haar forward
+    double[ ] arrFreqOrHilb = t.forward( arrTime ); // 1-D forward transform
 
-    System.out.println( "hilbert domain:" );
+    if( bWave instanceof DiscreteFourierTransform )
+      System.out.println( "frequency domain:" );
+    else
+      System.out.println( "hilbert domain:" );
     for( int p = 0; p < arrTime.length; p++ )
-      System.out.printf( "%9.6f", arrHilb[ p ] );
+      System.out.printf( "%9.6f", arrFreqOrHilb[ p ] );
     System.out.println( "" );
 
-    double[ ] arrReco = t.reverse( arrHilb ); // 1-D FWT Haar reverse
+    double[ ] arrReco = t.reverse( arrFreqOrHilb ); // 1-D reverse transform
 
     System.out.println( "reconstruction:" );
     for( int p = 0; p < arrTime.length; p++ )
