@@ -34,7 +34,7 @@ import cs.jwave.handlers.wavelets.Haar02;
 import cs.jwave.handlers.wavelets.Wavelet;
 
 /**
- * Test for the class Transform.
+ * Tests for the class Transform.
  * 
  * @date 10.02.2010 09:43:08
  * @author Christian Scheiblich
@@ -92,57 +92,7 @@ public class TransformTest {
   }
 
   /**
-   * Test method for {@link cs.jwave.Transform#forward(double[])}.
-   */
-  @Test
-  public void testWaveletPacketTransformForwardHaar02Array( ) {
-
-    System.out.println( "" );
-    System.out.println( "testWaveletPacketTransformForwardHaar02Array" );
-
-    double delta = 1.e-12;
-
-    double[ ] arrTime = { 2., 4., 7., 11. };
-
-    showTime( arrTime );
-
-    Transform t = new Transform( new WaveletPacketTransform( new Haar02( ) ) );
-    double[ ] arrHilb = t.forward( arrTime );
-
-    showHilb( arrHilb );
-
-    double[ ] expected = { 12., -6., -3., 1. };
-    assertArray( expected, arrHilb, delta );
-
-  }
-
-  /**
-   * Test method for {@link cs.jwave.Transform#reverse(double[])}.
-   */
-  @Test
-  public void testWaveletPacketTransformReverseHaar02Array( ) {
-
-    System.out.println( "" );
-    System.out.println( "testWaveletPacketTransformReverseHaar02Array" );
-
-    double delta = 1e-12;
-
-    double[ ] arrHilb = { 12., -6., -3., 1. };
-
-    showHilb( arrHilb );
-
-    Transform t = new Transform( new WaveletPacketTransform( new Haar02( ) ) );
-    double[ ] arrTime = t.reverse( arrHilb );
-
-    showTime( arrTime );
-
-    double[ ] expected = { 2., 4., 7., 11. };
-    assertArray( expected, arrTime, delta );
-
-  }
-
-  /**
-   * Test method for {@link cs.jwave.Transform#forward(double[])}.
+   * Test method for {@link cs.jwave.Transform#forward(double[][])}.
    */
   @Test
   public void testFastWaveletTransformForwardHaar02Matrix( ) {
@@ -169,10 +119,10 @@ public class TransformTest {
   }
 
   /**
-   * Test method for {@link cs.jwave.Transform#reverse(double[])}.
+   * Test method for {@link cs.jwave.Transform#reverse(double[][])}.
    */
   @Test
-  public void testFastWaveletTransformHaarReverseMatrix( ) {
+  public void testFastWaveletTransformReverseHaar02Matrix( ) {
 
     System.out.println( "" );
     System.out.println( "testFastWaveletTransformReverseHaar02Matrix" );
@@ -296,6 +246,110 @@ public class TransformTest {
   }
 
   /**
+   * Test method for {@link cs.jwave.Transform#forward(double[])}.
+   */
+  @Test
+  public void testWaveletPacketTransformForwardHaar02Array( ) {
+
+    System.out.println( "" );
+    System.out.println( "testWaveletPacketTransformForwardHaar02Array" );
+
+    double delta = 1.e-12;
+
+    double[ ] arrTime = { 2., 4., 7., 11. };
+
+    showTime( arrTime );
+
+    Transform t = new Transform( new WaveletPacketTransform( new Haar02( ) ) );
+    double[ ] arrHilb = t.forward( arrTime );
+
+    showHilb( arrHilb );
+
+    double[ ] expected = { 12., -6., -3., 1. };
+    assertArray( expected, arrHilb, delta );
+
+  }
+
+  /**
+   * Test method for {@link cs.jwave.Transform#reverse(double[])}.
+   */
+  @Test
+  public void testWaveletPacketTransformReverseHaar02Array( ) {
+
+    System.out.println( "" );
+    System.out.println( "testWaveletPacketTransformReverseHaar02Array" );
+
+    double delta = 1e-12;
+
+    double[ ] arrHilb = { 12., -6., -3., 1. };
+
+    showHilb( arrHilb );
+
+    Transform t = new Transform( new WaveletPacketTransform( new Haar02( ) ) );
+    double[ ] arrTime = t.reverse( arrHilb );
+
+    showTime( arrTime );
+
+    double[ ] expected = { 2., 4., 7., 11. };
+    assertArray( expected, arrTime, delta );
+
+  }
+
+  /**
+   * Test method for {@link cs.jwave.Transform#forward(double[][])}.
+   */
+  @Test
+  public void testWaveletPacketTransformForwardHaar02Matrix( ) {
+
+    System.out.println( "" );
+    System.out.println( "testWaveletPacketTransformForwardHaar02Matrix" );
+
+    double delta = 1.e-12;
+
+    double[ ][ ] matrixTime = { { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+        { 1., 1., 1., 1. }, { 1., 1., 1., 1. } };
+
+    showTime( matrixTime );
+
+    Transform t = new Transform( new WaveletPacketTransform( new Haar02( ) ) );
+    double[ ][ ] matrixHilb = t.forward( matrixTime );
+
+    showHilb( matrixHilb );
+
+    double[ ][ ] expected = { { 4., 0., 0., 0. }, { 0., 0., 0., 0. },
+        { 0., 0., 0., 0. }, { 0., 0., 0., 0. } };
+    assertMatrix( expected, matrixHilb, delta );
+
+  }
+
+  /**
+   * Test method for {@link cs.jwave.Transform#reverse(double[][])}.
+   */
+  @Test
+  public void testWaveletPacketTransformReverseHaar02Matrix( ) {
+
+    System.out.println( "" );
+    System.out.println( "testWaveletPacketTransformReverseHaar02Matrix" );
+
+    double delta = 1.e-12;
+
+    double[ ][ ] matrixHilb = { { 4., 0., 0., 0. }, { 0., 0., 0., 0. },
+        { 0., 0., 0., 0. }, { 0., 0., 0., 0. } };
+
+    showHilb( matrixHilb );
+
+    Transform t = new Transform( new WaveletPacketTransform( new Haar02( ) ) );
+    double[ ][ ] matrixTime = t.reverse( matrixHilb );
+
+    showTime( matrixTime );
+
+    double[ ][ ] expected = { { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+        { 1., 1., 1., 1. }, { 1., 1., 1., 1. } };
+    assertMatrix( expected, matrixTime, delta );
+
+  }
+
+  /**
    * Test method to check the rounding error of several forward and reverse
    * transforms.
    * 
@@ -303,7 +357,7 @@ public class TransformTest {
    * @author Christian Scheiblich
    */
   @Test
-  public void testFastWaveletTransformRoundingHaar02( ) {
+  public void testRoundingHaar02FWT( ) {
 
     //    Performing: 1000000000 forward and reverse transforms ...
     //    0%-------------------------------------50%----------------------------------100%
@@ -322,7 +376,7 @@ public class TransformTest {
     //    time domain:    1.5700924593797794E-5 1.5700924593797794E-5 
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformRoundingHaar02" );
+    System.out.println( "testRoundingHaar02FWT" );
 
     double delta = 1.e-8;
 
@@ -340,7 +394,7 @@ public class TransformTest {
    * @author Christian Scheiblich
    */
   @Test
-  public void testFastWaveletTransformRoundingDaub04( ) {
+  public void testRoundingDaub04FWT( ) {
 
     //    Performing: 10000000 forward and reverse transforms ...
     //    0%-------------------------------------50%----------------------------------100%
@@ -359,13 +413,48 @@ public class TransformTest {
     //    time domain:    4.474198789239381E-12 4.529709940470639E-12 4.474198789239381E-12 4.529709940470639E-12 
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformRoundingDaub04" );
+    System.out.println( "testRoundingDaub04FWT" );
 
     double delta = 1.e-8;
 
     double[ ] arrTime = { 1., 1., 1., 1. };
 
     testFastWaveletTransformRounding( arrTime, new Daub04( ), delta );
+
+  } // testRounding
+
+  /**
+   * Test method to check the rounding error of several forward and reverse
+   * transforms.
+   * 
+   * @date 10.02.2010 10:28:00
+   * @author Christian Scheiblich
+   */
+  @Test
+  public void testRoundingCoif06FWT( ) {
+
+    //    Performing: 10000000 forward and reverse transforms ...
+    //
+    //    Input ...
+    //    time domain:    1.0 1.0 1.0 1.0 1.0 1.0 
+    //
+    //    Result ...
+    //    time domain:    1.000000000000003 1.0000000000000024 1.000000000000005 1.0000000000000024 1.0000000000000033 1.0000000000000022 
+    //
+    //    Absolute error
+    //    time domain:    3.1086244689504383E-15 2.4424906541753444E-15 5.10702591327572E-15 2.4424906541753444E-15 3.3306690738754696E-15 2.220446049250313E-15 
+    //
+    //    Relative error [%] ...
+    //    time domain:    3.1086244689504383E-13 2.4424906541753444E-13 5.10702591327572E-13 2.4424906541753444E-13 3.3306690738754696E-13 2.220446049250313E-13  
+
+    System.out.println( "" );
+    System.out.println( "testRoundingCoif06FWT" );
+
+    double delta = 1.e-8;
+
+    double[ ] arrTime = { 1., 1., 1., 1., 1., 1. };
+
+    testFastWaveletTransformRounding( arrTime, new Coif06( ), delta );
 
   } // testRounding
 
