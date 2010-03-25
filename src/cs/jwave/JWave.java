@@ -28,6 +28,7 @@ import cs.jwave.handlers.FastWaveletTransform;
 import cs.jwave.handlers.WaveletPacketTransform;
 import cs.jwave.handlers.wavelets.Coif06;
 import cs.jwave.handlers.wavelets.Daub04;
+import cs.jwave.handlers.wavelets.Daub06;
 import cs.jwave.handlers.wavelets.Haar02;
 import cs.jwave.handlers.wavelets.Wavelet;
 
@@ -65,7 +66,7 @@ public class JWave {
       System.err.println( "usage: JWave [transformType] [waveletType]" );
       System.err.println( "" );
       System.err.println( "transformType: FWT, WPT" );
-      System.err.println( "waveletType  : Haar02, Daub04, Coif06" );
+      System.err.println( "waveletType  : Haar02, Daub04, Daub06, Coif06" );
       return;
     }
 
@@ -75,12 +76,15 @@ public class JWave {
       wavelet = new Haar02( );
     else if( wType.equalsIgnoreCase( "daub04" ) )
       wavelet = new Daub04( );
+    else if( wType.equalsIgnoreCase( "daub06" ) )
+      wavelet = new Daub06( );
     else if( wType.equalsIgnoreCase( "coif06" ) )
       wavelet = new Coif06( );
     else {
       System.err.println( "usage: JWave [transformType] [waveletType]" );
       System.err.println( "" );
-      System.err.println( "available wavelets are Haar02, Daub04, Coif06" );
+      System.err
+          .println( "available wavelets are Haar02, Daub04, Daub06, Coif06" );
       return;
     } // if wType
 
@@ -99,7 +103,7 @@ public class JWave {
 
     Transform t = new Transform( bWave );
 
-    double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1., 1. };
+    double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1. };
 
     System.out.println( "" );
     System.out.println( "time domain:" );
