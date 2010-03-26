@@ -63,7 +63,6 @@ public class FastWaveletTransform extends BasicTransform {
   @Override
   public double[ ] forward( double[ ] arrTime ) {
 
-    // TODO think about not to allocating new MEM; return arrTime as arrHilb
     double[ ] arrHilb = new double[ arrTime.length ];
     for( int i = 0; i < arrTime.length; i++ )
       arrHilb[ i ] = arrTime[ i ];
@@ -105,7 +104,6 @@ public class FastWaveletTransform extends BasicTransform {
   @Override
   public double[ ] reverse( double[ ] arrHilb ) {
 
-    // TODO think about not to allocating new MEM; return arrHilb as arrTime
     double[ ] arrTime = new double[ arrHilb.length ];
 
     for( int i = 0; i < arrHilb.length; i++ )
