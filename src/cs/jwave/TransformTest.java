@@ -34,6 +34,7 @@ import cs.jwave.handlers.wavelets.Daub04;
 import cs.jwave.handlers.wavelets.Daub06;
 import cs.jwave.handlers.wavelets.Daub08;
 import cs.jwave.handlers.wavelets.Haar02;
+import cs.jwave.handlers.wavelets.Haar02Orthogonal;
 import cs.jwave.handlers.wavelets.Wavelet;
 
 /**
@@ -114,7 +115,7 @@ public class TransformTest {
 
     showHilb( arrHilb );
 
-    double[ ] expected = { 2., 0., 0., 0. };
+    double[ ] expected = { 2., 0., 0., 0. }; // orthonormal hilbert space
     assertArray( expected, arrHilb, delta );
 
   }
@@ -130,7 +131,7 @@ public class TransformTest {
 
     double delta = 1e-12;
 
-    double[ ] arrHilb = { 2., 0., 0., 0. };
+    double[ ] arrHilb = { 2., 0., 0., 0. }; // orthonormal hilbert space
 
     showHilb( arrHilb );
 
@@ -195,6 +196,58 @@ public class TransformTest {
     double[ ][ ] expected = { { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
         { 1., 1., 1., 1. }, { 1., 1., 1., 1. } };
     assertMatrix( expected, matrixTime, delta );
+
+  }
+
+  /**
+   * Test method for {@link cs.jwave.Transform#forward(double[])}.
+   */
+  @Test
+  public void testFastWaveletTransformForwardHaar02OrthogonalArray( ) {
+
+    System.out.println( "" );
+    System.out.println( "testFastWaveletTransformForwardHaar02OrthogonalArray" );
+
+    double delta = 1.e-12;
+
+    double[ ] arrTime = { 1., 1., 1., 1. };
+
+    showTime( arrTime );
+
+    Transform t = new Transform( new FastWaveletTransform(
+        new Haar02Orthogonal( ) ) );
+    double[ ] arrHilb = t.forward( arrTime );
+
+    showHilb( arrHilb );
+
+    double[ ] expected = { 4., 0., 0., 0. }; // see the orthonormal version above
+    assertArray( expected, arrHilb, delta );
+
+  }
+
+  /**
+   * Test method for {@link cs.jwave.Transform#reverse(double[])}.
+   */
+  @Test
+  public void testFastWaveletTransformReverseHaar02OrthogonalArray( ) {
+
+    System.out.println( "" );
+    System.out.println( "testFastWaveletTransformReverseHaar02OrthogonalArray" );
+
+    double delta = 1e-12;
+
+    double[ ] arrHilb = { 4., 0., 0., 0. }; // see the orthonormal version above
+
+    showHilb( arrHilb );
+
+    Transform t = new Transform( new FastWaveletTransform(
+        new Haar02Orthogonal( ) ) );
+    double[ ] arrTime = t.reverse( arrHilb );
+
+    showTime( arrTime );
+
+    double[ ] expected = { 1., 1., 1., 1. };
+    assertArray( expected, arrTime, delta );
 
   }
 

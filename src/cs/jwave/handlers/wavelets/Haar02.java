@@ -24,7 +24,7 @@
 package cs.jwave.handlers.wavelets;
 
 /**
- * Alfred Haar02's FastWaveletTransform; orthonormalized.
+ * Alfred Haar02's orthonormal Wavelet Transfrom.
  * 
  * @date 08.02.2010 12:46:34
  * @author Christian Scheiblich
@@ -33,7 +33,8 @@ public class Haar02 extends Wavelet {
 
   /**
    * Constructor setting up the orthonormal Haar02 wavelet coeffs and the
-   * scales; normed, due to ||*||2 - euclidean norm.
+   * scales; normed, due to ||*||_2 -- euclidean norm. See the orthogonal
+   * version in class Haar02Orthogonal for more details.
    * 
    * @date 08.02.2010 12:46:34
    * @author Christian Scheiblich
