@@ -69,7 +69,7 @@ public class JWave {
       System.err.println( "" );
       System.err.println( "transformType: DFT, FWT, WPT" );
       System.err
-          .println( "waveletType  : Haar02, Daub04, Daub06, Coif06, Daub08" );
+          .println( "waveletType : Haar02, Daub04, Daub06, Coif06, Daub08" );
       return;
     }
 

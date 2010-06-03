@@ -48,19 +48,19 @@ public class Haar02Orthogonal extends Wavelet {
     // Orthogonal wavelet coefficients; NOT orthonormal, due to missing sqrt(2.) 
     _coeffs[ 0 ] = 1.; // w0 
     _coeffs[ 1 ] = -1.; //  w1
-    // rule for constructing an orthogonal vector in R^2 -- scales
+    // Rule for constructing an orthogonal vector in R^2 -- scales
     _scales[ 0 ] = -_coeffs[ 1 ]; // -w1 
     _scales[ 1 ] = _coeffs[ 0 ]; // w0
     //
     // Orthogonal system -- ASCII art does not display the angles in 90° (or 45°):
     //         ^
     // wavelet | scales
-    //     . 1.+   .
-    //      \  |  /    \
-    //       \ | /     | length: sqrt( 1.^2 + 1^2. ) = 1.4142135623730951
-    //        \|/      /
-    //    -+---O---+-> x    
-    //    -1.      1.
+    //     . 1.+   .      
+    //      \  |  /       \
+    //       \ | /        | length: sqrt( 1.^2 + 1^2. ) = 1.4142135623730951
+    //        \|/        / 
+    //    -+---o---+-> x    
+    //    -1.  |   1.
     //
     // Therefore, one can see that, by each step of the algorithm, the input coefficients
     // "energy" (||.||_2 euclidean norm) change and, so, one has to correct this change in
@@ -68,11 +68,11 @@ public class Haar02Orthogonal extends Wavelet {
     //
     // (see http://en.wikipedia.org/wiki/Euclidean_norm  for the euclidean norm)
     //
-    // Main disadvantage here is, that wavelet sub spaces of different dimension or level
+    // Main disadvantage here is that wavelet sub spaces of different dimension or level
     // can not be combined anymore, while there are of different ||.||_2 norm. If the
     // orthonormal Haar wavelet is taken, the ||.||_2 norm does not change and allows for
-    // combining wavelet sub space of different dimension or even level. E. g. using wavelets
-    // for data  compression like JPEG2000 but with adaptable set block size -- not always
+    // combining wavelet sub spaces of different dimension or even level. E. g. using wavelets
+    // for data compression like JPEG2000 but with adaptable set block size -- not always
     // 8 x 8 pixel.
 
     // Also possible coefficients -> change forward and reverse functions in common
@@ -150,7 +150,7 @@ public class Haar02Orthogonal extends Wavelet {
         arrTime[ k ] += ( arrHilb[ i ] * _scales[ j ] + arrHilb[ i + h ]
             * _coeffs[ j ] ); // adding up details times energy
 
-        // The factor .5 gets necessary here, due reduce the added "energy" of the forward method
+        // The factor .5 gets necessary here to reduce the added "energy" of the forward method
         arrTime[ k ] *= .5; // correction of the up sampled "energy" -- ||.||_2 euclidean norm
 
       } // wavelet
