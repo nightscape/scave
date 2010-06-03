@@ -24,7 +24,7 @@
 package cs.jwave.handlers.wavelets;
 
 /**
- * Ingrid Daubechies's orthonormal Coiflet wavelet of six coefficients and the
+ * Ingrid Daubechies' orthonormal Coiflet wavelet of six coefficients and the
  * scales; normed, due to ||*||2 - euclidean norm.
  * 
  * @date 10.02.2010 16:32:38
@@ -65,10 +65,10 @@ public class Coif06 extends Wavelet {
   }
 
   /**
-   * The forward Fast Wavelet Transform using the Ingrid Daubechies' coiflet
-   * wavelet of six coefficients. The arrHilb array keeping coefficients of
-   * Hilbert domain should be of length 2 to the power of p -- length = 2^p
-   * where p is a positive integer.
+   * The forward wavelet transform using the Ingrid Daubechies' coiflet wavelet
+   * of six coefficients. The arrHilb array keeping coefficients of Hilbert
+   * domain should be of length 2 to the power of p -- length = 2^p where p is a
+   * positive integer.
    * 
    * @date 10.02.2010 16:32:38
    * @author Christian Scheiblich
@@ -100,10 +100,10 @@ public class Coif06 extends Wavelet {
   } // forward
 
   /**
-   * The reverse Fast Wavelet Transform using the Ingrid Daubechies' coiflet
-   * wavelet of six coefficients. The arrHilb array keeping coefficients of
-   * Hilbert domain should be of length 2 to the power of p -- length = 2^p
-   * where p is a positive integer.
+   * The reverse wavelet transform using the Ingrid Daubechies' coiflet wavelet
+   * of six coefficients. The arrHilb array keeping coefficients of Hilbert
+   * domain should be of length 2 to the power of p -- length = 2^p where p is a
+   * positive integer.
    * 
    * @date 10.02.2010 16:32:38
    * @author Christian Scheiblich

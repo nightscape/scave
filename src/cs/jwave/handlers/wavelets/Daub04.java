@@ -24,7 +24,7 @@
 package cs.jwave.handlers.wavelets;
 
 /**
- * Ingrid Daubechies's orthonormal wavelet of four coefficients and the scales;
+ * Ingrid Daubechies' orthonormal wavelet of four coefficients and the scales;
  * normed, due to ||*||2 - euclidean norm.
  * 
  * @date 10.02.2010 15:42:45
@@ -35,7 +35,6 @@ public class Daub04 extends Wavelet {
   /**
    * Constructor setting up the orthonormal Daubechie4 wavelet coeffs and the
    * scales; normed, due to ||*||2 - euclidean norm.
-
    * 
    * @date 10.02.2010 15:42:45
    * @author Christian Scheiblich
@@ -60,8 +59,8 @@ public class Daub04 extends Wavelet {
   } // Daub04
 
   /**
-   * The forward Fast Wavelet Transform using the Ingrid Daubechies' wavelet of
-   * four coefficients. The arrHilb array keeping coefficients of Hilbert domain
+   * The forward wavelet transform using the Ingrid Daubechies' wavelet of four
+   * coefficients. The arrHilb array keeping coefficients of Hilbert domain
    * should be of length 2 to the power of p -- length = 2^p where p is a
    * positive integer.
    * 
@@ -96,8 +95,8 @@ public class Daub04 extends Wavelet {
   }
 
   /**
-   * The reverse Fast Wavelet Transform using the Ingrid Daubechies' wavelet of
-   * four coefficients. The arrHilb array keeping coefficients of Hilbert domain
+   * The reverse wavelet transform using the Ingrid Daubechies' wavelet of four
+   * coefficients. The arrHilb array keeping coefficients of Hilbert domain
    * should be of length 2 to the power of p -- length = 2^p where p is a
    * positive integer.
    * 

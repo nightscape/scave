@@ -15,71 +15,56 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file Daub08.java is part of JWave.
+ * This file Legendre04.java is part of JWave.
  *
- * @author Christian Scheiblich
- * date 26.03.2010 07:35:31
+ * @author tucker
+ * date 03.06.2010 21:19:04
  * contact source@linux23.de
  */
 package cs.jwave.handlers.wavelets;
 
 /**
- * Ingrid Daubechies' orthonormal wavelet of eight coefficients and the scales;
- * normed, due to ||*||2 - euclidean norm.
+ * Legendre's orthonormal wavelet of four coefficients and the scales; normed,
+ * due to ||*||2 - euclidean norm.
  * 
- * @date 26.03.2010 07:35:31
+ * @date 03.06.2010 21:19:04
  * @author Christian Scheiblich
  */
-public class Daub08 extends Wavelet {
+public class Lege04 extends Wavelet {
 
   /**
-   * Constructor setting up the orthonormal Daubechie6 wavelet coeffs and the
+   * Constructor setting up the orthonormal Legendre4 wavelet coeffs and the
    * scales; normed, due to ||*||2 - euclidean norm.
    * 
-   * @date 26.03.2010 07:35:31
+   * @date 03.06.2010 21:19:04
    * @author Christian Scheiblich
    */
-  public Daub08( ) {
+  public Lege04( ) {
 
-    _waveLength = 8;
+    _waveLength = 4;
 
     _coeffs = new double[ _waveLength ]; // can be done in static way also; faster?
     _scales = new double[ _waveLength ]; // can be done in static way also; faster?
 
-    double sqrt02 = 1.4142135623730951;
+    _scales[ 0 ] = ( -5. / 8. ) / 1.4142135623730951;
+    _scales[ 1 ] = ( -3. / 8. ) / 1.4142135623730951;
+    _scales[ 2 ] = ( -3. / 8. ) / 1.4142135623730951;
+    _scales[ 3 ] = ( -5. / 8. ) / 1.4142135623730951;
 
-    // TODO Get analytical formulation, due to its precision; this is around 1.e-3 only
-    _scales[ 0 ] = 0.32580343; //  0.32580343
-    _scales[ 1 ] = 1.01094572; //  1.01094572
-    _scales[ 2 ] = 0.8922014; //  0.8922014
-    _scales[ 3 ] = -0.03967503; // -0.03967503
-    _scales[ 4 ] = -0.2645071; // -0.2645071
-    _scales[ 5 ] = 0.0436163; //  0.0436163
-    _scales[ 6 ] = 0.0465036; //  0.0465036
-    _scales[ 7 ] = -0.01498699; // -0.01498699
+    _coeffs[ 0 ] = _scales[ 3 ]; //    h3
+    _coeffs[ 1 ] = -_scales[ 2 ]; //  -h2
+    _coeffs[ 2 ] = _scales[ 1 ]; //    h1
+    _coeffs[ 3 ] = -_scales[ 0 ]; //  -h0
 
-    // normalize to square root of 2 for being orthonormal 
-    for( int i = 0; i < _waveLength; i++ )
-      _scales[ i ] /= sqrt02;
-
-    _coeffs[ 0 ] = _scales[ 7 ]; //  h7
-    _coeffs[ 1 ] = -_scales[ 6 ]; // -h6
-    _coeffs[ 2 ] = _scales[ 5 ]; //  h5
-    _coeffs[ 3 ] = -_scales[ 4 ]; // -h4
-    _coeffs[ 4 ] = _scales[ 3 ]; //  h3
-    _coeffs[ 5 ] = -_scales[ 2 ]; // -h2
-    _coeffs[ 6 ] = _scales[ 1 ]; //  h1
-    _coeffs[ 7 ] = -_scales[ 0 ]; // -h0
-
-  } // Daub08
+  } // Legendre04
 
   /**
-   * The forward wavelet transform using the Ingrid Daubechies' wavelet of eight
+   * The forward wavelet transform using the Legendre's wavelet of four
    * coefficients. The arrHilb array keeping coefficients of Hilbert domain
    * should be of length 2 to the power of p -- length = 2^p where p is a
    * positive integer.
    * 
-   * @date 26.03.2010 07:35:31
+   * @date 03.06.2010 21:19:04
    * @author Christian Scheiblich
    * @see cs.jwave.handlers.wavelets.Wavelet#forward(double[])
    */
@@ -110,12 +95,12 @@ public class Daub08 extends Wavelet {
   } // forward
 
   /**
-   * The reverse wavelet transform using the Ingrid Daubechies' wavelet of eight
+   * The reverse wavelet transform using the Legendre's wavelet of four
    * coefficients. The arrHilb array keeping coefficients of Hilbert domain
    * should be of length 2 to the power of p -- length = 2^p where p is a
    * positive integer.
    * 
-   * @date 26.03.2010 07:35:31
+   * @date 03.06.2010 21:19:04
    * @author Christian Scheiblich
    * @see cs.jwave.handlers.wavelets.Wavelet#reverse(double[])
    */

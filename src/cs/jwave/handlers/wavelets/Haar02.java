@@ -24,7 +24,7 @@
 package cs.jwave.handlers.wavelets;
 
 /**
- * Alfred Haar02's orthonormal Wavelet Transfrom.
+ * Alfred Haar's orthonormal wavelet transform.
  * 
  * @date 08.02.2010 12:46:34
  * @author Christian Scheiblich
@@ -32,9 +32,9 @@ package cs.jwave.handlers.wavelets;
 public class Haar02 extends Wavelet {
 
   /**
-   * Constructor setting up the orthonormal Haar02 wavelet coeffs and the
-   * scales; normed, due to ||*||_2 -- euclidean norm. See the orthogonal
-   * version in class Haar02Orthogonal for more details.
+   * Constructor setting up the orthonormal Haar2 wavelet coeffs and the scales;
+   * normed, due to ||*||_2 -- euclidean norm. See the orthogonal version in
+   * class Haar02Orthogonal for more details.
    * 
    * @date 08.02.2010 12:46:34
    * @author Christian Scheiblich
@@ -55,9 +55,9 @@ public class Haar02 extends Wavelet {
   } // Haar02
 
   /**
-   * The forward Fast Wavelet Transform using the Alfred Haar02's wavelet. The
-   * arrTime array keeping coefficients of time domain should be of length 2 to
-   * the power of p -- length = 2^p where p is a positive integer.
+   * The forward wavelet transform using the Alfred Haar's wavelet. The arrTime
+   * array keeping coefficients of time domain should be of length 2 to the
+   * power of p -- length = 2^p where p is a positive integer.
    * 
    * @date 10.02.2010 08:26:06
    * @author Christian Scheiblich
@@ -90,9 +90,9 @@ public class Haar02 extends Wavelet {
   } // forwardWavelet
 
   /**
-   * The reverse Fast Wavelet Transform using the Alfred Haar02's wavelet. The
-   * arrHilb array keeping coefficients of Hilbert domain should be of length 2
-   * to the power of p -- length = 2^p where p is a positive integer.
+   * The reverse wavelet transform using the Alfred Haar's wavelet. The arrHilb
+   * array keeping coefficients of Hilbert domain should be of length 2 to the
+   * power of p -- length = 2^p where p is a positive integer.
    * 
    * @date 10.02.2010 08:26:06
    * @author Christian Scheiblich

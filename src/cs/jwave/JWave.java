@@ -32,6 +32,7 @@ import cs.jwave.handlers.wavelets.Daub04;
 import cs.jwave.handlers.wavelets.Daub06;
 import cs.jwave.handlers.wavelets.Daub08;
 import cs.jwave.handlers.wavelets.Haar02;
+import cs.jwave.handlers.wavelets.Lege04;
 import cs.jwave.handlers.wavelets.Wavelet;
 
 /**
@@ -69,7 +70,7 @@ public class JWave {
       System.err.println( "" );
       System.err.println( "transformType: DFT, FWT, WPT" );
       System.err
-          .println( "waveletType : Haar02, Daub04, Daub06, Coif06, Daub08" );
+          .println( "waveletType : Haar02, Daub04, Lege04, Daub06, Coif06, Daub08" );
       return;
     }
 
@@ -79,6 +80,8 @@ public class JWave {
       wavelet = new Haar02( );
     else if( wType.equalsIgnoreCase( "daub04" ) )
       wavelet = new Daub04( );
+    else if( wType.equalsIgnoreCase( "lege04" ) )
+      wavelet = new Lege04( );
     else if( wType.equalsIgnoreCase( "daub06" ) )
       wavelet = new Daub06( );
     else if( wType.equalsIgnoreCase( "coif06" ) )
@@ -89,7 +92,7 @@ public class JWave {
       System.err.println( "usage: JWave [transformType] {waveletType}" );
       System.err.println( "" );
       System.err
-          .println( "available wavelets are Haar02, Daub04, Daub06, Coif06, Daub08" );
+          .println( "available wavelets are Haar02, Daub04, Lege04, Daub06, Coif06, Daub08" );
       return;
     } // if wType
 

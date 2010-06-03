@@ -24,7 +24,7 @@
 package cs.jwave.handlers.wavelets;
 
 /**
- * Alfred Haar's orthogonal Wavelet Transform.
+ * Alfred Haar's orthogonal wavelet transform.
  * 
  * @date 03.06.2010 09:47:24
  * @author Christian Scheiblich
@@ -85,9 +85,9 @@ public class Haar02Orthogonal extends Wavelet {
   } // Haar02
 
   /**
-   * The forward Fast Wavelet Transform using the Alfred Haar02's wavelet. The
-   * arrTime array keeping coefficients of time domain should be of length 2 to
-   * the power of p -- length = 2^p where p is a positive integer.
+   * The forward wavelet transform using the Alfred Haar's wavelet. The arrTime
+   * array keeping coefficients of time domain should be of length 2 to the
+   * power of p -- length = 2^p where p is a positive integer.
    * 
    * @date 03.06.2010 09:47:24
    * @author Christian Scheiblich
@@ -122,11 +122,11 @@ public class Haar02Orthogonal extends Wavelet {
   } // forward
 
   /**
-   * The reverse Fast Wavelet Transform using the Alfred Haar02's wavelet. The
-   * arrHilb array keeping coefficients of Hilbert domain should be of length 2
-   * to the power of p -- length = 2^p where p is a positive integer. But in
-   * case of an only orthogonal Haar wavelet the reverse transform has to have a
-   * factor of 0.5 to reduce the up sampled "energy" ion hilbert space.
+   * The reverse wavelet transform using the Alfred Haar's wavelet. The arrHilb
+   * array keeping coefficients of Hilbert domain should be of length 2 to the
+   * power of p -- length = 2^p where p is a positive integer. But in case of an
+   * only orthogonal Haar wavelet the reverse transform has to have a factor of
+   * 0.5 to reduce the up sampled "energy" ion hilbert space.
    * 
    * @date 03.06.2010 09:47:24
    * @author Christian Scheiblich
