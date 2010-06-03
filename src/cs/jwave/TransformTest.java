@@ -307,10 +307,10 @@ public class TransformTest {
    * Test method for {@link cs.jwave.Transform#forward(double[])}.
    */
   @Test
-  public void testFastWaveletTransformForwardLegendre04Array( ) {
+  public void testFastWaveletTransformForwardLege04Array( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformForwardLegendre04Array" );
+    System.out.println( "testFastWaveletTransformForwardLege04Array" );
 
     double delta = 1.e-12;
 
@@ -332,10 +332,10 @@ public class TransformTest {
    * Test method for {@link cs.jwave.Transform#reverse(double[])}.
    */
   @Test
-  public void testFastWaveletTransformReverseLegendre04Array( ) {
+  public void testFastWaveletTransformReverseLege04Array( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformReverseLegendre04Array" );
+    System.out.println( "testFastWaveletTransformReverseLege04Array" );
 
     double delta = 1.e-12;
 
@@ -452,7 +452,7 @@ public class TransformTest {
     assertArray( expected, arrTime, delta );
 
   }
-  
+
   /**
    * Test method for {@link cs.jwave.Transform#forward(double[])}.
    */
