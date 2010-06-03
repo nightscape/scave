@@ -17,7 +17,7 @@
  *
  * This file Haar02Orthogonal.java is part of JWave.
  *
- * @author tucker
+ * @author Christian Scheiblich
  * date 03.06.2010 09:47:24
  * contact source@linux23.de
  */
@@ -27,7 +27,7 @@ package cs.jwave.handlers.wavelets;
  * Alfred Haar's orthogonal Wavelet Transform.
  * 
  * @date 03.06.2010 09:47:24
- * @author tucker
+ * @author Christian Scheiblich
  */
 public class Haar02Orthogonal extends Wavelet {
 
@@ -90,7 +90,7 @@ public class Haar02Orthogonal extends Wavelet {
    * the power of p -- length = 2^p where p is a positive integer.
    * 
    * @date 03.06.2010 09:47:24
-   * @author tucker
+   * @author Christian Scheiblich
    * @see cs.jwave.handlers.wavelets.Wavelet#forward(double[])
    */
   @Override
@@ -129,7 +129,7 @@ public class Haar02Orthogonal extends Wavelet {
    * factor of 0.5 to reduce the up sampled "energy" ion hilbert space.
    * 
    * @date 03.06.2010 09:47:24
-   * @author tucker
+   * @author Christian Scheiblich
    * @see cs.jwave.handlers.wavelets.Wavelet#reverse(double[])
    */
   @Override
