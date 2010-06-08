@@ -42,11 +42,13 @@ public class Haar02Orthogonal extends Wavelet {
     _waveLength = 2;
 
     _coeffs = new double[ _waveLength ]; // can be done in static way also; faster?
-    _scales = new double[ _waveLength ]; // can be done in static way also; faster?
 
     // Orthogonal wavelet coefficients; NOT orthonormal, due to missing sqrt(2.) 
     _coeffs[ 0 ] = 1.; // w0 
     _coeffs[ 1 ] = -1.; //  w1
+
+    _scales = new double[ _waveLength ]; // can be done in static way also; faster?
+
     // Rule for constructing an orthogonal vector in R^2 -- scales
     _scales[ 0 ] = -_coeffs[ 1 ]; // -w1 
     _scales[ 1 ] = _coeffs[ 0 ]; // w0
@@ -132,7 +134,7 @@ public class Haar02Orthogonal extends Wavelet {
    * array keeping coefficients of Hilbert domain should be of length 2 to the
    * power of p -- length = 2^p where p is a positive integer. But in case of an
    * only orthogonal Haar wavelet the reverse transform has to have a factor of
-   * 0.5 to reduce the up sampled "energy" ion hilbert space.
+   * 0.5 to reduce the up sampled "energy" ion Hilbert space.
    * 
    * @date 03.06.2010 09:47:24
    * @author Christian Scheiblich
@@ -164,5 +166,6 @@ public class Haar02Orthogonal extends Wavelet {
     } //  h
 
     return arrTime;
-  }
+  } // reverse
+  
 } // class

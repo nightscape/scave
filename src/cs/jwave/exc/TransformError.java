@@ -24,7 +24,7 @@
 package cs.jwave.exc;
 
 /**
- * marking errors for this package; failures are not recoverable
+ * Marking errors for this package; failures that are not recoverable
  * 
  * @date 19.05.2009 09:28:17
  * @author Christian Scheiblich
@@ -32,7 +32,7 @@ package cs.jwave.exc;
 public class TransformError extends TransformException {
 
   /**
-   * generated serial ID for this error
+   * Generated serial ID for this error
    * 
    * @date 19.05.2009 09:29:04
    * @author Christian Scheiblich

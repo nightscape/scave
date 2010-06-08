@@ -24,7 +24,7 @@
 package cs.jwave.exc;
 
 /**
- * class to be generally thrown in this package to mark an exception
+ * Class to be generally thrown in this package to mark an exception
  * 
  * @date 16.10.2008 07:30:20
  * @author Christian Scheiblich
@@ -32,7 +32,7 @@ package cs.jwave.exc;
 public class TransformException extends Throwable {
 
   /**
-   * generated serial version ID for this exception
+   * Generated serial version ID for this exception
    * 
    * @date 27.05.2009 06:58:27
    * @author Christian Scheiblich
@@ -40,12 +40,12 @@ public class TransformException extends Throwable {
   private static final long serialVersionUID = -4165486739091019056L;
 
   /**
-   * member var for the stored exception message
+   * Member var for the stored exception message
    */
   protected String _message; // exception message
 
   /**
-   * constructor for storing a handed exception message
+   * Constructor for storing a handed exception message
    * 
    * @date 27.05.2009 06:51:57
    * @author Christian Scheiblich
@@ -57,10 +57,10 @@ public class TransformException extends Throwable {
     _message += ":"; // separator
     _message += message; // add message
     _message += "\n"; // break line
-  } // Exception
+  } // TransformException
 
   /**
-   * copy constructor; use this for a quick fix of sub types
+   * Copy constructor; use this for a quick fix of sub types
    * 
    * @date 29.07.2009 07:03:45
    * @author Christian Scheiblich
@@ -69,10 +69,10 @@ public class TransformException extends Throwable {
    */
   public TransformException( Exception e ) {
     _message = e.getMessage( );
-  } // Exception
+  } // TransformException
 
   /**
-   * returns the stored exception message as a string
+   * Returns the stored exception message as a string
    * 
    * @date 27.05.2009 06:52:46
    * @author Christian Scheiblich
@@ -84,7 +84,7 @@ public class TransformException extends Throwable {
   } // getMessage
 
   /**
-   * displays the stored exception message at console out
+   * Displays the stored exception message at console out
    * 
    * @date 27.05.2009 06:53:23
    * @author Christian Scheiblich
@@ -94,7 +94,7 @@ public class TransformException extends Throwable {
   } // showMessage
 
   /**
-   * nuke the run and print stack trace
+   * Nuke the run and print stack trace
    * 
    * @date 02.07.2009 05:07:42
    * @author Christian Scheiblich

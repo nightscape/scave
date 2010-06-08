@@ -43,7 +43,6 @@ public class Lege06 extends Wavelet {
 
     _waveLength = 6;
 
-    _coeffs = new double[ _waveLength ]; // can be done in static way also; faster?
     _scales = new double[ _waveLength ]; // can be done in static way also; faster?
 
     _scales[ 0 ] = -63. / 128. / 1.4142135623730951; // h0
@@ -52,6 +51,8 @@ public class Lege06 extends Wavelet {
     _scales[ 3 ] = -30. / 128. / 1.4142135623730951; // h3
     _scales[ 4 ] = -35. / 128. / 1.4142135623730951; // h4
     _scales[ 5 ] = -63. / 128. / 1.4142135623730951; // h5
+
+    _coeffs = new double[ _waveLength ]; // can be done in static way also; faster?
 
     _coeffs[ 0 ] = _scales[ 5 ]; //    h5
     _coeffs[ 1 ] = -_scales[ 4 ]; //  -h4

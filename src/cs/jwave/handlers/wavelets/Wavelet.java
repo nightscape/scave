@@ -24,8 +24,9 @@
 package cs.jwave.handlers.wavelets;
 
 /**
- * Basic class for a Wavelet keeping coefficients and the forward and reverse
- * transform.
+ * Basic class for one wavelet keeping coefficients of the wavelet function, the
+ * scaling function, the base wavelength, the forward transform method, and the
+ * reverse transform method.
  * 
  * @date 10.02.2010 08:54:48
  * @author Christian Scheiblich
@@ -33,22 +34,22 @@ package cs.jwave.handlers.wavelets;
 public abstract class Wavelet {
 
   /**
-   * minimal wavelength of the used transform coefficients
+   * minimal wavelength of the used wavelet and scaling coefficients
    */
   protected int _waveLength;
 
   /**
-   * coefficients of the transform
+   * coefficients of the wavelet; wavelet function
    */
   protected double[ ] _coeffs;
 
   /**
-   * scales of the transforms; if necessary
+   * coefficients of the scales; scaling function
    */
   protected double[ ] _scales;
 
   /**
-   * Constructor.
+   * Constructor; predefine members to init values
    * 
    * @date 10.02.2010 08:54:48
    * @author Christian Scheiblich
@@ -57,11 +58,12 @@ public abstract class Wavelet {
     _waveLength = 0;
     _coeffs = null;
     _scales = null;
-  }
+  } // Wavelet
 
   /**
-   * Performs the forward transform from time domain to frequency domain for the
-   * given array.
+   * Performs the forward transform for the given array from time domain to
+   * Hilbert domain and returns a new array of the same size keeping
+   * coefficients of Hilbert domain.
    * 
    * @date 10.02.2010 08:18:02
    * @author Christian Scheiblich
@@ -72,8 +74,9 @@ public abstract class Wavelet {
   public abstract double[ ] forward( double[ ] arrTime );
 
   /**
-   * Performs the reverse transform from frequency domain to time domain for the
-   * given array.
+   * Performs the reverse transform for the given array from Hilbert domain to
+   * time domain and returns a new array of the same size keeping coefficients
+   * of time domain.
    * 
    * @date 10.02.2010 08:19:24
    * @author Christian Scheiblich
@@ -84,7 +87,7 @@ public abstract class Wavelet {
   public abstract double[ ] reverse( double[ ] arrHilb );
 
   /**
-   * Returns the minimal wavelength possible for this basic wave.
+   * Returns the minimal wavelength for the used wavelet.
    * 
    * @date 10.02.2010 08:13:59
    * @author Christian Scheiblich
@@ -113,7 +116,10 @@ public abstract class Wavelet {
    * @return double array keeping the coeffs.
    */
   public double[ ] getCoeffs( ) {
-    return _coeffs;
+    double[ ] coeffs = new double[ _coeffs.length ];
+    for( int c = 0; c < _coeffs.length; c++ )
+      coeffs[ c ] = _coeffs[ c ];
+    return coeffs;
   } // getCoeffs
 
   /**
@@ -124,7 +130,10 @@ public abstract class Wavelet {
    * @return double array keeping the scales.
    */
   public double[ ] getScales( ) {
-    return _scales;
+    double[ ] scales = new double[ _scales.length ];
+    for( int s = 0; s < _scales.length; s++ )
+      scales[ s ] = _scales[ s ];
+    return scales;
   } // getScales
 
 } // class

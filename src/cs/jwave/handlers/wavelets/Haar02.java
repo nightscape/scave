@@ -43,11 +43,12 @@ public class Haar02 extends Wavelet {
 
     _waveLength = 2;
 
-    _coeffs = new double[ _waveLength ]; // can be done in static way also; faster?
-    _scales = new double[ _waveLength ]; // can be done in static way also; faster?
+    _coeffs = new double[ _waveLength ];
 
     _coeffs[ 0 ] = 1. / 1.4142135623730951; // w0 - normed by sqrt( 2 )
     _coeffs[ 1 ] = -1. / 1.4142135623730951; // w1 - normed by sqrt( 2 )
+
+    _scales = new double[ _waveLength ];
 
     _scales[ 0 ] = -_coeffs[ 1 ]; // -w1
     _scales[ 1 ] = _coeffs[ 0 ]; // w0
@@ -79,7 +80,7 @@ public class Haar02 extends Wavelet {
         if( k >= arrTime.length )
           k -= arrTime.length;
 
-        arrHilb[ i ] += arrTime[ k ] * _scales[ j ]; // low pass filter - energy
+        arrHilb[ i ] += arrTime[ k ] * _scales[ j ]; // low pass filter - energy (approximation)
         arrHilb[ i + h ] += arrTime[ k ] * _coeffs[ j ]; // high pass filter - details 
 
       } // wavelet
@@ -87,7 +88,7 @@ public class Haar02 extends Wavelet {
     } // h
 
     return arrHilb;
-  } // forwardWavelet
+  } // forward
 
   /**
    * The reverse wavelet transform using the Alfred Haar's wavelet. The arrHilb
@@ -114,13 +115,13 @@ public class Haar02 extends Wavelet {
           k -= arrHilb.length;
 
         arrTime[ k ] += ( arrHilb[ i ] * _scales[ j ] + arrHilb[ i + h ]
-            * _coeffs[ j ] ); // adding up details times energy
+            * _coeffs[ j ] ); // adding up details times energy (approximation)
 
       } // wavelet
 
     } //  h
 
     return arrTime;
-  } // reverseWavelet
+  } // reverse
 
 } // class

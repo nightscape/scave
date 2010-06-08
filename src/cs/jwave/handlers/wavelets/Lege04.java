@@ -43,13 +43,14 @@ public class Lege04 extends Wavelet {
 
     _waveLength = 4;
 
-    _coeffs = new double[ _waveLength ]; // can be done in static way also; faster?
     _scales = new double[ _waveLength ]; // can be done in static way also; faster?
 
     _scales[ 0 ] = ( -5. / 8. ) / 1.4142135623730951;
     _scales[ 1 ] = ( -3. / 8. ) / 1.4142135623730951;
     _scales[ 2 ] = ( -3. / 8. ) / 1.4142135623730951;
     _scales[ 3 ] = ( -5. / 8. ) / 1.4142135623730951;
+
+    _coeffs = new double[ _waveLength ]; // can be done in static way also; faster?
 
     _coeffs[ 0 ] = _scales[ 3 ]; //    h3
     _coeffs[ 1 ] = -_scales[ 2 ]; //  -h2

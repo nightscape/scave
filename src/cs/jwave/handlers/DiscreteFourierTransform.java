@@ -37,7 +37,7 @@ package cs.jwave.handlers;
 public class DiscreteFourierTransform extends BasicTransform {
 
   /**
-   * Constructor
+   * Constructor; does nothing
    * 
    * @date 25.03.2010 19:56:29
    * @author Christian Scheiblich

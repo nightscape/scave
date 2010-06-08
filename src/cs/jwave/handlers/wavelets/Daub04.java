@@ -43,13 +43,16 @@ public class Daub04 extends Wavelet {
 
     _waveLength = 4;
 
-    _coeffs = new double[ _waveLength ]; // can be done in static way also; faster?
     _scales = new double[ _waveLength ]; // can be done in static way also; faster?
 
-    _scales[ 0 ] = ( ( 1. + 1.7320508075688772 ) / 4. ) / 1.4142135623730951;
-    _scales[ 1 ] = ( ( 3. + 1.7320508075688772 ) / 4. ) / 1.4142135623730951;
-    _scales[ 2 ] = ( ( 3. - 1.7320508075688772 ) / 4. ) / 1.4142135623730951;
-    _scales[ 3 ] = ( ( 1. - 1.7320508075688772 ) / 4. ) / 1.4142135623730951;
+    double sqrt3 = Math.sqrt( 3. ); // 1.7320508075688772
+
+    _scales[ 0 ] = ( ( 1. + sqrt3 ) / 4. ) / 1.4142135623730951;
+    _scales[ 1 ] = ( ( 3. + sqrt3 ) / 4. ) / 1.4142135623730951;
+    _scales[ 2 ] = ( ( 3. - sqrt3 ) / 4. ) / 1.4142135623730951;
+    _scales[ 3 ] = ( ( 1. - sqrt3 ) / 4. ) / 1.4142135623730951;
+
+    _coeffs = new double[ _waveLength ]; // can be done in static way also; faster?
 
     _coeffs[ 0 ] = _scales[ 3 ]; //    h3
     _coeffs[ 1 ] = -_scales[ 2 ]; //  -h2
@@ -92,7 +95,7 @@ public class Daub04 extends Wavelet {
     } // h
 
     return arrHilb;
-  }
+  } // forward
 
   /**
    * The reverse wavelet transform using the Ingrid Daubechies' wavelet of four

@@ -26,8 +26,9 @@ package cs.jwave.handlers;
 import cs.jwave.handlers.wavelets.Wavelet;
 
 /**
- * Base class for the forward and reverse Wavelet Packet Transform (WPT) using a
- * specified Wavelet by inheriting class.
+ * Base class for the forward and reverse Wavelet Packet Transform (WPT) also
+ * called Wavelet Packet Decomposition (WPD) using a specified Wavelet by
+ * inheriting class.
  * 
  * @date 23.02.2010 13:44:05
  * @author Christian Scheiblich
@@ -54,7 +55,7 @@ public class WaveletPacketTransform extends BasicTransform {
   /**
    * Implementation of the 1-D forward wavelet packet transform by filtering
    * with the longest wavelet first and then always with both sub bands -- low
-   * and high -- by the next smaller wavelet.
+   * and high (approximation and details) -- by the next smaller wavelet.
    * 
    * @date 23.02.2010 13:44:05
    * @author Christian Scheiblich
@@ -103,9 +104,9 @@ public class WaveletPacketTransform extends BasicTransform {
 
   /**
    * Implementation of the 1-D reverse wavelet packet transform by filtering
-   * with the smallest wavelet for all sub bands -- low and high bands -- and
-   * the by the next greater wavelet combining two smaller and all other sub
-   * bands.
+   * with the smallest wavelet for all sub bands -- low and high bands
+   * (approximation and details) -- and the by the next greater wavelet
+   * combining two smaller and all other sub bands.
    * 
    * @date 23.02.2010 13:44:05
    * @author Christian Scheiblich
@@ -154,78 +155,78 @@ public class WaveletPacketTransform extends BasicTransform {
   /**
    * Implementation of the 2-D forward wavelet packet transform by filtering
    * with the longest wavelet first and then always with both sub bands -- low
-   * and high -- by the next smaller wavelet.
+   * and high (approximation and details) -- by the next smaller wavelet.
    * 
    * @date 23.02.2010 13:44:05
    * @author Christian Scheiblich
    * @see cs.jwave.handlers.BasicTransform#forward(double[][])
    */
   @Override
-  public double[ ][ ] forward( double[ ][ ] matrixTime ) {
+  public double[ ][ ] forward( double[ ][ ] matTime ) {
 
-    int noOfRows = matrixTime.length;
-    int noOfCols = matrixTime[ 0 ].length;
+    int noOfRows = matTime.length;
+    int noOfCols = matTime[ 0 ].length;
 
-    double[ ][ ] matrixHilb = new double[ noOfRows ][ noOfCols ];
+    double[ ][ ] matHilb = new double[ noOfRows ][ noOfCols ];
 
     for( int i = 0; i < noOfRows; i++ ) {
       double[ ] row = new double[ noOfCols ];
       for( int j = 0; j < noOfCols; j++ )
-        row[ j ] = matrixTime[ i ][ j ];
+        row[ j ] = matTime[ i ][ j ];
       row = forward( row );
       for( int j = 0; j < noOfCols; j++ )
-        matrixHilb[ i ][ j ] = row[ j ];
+        matHilb[ i ][ j ] = row[ j ];
     } // rows
 
     for( int j = 0; j < noOfCols; j++ ) {
       double[ ] col = new double[ noOfRows ];
       for( int i = 0; i < noOfRows; i++ )
-        col[ i ] = matrixHilb[ i ][ j ];
+        col[ i ] = matHilb[ i ][ j ];
       col = forward( col );
       for( int i = 0; i < noOfCols; i++ )
-        matrixHilb[ i ][ j ] = col[ i ];
+        matHilb[ i ][ j ] = col[ i ];
     } // cols
 
-    return matrixHilb;
+    return matHilb;
   } // forward
 
   /**
    * Implementation of the 2-D reverse wavelet packet transform by filtering
-   * with the smallest wavelet for all sub bands -- low and high bands -- and
-   * the by the next greater wavelet combining two smaller and all other sub
-   * bands.
+   * with the smallest wavelet for all sub bands -- low and high bands
+   * (approximation and details) -- and the by the next greater wavelet
+   * combining two smaller and all other sub bands.
    * 
    * @date 23.02.2010 13:44:05
    * @author Christian Scheiblich
    * @see cs.jwave.handlers.BasicTransform#reverse(double[][])
    */
   @Override
-  public double[ ][ ] reverse( double[ ][ ] matrixHilb ) {
+  public double[ ][ ] reverse( double[ ][ ] matHilb ) {
 
-    int noOfRows = matrixHilb.length;
-    int noOfCols = matrixHilb[ 0 ].length;
+    int noOfRows = matHilb.length;
+    int noOfCols = matHilb[ 0 ].length;
 
-    double[ ][ ] matrixTime = new double[ noOfRows ][ noOfCols ];
+    double[ ][ ] matTime = new double[ noOfRows ][ noOfCols ];
 
     for( int j = 0; j < noOfCols; j++ ) {
       double[ ] col = new double[ noOfRows ];
       for( int i = 0; i < noOfRows; i++ )
-        col[ i ] = matrixHilb[ i ][ j ];
+        col[ i ] = matHilb[ i ][ j ];
       col = reverse( col );
       for( int i = 0; i < noOfCols; i++ )
-        matrixTime[ i ][ j ] = col[ i ];
+        matTime[ i ][ j ] = col[ i ];
     } // cols
 
     for( int i = 0; i < noOfRows; i++ ) {
       double[ ] row = new double[ noOfCols ];
       for( int j = 0; j < noOfCols; j++ )
-        row[ j ] = matrixTime[ i ][ j ];
+        row[ j ] = matTime[ i ][ j ];
       row = reverse( row );
       for( int j = 0; j < noOfCols; j++ )
-        matrixTime[ i ][ j ] = row[ j ];
+        matTime[ i ][ j ] = row[ j ];
     } // rows
 
-    return matrixTime;
+    return matTime;
   } // reverse
 
 } // class

@@ -34,18 +34,19 @@ import cs.jwave.handlers.BasicTransform;
 public class Transform {
 
   /**
-   * Transform object of base type
+   * Transform object of type base class
    */
-  BasicTransform _bWave;
+  BasicTransform _basicTransform;
 
   /**
-   * Constructor.
+   * Constructor; needs some object like DiscreteFourierTransform,
+   * FastWaveletTransform, WaveletPacketTransfom, ...
    * 
    * @date 19.05.2009 09:50:24
    * @author Christian Scheiblich
    */
-  public Transform( BasicTransform bWave ) {
-    _bWave = bWave;
+  public Transform( BasicTransform basicTransform ) {
+    _basicTransform = basicTransform;
   } // Transform
 
   /**
@@ -58,7 +59,7 @@ public class Transform {
    * @return coefficients of frequency or Hilbert domain
    */
   public double[ ] forward( double[ ] arrTime ) {
-    return _bWave.forward( arrTime );
+    return _basicTransform.forward( arrTime );
   } // forward
 
   /**
@@ -71,7 +72,7 @@ public class Transform {
    * @return coefficients of time domain
    */
   public double[ ] reverse( double[ ] arrFreq ) {
-    return _bWave.reverse( arrFreq );
+    return _basicTransform.reverse( arrFreq );
   } // reverse
 
   /**
@@ -84,7 +85,7 @@ public class Transform {
    * @return coefficients of 2-D frequency or Hilbert domain
    */
   public double[ ][ ] forward( double[ ][ ] matrixTime ) {
-    return _bWave.forward( matrixTime );
+    return _basicTransform.forward( matrixTime );
   } // forward
 
   /**
@@ -97,7 +98,7 @@ public class Transform {
    * @return coefficients of 2-D time domain
    */
   public double[ ][ ] reverse( double[ ][ ] matrixFreq ) {
-    return _bWave.reverse( matrixFreq );
+    return _basicTransform.reverse( matrixFreq );
   } // reverse
 
 } // class

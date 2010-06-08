@@ -118,7 +118,7 @@ public class TransformTest {
 
     showHilb( arrHilb );
 
-    double[ ] expected = { 2., 0., 0., 0. }; // orthonormal hilbert space
+    double[ ] expected = { 2., 0., 0., 0. }; // orthonormal Hilbert space
     assertArray( expected, arrHilb, delta );
 
   }
@@ -134,7 +134,7 @@ public class TransformTest {
 
     double delta = 1e-12;
 
-    double[ ] arrHilb = { 2., 0., 0., 0. }; // orthonormal hilbert space
+    double[ ] arrHilb = { 2., 0., 0., 0. }; // orthonormal Hilbert space
 
     showHilb( arrHilb );
 
@@ -274,7 +274,7 @@ public class TransformTest {
 
     showHilb( arrHilb );
 
-    double[ ] expected = { 2., 0., 0., 0. }; // orthonormal hilbert space
+    double[ ] expected = { 2., 0., 0., 0. }; // orthonormal Hilbert space
     assertArray( expected, arrHilb, delta );
 
   }
@@ -290,7 +290,7 @@ public class TransformTest {
 
     double delta = 1e-12;
 
-    double[ ] arrHilb = { 2., 0., 0., 0. }; // orthonormal hilbert space
+    double[ ] arrHilb = { 2., 0., 0., 0. }; // orthonormal Hilbert space
 
     showHilb( arrHilb );
 
@@ -911,7 +911,7 @@ public class TransformTest {
   } // showHilb
 
   public void showHilb( double[ ] arrHilb ) {
-    System.out.print( "hilbert domain: " + "\t" );
+    System.out.print( "Hilbert domain: " + "\t" );
     for( int c = 0; c < arrHilb.length; c++ )
       System.out.print( arrHilb[ c ] + " " );
     System.out.println( "" );
@@ -938,7 +938,7 @@ public class TransformTest {
   } // showHilb
 
   public void showHilb( double[ ][ ] matrixHilb ) {
-    System.out.println( "hilbert domain: " + "\t" );
+    System.out.println( "Hilbert domain: " + "\t" );
     for( int i = 0; i < matrixHilb.length; i++ ) {
       for( int j = 0; j < matrixHilb[ i ].length; j++ )
         System.out.print( matrixHilb[ i ][ j ] + " " );

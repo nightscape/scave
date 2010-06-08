@@ -24,7 +24,7 @@
 package cs.jwave.exc;
 
 /**
- * marking failures for this package; failures are recoverable
+ * Marking failures for this package; failures that are recoverable
  * 
  * @date 19.05.2009 09:26:22
  * @author Christian Scheiblich
@@ -32,7 +32,7 @@ package cs.jwave.exc;
 public class TransformFailure extends TransformException {
 
   /**
-   * generated serial ID for this failure
+   * Generated serial ID for this failure
    * 
    * @date 19.05.2009 09:27:18
    * @author Christian Scheiblich
@@ -40,7 +40,7 @@ public class TransformFailure extends TransformException {
   private static final long serialVersionUID = 5471588833755939370L;
 
   /**
-   * constructor taking a failure message
+   * Constructor taking a failure message
    * 
    * @date 19.05.2009 09:26:22
    * @author Christian Scheiblich

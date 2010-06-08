@@ -43,12 +43,11 @@ public class Daub06 extends Wavelet {
 
     _waveLength = 6;
 
-    _coeffs = new double[ _waveLength ]; // can be done in static way also; faster?
-    _scales = new double[ _waveLength ]; // can be done in static way also; faster?
-
     double sqrt02 = 1.4142135623730951;
     double sqrt10 = Math.sqrt( 10. );
     double constA = Math.sqrt( 5. + 2. * sqrt10 );
+
+    _scales = new double[ _waveLength ]; // can be done in static way also; faster?
 
     _scales[ 0 ] = ( 1. + 1. * sqrt10 + 1. * constA ) / 16. / sqrt02; // h0
     _scales[ 1 ] = ( 5. + 1. * sqrt10 + 3. * constA ) / 16. / sqrt02; // h1
@@ -56,6 +55,8 @@ public class Daub06 extends Wavelet {
     _scales[ 3 ] = ( 10. - 2. * sqrt10 - 2. * constA ) / 16. / sqrt02; // h3
     _scales[ 4 ] = ( 5. + 1. * sqrt10 - 3. * constA ) / 16. / sqrt02; // h4
     _scales[ 5 ] = ( 1. + 1. * sqrt10 - 1. * constA ) / 16. / sqrt02; // h5
+
+    _coeffs = new double[ _waveLength ]; // can be done in static way also; faster?
 
     _coeffs[ 0 ] = _scales[ 5 ]; //    h5
     _coeffs[ 1 ] = -_scales[ 4 ]; //  -h4

@@ -35,7 +35,7 @@ import cs.jwave.handlers.wavelets.Wavelet;
 public class FastWaveletTransform extends BasicTransform {
 
   /**
-   * The used wavelet for the specified transform algorithm.
+   * The selected wavelet for the specified transform algorithm.
    */
   Wavelet _wavelet;
 
@@ -53,8 +53,7 @@ public class FastWaveletTransform extends BasicTransform {
 
   /**
    * Performs the 1-D forward transform from time domain to Hilbert domain for
-   * the given array using the Fast FastWaveletTransform Transform (FWT)
-   * algorithm.
+   * the given array using the Fast Wavelet Transform (FWT) algorithm.
    * 
    * @date 10.02.2010 08:23:24
    * @author Christian Scheiblich
@@ -94,8 +93,8 @@ public class FastWaveletTransform extends BasicTransform {
 
   /**
    * Performs the 1-D reverse transform from Hilbert domain to time domain for
-   * the given array using the Fast FastWaveletTransform Transform (FWT)
-   * algorithm and the selected wavelet.
+   * the given array using the Fast Wavelet Transform (FWT) algorithm and the
+   * selected wavelet.
    * 
    * @date 10.02.2010 08:23:24
    * @author Christian Scheiblich
@@ -136,78 +135,77 @@ public class FastWaveletTransform extends BasicTransform {
 
   /**
    * Performs the 2-D forward transform from Hilbert domain to time domain for
-   * the given array using the Fast FastWaveletTransform Transform (FWT)
-   * algorithm and the selected wavelet.
+   * the given array using the Fast Wavelet Transform (FWT) algorithm and the
+   * selected wavelet.
    * 
    * @date 10.02.2010 11:03:17
    * @author Christian Scheiblich
    * @see cs.jwave.handlers.BasicTransform#forward(double[][])
    */
   @Override
-  public double[ ][ ] forward( double[ ][ ] matrixTime ) {
+  public double[ ][ ] forward( double[ ][ ] matTime ) {
 
-    int noOfRows = matrixTime.length;
-    int noOfCols = matrixTime[ 0 ].length;
+    int noOfRows = matTime.length;
+    int noOfCols = matTime[ 0 ].length;
 
-    double[ ][ ] matrixHilb = new double[ noOfRows ][ noOfCols ];
+    double[ ][ ] matHilb = new double[ noOfRows ][ noOfCols ];
 
     for( int i = 0; i < noOfRows; i++ ) {
       double[ ] row = new double[ noOfCols ];
       for( int j = 0; j < noOfCols; j++ )
-        row[ j ] = matrixTime[ i ][ j ];
+        row[ j ] = matTime[ i ][ j ];
       row = forward( row );
       for( int j = 0; j < noOfCols; j++ )
-        matrixHilb[ i ][ j ] = row[ j ];
+        matHilb[ i ][ j ] = row[ j ];
     } // rows
 
     for( int j = 0; j < noOfCols; j++ ) {
       double[ ] col = new double[ noOfRows ];
       for( int i = 0; i < noOfRows; i++ )
-        col[ i ] = matrixHilb[ i ][ j ];
+        col[ i ] = matHilb[ i ][ j ];
       col = forward( col );
       for( int i = 0; i < noOfCols; i++ )
-        matrixHilb[ i ][ j ] = col[ i ];
+        matHilb[ i ][ j ] = col[ i ];
     } // cols
 
-    return matrixHilb;
+    return matHilb;
   } // forward
 
   /**
    * Performs the 2-D reverse transform from Hilbert domain to time domain for
-   * the given array using the Fast FastWaveletTransform Transform (FWT)
-   * algorithm.
+   * the given array using the Fast Wavelet Transform (FWT) algorithm.
    * 
    * @date 10.02.2010 11:03:17
    * @author Christian Scheiblich
    * @see cs.jwave.handlers.BasicTransform#reverse(double[][])
    */
   @Override
-  public double[ ][ ] reverse( double[ ][ ] matrixHilb ) {
+  public double[ ][ ] reverse( double[ ][ ] matHilb ) {
 
-    int noOfRows = matrixHilb.length;
-    int noOfCols = matrixHilb[ 0 ].length;
+    int noOfRows = matHilb.length;
+    int noOfCols = matHilb[ 0 ].length;
 
-    double[ ][ ] matrixTime = new double[ noOfRows ][ noOfCols ];
+    double[ ][ ] matTime = new double[ noOfRows ][ noOfCols ];
 
     for( int j = 0; j < noOfCols; j++ ) {
       double[ ] col = new double[ noOfRows ];
       for( int i = 0; i < noOfRows; i++ )
-        col[ i ] = matrixHilb[ i ][ j ];
+        col[ i ] = matHilb[ i ][ j ];
       col = reverse( col );
       for( int i = 0; i < noOfCols; i++ )
-        matrixTime[ i ][ j ] = col[ i ];
+        matTime[ i ][ j ] = col[ i ];
     } // cols
 
     for( int i = 0; i < noOfRows; i++ ) {
       double[ ] row = new double[ noOfCols ];
       for( int j = 0; j < noOfCols; j++ )
-        row[ j ] = matrixTime[ i ][ j ];
+        row[ j ] = matTime[ i ][ j ];
       row = reverse( row );
       for( int j = 0; j < noOfCols; j++ )
-        matrixTime[ i ][ j ] = row[ j ];
+        matTime[ i ][ j ] = row[ j ];
     } // rows
 
-    return matrixTime;
+    return matTime;
   } // reverse
 
 } // class

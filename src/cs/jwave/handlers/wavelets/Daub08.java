@@ -43,8 +43,7 @@ public class Daub08 extends Wavelet {
 
     _waveLength = 8;
 
-    _coeffs = new double[ _waveLength ]; // can be done in static way also; faster?
-    _scales = new double[ _waveLength ]; // can be done in static way also; faster?
+    _scales = new double[ _waveLength ];
 
     double sqrt02 = 1.4142135623730951;
 
@@ -62,6 +61,8 @@ public class Daub08 extends Wavelet {
     for( int i = 0; i < _waveLength; i++ )
       _scales[ i ] /= sqrt02;
 
+    _coeffs = new double[ _waveLength ];
+    
     _coeffs[ 0 ] = _scales[ 7 ]; //  h7
     _coeffs[ 1 ] = -_scales[ 6 ]; // -h6
     _coeffs[ 2 ] = _scales[ 5 ]; //  h5

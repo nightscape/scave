@@ -132,7 +132,7 @@ public class JWave {
     if( bWave instanceof DiscreteFourierTransform )
       System.out.println( "frequency domain:" );
     else
-      System.out.println( "hilbert domain:" );
+      System.out.println( "Hilbert domain:" );
     for( int p = 0; p < arrTime.length; p++ )
       System.out.printf( "%9.6f", arrFreqOrHilb[ p ] );
     System.out.println( "" );

@@ -35,7 +35,7 @@ package cs.jwave.handlers;
 public abstract class BasicTransform {
 
   /**
-   * Constructor.
+   * Constructor; does nothing
    * 
    * @date 08.02.2010 11:11:59
    * @author Christian Scheiblich
@@ -44,8 +44,9 @@ public abstract class BasicTransform {
   } // BasicTransform
 
   /**
-   * Performs the forward transform from time domain to Hilbert domain for the
-   * given array using the Fast FastWaveletTransform Transform (FWT) algorithm.
+   * Performs the forward transform from time domain to frequency or Hilbert
+   * domain for a given array depending on the used transform algorithm by
+   * inheritance.
    * 
    * @date 10.02.2010 08:23:24
    * @author Christian Scheiblich
@@ -56,8 +57,9 @@ public abstract class BasicTransform {
   public abstract double[ ] forward( double[ ] arrTime );
 
   /**
-   * Performs the reverse transform from Hilbert domain to time domain for the
-   * given array using the Fast FastWaveletTransform Transform (FWT) algorithm.
+   * Performs the reverse transform from frequency or Hilbert domain to time
+   * domain for a given array depending on the used transform algorithm by
+   * inheritance.
    * 
    * @date 10.02.2010 08:23:24
    * @author Christian Scheiblich
@@ -69,8 +71,8 @@ public abstract class BasicTransform {
 
   /**
    * Performs the 2-D forward transform from time domain to frequency or Hilbert
-   * domain for the given array using the Fast FastWaveletTransform Transform
-   * (FWT) algorithm.
+   * domain for a given array depending on the used transform algorithm by
+   * inheritance.
    * 
    * @date 10.02.2010 11:00:29
    * @author Christian Scheiblich
@@ -82,8 +84,8 @@ public abstract class BasicTransform {
 
   /**
    * Performs the 2-D reverse transform from frequency or Hilbert domain to time
-   * domain for the given array using the Fast FastWaveletTransform Transform
-   * (FWT) algorithm.
+   * domain for a given array depending on the used transform algorithm by
+   * inheritance.
    * 
    * @date 10.02.2010 11:01:38
    * @author Christian Scheiblich
