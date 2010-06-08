@@ -32,6 +32,7 @@ import cs.jwave.handlers.wavelets.Daub04;
 import cs.jwave.handlers.wavelets.Daub06;
 import cs.jwave.handlers.wavelets.Daub08;
 import cs.jwave.handlers.wavelets.Haar02;
+import cs.jwave.handlers.wavelets.Lege02;
 import cs.jwave.handlers.wavelets.Lege04;
 import cs.jwave.handlers.wavelets.Lege06;
 import cs.jwave.handlers.wavelets.Wavelet;
@@ -66,19 +67,22 @@ public class JWave {
    */
   public static void main( String[ ] args ) {
 
+    String waveletTypeList = "Haar02, Lege02, Daub04, Lege04, Daub06, Lege06, Coif06, Daub08";
+
     if( args.length != 2 ) {
       System.err.println( "usage: JWave [transformType] {waveletType}" );
       System.err.println( "" );
       System.err.println( "transformType: DFT, FWT, WPT" );
-      System.err
-          .println( "waveletType : Haar02, Daub04, Lege04, Daub06, Lege06, Coif06, Daub08" );
+      System.err.println( "waveletType : " + waveletTypeList );
       return;
-    }
+    } // if args
 
     String wType = args[ 1 ];
     Wavelet wavelet = null;
     if( wType.equalsIgnoreCase( "haar02" ) )
       wavelet = new Haar02( );
+    else if( wType.equalsIgnoreCase( "lege02" ) )
+      wavelet = new Lege02( );
     else if( wType.equalsIgnoreCase( "daub04" ) )
       wavelet = new Daub04( );
     else if( wType.equalsIgnoreCase( "lege04" ) )
@@ -94,8 +98,7 @@ public class JWave {
     else {
       System.err.println( "usage: JWave [transformType] {waveletType}" );
       System.err.println( "" );
-      System.err
-          .println( "available wavelets are Haar02, Daub04, Lege04, Daub06, Lege06, Coif06, Daub08" );
+      System.err.println( "available wavelets are " + waveletTypeList );
       return;
     } // if wType
 

@@ -35,6 +35,7 @@ import cs.jwave.handlers.wavelets.Daub06;
 import cs.jwave.handlers.wavelets.Daub08;
 import cs.jwave.handlers.wavelets.Haar02;
 import cs.jwave.handlers.wavelets.Haar02Orthogonal;
+import cs.jwave.handlers.wavelets.Lege02;
 import cs.jwave.handlers.wavelets.Lege04;
 import cs.jwave.handlers.wavelets.Lege06;
 import cs.jwave.handlers.wavelets.Wavelet;
@@ -253,6 +254,56 @@ public class TransformTest {
 
   }
 
+  /**
+   * Test method for {@link cs.jwave.Transform#forward(double[])}.
+   */
+  @Test
+  public void testFastWaveletTransformForwardLege02Array( ) {
+
+    System.out.println( "" );
+    System.out.println( "testFastWaveletTransformForwardLege02Array" );
+
+    double delta = 1.e-12;
+
+    double[ ] arrTime = { 1., 1., 1., 1. };
+
+    showTime( arrTime );
+
+    Transform t = new Transform( new FastWaveletTransform( new Lege02( ) ) );
+    double[ ] arrHilb = t.forward( arrTime );
+
+    showHilb( arrHilb );
+
+    double[ ] expected = { 2., 0., 0., 0. }; // orthonormal hilbert space
+    assertArray( expected, arrHilb, delta );
+
+  }
+
+  /**
+   * Test method for {@link cs.jwave.Transform#reverse(double[])}.
+   */
+  @Test
+  public void testFastWaveletTransformReverseLege02Array( ) {
+
+    System.out.println( "" );
+    System.out.println( "testFastWaveletTransformReverseLege02Array" );
+
+    double delta = 1e-12;
+
+    double[ ] arrHilb = { 2., 0., 0., 0. }; // orthonormal hilbert space
+
+    showHilb( arrHilb );
+
+    Transform t = new Transform( new FastWaveletTransform( new Lege02( ) ) );
+    double[ ] arrTime = t.reverse( arrHilb );
+
+    showTime( arrTime );
+
+    double[ ] expected = { 1., 1., 1., 1. };
+    assertArray( expected, arrTime, delta );
+
+  }
+  
   /**
    * Test method for {@link cs.jwave.Transform#forward(double[])}.
    */
