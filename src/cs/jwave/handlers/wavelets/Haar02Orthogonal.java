@@ -76,12 +76,11 @@ public class Haar02Orthogonal extends Wavelet {
     // (see http://en.wikipedia.org/wiki/Euclidean_norm  for the euclidean norm)
     //
     // The main disadvantage using an orthogonal wavelet is that the generated wavelet sub spaces
-    // of different level can not be combined anymore. Their norm (||.||_2) simply differs.
-    // If an orthonormal Haar wavelet is taken, the ||.||_2 norm does not change and allows for
-    // combining wavelet sub spaces of different dimension or even level. E. g. using wavelets
-    // for data compression like JPEG2000 but with adaptable block sizes -- not always
-    // 8 x 8 pixel -- still allows for a full representation at compressed state. In common
-    // using those wavelets for the compression of systems of linear equations.
+    // of different size and/or level can not be combined anymore. Their norm (||.||_2) simply
+    // differs. If an orthonormal Haar wavelet is taken, the ||.||_2 norm does not change and
+    // allows for combining wavelet sub spaces of different dimension or even level. E. g. 
+    // using 2-D haar wavelet transform for a compression of systems of linear equations with
+    // blocks of different size and, so, of different transform level.
 
     // Also possible coefficients -> change forward and reverse functions in common
     // _coeffs[ 0 ] = .5; // w0 
