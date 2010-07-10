@@ -239,7 +239,7 @@ public class FastWaveletTransform extends BasicTransform {
    * the given array using the Fast Wavelet Transform (FWT) algorithm and the
    * selected wavelet.
    * 
-   * @date 10.07.2010 18:05:50
+   * @date 10.07.2010 20:25:19
    * @author Christian Scheiblich
    * @see cs.jwave.handlers.BasicTransform#forward(double[][][])
    */
@@ -249,8 +249,6 @@ public class FastWaveletTransform extends BasicTransform {
     int noOfRows = spcTime.length; // first dimension
     int noOfCols = spcTime[ 0 ].length; // second dimension
     int noOfHigh = spcTime[ 0 ][ 0 ].length; // third dimension
-    
-    // TODO Christian Scheiblich should debug this method
 
     double[ ][ ][ ] spcHilb = new double[ noOfRows ][ noOfCols ][ noOfHigh ];
 
@@ -278,65 +276,27 @@ public class FastWaveletTransform extends BasicTransform {
 
         } // high
 
-      } // cols   
+      } // cols
 
     } // rows  
 
-    for( int k = 0; k < noOfHigh; k++ ) {
-
-      double[ ][ ] matTime = new double[ noOfRows ][ noOfCols ];
-
-      for( int i = 0; i < noOfRows; i++ ) {
-
-        for( int j = 0; j < noOfCols; j++ ) {
-
-          matTime[ i ][ j ] = spcTime[ i ][ j ][ k ];
-
-        } // cols
-
-      } // rows      
-
-      double[ ][ ] matHilb = forward( matTime ); // 2-D forward
-
-      for( int i = 0; i < noOfRows; i++ ) {
-
-        for( int j = 0; j < noOfCols; j++ ) {
-
-          spcHilb[ i ][ j ][ k ] = matHilb[ i ][ j ];
-
-        } // cols
-
-      } // rows 
-
-    } // high    
-
     for( int j = 0; j < noOfCols; j++ ) {
 
-      double[ ][ ] matTime = new double[ noOfRows ][ noOfHigh ];
+      for( int k = 0; k < noOfHigh; k++ ) {
 
-      for( int i = 0; i < noOfRows; i++ ) {
+        double[ ] arrTime = new double[ noOfRows ];
 
-        for( int k = 0; k < noOfHigh; k++ ) {
+        for( int i = 0; i < noOfRows; i++ )
+          arrTime[ i ] = spcHilb[ i ][ j ][ k ];
 
-          matTime[ i ][ k ] = spcTime[ i ][ j ][ k ];
+        double[ ] arrHilb = forward( arrTime ); // 1-D forward
 
-        } // high
+        for( int i = 0; i < noOfRows; i++ )
+          spcHilb[ i ][ j ][ k ] = arrHilb[ i ];
 
-      } // rows      
+      } // high
 
-      double[ ][ ] matHilb = forward( matTime ); // 2-D forward
-
-      for( int i = 0; i < noOfRows; i++ ) {
-
-        for( int k = 0; k < noOfHigh; k++ ) {
-
-          spcHilb[ i ][ j ][ k ] = matHilb[ i ][ k ];
-
-        } // high
-
-      } // rows   
-
-    } // cols    
+    } // cols
 
     return spcHilb;
 
@@ -347,15 +307,66 @@ public class FastWaveletTransform extends BasicTransform {
    * the given array using the Fast Wavelet Transform (FWT) algorithm and the
    * selected wavelet.
    * 
-   * @date 10.07.2010 18:06:43
+   * @date 10.07.2010 20:25:32
    * @author Christian Scheiblich
    * @see cs.jwave.handlers.BasicTransform#forward(double[][][])
    */
   @Override
   public double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb ) {
 
-    // TODO Christian Scheiblich should implement this method
-    return null;
+    int noOfRows = spcHilb.length; // first dimension
+    int noOfCols = spcHilb[ 0 ].length; // second dimension
+    int noOfHigh = spcHilb[ 0 ][ 0 ].length; // third dimension
+
+    double[ ][ ][ ] spcTime = new double[ noOfRows ][ noOfCols ][ noOfHigh ];
+
+    for( int i = 0; i < noOfRows; i++ ) {
+
+      double[ ][ ] matHilb = new double[ noOfCols ][ noOfHigh ];
+
+      for( int j = 0; j < noOfCols; j++ ) {
+
+        for( int k = 0; k < noOfHigh; k++ ) {
+
+          matHilb[ j ][ k ] = spcHilb[ i ][ j ][ k ];
+
+        } // high
+
+      } // cols      
+
+      double[ ][ ] matTime = reverse( matHilb ); // 2-D forward
+
+      for( int j = 0; j < noOfCols; j++ ) {
+
+        for( int k = 0; k < noOfHigh; k++ ) {
+
+          spcTime[ i ][ j ][ k ] = matTime[ j ][ k ];
+
+        } // high
+
+      } // cols
+
+    } // rows  
+
+    for( int j = 0; j < noOfCols; j++ ) {
+
+      for( int k = 0; k < noOfHigh; k++ ) {
+
+        double[ ] arrHilb = new double[ noOfRows ];
+
+        for( int i = 0; i < noOfRows; i++ )
+          arrHilb[ i ] = spcTime[ i ][ j ][ k ];
+
+        double[ ] arrTime = reverse( arrHilb ); // 1-D forward
+
+        for( int i = 0; i < noOfRows; i++ )
+          spcTime[ i ][ j ][ k ] = arrTime[ i ];
+
+      } // high
+
+    } // cols
+
+    return spcTime;
 
   } // reverse
 
