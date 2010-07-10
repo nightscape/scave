@@ -26,7 +26,8 @@ package cs.jwave;
 import cs.jwave.handlers.BasicTransform;
 
 /**
- * Base class for transforms like Wavelets, Fourier, and ...
+ * Base class for transforms like DiscreteFourierTransform,
+ * FastWaveletTransform, and WaveletPacketTransform.
  * 
  * @date 19.05.2009 09:43:40
  * @author Christian Scheiblich
@@ -99,6 +100,32 @@ public class Transform {
    */
   public double[ ][ ] reverse( double[ ][ ] matrixFreq ) {
     return _basicTransform.reverse( matrixFreq );
+  } // reverse
+
+  /**
+   * Performs the 3-D forward transform of the specified BasicWave object.
+   * 
+   * @date 10.07.2010 18:15:22
+   * @author Christian Scheiblich
+   * @param matrixTime
+   *          coefficients of 2-D time domain
+   * @return coefficients of 2-D frequency or Hilbert domain
+   */
+  public double[ ][ ][ ] forward( double[ ][ ][ ] spaceTime ) {
+    return _basicTransform.forward( spaceTime );
+  } // forward
+
+  /**
+   * Performs the 3-D reverse transform of the specified BasicWave object.
+   * 
+   * @date 10.07.2010 18:15:33
+   * @author Christian Scheiblich
+   * @param matrixFreq
+   *          coefficients of 2-D frequency or Hilbert domain
+   * @return coefficients of 2-D time domain
+   */
+  public double[ ][ ][ ] reverse( double[ ][ ][ ] spaceFreq ) {
+    return _basicTransform.reverse( spaceFreq );
   } // reverse
 
 } // class

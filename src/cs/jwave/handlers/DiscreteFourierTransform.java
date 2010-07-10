@@ -159,4 +159,30 @@ public class DiscreteFourierTransform extends BasicTransform {
     return null;
   } // reverse
 
+  /**
+   * The 3-D forward version of the Discrete Fourier Transform (DFT);
+   * 
+   * @date 10.07.2010 18:10:43
+   * @author Christian Scheiblich
+   * @see cs.jwave.handlers.BasicTransform#forward(double[][][])
+   */
+  @Override
+  public double[ ][ ][ ] forward( double[ ][ ][ ] spcTime ) {
+    // TODO tucker should implement this method
+    return null;
+  }
+
+  /**
+   * The 3-D reverse version of the Discrete Fourier Transform (DFT);
+   * 
+   * @date 10.07.2010 18:10:45
+   * @author Christian Scheiblich
+   * @see cs.jwave.handlers.BasicTransform#reverse(double[][][])
+   */
+  @Override
+  public double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb ) {
+    // TODO tucker should implement this method
+    return null;
+  }
+
 } // class

@@ -41,7 +41,7 @@ import cs.jwave.handlers.wavelets.Lege06;
 import cs.jwave.handlers.wavelets.Wavelet;
 
 /**
- * Tests for the class Transform.
+ * Tests for the class cs.jwave.Transform.
  * 
  * @date 10.02.2010 09:43:08
  * @author Christian Scheiblich
@@ -203,6 +203,89 @@ public class TransformTest {
   }
 
   /**
+   * Test method for {@link cs.jwave.Transform#forward(double[][][])}.
+   */
+  @Test
+  public void testFastWaveletTransformForwardHaar02Space( ) {
+
+    System.out.println( "" );
+    System.out.println( "testFastWaveletTransformForwardHaar02Space" );
+
+    double delta = 1.e-12;
+
+    double[ ][ ][ ] spaceTime = {
+        { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+            { 1., 1., 1., 1. } },
+        { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+            { 1., 1., 1., 1. } },
+        { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+            { 1., 1., 1., 1. } },
+        { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+            { 1., 1., 1., 1. } } };
+
+    showTime( spaceTime );
+
+    Transform t = new Transform( new FastWaveletTransform( new Haar02( ) ) );
+    double[ ][ ][ ] spaceHilb = t.forward( spaceTime );
+
+    showHilb( spaceHilb );
+
+    double[ ][ ][ ] expected = {
+        { { 16., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+            { 0., 0., 0., 0. } },
+        { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+            { 0., 0., 0., 0. } },
+        { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+            { 0., 0., 0., 0. } },
+        { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+            { 0., 0., 0., 0. } } };
+    assertSpace( expected, spaceHilb, delta );
+
+  }
+
+  /**
+   * Test method for {@link cs.jwave.Transform#reverse(double[][][])}.
+   */
+  @Test
+  public void testFastWaveletTransformReverseHaar02Space( ) {
+
+    System.out.println( "" );
+    System.out.println( "testFastWaveletTransformReverseHaar02Space" );
+
+    double delta = 1.e-12;
+
+    double[ ][ ][ ] spaceHilb = {
+        { { 16., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+            { 0., 0., 0., 0. } },
+        { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+            { 0., 0., 0., 0. } },
+        { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+            { 0., 0., 0., 0. } },
+        { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+            { 0., 0., 0., 0. } } };
+
+    showHilb( spaceHilb );
+
+    Transform t = new Transform( new FastWaveletTransform( new Haar02( ) ) );
+    double[ ][ ][ ] spaceTime = t.reverse( spaceHilb );
+
+    showTime( spaceTime );
+
+    double[ ][ ][ ] expected = {
+        { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+            { 1., 1., 1., 1. } },
+        { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+            { 1., 1., 1., 1. } },
+        { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+            { 1., 1., 1., 1. } },
+        { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+            { 1., 1., 1., 1. } } };
+    
+    assertSpace( expected, spaceTime, delta );
+
+  }
+
+  /**
    * Test method for {@link cs.jwave.Transform#forward(double[])}.
    */
   @Test
@@ -303,7 +386,7 @@ public class TransformTest {
     assertArray( expected, arrTime, delta );
 
   }
-  
+
   /**
    * Test method for {@link cs.jwave.Transform#forward(double[])}.
    */
@@ -896,6 +979,14 @@ public class TransformTest {
         assertEquals( expected[ i ][ j ], actual[ i ][ j ], delta );
   } // assertMatrix
 
+  public void assertSpace( double[ ][ ][ ] expected, double[ ][ ][ ] actual,
+      double delta ) {
+    for( int i = 0; i < expected.length; i++ )
+      for( int j = 0; j < expected[ i ].length; j++ )
+        for( int k = 0; k < expected[ i ][ j ].length; k++ )
+          assertEquals( expected[ i ][ j ][ k ], actual[ i ][ j ][ k ], delta );
+  } // assertSpace
+
   public void showTime( double[ ] arrTime ) {
     System.out.print( "time domain: " + "\t" + "\t" );
     for( int c = 0; c < arrTime.length; c++ )
@@ -925,7 +1016,7 @@ public class TransformTest {
       System.out.println( "" );
     }
     System.out.println( "" );
-  } // showHilb 
+  } // showTime 
 
   public void showFreq( double[ ][ ] matrixFreq ) {
     System.out.println( "frequency domain: " + "\t" );
@@ -935,7 +1026,7 @@ public class TransformTest {
       System.out.println( "" );
     }
     System.out.println( "" );
-  } // showHilb
+  } // showFreq
 
   public void showHilb( double[ ][ ] matrixHilb ) {
     System.out.println( "Hilbert domain: " + "\t" );
@@ -946,5 +1037,44 @@ public class TransformTest {
     }
     System.out.println( "" );
   } // showHilb
+
+  public void showTime( double[ ][ ][ ] spaceTime ) {
+    System.out.println( "time domain: " + "\t" );
+    for( int i = 0; i < spaceTime.length; i++ ) {
+      for( int j = 0; j < spaceTime[ i ].length; j++ ) {
+        for( int k = 0; k < spaceTime[ i ][ j ].length; k++ )
+          System.out.print( spaceTime[ i ][ j ][ k ] + " " );
+        System.out.println( "" );
+      }
+      System.out.println( "" );
+    }
+    System.out.println( "" );
+  } // showTime   
+
+  public void showFreq( double[ ][ ][ ] spaceTime ) {
+    System.out.println( "frequency domain: " + "\t" );
+    for( int i = 0; i < spaceTime.length; i++ ) {
+      for( int j = 0; j < spaceTime[ i ].length; j++ ) {
+        for( int k = 0; k < spaceTime[ i ][ j ].length; k++ )
+          System.out.print( spaceTime[ i ][ j ][ k ] + " " );
+        System.out.println( "" );
+      }
+      System.out.println( "" );
+    }
+    System.out.println( "" );
+  } // showFreq   
+
+  public void showHilb( double[ ][ ][ ] spaceTime ) {
+    System.out.println( "Hilbert domain: " + "\t" );
+    for( int i = 0; i < spaceTime.length; i++ ) {
+      for( int j = 0; j < spaceTime[ i ].length; j++ ) {
+        for( int k = 0; k < spaceTime[ i ][ j ].length; k++ )
+          System.out.print( spaceTime[ i ][ j ][ k ] + " " );
+        System.out.println( "" );
+      }
+      System.out.println( "" );
+    }
+    System.out.println( "" );
+  } // showHilb   
 
 } // class

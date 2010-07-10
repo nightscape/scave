@@ -83,9 +83,9 @@ public abstract class BasicTransform {
   public abstract double[ ][ ] forward( double[ ][ ] matrixTime );
 
   /**
-   * Performs the 2-D reverse transform from frequency or Hilbert domain to time
-   * domain for a given array depending on the used transform algorithm by
-   * inheritance.
+   * Performs the 2-D reverse transform from frequency or Hilbert or time domain
+   * to time domain for a given array depending on the used transform algorithm
+   * by inheritance.
    * 
    * @date 10.02.2010 11:01:38
    * @author Christian Scheiblich
@@ -94,5 +94,31 @@ public abstract class BasicTransform {
    * @return coefficients of 2-D time domain
    */
   public abstract double[ ][ ] reverse( double[ ][ ] matrixFreq );
+
+  /**
+   * Performs the 3-D forward transform from time domain to frequency or Hilbert
+   * domain for a given array depending on the used transform algorithm by
+   * inheritance.
+   * 
+   * @date 10.07.2010 18:08:17
+   * @author Christian Scheiblich
+   * @param matrixFreq
+   *          coefficients of 3-D frequency or Hilbert domain
+   * @return coefficients of 3-D time domain
+   */
+  public abstract double[ ][ ][ ] forward( double[ ][ ][ ] spcTime );
+
+  /**
+   * Performs the 3-D reverse transform from frequency or Hilbert domain to time
+   * domain for a given array depending on the used transform algorithm by
+   * inheritance.
+   * 
+   * @date 10.07.2010 18:09:54
+   * @author Christian Scheiblich
+   * @param matrixFreq
+   *          coefficients of 3-D frequency or Hilbert domain
+   * @return coefficients of 3-D time domain
+   */
+  public abstract double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb );
 
 } // class

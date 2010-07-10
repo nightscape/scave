@@ -81,6 +81,7 @@ public class WaveletPacketTransform extends BasicTransform {
         for( int p = 0; p < g; p++ ) {
 
           double[ ] iBuf = new double[ h ];
+          
           for( int i = 0; i < h; i++ )
             iBuf[ i ] = arrHilb[ i + ( p * h ) ];
 
@@ -133,6 +134,7 @@ public class WaveletPacketTransform extends BasicTransform {
         for( int p = 0; p < g; p++ ) {
 
           double[ ] iBuf = new double[ h ];
+          
           for( int i = 0; i < h; i++ )
             iBuf[ i ] = arrTime[ i + ( p * h ) ];
 
@@ -140,11 +142,13 @@ public class WaveletPacketTransform extends BasicTransform {
 
           for( int i = 0; i < h; i++ )
             arrTime[ i + ( p * h ) ] = oBuf[ i ];
+          
         } // packets
 
         h = h << 1;
 
         level++;
+        
       } // levels
 
     } // if
@@ -170,21 +174,31 @@ public class WaveletPacketTransform extends BasicTransform {
     double[ ][ ] matHilb = new double[ noOfRows ][ noOfCols ];
 
     for( int i = 0; i < noOfRows; i++ ) {
-      double[ ] row = new double[ noOfCols ];
+
+      double[ ] arrTime = new double[ noOfCols ];
+
       for( int j = 0; j < noOfCols; j++ )
-        row[ j ] = matTime[ i ][ j ];
-      row = forward( row );
+        arrTime[ j ] = matTime[ i ][ j ];
+
+      double[ ] arrHilb = forward( arrTime );
+
       for( int j = 0; j < noOfCols; j++ )
-        matHilb[ i ][ j ] = row[ j ];
+        matHilb[ i ][ j ] = arrHilb[ j ];
+
     } // rows
 
     for( int j = 0; j < noOfCols; j++ ) {
-      double[ ] col = new double[ noOfRows ];
+
+      double[ ] arrTime = new double[ noOfRows ];
+
       for( int i = 0; i < noOfRows; i++ )
-        col[ i ] = matHilb[ i ][ j ];
-      col = forward( col );
-      for( int i = 0; i < noOfCols; i++ )
-        matHilb[ i ][ j ] = col[ i ];
+        arrTime[ i ] = matHilb[ i ][ j ];
+
+      double[ ] arrHilb = forward( arrTime );
+
+      for( int i = 0; i < noOfRows; i++ )
+        matHilb[ i ][ j ] = arrHilb[ i ];
+
     } // cols
 
     return matHilb;
@@ -209,24 +223,69 @@ public class WaveletPacketTransform extends BasicTransform {
     double[ ][ ] matTime = new double[ noOfRows ][ noOfCols ];
 
     for( int j = 0; j < noOfCols; j++ ) {
-      double[ ] col = new double[ noOfRows ];
+
+      double[ ] arrHilb = new double[ noOfRows ];
+
       for( int i = 0; i < noOfRows; i++ )
-        col[ i ] = matHilb[ i ][ j ];
-      col = reverse( col );
-      for( int i = 0; i < noOfCols; i++ )
-        matTime[ i ][ j ] = col[ i ];
+        arrHilb[ i ] = matHilb[ i ][ j ];
+
+      double[ ] arrTime = reverse( arrHilb );
+
+      for( int i = 0; i < noOfRows; i++ )
+        matTime[ i ][ j ] = arrTime[ i ];
+
     } // cols
 
     for( int i = 0; i < noOfRows; i++ ) {
-      double[ ] row = new double[ noOfCols ];
+
+      double[ ] arrHilb = new double[ noOfCols ];
+
       for( int j = 0; j < noOfCols; j++ )
-        row[ j ] = matTime[ i ][ j ];
-      row = reverse( row );
+        arrHilb[ j ] = matTime[ i ][ j ];
+
+      double[ ] arrTime = reverse( arrHilb );
+
       for( int j = 0; j < noOfCols; j++ )
-        matTime[ i ][ j ] = row[ j ];
+        matTime[ i ][ j ] = arrTime[ j ];
+
     } // rows
 
     return matTime;
+  } // reverse
+
+  /**
+   * Implementation of the 3-D forward wavelet packet transform by filtering
+   * with the longest wavelet first and then always with both sub bands -- low
+   * and high (approximation and details) -- by the next smaller wavelet.
+   * 
+   * @date 23.02.2010 13:44:05
+   * @author Christian Scheiblich
+   * @see cs.jwave.handlers.BasicTransform#forward(double[][][])
+   */
+  @Override
+  public double[ ][ ][ ] forward( double[ ][ ][ ] spcTime ) {
+
+    // TODO Christian Scheiblich should implement this method
+    return null;
+
+  } // forward
+
+  /**
+   * Implementation of the 2-D reverse wavelet packet transform by filtering
+   * with the smallest wavelet for all sub bands -- low and high bands
+   * (approximation and details) -- and the by the next greater wavelet
+   * combining two smaller and all other sub bands.
+   * 
+   * @date 10.07.2010 18:13:42
+   * @author Christian Scheiblich
+   * @see cs.jwave.handlers.BasicTransform#reverse(double[][][])
+   */
+  @Override
+  public double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb ) {
+
+    // TODO Christian Scheiblich should implement this method
+    return null;
+
   } // reverse
 
 } // class

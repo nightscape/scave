@@ -74,6 +74,7 @@ public class FastWaveletTransform extends BasicTransform {
       while( h >= minWaveLength ) {
 
         double[ ] iBuf = new double[ h ];
+
         for( int i = 0; i < h; i++ )
           iBuf[ i ] = arrHilb[ i ];
 
@@ -83,7 +84,9 @@ public class FastWaveletTransform extends BasicTransform {
           arrHilb[ i ] = oBuf[ i ];
 
         h = h >> 1;
+
         level++;
+
       } // levels
 
     } // if
@@ -116,6 +119,7 @@ public class FastWaveletTransform extends BasicTransform {
       while( h <= arrTime.length && h >= minWaveLength ) {
 
         double[ ] iBuf = new double[ h ];
+
         for( int i = 0; i < h; i++ )
           iBuf[ i ] = arrTime[ i ];
 
@@ -125,7 +129,9 @@ public class FastWaveletTransform extends BasicTransform {
           arrTime[ i ] = oBuf[ i ];
 
         h = h << 1;
+
         level++;
+
       } // levels
 
     } // if
@@ -134,7 +140,7 @@ public class FastWaveletTransform extends BasicTransform {
   } // reverse
 
   /**
-   * Performs the 2-D forward transform from Hilbert domain to time domain for
+   * Performs the 2-D forward transform from time domain to Hilbert domain for
    * the given array using the Fast Wavelet Transform (FWT) algorithm and the
    * selected wavelet.
    * 
@@ -151,21 +157,31 @@ public class FastWaveletTransform extends BasicTransform {
     double[ ][ ] matHilb = new double[ noOfRows ][ noOfCols ];
 
     for( int i = 0; i < noOfRows; i++ ) {
-      double[ ] row = new double[ noOfCols ];
+
+      double[ ] arrTime = new double[ noOfCols ];
+
       for( int j = 0; j < noOfCols; j++ )
-        row[ j ] = matTime[ i ][ j ];
-      row = forward( row );
+        arrTime[ j ] = matTime[ i ][ j ];
+
+      double[ ] arrHilb = forward( arrTime );
+
       for( int j = 0; j < noOfCols; j++ )
-        matHilb[ i ][ j ] = row[ j ];
+        matHilb[ i ][ j ] = arrHilb[ j ];
+
     } // rows
 
     for( int j = 0; j < noOfCols; j++ ) {
-      double[ ] col = new double[ noOfRows ];
+
+      double[ ] arrTime = new double[ noOfRows ];
+
       for( int i = 0; i < noOfRows; i++ )
-        col[ i ] = matHilb[ i ][ j ];
-      col = forward( col );
-      for( int i = 0; i < noOfCols; i++ )
-        matHilb[ i ][ j ] = col[ i ];
+        arrTime[ i ] = matHilb[ i ][ j ];
+
+      double[ ] arrHilb = forward( arrTime );
+
+      for( int i = 0; i < noOfRows; i++ )
+        matHilb[ i ][ j ] = arrHilb[ i ];
+
     } // cols
 
     return matHilb;
@@ -188,24 +204,159 @@ public class FastWaveletTransform extends BasicTransform {
     double[ ][ ] matTime = new double[ noOfRows ][ noOfCols ];
 
     for( int j = 0; j < noOfCols; j++ ) {
-      double[ ] col = new double[ noOfRows ];
+
+      double[ ] arrHilb = new double[ noOfRows ];
+
       for( int i = 0; i < noOfRows; i++ )
-        col[ i ] = matHilb[ i ][ j ];
-      col = reverse( col );
-      for( int i = 0; i < noOfCols; i++ )
-        matTime[ i ][ j ] = col[ i ];
+        arrHilb[ i ] = matHilb[ i ][ j ];
+
+      double[ ] arrTime = reverse( arrHilb );
+
+      for( int i = 0; i < noOfRows; i++ )
+        matTime[ i ][ j ] = arrTime[ i ];
+
     } // cols
 
     for( int i = 0; i < noOfRows; i++ ) {
-      double[ ] row = new double[ noOfCols ];
+
+      double[ ] arrHilb = new double[ noOfCols ];
+
       for( int j = 0; j < noOfCols; j++ )
-        row[ j ] = matTime[ i ][ j ];
-      row = reverse( row );
+        arrHilb[ j ] = matTime[ i ][ j ];
+
+      double[ ] arrTime = reverse( arrHilb );
+
       for( int j = 0; j < noOfCols; j++ )
-        matTime[ i ][ j ] = row[ j ];
+        matTime[ i ][ j ] = arrTime[ j ];
+
     } // rows
 
     return matTime;
+  } // reverse
+
+  /**
+   * Performs the 3-D forward transform from time domain to Hilbert domain for
+   * the given array using the Fast Wavelet Transform (FWT) algorithm and the
+   * selected wavelet.
+   * 
+   * @date 10.07.2010 18:05:50
+   * @author Christian Scheiblich
+   * @see cs.jwave.handlers.BasicTransform#forward(double[][][])
+   */
+  @Override
+  public double[ ][ ][ ] forward( double[ ][ ][ ] spcTime ) {
+
+    int noOfRows = spcTime.length; // first dimension
+    int noOfCols = spcTime[ 0 ].length; // second dimension
+    int noOfHigh = spcTime[ 0 ][ 0 ].length; // third dimension
+    
+    // TODO Christian Scheiblich should debug this method
+
+    double[ ][ ][ ] spcHilb = new double[ noOfRows ][ noOfCols ][ noOfHigh ];
+
+    for( int i = 0; i < noOfRows; i++ ) {
+
+      double[ ][ ] matTime = new double[ noOfCols ][ noOfHigh ];
+
+      for( int j = 0; j < noOfCols; j++ ) {
+
+        for( int k = 0; k < noOfHigh; k++ ) {
+
+          matTime[ j ][ k ] = spcTime[ i ][ j ][ k ];
+
+        } // high
+
+      } // cols      
+
+      double[ ][ ] matHilb = forward( matTime ); // 2-D forward
+
+      for( int j = 0; j < noOfCols; j++ ) {
+
+        for( int k = 0; k < noOfHigh; k++ ) {
+
+          spcHilb[ i ][ j ][ k ] = matHilb[ j ][ k ];
+
+        } // high
+
+      } // cols   
+
+    } // rows  
+
+    for( int k = 0; k < noOfHigh; k++ ) {
+
+      double[ ][ ] matTime = new double[ noOfRows ][ noOfCols ];
+
+      for( int i = 0; i < noOfRows; i++ ) {
+
+        for( int j = 0; j < noOfCols; j++ ) {
+
+          matTime[ i ][ j ] = spcTime[ i ][ j ][ k ];
+
+        } // cols
+
+      } // rows      
+
+      double[ ][ ] matHilb = forward( matTime ); // 2-D forward
+
+      for( int i = 0; i < noOfRows; i++ ) {
+
+        for( int j = 0; j < noOfCols; j++ ) {
+
+          spcHilb[ i ][ j ][ k ] = matHilb[ i ][ j ];
+
+        } // cols
+
+      } // rows 
+
+    } // high    
+
+    for( int j = 0; j < noOfCols; j++ ) {
+
+      double[ ][ ] matTime = new double[ noOfRows ][ noOfHigh ];
+
+      for( int i = 0; i < noOfRows; i++ ) {
+
+        for( int k = 0; k < noOfHigh; k++ ) {
+
+          matTime[ i ][ k ] = spcTime[ i ][ j ][ k ];
+
+        } // high
+
+      } // rows      
+
+      double[ ][ ] matHilb = forward( matTime ); // 2-D forward
+
+      for( int i = 0; i < noOfRows; i++ ) {
+
+        for( int k = 0; k < noOfHigh; k++ ) {
+
+          spcHilb[ i ][ j ][ k ] = matHilb[ i ][ k ];
+
+        } // high
+
+      } // rows   
+
+    } // cols    
+
+    return spcHilb;
+
+  } // forward
+
+  /**
+   * Performs the 3-D forward transform from time domain to Hilbert domain for
+   * the given array using the Fast Wavelet Transform (FWT) algorithm and the
+   * selected wavelet.
+   * 
+   * @date 10.07.2010 18:06:43
+   * @author Christian Scheiblich
+   * @see cs.jwave.handlers.BasicTransform#forward(double[][][])
+   */
+  @Override
+  public double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb ) {
+
+    // TODO Christian Scheiblich should implement this method
+    return null;
+
   } // reverse
 
 } // class
