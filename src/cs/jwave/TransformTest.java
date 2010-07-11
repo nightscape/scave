@@ -280,7 +280,7 @@ public class TransformTest {
             { 1., 1., 1., 1. } },
         { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
             { 1., 1., 1., 1. } } };
-    
+
     assertSpace( expected, spaceTime, delta );
 
   }
@@ -796,6 +796,89 @@ public class TransformTest {
   }
 
   /**
+   * Test method for {@link cs.jwave.Transform#forward(double[][][])}.
+   */
+  @Test
+  public void testWaveletPacketTransformForwardHaar02Space( ) {
+
+    System.out.println( "" );
+    System.out.println( "testWaveletPacketTransformForwardHaar02Space" );
+
+    double delta = 1.e-12;
+
+    double[ ][ ][ ] spaceTime = {
+        { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+            { 1., 1., 1., 1. } },
+        { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+            { 1., 1., 1., 1. } },
+        { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+            { 1., 1., 1., 1. } },
+        { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+            { 1., 1., 1., 1. } } };
+
+    showTime( spaceTime );
+
+    Transform t = new Transform( new WaveletPacketTransform( new Haar02( ) ) );
+    double[ ][ ][ ] spaceHilb = t.forward( spaceTime );
+
+    showHilb( spaceHilb );
+
+    double[ ][ ][ ] expected = {
+        { { 8., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+            { 0., 0., 0., 0. } },
+        { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+            { 0., 0., 0., 0. } },
+        { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+            { 0., 0., 0., 0. } },
+        { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+            { 0., 0., 0., 0. } } };
+    assertSpace( expected, spaceHilb, delta );
+
+  }
+
+  /**
+   * Test method for {@link cs.jwave.Transform#reverse(double[][][])}.
+   */
+  @Test
+  public void testWaveletPacketTransformReverseHaar02Space( ) {
+
+    System.out.println( "" );
+    System.out.println( "testWaveletPacketTransformReverseHaar02Space" );
+
+    double delta = 1.e-12;
+
+    double[ ][ ][ ] spaceHilb = {
+        { { 8., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+            { 0., 0., 0., 0. } },
+        { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+            { 0., 0., 0., 0. } },
+        { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+            { 0., 0., 0., 0. } },
+        { { 0., 0., 0., 0. }, { 0., 0., 0., 0. }, { 0., 0., 0., 0. },
+            { 0., 0., 0., 0. } } };
+
+    showHilb( spaceHilb );
+
+    Transform t = new Transform( new WaveletPacketTransform( new Haar02( ) ) );
+    double[ ][ ][ ] spaceTime = t.reverse( spaceHilb );
+
+    showTime( spaceTime );
+
+    double[ ][ ][ ] expected = {
+        { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+            { 1., 1., 1., 1. } },
+        { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+            { 1., 1., 1., 1. } },
+        { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+            { 1., 1., 1., 1. } },
+        { { 1., 1., 1., 1. }, { 1., 1., 1., 1. }, { 1., 1., 1., 1. },
+            { 1., 1., 1., 1. } } };
+
+    assertSpace( expected, spaceTime, delta );
+
+  }
+
+  /**
    * Test method to check the rounding error of several forward and reverse
    * transforms.
    * 
@@ -917,7 +1000,7 @@ public class TransformTest {
     long noOfSteps = 10000000;
 
     noOfSteps = 1000;
-    
+
     double[ ] arrTime = arr;
 
     showTime( arrTime );

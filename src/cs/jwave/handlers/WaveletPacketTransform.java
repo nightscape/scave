@@ -53,9 +53,10 @@ public class WaveletPacketTransform extends BasicTransform {
   } // WaveletPacketTransform
 
   /**
-   * Implementation of the 1-D forward wavelet packet transform by filtering
-   * with the longest wavelet first and then always with both sub bands -- low
-   * and high (approximation and details) -- by the next smaller wavelet.
+   * Implementation of the 1-D forward wavelet packet transform for arrays of
+   * dim N by filtering with the longest wavelet first and then always with both
+   * sub bands -- low and high (approximation and details) -- by the next
+   * smaller wavelet.
    * 
    * @date 23.02.2010 13:44:05
    * @author Christian Scheiblich
@@ -81,7 +82,7 @@ public class WaveletPacketTransform extends BasicTransform {
         for( int p = 0; p < g; p++ ) {
 
           double[ ] iBuf = new double[ h ];
-          
+
           for( int i = 0; i < h; i++ )
             iBuf[ i ] = arrHilb[ i + ( p * h ) ];
 
@@ -104,10 +105,10 @@ public class WaveletPacketTransform extends BasicTransform {
   } // forward
 
   /**
-   * Implementation of the 1-D reverse wavelet packet transform by filtering
-   * with the smallest wavelet for all sub bands -- low and high bands
-   * (approximation and details) -- and the by the next greater wavelet
-   * combining two smaller and all other sub bands.
+   * Implementation of the 1-D reverse wavelet packet transform for arrays of
+   * dim N by filtering with the smallest wavelet for all sub bands -- low and
+   * high bands (approximation and details) -- and the by the next greater
+   * wavelet combining two smaller and all other sub bands.
    * 
    * @date 23.02.2010 13:44:05
    * @author Christian Scheiblich
@@ -134,7 +135,7 @@ public class WaveletPacketTransform extends BasicTransform {
         for( int p = 0; p < g; p++ ) {
 
           double[ ] iBuf = new double[ h ];
-          
+
           for( int i = 0; i < h; i++ )
             iBuf[ i ] = arrTime[ i + ( p * h ) ];
 
@@ -142,13 +143,13 @@ public class WaveletPacketTransform extends BasicTransform {
 
           for( int i = 0; i < h; i++ )
             arrTime[ i + ( p * h ) ] = oBuf[ i ];
-          
+
         } // packets
 
         h = h << 1;
 
         level++;
-        
+
       } // levels
 
     } // if
@@ -157,9 +158,10 @@ public class WaveletPacketTransform extends BasicTransform {
   } // reverse
 
   /**
-   * Implementation of the 2-D forward wavelet packet transform by filtering
-   * with the longest wavelet first and then always with both sub bands -- low
-   * and high (approximation and details) -- by the next smaller wavelet.
+   * Implementation of the 2-D forward wavelet packet transform for N^2 matrices
+   * by filtering with the longest wavelet first and then always with both sub
+   * bands -- low and high (approximation and details) -- by the next smaller
+   * wavelet.
    * 
    * @date 23.02.2010 13:44:05
    * @author Christian Scheiblich
@@ -205,9 +207,9 @@ public class WaveletPacketTransform extends BasicTransform {
   } // forward
 
   /**
-   * Implementation of the 2-D reverse wavelet packet transform by filtering
-   * with the smallest wavelet for all sub bands -- low and high bands
-   * (approximation and details) -- and the by the next greater wavelet
+   * Implementation of the 2-D reverse wavelet packet transform for N^2 matrices
+   * by filtering with the smallest wavelet for all sub bands -- low and high
+   * bands (approximation and details) -- and the by the next greater wavelet
    * combining two smaller and all other sub bands.
    * 
    * @date 23.02.2010 13:44:05
@@ -254,37 +256,140 @@ public class WaveletPacketTransform extends BasicTransform {
   } // reverse
 
   /**
-   * Implementation of the 3-D forward wavelet packet transform by filtering
-   * with the longest wavelet first and then always with both sub bands -- low
-   * and high (approximation and details) -- by the next smaller wavelet.
+   * Implementation of the 3-D forward wavelet packet transform for N^3 spaces
+   * by filtering with the longest wavelet first and then always with both sub
+   * bands -- low and high (approximation and details) -- by the next smaller
+   * wavelet.
    * 
-   * @date 23.02.2010 13:44:05
+   * @date 11.07.2010 08:48:57
    * @author Christian Scheiblich
    * @see cs.jwave.handlers.BasicTransform#forward(double[][][])
    */
   @Override
   public double[ ][ ][ ] forward( double[ ][ ][ ] spcTime ) {
 
-    // TODO Christian Scheiblich should implement this method
-    return null;
+    int noOfRows = spcTime.length; // first dimension
+    int noOfCols = spcTime[ 0 ].length; // second dimension
+    int noOfHigh = spcTime[ 0 ][ 0 ].length; // third dimension
+
+    double[ ][ ][ ] spcHilb = new double[ noOfRows ][ noOfCols ][ noOfHigh ];
+
+    for( int i = 0; i < noOfRows; i++ ) {
+
+      double[ ][ ] matTime = new double[ noOfCols ][ noOfHigh ];
+
+      for( int j = 0; j < noOfCols; j++ ) {
+
+        for( int k = 0; k < noOfHigh; k++ ) {
+
+          matTime[ j ][ k ] = spcTime[ i ][ j ][ k ];
+
+        } // high
+
+      } // cols      
+
+      double[ ][ ] matHilb = forward( matTime ); // 2-D forward
+
+      for( int j = 0; j < noOfCols; j++ ) {
+
+        for( int k = 0; k < noOfHigh; k++ ) {
+
+          spcHilb[ i ][ j ][ k ] = matHilb[ j ][ k ];
+
+        } // high
+
+      } // cols
+
+    } // rows  
+
+    for( int j = 0; j < noOfCols; j++ ) {
+
+      for( int k = 0; k < noOfHigh; k++ ) {
+
+        double[ ] arrTime = new double[ noOfRows ];
+
+        for( int i = 0; i < noOfRows; i++ )
+          arrTime[ i ] = spcHilb[ i ][ j ][ k ];
+
+        double[ ] arrHilb = forward( arrTime ); // 1-D forward
+
+        for( int i = 0; i < noOfRows; i++ )
+          spcHilb[ i ][ j ][ k ] = arrHilb[ i ];
+
+      } // high
+
+    } // cols
+
+    return spcHilb;
 
   } // forward
 
   /**
-   * Implementation of the 2-D reverse wavelet packet transform by filtering
-   * with the smallest wavelet for all sub bands -- low and high bands
-   * (approximation and details) -- and the by the next greater wavelet
+   * Implementation of the 3-D reverse wavelet packet transform for N^3 spaces
+   * by filtering with the smallest wavelet for all sub bands -- low and high
+   * bands (approximation and details) -- and the by the next greater wavelet
    * combining two smaller and all other sub bands.
    * 
-   * @date 10.07.2010 18:13:42
+   * @date 11.07.2010 08:49:06
    * @author Christian Scheiblich
    * @see cs.jwave.handlers.BasicTransform#reverse(double[][][])
    */
   @Override
   public double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb ) {
 
-    // TODO Christian Scheiblich should implement this method
-    return null;
+    int noOfRows = spcHilb.length; // first dimension
+    int noOfCols = spcHilb[ 0 ].length; // second dimension
+    int noOfHigh = spcHilb[ 0 ][ 0 ].length; // third dimension
+
+    double[ ][ ][ ] spcTime = new double[ noOfRows ][ noOfCols ][ noOfHigh ];
+
+    for( int i = 0; i < noOfRows; i++ ) {
+
+      double[ ][ ] matHilb = new double[ noOfCols ][ noOfHigh ];
+
+      for( int j = 0; j < noOfCols; j++ ) {
+
+        for( int k = 0; k < noOfHigh; k++ ) {
+
+          matHilb[ j ][ k ] = spcHilb[ i ][ j ][ k ];
+
+        } // high
+
+      } // cols      
+
+      double[ ][ ] matTime = reverse( matHilb ); // 2-D forward
+
+      for( int j = 0; j < noOfCols; j++ ) {
+
+        for( int k = 0; k < noOfHigh; k++ ) {
+
+          spcTime[ i ][ j ][ k ] = matTime[ j ][ k ];
+
+        } // high
+
+      } // cols
+
+    } // rows  
+
+    for( int j = 0; j < noOfCols; j++ ) {
+
+      for( int k = 0; k < noOfHigh; k++ ) {
+
+        double[ ] arrHilb = new double[ noOfRows ];
+
+        for( int i = 0; i < noOfRows; i++ )
+          arrHilb[ i ] = spcTime[ i ][ j ][ k ];
+
+        double[ ] arrTime = reverse( arrHilb ); // 1-D forward
+
+        for( int i = 0; i < noOfRows; i++ )
+          spcTime[ i ][ j ][ k ] = arrTime[ i ];
+
+      } // high
+
+    } // cols
+
+    return spcTime;
 
   } // reverse
 

@@ -26,8 +26,8 @@ package cs.jwave.handlers;
 import cs.jwave.handlers.wavelets.Wavelet;
 
 /**
- * Base class for the forward and reverse Fast Wavelet Transform using a
- * specified Wavelet by inheriting class.
+ * Base class for the forward and reverse Fast Wavelet Transform in 1-D, 2-D,
+ * and 3-D using a specified Wavelet by inheriting class.
  * 
  * @date 10.02.2010 08:10:42
  * @author Christian Scheiblich
@@ -52,8 +52,9 @@ public class FastWaveletTransform extends BasicTransform {
   } // FastWaveletTransform
 
   /**
-   * Performs the 1-D forward transform from time domain to Hilbert domain for
-   * the given array using the Fast Wavelet Transform (FWT) algorithm.
+   * Performs the 1-D forward transform for arrays of dim N from time domain to
+   * Hilbert domain for the given array using the Fast Wavelet Transform (FWT)
+   * algorithm.
    * 
    * @date 10.02.2010 08:23:24
    * @author Christian Scheiblich
@@ -95,9 +96,9 @@ public class FastWaveletTransform extends BasicTransform {
   } // forward
 
   /**
-   * Performs the 1-D reverse transform from Hilbert domain to time domain for
-   * the given array using the Fast Wavelet Transform (FWT) algorithm and the
-   * selected wavelet.
+   * Performs the 1-D reverse transform for arrays of dim N from Hilbert domain
+   * to time domain for the given array using the Fast Wavelet Transform (FWT)
+   * algorithm and the selected wavelet.
    * 
    * @date 10.02.2010 08:23:24
    * @author Christian Scheiblich
@@ -140,9 +141,9 @@ public class FastWaveletTransform extends BasicTransform {
   } // reverse
 
   /**
-   * Performs the 2-D forward transform from time domain to Hilbert domain for
-   * the given array using the Fast Wavelet Transform (FWT) algorithm and the
-   * selected wavelet.
+   * Performs the 2-D forward transform for N^2 matrices from time domain to
+   * Hilbert domain for the given array using the Fast Wavelet Transform (FWT)
+   * algorithm and the selected wavelet.
    * 
    * @date 10.02.2010 11:03:17
    * @author Christian Scheiblich
@@ -188,8 +189,9 @@ public class FastWaveletTransform extends BasicTransform {
   } // forward
 
   /**
-   * Performs the 2-D reverse transform from Hilbert domain to time domain for
-   * the given array using the Fast Wavelet Transform (FWT) algorithm.
+   * Performs the 2-D reverse transform for N^2 matrices from Hilbert domain to
+   * time domain for the given array using the Fast Wavelet Transform (FWT)
+   * algorithm.
    * 
    * @date 10.02.2010 11:03:17
    * @author Christian Scheiblich
@@ -235,9 +237,9 @@ public class FastWaveletTransform extends BasicTransform {
   } // reverse
 
   /**
-   * Performs the 3-D forward transform from time domain to Hilbert domain for
-   * the given array using the Fast Wavelet Transform (FWT) algorithm and the
-   * selected wavelet.
+   * Performs the 3-D forward transform for N^3 spaces from time domain to
+   * Hilbert domain for the given array using the Fast Wavelet Transform (FWT)
+   * algorithm and the selected wavelet.
    * 
    * @date 10.07.2010 20:25:19
    * @author Christian Scheiblich
@@ -303,9 +305,9 @@ public class FastWaveletTransform extends BasicTransform {
   } // forward
 
   /**
-   * Performs the 3-D forward transform from time domain to Hilbert domain for
-   * the given array using the Fast Wavelet Transform (FWT) algorithm and the
-   * selected wavelet.
+   * Performs the 3-D forward transform for N^3 spaces from time domain to
+   * Hilbert domain for the given array using the Fast Wavelet Transform (FWT)
+   * algorithm and the selected wavelet.
    * 
    * @date 10.07.2010 20:25:32
    * @author Christian Scheiblich
