@@ -136,7 +136,7 @@ public class DiscreteFourierTransform extends BasicTransform {
    */
   @Override
   public double[ ][ ] forward( double[ ][ ] matTime ) {
-    // TODO Christian Scheiblich should implement this method
+    // TODO someone should implement this method
     return null;
   } // forward
 
@@ -155,7 +155,7 @@ public class DiscreteFourierTransform extends BasicTransform {
    */
   @Override
   public double[ ][ ] reverse( double[ ][ ] matFreq ) {
-    // TODO Christian Scheiblich should implement this method
+    // TODO someone should implement this method
     return null;
   } // reverse
 
@@ -168,9 +168,9 @@ public class DiscreteFourierTransform extends BasicTransform {
    */
   @Override
   public double[ ][ ][ ] forward( double[ ][ ][ ] spcTime ) {
-    // TODO tucker should implement this method
+    // TODO someone should implement this method
     return null;
-  }
+  } // forward
 
   /**
    * The 3-D reverse version of the Discrete Fourier Transform (DFT);
@@ -181,8 +181,86 @@ public class DiscreteFourierTransform extends BasicTransform {
    */
   @Override
   public double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb ) {
-    // TODO tucker should implement this method
+    // TODO someone should implement this method
     return null;
-  }
+  } // reverse
+
+  /**
+   * TODO someone explainMeShortly
+   * 
+   * @date 15.07.2010 13:42:13
+   * @author someone
+   * @see cs.jwave.handlers.BasicTransform#forward(double[], int)
+   */
+  @Override
+  public double[ ] forward( double[ ] arrTime, int toLevel ) {
+    // TODO someone should implement this method
+    return null;
+  } // forward
+
+  /**
+   * TODO someone explainMeShortly
+   * 
+   * @date 15.07.2010 13:42:26
+   * @author someone
+   * @see cs.jwave.handlers.BasicTransform#forward(double[][], int)
+   */
+  @Override
+  public double[ ][ ] forward( double[ ][ ] matrixTime, int toLevel ) {
+    // TODO someone should implement this method
+    return null;
+  } // forward
+
+  /**
+   * TODO someone explainMeShortly
+   * 
+   * @date 15.07.2010 13:42:33
+   * @author someone
+   * @see cs.jwave.handlers.BasicTransform#forward(double[][][], int)
+   */
+  @Override
+  public double[ ][ ][ ] forward( double[ ][ ][ ] spcTime, int toLevel ) {
+    // TODO someone should implement this method
+    return null;
+  } // forward
+
+  /**
+   * TODO someone explainMeShortly
+   * 
+   * @date 15.07.2010 13:42:39
+   * @author someone
+   * @see cs.jwave.handlers.BasicTransform#reverse(double[], int)
+   */
+  @Override
+  public double[ ] reverse( double[ ] arrFreq, int fromLevel ) {
+    // TODO someone should implement this method
+    return null;
+  } // reverse
+
+  /**
+   * TODO someone explainMeShortly
+   * 
+   * @date 15.07.2010 13:42:44
+   * @author someone
+   * @see cs.jwave.handlers.BasicTransform#reverse(double[][], int)
+   */
+  @Override
+  public double[ ][ ] reverse( double[ ][ ] matrixFreq, int fromLevel ) {
+    // TODO someone should implement this method
+    return null;
+  } // reverse
+
+  /**
+   * TODO someone explainMeShortly
+   * 
+   * @date 15.07.2010 13:42:48
+   * @author someone
+   * @see cs.jwave.handlers.BasicTransform#reverse(double[][][], int)
+   */
+  @Override
+  public double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb, int fromLevel ) {
+    // TODO someone should implement this method
+    return null;
+  } // reverse
 
 } // class

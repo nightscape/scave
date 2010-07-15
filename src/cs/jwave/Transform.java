@@ -37,7 +37,7 @@ public class Transform {
   /**
    * Transform object of type base class
    */
-  BasicTransform _basicTransform;
+  protected BasicTransform _basicTransform;
 
   /**
    * Constructor; needs some object like DiscreteFourierTransform,

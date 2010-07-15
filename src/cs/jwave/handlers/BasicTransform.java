@@ -121,4 +121,102 @@ public abstract class BasicTransform {
    */
   public abstract double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb );
 
+  /**
+   * Performs the forward transform from time domain to frequency or Hilbert
+   * domain for a given array depending on the used transform algorithm by
+   * inheritance. The number of transformation levels applied is limited by
+   * threshold.
+   * 
+   * @date 15.07.2010
+   * @author Thomas Haider
+   * @param arrTime
+   *          coefficients of 1-D time domain
+   * @param toLevel
+   *          threshold for number of iterations
+   * @return coefficients of 1-D frequency or Hilbert domain
+   */
+  public abstract double[ ] forward( double[ ] arrTime, int toLevel );
+
+  /**
+   * Performs the reverse transform from frequency or Hilbert domain to time
+   * domain for a given array depending on the used transform algorithm by
+   * inheritance. The number of transformation levels applied is limited by
+   * threshold.
+   * 
+   * @date 15.07.2010
+   * @author Thomas Haider
+   * @param arrFreq
+   *          coefficients of 1-D frequency or Hilbert domain
+   * @param fromLevel
+   *          threshold for number of iterations
+   * @return coefficients of 1-D time domain
+   */
+  public abstract double[ ] reverse( double[ ] arrFreq, int fromLevel );
+
+  /**
+   * Performs the 2-D forward transform from time domain to frequency or Hilbert
+   * domain for a given array depending on the used transform algorithm by
+   * inheritance. The number of transformation levels applied is limited by
+   * threshold.
+   * 
+   * @date 15.07.2010
+   * @author Thomas Haider
+   * @param matrixTime
+   *          coefficients of 2-D time domain
+   * @param toLevel
+   *          threshold for number of iterations
+   * @return coefficients of 2-D frequency or Hilbert domain
+   */
+  public abstract double[ ][ ] forward( double[ ][ ] matrixTime, int toLevel );
+
+  /**
+   * Performs the 2-D reverse transform from frequency or Hilbert or time domain
+   * to time domain for a given array depending on the used transform algorithm
+   * by inheritance. The number of transformation levels applied is limited by
+   * threshold.
+   * 
+   * @date 15.07.2010
+   * @author Thomas Haider
+   * @param matrixFreq
+   *          coefficients of 2-D frequency or Hilbert domain
+   * @param fromLevel
+   *          threshold for number of iterations
+   * @return coefficients of 2-D time domain
+   */
+  public abstract double[ ][ ] reverse( double[ ][ ] matrixFreq, int fromLevel );
+
+  /**
+   * Performs the 3-D forward transform from time domain to frequency or Hilbert
+   * domain for a given array depending on the used transform algorithm by
+   * inheritance. The number of transformation levels applied is limited by
+   * threshold.
+   * 
+   * @date 15.07.2010
+   * @author Thomas Haider
+   * @param matrixFreq
+   *          coefficients of 3-D frequency or Hilbert domain
+   * @param toLevel
+   *          threshold for number of iterations
+   * @return coefficients of 3-D time domain
+   */
+  public abstract double[ ][ ][ ] forward( double[ ][ ][ ] spcTime,
+      int toLevel );
+
+  /**
+   * Performs the 3-D reverse transform from frequency or Hilbert domain to time
+   * domain for a given array depending on the used transform algorithm by
+   * inheritance. The number of transformation levels applied is limited by
+   * threshold.
+   * 
+   * @date 15.07.2010
+   * @author Thomas Haider
+   * @param matrixFreq
+   *          coefficients of 3-D frequency or Hilbert domain
+   * @param threshold
+   *          threshold for number of iterations
+   * @return coefficients of 3-D time domain
+   */
+  public abstract double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb,
+      int fromLevel );
+
 } // class

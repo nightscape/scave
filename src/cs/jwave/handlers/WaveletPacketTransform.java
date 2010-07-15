@@ -38,7 +38,7 @@ public class WaveletPacketTransform extends BasicTransform {
   /**
    * The used wavelet for the specified transform algorithm.
    */
-  Wavelet _wavelet;
+  protected Wavelet _wavelet;
 
   /**
    * Constructor receiving a Wavelet object.
@@ -357,7 +357,7 @@ public class WaveletPacketTransform extends BasicTransform {
 
       } // cols      
 
-      double[ ][ ] matTime = reverse( matHilb ); // 2-D forward
+      double[ ][ ] matTime = reverse( matHilb ); // 2-D reverse
 
       for( int j = 0; j < noOfCols; j++ ) {
 
@@ -380,7 +380,7 @@ public class WaveletPacketTransform extends BasicTransform {
         for( int i = 0; i < noOfRows; i++ )
           arrHilb[ i ] = spcTime[ i ][ j ][ k ];
 
-        double[ ] arrTime = reverse( arrHilb ); // 1-D forward
+        double[ ] arrTime = reverse( arrHilb ); // 1-D reverse
 
         for( int i = 0; i < noOfRows; i++ )
           spcTime[ i ][ j ][ k ] = arrTime[ i ];
@@ -391,6 +391,84 @@ public class WaveletPacketTransform extends BasicTransform {
 
     return spcTime;
 
+  } // reverse
+
+  /**
+   * TODO someone explainMeShortly
+   *
+   * @date 15.07.2010 13:43:44
+   * @author someone
+   * @see cs.jwave.handlers.BasicTransform#forward(double[], int)
+   */
+  @Override
+  public double[ ] forward( double[ ] arrTime, int toLevel ) {
+    // TODO someone should implement this method
+    return null;
+  } // forward
+
+  /**
+   * TODO someone explainMeShortly
+   *
+   * @date 15.07.2010 13:43:52
+   * @author someone
+   * @see cs.jwave.handlers.BasicTransform#forward(double[][], int)
+   */
+  @Override
+  public double[ ][ ] forward( double[ ][ ] matrixTime, int toLevel ) {
+    // TODO someone should implement this method
+    return null;
+  } // forward
+
+  /**
+   * TODO someone explainMeShortly
+   *
+   * @date 15.07.2010 13:43:58
+   * @author someone
+   * @see cs.jwave.handlers.BasicTransform#forward(double[][][], int)
+   */
+  @Override
+  public double[ ][ ][ ] forward( double[ ][ ][ ] spcTime, int toLevel ) {
+    // TODO someone should implement this method
+    return null;
+  } // forward
+
+  /**
+   * TODO someone explainMeShortly
+   *
+   * @date 15.07.2010 13:44:03
+   * @author someone
+   * @see cs.jwave.handlers.BasicTransform#reverse(double[], int)
+   */
+  @Override
+  public double[ ] reverse( double[ ] arrFreq, int fromLevel ) {
+    // TODO someone should implement this method
+    return null;
+  } // reverse
+
+  /**
+   * TODO someone explainMeShortly
+   *
+   * @date 15.07.2010 13:44:09
+   * @author someone
+   * @see cs.jwave.handlers.BasicTransform#reverse(double[][], int)
+   */
+  @Override
+  public double[ ][ ] reverse( double[ ][ ] matrixFreq, int fromLevel ) {
+    // TODO someone should implement this method
+    return null;
+  } // reverse
+
+  /**
+   * TODO someone explainMeShortly
+   *
+   * @date 15.07.2010 13:44:15
+   * @author someone
+   * @see cs.jwave.handlers.BasicTransform#reverse(double[][][], int)
+   */
+  @Override
+  public double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb, int fromLevel ) {
+    // TODO someone should implement this method
+    return null;
   } // reverse
 
 } // class

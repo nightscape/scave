@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file TransformTest.java is part of JWave.
+ * This file JUnitTests.java is part of JWave.
  *
  * @author Christian Scheiblich
  * date 23.02.2010 05:42:23
@@ -26,6 +26,7 @@ package cs.jwave;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import cs.jwave.handlers.BasicTransform;
 import cs.jwave.handlers.DiscreteFourierTransform;
 import cs.jwave.handlers.FastWaveletTransform;
 import cs.jwave.handlers.WaveletPacketTransform;
@@ -46,7 +47,7 @@ import cs.jwave.handlers.wavelets.Wavelet;
  * @date 10.02.2010 09:43:08
  * @author Christian Scheiblich
  */
-public class TransformTest {
+public class JUnitTests {
 
   /**
    * Test method for {@link cs.jwave.Transform#forward(double[])}.
