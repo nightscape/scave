@@ -394,7 +394,7 @@ public class FastWaveletTransform extends BasicTransform {
     int minWaveLength = _wavelet.getWaveLength( );
     if( h >= minWaveLength ) {
 
-      while( h >= minWaveLength && ( toLevel < 0 || level < toLevel ) ) {
+      while( h >= minWaveLength && level < toLevel ) {
 
         double[ ] iBuf = new double[ h ];
 
@@ -440,8 +440,7 @@ public class FastWaveletTransform extends BasicTransform {
     int h = minWaveLength;
     if( arrHilb.length >= minWaveLength ) {
 
-      while( h <= arrTime.length && h >= minWaveLength
-          && ( fromLevel < 0 || level < fromLevel ) ) {
+      while( h <= arrTime.length && h >= minWaveLength && level < fromLevel ) {
 
         double[ ] iBuf = new double[ h ];
 
