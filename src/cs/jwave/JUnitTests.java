@@ -124,6 +124,7 @@ public class JUnitTests {
 
   }
 
+
   /**
    * Test method for {@link cs.jwave.Transform#reverse(double[])}.
    */
@@ -148,6 +149,57 @@ public class JUnitTests {
     assertArray( expected, arrTime, delta );
 
   }
+  
+
+  /**
+   * Test method for {@link cs.jwave.Transform#forward(double[])}.
+   */
+  @Test
+  public void testFastWaveletTransformForwardHaar02ArrayRandom( ) {
+
+    System.out.println( "" );
+    System.out.println( "testFastWaveletTransformForwardHaar02ArrayRandom" );
+
+    double delta = 1.e-12;
+
+    double[ ] arrTime = { 1.2, 2.3, 3.4, 4.5, 5.4, 4.3, 3.2, 2.1 };
+
+    showTime( arrTime );
+
+    Transform t = new Transform( new FastWaveletTransform( new Haar02( ) ) );
+    double[ ] arrHilb = t.forward( arrTime );
+
+    showHilb( arrHilb );
+
+    double[ ] expected = { 9.333809511662427, -1.2727922061357857, -2.1999999999999997, 2.2, -0.7778174593052021, -0.7778174593052025, 0.7778174593052025, 0.7778174593052023 }; // orthonormal Hilbert space
+    assertArray( expected, arrHilb, delta );
+
+  }  
+
+  /**
+   * Test method for {@link cs.jwave.Transform#reverse(double[])}.
+   */
+  @Test
+  public void testFastWaveletTransformReverseHaar02ArrayRandom( ) {
+
+    System.out.println( "" );
+    System.out.println( "testFastWaveletTransformReverseHaar02ArrayRandom" );
+
+    double delta = 1e-12;
+
+    double[ ] arrHilb = { 9.333809511662427, -1.2727922061357857, -2.1999999999999997, 2.2, -0.7778174593052021, -0.7778174593052025, 0.7778174593052025, 0.7778174593052023 }; // orthonormal Hilbert space
+
+    showHilb( arrHilb );
+
+    Transform t = new Transform( new FastWaveletTransform( new Haar02( ) ) );
+    double[ ] arrTime = t.reverse( arrHilb );
+
+    showTime( arrTime );
+
+    double[ ] expected = { 1.2, 2.3, 3.4, 4.5, 5.4, 4.3, 3.2, 2.1 };
+    assertArray( expected, arrTime, delta );
+
+  }  
 
   /**
    * Test method for {@link cs.jwave.Transform#forward(double[][])}.
@@ -1053,19 +1105,19 @@ public class JUnitTests {
 
   } // testRounding
 
-  public void assertArray( double[ ] expected, double[ ] actual, double delta ) {
+  protected void assertArray( double[ ] expected, double[ ] actual, double delta ) {
     for( int i = 0; i < expected.length; i++ )
       assertEquals( expected[ i ], actual[ i ], delta );
   } // assertMatrix
 
-  public void assertMatrix( double[ ][ ] expected, double[ ][ ] actual,
+  protected void assertMatrix( double[ ][ ] expected, double[ ][ ] actual,
       double delta ) {
     for( int i = 0; i < expected.length; i++ )
       for( int j = 0; j < expected[ i ].length; j++ )
         assertEquals( expected[ i ][ j ], actual[ i ][ j ], delta );
   } // assertMatrix
 
-  public void assertSpace( double[ ][ ][ ] expected, double[ ][ ][ ] actual,
+  protected void assertSpace( double[ ][ ][ ] expected, double[ ][ ][ ] actual,
       double delta ) {
     for( int i = 0; i < expected.length; i++ )
       for( int j = 0; j < expected[ i ].length; j++ )
@@ -1073,28 +1125,28 @@ public class JUnitTests {
           assertEquals( expected[ i ][ j ][ k ], actual[ i ][ j ][ k ], delta );
   } // assertSpace
 
-  public void showTime( double[ ] arrTime ) {
+  protected void showTime( double[ ] arrTime ) {
     System.out.print( "time domain: " + "\t" + "\t" );
     for( int c = 0; c < arrTime.length; c++ )
       System.out.print( arrTime[ c ] + " " );
     System.out.println( "" );
   } // showTime
 
-  public void showFreq( double[ ] arrFreq ) {
+  protected void showFreq( double[ ] arrFreq ) {
     System.out.print( "frequency domain: " + "\t" );
     for( int c = 0; c < arrFreq.length; c++ )
       System.out.print( arrFreq[ c ] + " " );
     System.out.println( "" );
   } // showHilb
 
-  public void showHilb( double[ ] arrHilb ) {
+  protected void showHilb( double[ ] arrHilb ) {
     System.out.print( "Hilbert domain: " + "\t" );
     for( int c = 0; c < arrHilb.length; c++ )
       System.out.print( arrHilb[ c ] + " " );
     System.out.println( "" );
   } // showHilb
 
-  public void showTime( double[ ][ ] matrixTime ) {
+  protected void showTime( double[ ][ ] matrixTime ) {
     System.out.println( "time domain: " + "\t" );
     for( int i = 0; i < matrixTime.length; i++ ) {
       for( int j = 0; j < matrixTime[ i ].length; j++ )
@@ -1104,7 +1156,7 @@ public class JUnitTests {
     System.out.println( "" );
   } // showTime 
 
-  public void showFreq( double[ ][ ] matrixFreq ) {
+  protected void showFreq( double[ ][ ] matrixFreq ) {
     System.out.println( "frequency domain: " + "\t" );
     for( int i = 0; i < matrixFreq.length; i++ ) {
       for( int j = 0; j < matrixFreq[ i ].length; j++ )
@@ -1114,7 +1166,7 @@ public class JUnitTests {
     System.out.println( "" );
   } // showFreq
 
-  public void showHilb( double[ ][ ] matrixHilb ) {
+  protected void showHilb( double[ ][ ] matrixHilb ) {
     System.out.println( "Hilbert domain: " + "\t" );
     for( int i = 0; i < matrixHilb.length; i++ ) {
       for( int j = 0; j < matrixHilb[ i ].length; j++ )
@@ -1124,7 +1176,7 @@ public class JUnitTests {
     System.out.println( "" );
   } // showHilb
 
-  public void showTime( double[ ][ ][ ] spaceTime ) {
+  protected void showTime( double[ ][ ][ ] spaceTime ) {
     System.out.println( "time domain: " + "\t" );
     for( int i = 0; i < spaceTime.length; i++ ) {
       for( int j = 0; j < spaceTime[ i ].length; j++ ) {
@@ -1137,7 +1189,7 @@ public class JUnitTests {
     System.out.println( "" );
   } // showTime   
 
-  public void showFreq( double[ ][ ][ ] spaceTime ) {
+  protected void showFreq( double[ ][ ][ ] spaceTime ) {
     System.out.println( "frequency domain: " + "\t" );
     for( int i = 0; i < spaceTime.length; i++ ) {
       for( int j = 0; j < spaceTime[ i ].length; j++ ) {
@@ -1150,7 +1202,7 @@ public class JUnitTests {
     System.out.println( "" );
   } // showFreq   
 
-  public void showHilb( double[ ][ ][ ] spaceTime ) {
+  protected void showHilb( double[ ][ ][ ] spaceTime ) {
     System.out.println( "Hilbert domain: " + "\t" );
     for( int i = 0; i < spaceTime.length; i++ ) {
       for( int j = 0; j < spaceTime[ i ].length; j++ ) {
