@@ -930,6 +930,58 @@ public class JUnitTests {
     assertSpace( expected, spaceTime, delta );
 
   }
+  
+  
+  /**
+   * Test method for {@link cs.jwave.Transform#forward(double[])}.
+   */
+  @Test
+  public void testWaveletPacketTransformForwardDaub04ArrayRandom( ) {
+
+    System.out.println( "" );
+    System.out.println( "testWaveletPacketTransformForwardDaub04ArrayRandom" );
+
+    double delta = 1.e-12;
+
+    double[ ] arrTime = { 1.2, 2.3, 3.4, 4.5, 5.4, 4.3, 3.2, 2.1 };
+
+    showTime( arrTime );
+
+    Transform t = new Transform( new WaveletPacketTransform( new Daub04( ) ) );
+    double[ ] arrHilb = t.forward( arrTime );
+
+    showHilb( arrHilb );
+
+    double[ ] expected = { 7.432531754730547, 5.76746824526945, 2.2766660498395392, -2.276666049839541, 0.9580127018922185, -0.9580127018922194, 0.2566987298107781, -0.25669872981077807 };
+    assertArray( expected, arrHilb, delta );
+
+  }
+
+  /**
+   * Test method for {@link cs.jwave.Transform#reverse(double[])}.
+   */
+  @Test
+  public void testWaveletPacketTransformReverseDaub04ArrayRandom( ) {
+
+    System.out.println( "" );
+    System.out.println( "testWaveletPacketTransformReverseDaub04ArrayRandom" );
+
+    double delta = 1e-12;
+
+    double[ ] arrHilb = { 7.432531754730547, 5.76746824526945, 2.2766660498395392, -2.276666049839541, 0.9580127018922185, -0.9580127018922194, 0.2566987298107781, -0.25669872981077807 };
+
+    showHilb( arrHilb );
+
+    Transform t = new Transform( new WaveletPacketTransform( new Daub04( ) ) );
+    double[ ] arrTime = t.reverse( arrHilb );
+
+    showTime( arrTime );
+
+    double[ ] expected = { 1.2, 2.3, 3.4, 4.5, 5.4, 4.3, 3.2, 2.1 };
+    assertArray( expected, arrTime, delta );
+
+  }
+  
 
   /**
    * Test method to check the rounding error of several forward and reverse
