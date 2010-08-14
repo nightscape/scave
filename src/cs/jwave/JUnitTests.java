@@ -26,6 +26,7 @@ package cs.jwave;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import cs.jwave.handlers.AncientEgyptianDecomposition;
 import cs.jwave.handlers.BasicTransform;
 import cs.jwave.handlers.DiscreteFourierTransform;
 import cs.jwave.handlers.FastWaveletTransform;
@@ -124,7 +125,6 @@ public class JUnitTests {
 
   }
 
-
   /**
    * Test method for {@link cs.jwave.Transform#reverse(double[])}.
    */
@@ -149,7 +149,6 @@ public class JUnitTests {
     assertArray( expected, arrTime, delta );
 
   }
-  
 
   /**
    * Test method for {@link cs.jwave.Transform#forward(double[])}.
@@ -171,10 +170,12 @@ public class JUnitTests {
 
     showHilb( arrHilb );
 
-    double[ ] expected = { 9.333809511662427, -1.2727922061357857, -2.1999999999999997, 2.2, -0.7778174593052021, -0.7778174593052025, 0.7778174593052025, 0.7778174593052023 }; // orthonormal Hilbert space
+    double[ ] expected = { 9.333809511662427, -1.2727922061357857,
+        -2.1999999999999997, 2.2, -0.7778174593052021, -0.7778174593052025,
+        0.7778174593052025, 0.7778174593052023 }; // orthonormal Hilbert space
     assertArray( expected, arrHilb, delta );
 
-  }  
+  }
 
   /**
    * Test method for {@link cs.jwave.Transform#reverse(double[])}.
@@ -187,7 +188,9 @@ public class JUnitTests {
 
     double delta = 1e-12;
 
-    double[ ] arrHilb = { 9.333809511662427, -1.2727922061357857, -2.1999999999999997, 2.2, -0.7778174593052021, -0.7778174593052025, 0.7778174593052025, 0.7778174593052023 }; // orthonormal Hilbert space
+    double[ ] arrHilb = { 9.333809511662427, -1.2727922061357857,
+        -2.1999999999999997, 2.2, -0.7778174593052021, -0.7778174593052025,
+        0.7778174593052025, 0.7778174593052023 }; // orthonormal Hilbert space
 
     showHilb( arrHilb );
 
@@ -199,7 +202,7 @@ public class JUnitTests {
     double[ ] expected = { 1.2, 2.3, 3.4, 4.5, 5.4, 4.3, 3.2, 2.1 };
     assertArray( expected, arrTime, delta );
 
-  }  
+  }
 
   /**
    * Test method for {@link cs.jwave.Transform#forward(double[][])}.
@@ -930,8 +933,7 @@ public class JUnitTests {
     assertSpace( expected, spaceTime, delta );
 
   }
-  
-  
+
   /**
    * Test method for {@link cs.jwave.Transform#forward(double[])}.
    */
@@ -952,7 +954,9 @@ public class JUnitTests {
 
     showHilb( arrHilb );
 
-    double[ ] expected = { 7.432531754730547, 5.76746824526945, 2.2766660498395392, -2.276666049839541, 0.9580127018922185, -0.9580127018922194, 0.2566987298107781, -0.25669872981077807 };
+    double[ ] expected = { 7.432531754730547, 5.76746824526945,
+        2.2766660498395392, -2.276666049839541, 0.9580127018922185,
+        -0.9580127018922194, 0.2566987298107781, -0.25669872981077807 };
     assertArray( expected, arrHilb, delta );
 
   }
@@ -968,7 +972,9 @@ public class JUnitTests {
 
     double delta = 1e-12;
 
-    double[ ] arrHilb = { 7.432531754730547, 5.76746824526945, 2.2766660498395392, -2.276666049839541, 0.9580127018922185, -0.9580127018922194, 0.2566987298107781, -0.25669872981077807 };
+    double[ ] arrHilb = { 7.432531754730547, 5.76746824526945,
+        2.2766660498395392, -2.276666049839541, 0.9580127018922185,
+        -0.9580127018922194, 0.2566987298107781, -0.25669872981077807 };
 
     showHilb( arrHilb );
 
@@ -981,7 +987,60 @@ public class JUnitTests {
     assertArray( expected, arrTime, delta );
 
   }
-  
+
+  /**
+   * Test method for {@link cs.jwave.Transform#forward(double[])}.
+   */
+  @Test
+  public void testAncientEgyptianDecompositionFwtForwardHaar02Array( ) {
+
+    System.out.println( "" );
+    System.out
+        .println( "testAncientEgyptianDecompositionFwtForwardHaar02Array" );
+
+    double delta = 1.e-12;
+
+    double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1. }; // length 7 = 2^2 + 2^1 + 2^0
+
+    showTime( arrTime );
+
+    Transform t = new Transform( new AncientEgyptianDecomposition(
+        new FastWaveletTransform( new Haar02( ) ) ) );
+    double[ ] arrHilb = t.forward( arrTime );
+
+    showHilb( arrHilb );
+
+    double[ ] expected = { 2., 0., 0., 0., Math.sqrt( 2. ), 0., 1. };
+    assertArray( expected, arrHilb, delta );
+
+  }
+
+  /**
+   * Test method for {@link cs.jwave.Transform#reverse(double[])}.
+   */
+  @Test
+  public void testAncientEgyptianDecompositionFwtReverseHaar02Array( ) {
+
+    System.out.println( "" );
+    System.out
+        .println( "testAncientEgyptianDecompositionFwtReverseHaar02Array" );
+
+    double delta = 1e-12;
+
+    double[ ] arrHilb = { 2., 0., 0., 0., Math.sqrt( 2. ), 0., 1. }; // length 7 = 2^2 + 2^1 + 2^0
+
+    showHilb( arrHilb );
+
+    Transform t = new Transform( new AncientEgyptianDecomposition(
+        new FastWaveletTransform( new Haar02( ) ) ) );
+    double[ ] arrTime = t.reverse( arrHilb );
+
+    showTime( arrTime );
+
+    double[ ] expected = { 1., 1., 1., 1., 1., 1., 1. };
+    assertArray( expected, arrTime, delta );
+
+  }
 
   /**
    * Test method to check the rounding error of several forward and reverse

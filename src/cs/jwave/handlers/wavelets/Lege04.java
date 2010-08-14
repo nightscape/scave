@@ -17,7 +17,7 @@
  *
  * This file Legendre04.java is part of JWave.
  *
- * @author tucker
+ * @author Christian Scheiblich
  * date 03.06.2010 21:19:04
  * contact source@linux23.de
  */
