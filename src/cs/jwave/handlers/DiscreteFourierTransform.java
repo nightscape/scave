@@ -63,33 +63,33 @@ public class DiscreteFourierTransform extends BasicTransform {
     double[ ] arrFreq = new double[ m ]; // result
 
     int n = m >> 1; // half of m
-    
+
     for( int i = 0; i < n; i++ ) {
-      
+
       int iR = i * 2;
       int iC = i * 2 + 1;
-      
+
       arrFreq[ iR ] = 0.;
       arrFreq[ iC ] = 0.;
-      
+
       double arg = -2. * Math.PI * (double)i / (double)n;
-      
+
       for( int k = 0; k < n; k++ ) {
-        
+
         int kR = k * 2;
         int kC = k * 2 + 1;
-        
+
         double cos = Math.cos( k * arg );
         double sin = Math.sin( k * arg );
-        
+
         arrFreq[ iR ] += arrTime[ kR ] * cos - arrTime[ kC ] * sin;
         arrFreq[ iC ] += arrTime[ kR ] * sin + arrTime[ kC ] * cos;
-        
+
       } // k
-      
+
       arrFreq[ iR ] /= (double)n;
       arrFreq[ iC ] /= (double)n;
-      
+
     } // i
 
     return arrFreq;
@@ -113,28 +113,28 @@ public class DiscreteFourierTransform extends BasicTransform {
     double[ ] arrTime = new double[ m ]; // result
 
     int n = m >> 1; // half of m
-      
+
     for( int i = 0; i < n; i++ ) {
-      
+
       int iR = i * 2;
       int iC = i * 2 + 1;
-      
+
       arrTime[ iR ] = 0.;
       arrTime[ iC ] = 0.;
-      
+
       double arg = 2. * Math.PI * (double)i / (double)n;
-      
+
       for( int k = 0; k < n; k++ ) {
-        
+
         int kR = k * 2;
         int kC = k * 2 + 1;
-        
+
         double cos = Math.cos( k * arg );
         double sin = Math.sin( k * arg );
-        
+
         arrTime[ iR ] += arrFreq[ kR ] * cos - arrFreq[ kC ] * sin;
         arrTime[ iC ] += arrFreq[ kR ] * sin + arrFreq[ kC ] * cos;
-        
+
       } // a
     } // i
 

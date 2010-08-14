@@ -171,7 +171,6 @@ public class AncientEgyptianDecomposition extends BasicTransform {
     } // m - no of sub transforms
 
     return arrHilb;
-
   } // forward
 
   /**
@@ -214,34 +213,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
     } // m - no of sub transforms
 
     return arrTime;
-
   } // reverse
-
-  /**
-   * TODO Christian Scheiblich explainMeShortly
-   * 
-   * @date 14.08.2010 10:43:28
-   * @author Christian Scheiblich
-   * @see cs.jwave.handlers.BasicTransform#forward(double[][])
-   */
-  @Override
-  public double[ ][ ] forward( double[ ][ ] matrixTime ) {
-    // TODO Christian Scheiblich should implement this method
-    return null;
-  } // forward
-
-  /**
-   * TODO Christian Scheiblich explainMeShortly
-   * 
-   * @date 14.08.2010 10:43:28
-   * @author Christian Scheiblich
-   * @see cs.jwave.handlers.BasicTransform#forward(double[][][])
-   */
-  @Override
-  public double[ ][ ][ ] forward( double[ ][ ][ ] spcTime ) {
-    // TODO Christian Scheiblich should implement this method
-    return null;
-  } // forward
 
   /**
    * TODO Christian Scheiblich explainMeShortly
@@ -252,61 +224,33 @@ public class AncientEgyptianDecomposition extends BasicTransform {
    */
   @Override
   public double[ ] forward( double[ ] arrTime, int toLevel ) {
-    // TODO Christian Scheiblich should implement this method
-    return null;
+
+    double[ ] arrHilb = new double[ arrTime.length ];
+
+    int[ ] ancientEgyptianMultipliers = convertInteger2AncientEgyptianMultiplipliers( arrTime.length );
+
+    int offSet = 0;
+    for( int m = 0; m < ancientEgyptianMultipliers.length; m++ ) {
+
+      int ancientEgyptianMultiplier = ancientEgyptianMultipliers[ m ];
+
+      int arrTimeSubLength = (int)Math.scalb( 1., ancientEgyptianMultiplier );
+
+      double[ ] arrTimeSub = new double[ arrTimeSubLength ];
+      for( int i = 0; i < arrTimeSub.length; i++ )
+        arrTimeSub[ i ] = arrTime[ i + offSet ];
+
+      double[ ] arrHilbSub = _transform.forward( arrTimeSub, toLevel );
+
+      for( int i = 0; i < arrHilbSub.length; i++ )
+        arrHilb[ i + offSet ] = arrHilbSub[ i ];
+
+      offSet += arrHilbSub.length;
+
+    } // m - no of sub transforms
+
+    return arrHilb;
   } // forward
-
-  /**
-   * TODO Christian Scheiblich explainMeShortly
-   * 
-   * @date 14.08.2010 10:43:28
-   * @author Christian Scheiblich
-   * @see cs.jwave.handlers.BasicTransform#forward(double[][], int)
-   */
-  @Override
-  public double[ ][ ] forward( double[ ][ ] matrixTime, int toLevel ) {
-    // TODO Christian Scheiblich should implement this method
-    return null;
-  } // forward
-
-  /**
-   * TODO Christian Scheiblich explainMeShortly
-   * 
-   * @date 14.08.2010 10:43:28
-   * @author Christian Scheiblich
-   * @see cs.jwave.handlers.BasicTransform#forward(double[][][], int)
-   */
-  @Override
-  public double[ ][ ][ ] forward( double[ ][ ][ ] spcTime, int toLevel ) {
-    // TODO Christian Scheiblich should implement this method
-    return null;
-  } // forward
-
-  /**
-   * TODO Christian Scheiblich explainMeShortly
-   * 
-   * @date 14.08.2010 10:43:28
-   * @author Christian Scheiblich
-   * @see cs.jwave.handlers.BasicTransform#reverse(double[][])
-   */
-  @Override
-  public double[ ][ ] reverse( double[ ][ ] matrixFreq ) {
-    // TODO Christian Scheiblich should implement this method
-    return null;
-  } // reverse
-
-  /**
-   * TODO Christian Scheiblich explainMeShortly
-   * 
-   * @date 14.08.2010 10:43:28
-   * @author Christian Scheiblich
-   * @see cs.jwave.handlers.BasicTransform#reverse(double[][][])
-   */
-  @Override
-  public double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb ) {
-    // TODO Christian Scheiblich should implement this method
-    return null;
-  } // reverse
 
   /**
    * TODO Christian Scheiblich explainMeShortly
@@ -316,35 +260,33 @@ public class AncientEgyptianDecomposition extends BasicTransform {
    * @see cs.jwave.handlers.BasicTransform#reverse(double[], int)
    */
   @Override
-  public double[ ] reverse( double[ ] arrFreq, int fromLevel ) {
-    // TODO Christian Scheiblich should implement this method
-    return null;
-  } // reverse
+  public double[ ] reverse( double[ ] arrHilb, int fromLevel ) {
 
-  /**
-   * TODO Christian Scheiblich explainMeShortly
-   * 
-   * @date 14.08.2010 10:43:28
-   * @author Christian Scheiblich
-   * @see cs.jwave.handlers.BasicTransform#reverse(double[][], int)
-   */
-  @Override
-  public double[ ][ ] reverse( double[ ][ ] matrixFreq, int fromLevel ) {
-    // TODO Christian Scheiblich should implement this method
-    return null;
-  } // reverse
+    double[ ] arrTime = new double[ arrHilb.length ];
 
-  /**
-   * TODO Christian Scheiblich explainMeShortly
-   * 
-   * @date 14.08.2010 10:43:28
-   * @author Christian Scheiblich
-   * @see cs.jwave.handlers.BasicTransform#reverse(double[][][], int)
-   */
-  @Override
-  public double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb, int fromLevel ) {
-    // TODO Christian Scheiblich should implement this method
-    return null;
+    int[ ] ancientEgyptianMultipliers = convertInteger2AncientEgyptianMultiplipliers( arrHilb.length );
+
+    int offSet = 0;
+    for( int m = 0; m < ancientEgyptianMultipliers.length; m++ ) {
+
+      int ancientEgyptianMultiplier = ancientEgyptianMultipliers[ m ];
+
+      int arrHilbSubLength = (int)Math.scalb( 1., ancientEgyptianMultiplier );
+
+      double[ ] arrHilbSub = new double[ arrHilbSubLength ];
+      for( int i = 0; i < arrHilbSub.length; i++ )
+        arrHilbSub[ i ] = arrHilb[ i + offSet ];
+
+      double[ ] arrTimeSub = _transform.reverse( arrHilbSub, fromLevel );
+
+      for( int i = 0; i < arrTimeSub.length; i++ )
+        arrTime[ i + offSet ] = arrTimeSub[ i ];
+
+      offSet += arrHilbSub.length;
+
+    } // m - no of sub transforms
+
+    return arrTime;
   } // reverse
 
 } // class
