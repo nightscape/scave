@@ -53,34 +53,42 @@ public class Haar02Orthogonal extends Wavelet {
     _scales[ 0 ] = -_coeffs[ 1 ]; // -w1 
     _scales[ 1 ] = _coeffs[ 0 ]; // w0
     //
-    // Orthogonal system -- ASCII art does not display the angles in 90° (or 45°):
+    // Remark on mathematics (perpendicular, orthogonal, and orthonormal):
+    // 
+    // "Orthogonal" is used for vectors which are perpendicular but of any length.
+    // "Orthonormal" is used for vectors which are perpendicular and of a unit length of one.
+    //
+    //
+    // "Orthogonal" system -- ASCII art does not display the angles in 90° (or 45°):
     //            
     //    ^ y          
     //    |          
     //  1 +      .  scaling function  
     //    |    /    {1,1}  \
     //    |  /             | length = 1.4142135623730951
-    //    |/               /        = sqrt( (1.0)^2 + (1.0)^2 )
+    //    |/               /        = sqrt( (1)^2 + (1)^2 )
     //  --o------+-> x
     //  0 |\     1         \
     //    |  \             | length = 1.4142135623730951
-    //    |    \           /        = sqrt( (1.0)^2 + (-1.0)^2 )
+    //    |    \           /        = sqrt( (1)^2 + (-1)^2 )
     // -1 +      .  wavelet function     
     //    |         {1,-1}
     //
-    // Therefore, one can see that, by each step of the algorithm, the input coefficients
-    // "energy" (energy := ||.||_2 euclidean norm) rises, while ever input value is multiplied
-    // by 1.4142135623730951. So, one has to correct this change of "energy" in the reverse
-    // transform by adding the factor 0.5.
+    // One can see that by each step of the algorithm the input coefficients "energy" 
+    // (energy := ||.||_2 euclidean norm) rises, while ever input value is multiplied
+    // by 1.414213 (sqrt(2)). However, one has to correct this change of "energy" in
+    // the reverse transform by adding the factor 1/2 .
     //
     // (see http://en.wikipedia.org/wiki/Euclidean_norm  for the euclidean norm)
     //
-    // The main disadvantage using an orthogonal wavelet is that the generated wavelet sub spaces
-    // of different size and/or level can not be combined anymore. Their norm (||.||_2) simply
-    // differs. If an orthonormal Haar wavelet is taken, the ||.||_2 norm does not change and
-    // allows for combining wavelet sub spaces of different dimension or even level. E. g. 
-    // using 2-D haar wavelet transform for a compression of systems of linear equations with
-    // blocks of different size and, so, of different transform level.
+    // The main disadvantage using an "orthogonal" wavelet is that the generated wavelet
+    // sub spaces of different size and/or level can not be combined anymore easily, due
+    // to their differing "energy" or norm (||.||_2). If an "orthonormal" wavelet is
+    // taken, the ||.||_2 norm does not change at any size or any transform level. This
+    // allows for combining wavelet sub spaces of different dimension or even level.
+    // E. g. using several 2-D haar wavelet transform for compressing a systems of linear
+    // equations transforms of different size or level. It still allows for solving the
+    // system of linear equations in wavelet sub spaces.
 
     // Also possible coefficients -> change forward and reverse functions in common
     // _coeffs[ 0 ] = .5; // w0 
