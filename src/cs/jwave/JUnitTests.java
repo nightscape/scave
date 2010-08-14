@@ -1043,6 +1043,62 @@ public class JUnitTests {
   }
 
   /**
+   * Test method for {@link cs.jwave.Transform#forward(double[])}.
+   */
+  @Test
+  public void testAncientEgyptianDecompositionWptForwardHaar02Array( ) {
+
+    System.out.println( "" );
+    System.out
+        .println( "testAncientEgyptianDecompositionWptForwardHaar02Array" );
+
+    double delta = 1.e-12;
+
+    double[ ] arrTime = { 1., 2., 3., 4., 2., 0., 1. }; // length 7 = 2^2 + 2^1 + 2^0
+
+    showTime( arrTime );
+
+    Transform t = new Transform( new AncientEgyptianDecomposition(
+        new WaveletPacketTransform( new Haar02( ) ) ) );
+    double[ ] arrHilb = t.forward( arrTime );
+
+    showHilb( arrHilb );
+
+    double sqrt2 = Math.sqrt( 2. );
+    double[ ] expected = { 5., -2., -1., 0., sqrt2, sqrt2, 1. };
+    assertArray( expected, arrHilb, delta );
+
+  }
+
+  /**
+   * Test method for {@link cs.jwave.Transform#reverse(double[])}.
+   */
+  @Test
+  public void testAncientEgyptianDecompositionWptReverseHaar02Array( ) {
+
+    System.out.println( "" );
+    System.out
+        .println( "testAncientEgyptianDecompositionWptReverseHaar02Array" );
+
+    double delta = 1e-12;
+
+    double sqrt2 = Math.sqrt( 2. );
+    double[ ] arrHilb = { 5., -2., -1., 0., sqrt2, sqrt2, 1. };
+
+    showHilb( arrHilb );
+
+    Transform t = new Transform( new AncientEgyptianDecomposition(
+        new WaveletPacketTransform( new Haar02( ) ) ) );
+    double[ ] arrTime = t.reverse( arrHilb );
+
+    showTime( arrTime );
+
+    double[ ] expected = { 1., 2., 3., 4., 2., 0., 1. };
+    assertArray( expected, arrTime, delta );
+
+  }
+
+  /**
    * Test method to check the rounding error of several forward and reverse
    * transforms.
    * 
