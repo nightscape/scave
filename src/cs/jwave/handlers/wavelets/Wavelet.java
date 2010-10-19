@@ -63,7 +63,8 @@ public abstract class Wavelet {
   /**
    * Performs the forward transform for the given array from time domain to
    * Hilbert domain and returns a new array of the same size keeping
-   * coefficients of Hilbert domain.
+   * coefficients of Hilbert domain and should be of length 2 to the power of p
+   * -- length = 2^p where p is a positive integer.
    * 
    * @date 10.02.2010 08:18:02
    * @author Christian Scheiblich
@@ -71,12 +72,36 @@ public abstract class Wavelet {
    *          array keeping time domain coefficients
    * @return coefficients represented by frequency domain
    */
-  public abstract double[ ] forward( double[ ] arrTime );
+  public double[ ] forward( double[ ] arrTime ) {
+
+    double[ ] arrHilb = new double[ arrTime.length ];
+
+    int k = 0;
+    int h = arrTime.length >> 1;
+
+    for( int i = 0; i < h; i++ ) {
+
+      for( int j = 0; j < _waveLength; j++ ) {
+
+        k = ( i << 1 ) + j;
+        if( k >= arrTime.length )
+          k -= arrTime.length;
+
+        arrHilb[ i ] += arrTime[ k ] * _scales[ j ]; // low pass filter - energy (approximation)
+        arrHilb[ i + h ] += arrTime[ k ] * _coeffs[ j ]; // high pass filter - details 
+
+      } // wavelet
+
+    } // h
+
+    return arrHilb;
+  } // forward
 
   /**
    * Performs the reverse transform for the given array from Hilbert domain to
    * time domain and returns a new array of the same size keeping coefficients
-   * of time domain.
+   * of time domain and should be of length 2 to the power of p -- length = 2^p
+   * where p is a positive integer.
    * 
    * @date 10.02.2010 08:19:24
    * @author Christian Scheiblich
@@ -84,7 +109,29 @@ public abstract class Wavelet {
    *          array keeping frequency domain coefficients
    * @return coefficients represented by time domain
    */
-  public abstract double[ ] reverse( double[ ] arrHilb );
+  public double[ ] reverse( double[ ] arrHilb ) {
+
+    double[ ] arrTime = new double[ arrHilb.length ];
+
+    int k = 0;
+    int h = arrHilb.length >> 1;
+    for( int i = 0; i < h; i++ ) {
+
+      for( int j = 0; j < _waveLength; j++ ) {
+
+        k = ( i << 1 ) + j;
+        if( k >= arrHilb.length )
+          k -= arrHilb.length;
+
+        arrTime[ k ] += ( arrHilb[ i ] * _scales[ j ] + arrHilb[ i + h ]
+            * _coeffs[ j ] ); // adding up details times energy (approximation)
+
+      } // wavelet
+
+    } //  h
+
+    return arrTime;
+  } // reverse
 
   /**
    * Returns the minimal wavelength for the used wavelet.

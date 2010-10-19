@@ -56,39 +56,13 @@ public class Haar02 extends Wavelet {
   } // Haar02
 
   /**
-   * The forward wavelet transform using the Alfred Haar's wavelet. The arrTime
-   * array keeping coefficients of time domain should be of length 2 to the
-   * power of p -- length = 2^p where p is a positive integer.
+   * The forward wavelet transform using the Alfred Haar's wavelet.
    * 
    * @date 10.02.2010 08:26:06
    * @author Christian Scheiblich
    * @see cs.jwave.handlers.wavelets.Wavelet#forward(double[])
    */
-  @Override
-  public double[ ] forward( double[ ] arrTime ) {
 
-    double[ ] arrHilb = new double[ arrTime.length ];
-
-    int k = 0;
-    int h = arrTime.length >> 1;
-
-    for( int i = 0; i < h; i++ ) {
-
-      for( int j = 0; j < _waveLength; j++ ) {
-
-        k = ( i << 1 ) + j;
-        if( k >= arrTime.length )
-          k -= arrTime.length;
-
-        arrHilb[ i ] += arrTime[ k ] * _scales[ j ]; // low pass filter - energy (approximation)
-        arrHilb[ i + h ] += arrTime[ k ] * _coeffs[ j ]; // high pass filter - details 
-
-      } // wavelet
-
-    } // h
-
-    return arrHilb;
-  } // forward
 
   /**
    * The reverse wavelet transform using the Alfred Haar's wavelet. The arrHilb
@@ -99,29 +73,6 @@ public class Haar02 extends Wavelet {
    * @author Christian Scheiblich
    * @see cs.jwave.handlers.wavelets.Wavelet#reverse(double[])
    */
-  @Override
-  public double[ ] reverse( double[ ] arrHilb ) {
 
-    double[ ] arrTime = new double[ arrHilb.length ];
-
-    int k = 0;
-    int h = arrHilb.length >> 1;
-    for( int i = 0; i < h; i++ ) {
-
-      for( int j = 0; j < _waveLength; j++ ) {
-
-        k = ( i << 1 ) + j;
-        if( k >= arrHilb.length )
-          k -= arrHilb.length;
-
-        arrTime[ k ] += ( arrHilb[ i ] * _scales[ j ] + arrHilb[ i + h ]
-            * _coeffs[ j ] ); // adding up details times energy (approximation)
-
-      } // wavelet
-
-    } //  h
-
-    return arrTime;
-  } // reverse
 
 } // class

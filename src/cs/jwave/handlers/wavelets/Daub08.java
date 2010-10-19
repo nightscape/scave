@@ -62,7 +62,7 @@ public class Daub08 extends Wavelet {
       _scales[ i ] /= sqrt02;
 
     _coeffs = new double[ _waveLength ];
-    
+
     _coeffs[ 0 ] = _scales[ 7 ]; //  h7
     _coeffs[ 1 ] = -_scales[ 6 ]; // -h6
     _coeffs[ 2 ] = _scales[ 5 ]; //  h5
@@ -73,76 +73,5 @@ public class Daub08 extends Wavelet {
     _coeffs[ 7 ] = -_scales[ 0 ]; // -h0
 
   } // Daub08
-
-  /**
-   * The forward wavelet transform using the Ingrid Daubechies' wavelet of eight
-   * coefficients. The arrHilb array keeping coefficients of Hilbert domain
-   * should be of length 2 to the power of p -- length = 2^p where p is a
-   * positive integer.
-   * 
-   * @date 26.03.2010 07:35:31
-   * @author Christian Scheiblich
-   * @see cs.jwave.handlers.wavelets.Wavelet#forward(double[])
-   */
-  @Override
-  public double[ ] forward( double[ ] arrTime ) {
-
-    double[ ] arrHilb = new double[ arrTime.length ];
-
-    int k = 0;
-    int h = arrTime.length >> 1;
-
-    for( int i = 0; i < h; i++ ) {
-
-      for( int j = 0; j < _waveLength; j++ ) {
-
-        k = ( i << 1 ) + j;
-        if( k >= arrTime.length )
-          k -= arrTime.length;
-
-        arrHilb[ i ] += arrTime[ k ] * _scales[ j ]; // low pass filter - energy
-        arrHilb[ i + h ] += arrTime[ k ] * _coeffs[ j ]; // high pass filter - details 
-
-      } // wavelet
-
-    } // h
-
-    return arrHilb;
-  } // forward
-
-  /**
-   * The reverse wavelet transform using the Ingrid Daubechies' wavelet of eight
-   * coefficients. The arrHilb array keeping coefficients of Hilbert domain
-   * should be of length 2 to the power of p -- length = 2^p where p is a
-   * positive integer.
-   * 
-   * @date 26.03.2010 07:35:31
-   * @author Christian Scheiblich
-   * @see cs.jwave.handlers.wavelets.Wavelet#reverse(double[])
-   */
-  @Override
-  public double[ ] reverse( double[ ] arrHilb ) {
-
-    double[ ] arrTime = new double[ arrHilb.length ];
-
-    int k = 0;
-    int h = arrHilb.length >> 1;
-    for( int i = 0; i < h; i++ ) {
-
-      for( int j = 0; j < _waveLength; j++ ) {
-
-        k = ( i << 1 ) + j;
-        if( k >= arrHilb.length )
-          k -= arrHilb.length;
-
-        arrTime[ k ] += ( arrHilb[ i ] * _scales[ j ] + arrHilb[ i + h ]
-            * _coeffs[ j ] ); // adding up details times energy
-
-      } // wavelet
-
-    } //  h
-
-    return arrTime;
-  } // reverse
 
 } // class
