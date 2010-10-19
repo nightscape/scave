@@ -32,9 +32,9 @@ import cs.jwave.handlers.DiscreteFourierTransform;
 import cs.jwave.handlers.FastWaveletTransform;
 import cs.jwave.handlers.WaveletPacketTransform;
 import cs.jwave.handlers.wavelets.Coif06;
+import cs.jwave.handlers.wavelets.Daub02;
+import cs.jwave.handlers.wavelets.Daub03;
 import cs.jwave.handlers.wavelets.Daub04;
-import cs.jwave.handlers.wavelets.Daub06;
-import cs.jwave.handlers.wavelets.Daub08;
 import cs.jwave.handlers.wavelets.Haar02;
 import cs.jwave.handlers.wavelets.Haar02Orthogonal;
 import cs.jwave.handlers.wavelets.Lege02;
@@ -458,7 +458,7 @@ public class JUnitTests {
 
     showTime( arrTime );
 
-    Transform t = new Transform( new FastWaveletTransform( new Daub04( ) ) );
+    Transform t = new Transform( new FastWaveletTransform( new Daub02( ) ) );
     double[ ] arrHilb = t.forward( arrTime );
 
     showHilb( arrHilb );
@@ -483,7 +483,7 @@ public class JUnitTests {
 
     showHilb( arrHilb );
 
-    Transform t = new Transform( new FastWaveletTransform( new Daub04( ) ) );
+    Transform t = new Transform( new FastWaveletTransform( new Daub02( ) ) );
     double[ ] arrTime = t.reverse( arrHilb );
 
     showTime( arrTime );
@@ -558,7 +558,7 @@ public class JUnitTests {
 
     showTime( arrTime );
 
-    Transform t = new Transform( new FastWaveletTransform( new Daub06( ) ) );
+    Transform t = new Transform( new FastWaveletTransform( new Daub03( ) ) );
     double[ ] arrHilb = t.forward( arrTime );
 
     showHilb( arrHilb );
@@ -583,7 +583,7 @@ public class JUnitTests {
 
     showHilb( arrHilb );
 
-    Transform t = new Transform( new FastWaveletTransform( new Daub06( ) ) );
+    Transform t = new Transform( new FastWaveletTransform( new Daub03( ) ) );
     double[ ] arrTime = t.reverse( arrHilb );
 
     showTime( arrTime );
@@ -709,7 +709,7 @@ public class JUnitTests {
 
     showTime( arrTime );
 
-    Transform t = new Transform( new FastWaveletTransform( new Daub08( ) ) );
+    Transform t = new Transform( new FastWaveletTransform( new Daub04( ) ) );
     double[ ] arrHilb = t.forward( arrTime );
 
     showHilb( arrHilb );
@@ -736,7 +736,7 @@ public class JUnitTests {
 
     showHilb( arrHilb );
 
-    Transform t = new Transform( new FastWaveletTransform( new Daub08( ) ) );
+    Transform t = new Transform( new FastWaveletTransform( new Daub04( ) ) );
     double[ ] arrTime = t.reverse( arrHilb );
 
     showTime( arrTime );
@@ -949,7 +949,7 @@ public class JUnitTests {
 
     showTime( arrTime );
 
-    Transform t = new Transform( new WaveletPacketTransform( new Daub04( ) ) );
+    Transform t = new Transform( new WaveletPacketTransform( new Daub02( ) ) );
     double[ ] arrHilb = t.forward( arrTime );
 
     showHilb( arrHilb );
@@ -978,7 +978,7 @@ public class JUnitTests {
 
     showHilb( arrHilb );
 
-    Transform t = new Transform( new WaveletPacketTransform( new Daub04( ) ) );
+    Transform t = new Transform( new WaveletPacketTransform( new Daub02( ) ) );
     double[ ] arrTime = t.reverse( arrHilb );
 
     showTime( arrTime );
@@ -1168,7 +1168,7 @@ public class JUnitTests {
 
     double[ ] arrTime = { 1., 1., 1., 1. };
 
-    testFastWaveletTransformRounding( arrTime, new Daub04( ), delta );
+    testFastWaveletTransformRounding( arrTime, new Daub02( ), delta );
 
   } // testRounding
 

@@ -46,7 +46,7 @@ public class WaveletPacketTransform extends BasicTransform {
    * @date 23.02.2010 13:44:05
    * @author Christian Scheiblich
    * @param wavelet
-   *          object of type Wavelet; Haar02, Daub04, Coif06, ...
+   *          object of type Wavelet; Haar02, Daub02, Coif06, ...
    */
   public WaveletPacketTransform( Wavelet wavelet ) {
     _wavelet = wavelet;

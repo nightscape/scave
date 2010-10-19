@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file Daub06.java is part of JWave.
+ * This file Daub03.java is part of JWave.
  *
  * @author Christian Scheiblich
  * date 25.03.2010 14:03:20
@@ -30,7 +30,7 @@ package cs.jwave.handlers.wavelets;
  * @date 25.03.2010 14:03:20
  * @author Christian Scheiblich
  */
-public class Daub06 extends Wavelet {
+public class Daub03 extends Wavelet {
 
   /**
    * Constructor setting up the orthonormal Daubechie6 wavelet coeffs and the
@@ -39,7 +39,7 @@ public class Daub06 extends Wavelet {
    * @date 25.03.2010 14:03:20
    * @author Christian Scheiblich
    */
-  public Daub06( ) {
+  public Daub03( ) {
 
     _waveLength = 6;
 
@@ -65,6 +65,6 @@ public class Daub06 extends Wavelet {
     _coeffs[ 4 ] = _scales[ 1 ]; //    h1
     _coeffs[ 5 ] = -_scales[ 0 ]; //  -h0
 
-  } // Daub06
+  } // Daub03
 
 } // class

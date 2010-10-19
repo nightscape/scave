@@ -45,7 +45,7 @@ public class FastWaveletTransform extends BasicTransform {
    * @date 10.02.2010 08:10:42
    * @author Christian Scheiblich
    * @param wavelet
-   *          object of type Wavelet; Haar02, Daub04, Coif06, ...
+   *          object of type Wavelet; Haar02, Daub02, Coif06, ...
    */
   public FastWaveletTransform( Wavelet wavelet ) {
     _wavelet = wavelet;
