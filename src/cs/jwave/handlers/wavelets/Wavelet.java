@@ -84,7 +84,7 @@ public abstract class Wavelet {
       for( int j = 0; j < _waveLength; j++ ) {
 
         k = ( i << 1 ) + j;
-        if( k >= arrTime.length )
+        while( k >= arrTime.length )
           k -= arrTime.length;
 
         arrHilb[ i ] += arrTime[ k ] * _scales[ j ]; // low pass filter - energy (approximation)
@@ -120,7 +120,7 @@ public abstract class Wavelet {
       for( int j = 0; j < _waveLength; j++ ) {
 
         k = ( i << 1 ) + j;
-        if( k >= arrHilb.length )
+        while( k >= arrHilb.length )
           k -= arrHilb.length;
 
         arrTime[ k ] += ( arrHilb[ i ] * _scales[ j ] + arrHilb[ i + h ]
