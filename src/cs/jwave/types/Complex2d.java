@@ -165,10 +165,21 @@ public class Complex2d {
   } // toArr
 
   /**
+   * Returns the conjugate complex number of this complex number
+   * 
+   * @date 19.11.2010 19:36:52
+   * @author Thomas Leduc
+   * @return new object of Complex2d keeping the result
+   */
+  public Complex2d conjugate( ) {
+    return new Complex2d( _r, -_j );
+  } // conjugate
+
+  /**
    * Add another complex number to this one and return.
    * 
    * @date 19.11.2010 13:25:55
-   * @author Veronika Reinauer
+   * @author Christian Scheiblich
    * @param c
    *          complex number
    * @return new object of Complex2d keeping the result
@@ -219,44 +230,69 @@ public class Complex2d {
   /**
    * Divide this complex number by another one.
    * 
-   * @author Christian Scheiblich
+   * @date 19.11.2010 19:45:02
+   * @author Thomas Leduc
    * @param c
    *          complex number
    * @return new object of Complex2d keeping the result
    */
   public Complex2d div( Complex2d c ) {
-    return new Complex2d( ( _r * c._r + _j * c._j )
-        / ( c._r * c._r + c._j * c._j ), ( _j * c._r - _r * c._j )
-        / ( c._r * c._r + c._j * c._j ) );
+    return mul( c.conjugate( ) ).div( c._r * c._r + c._j * c._j );
   } // div
 
   /**
    * Divide this complex number by a scalar.
    * 
    * @date 19.11.2010 13:29:49
-   * @author Christian Scheiblich
+   * @author Thomas Leduc
    * @param s
    *          scalar
    * @return new object of Complex2d keeping the result
    */
   public Complex2d div( double s ) {
-    return new Complex2d( _r / s, _j / s );
+    return mul( 1. / s );
   } // div
+
+  /**
+   * Generates a hash code for this object.
+   * 
+   * @date 19.11.2010 19:42:39
+   * @author Thomas Leduc
+   * @see java.lang.Object#hashCode()
+   */
+  @Override
+  public int hashCode( ) {
+    final int prime = 31;
+    int result = 1;
+    long temp;
+    temp = Double.doubleToLongBits( _j );
+    result = prime * result + (int)( temp ^ ( temp >>> 32 ) );
+    temp = Double.doubleToLongBits( _r );
+    result = prime * result + (int)( temp ^ ( temp >>> 32 ) );
+    return result;
+  } // hashCode  
 
   /**
    * Compare this Complex number with another one.
    * 
    * @date 19.11.2010 13:30:35
-   * @author Christian Scheiblich
+   * @author Thomas Leduc
    * @see java.lang.Object#equals(java.lang.Object)
    */
   @Override
-  public boolean equals( Object o ) {
-    if( !( o instanceof Complex2d ) )
-      throw new IllegalArgumentException(
-          "Complex.equals argument must be a Complex" );
-    Complex2d c = (Complex2d)o;
-    return _r == c._r && _j == c._j;
+  public boolean equals( Object obj ) {
+    if( this == obj )
+      return true;
+    if( obj == null )
+      return false;
+    if( getClass( ) != obj.getClass( ) )
+      return false;
+    Complex2d other = (Complex2d)obj;
+    if( Double.doubleToLongBits( _j ) != Double.doubleToLongBits( other._j ) )
+      return false;
+    if( Double.doubleToLongBits( _r ) != Double.doubleToLongBits( other._r ) )
+      return false;
+    return true;
   } // equals
 
   /**
