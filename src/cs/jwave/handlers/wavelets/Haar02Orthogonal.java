@@ -86,9 +86,6 @@ public class Haar02Orthogonal extends Wavelet {
     // to their differing "energy" or norm (||.||_2). If an "orthonormal" wavelet is
     // taken, the ||.||_2 norm does not change at any size or any transform level. This
     // allows for combining wavelet sub spaces of different dimension or even level.
-    // E. g. using several 2-D haar wavelet transform for compressing a systems of linear
-    // equations transforms of different size or level. It still allows for solving the
-    // system of linear equations in wavelet sub spaces.
 
     // Also possible coefficients -> change forward and reverse functions in common
     // _coeffs[ 0 ] = .5; // w0 
