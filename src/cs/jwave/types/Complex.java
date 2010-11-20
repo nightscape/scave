@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file Complex2d.java is part of JWave.
+ * This file Complex.java is part of JWave.
  *
  * @author Christian Scheiblich
  * date 19.11.2010 13:20:28
@@ -31,15 +31,15 @@ package cs.jwave.types;
  * @date 19.11.2010 13:20:48
  * @author Christian Scheiblich
  */
-public class Complex2d {
+public class Complex {
 
   /**
-   * The real number
+   * The real number.
    */
   private double _r;
 
   /**
-   * The imaginary number
+   * The imaginary number.
    */
   private double _j;
 
@@ -49,7 +49,7 @@ public class Complex2d {
    * @date 19.11.2010 13:38:56
    * @author Christian Scheiblich
    */
-  public Complex2d( ) {
+  public Complex( ) {
     _r = 0.;
     _j = 0.;
   } // Complex
@@ -62,10 +62,10 @@ public class Complex2d {
    * @param c
    *          complex number
    */
-  public Complex2d( Complex2d c ) {
+  public Complex( Complex c ) {
     _r = c._r;
     _j = c._j;
-  } // Complex2d
+  } // Complex
 
   /**
    * Constructor taking real and imaginary number.
@@ -77,13 +77,13 @@ public class Complex2d {
    * @param j
    *          imaginary number
    */
-  public Complex2d( double r, double j ) {
+  public Complex( double r, double j ) {
     _r = r;
     _j = j;
   } // Complex
 
   /**
-   * Display the current Complex as a String, for use in println( ) and
+   * Display the current Complex as a String, for usage in println( ) and
    * elsewhere.
    * 
    * @date 19.11.2010 13:23:13
@@ -120,7 +120,7 @@ public class Complex2d {
   } // getImag
 
   /**
-   * Calculate the magnitude of the complex number
+   * Calculate the magnitude of the complex number.
    * 
    * @date 19.11.2010 13:24:28
    * @author Christian Scheiblich
@@ -153,7 +153,7 @@ public class Complex2d {
   } // getPhi( )
 
   /**
-   * Returns the stored values as new double array: [ real, imag ]
+   * Returns the stored values as new double array: [ real, imag ].
    * 
    * @date 19.11.2010 13:25:38
    * @author Christian Scheiblich
@@ -165,14 +165,14 @@ public class Complex2d {
   } // toArr
 
   /**
-   * Returns the conjugate complex number of this complex number
+   * Returns the conjugate complex number of this complex number.
    * 
    * @date 19.11.2010 19:36:52
    * @author Thomas Leduc
-   * @return new object of Complex2d keeping the result
+   * @return new object of Complex keeping the result
    */
-  public Complex2d conjugate( ) {
-    return new Complex2d( _r, -_j );
+  public Complex conjugate( ) {
+    return new Complex( _r, -_j );
   } // conjugate
 
   /**
@@ -182,10 +182,10 @@ public class Complex2d {
    * @author Christian Scheiblich
    * @param c
    *          complex number
-   * @return new object of Complex2d keeping the result
+   * @return new object of Complex keeping the result
    */
-  public Complex2d add( Complex2d c ) {
-    return new Complex2d( _r + c._r, _j + c._j );
+  public Complex add( Complex c ) {
+    return new Complex( _r + c._r, _j + c._j );
   } // add
 
   /**
@@ -195,10 +195,10 @@ public class Complex2d {
    * @author Christian Scheiblich
    * @param c
    *          complex number
-   * @return new object of Complex2d keeping the result
+   * @return new object of Complex keeping the result
    */
-  public Complex2d sub( Complex2d c ) {
-    return new Complex2d( _r - c._r, _j - c._j );
+  public Complex sub( Complex c ) {
+    return new Complex( _r - c._r, _j - c._j );
   } // sub
 
   /**
@@ -208,10 +208,10 @@ public class Complex2d {
    * @author Christian Scheiblich
    * @param c
    *          complex number
-   * @return new object of Complex2d keeping the result
+   * @return new object of Complex keeping the result
    */
-  public Complex2d mul( Complex2d c ) {
-    return new Complex2d( _r * c._r - _j * c._j, _r * c._j + _j * c._r );
+  public Complex mul( Complex c ) {
+    return new Complex( _r * c._r - _j * c._j, _r * c._j + _j * c._r );
   } // mul
 
   /**
@@ -221,10 +221,10 @@ public class Complex2d {
    * @author Christian Scheiblich
    * @param s
    *          scalar
-   * @return new object of Complex2d keeping the result
+   * @return new object of Complex keeping the result
    */
-  public Complex2d mul( double s ) {
-    return new Complex2d( _r * s, _j * s );
+  public Complex mul( double s ) {
+    return new Complex( _r * s, _j * s );
   } // mul
 
   /**
@@ -234,9 +234,9 @@ public class Complex2d {
    * @author Thomas Leduc
    * @param c
    *          complex number
-   * @return new object of Complex2d keeping the result
+   * @return new object of Complex keeping the result
    */
-  public Complex2d div( Complex2d c ) {
+  public Complex div( Complex c ) {
     return mul( c.conjugate( ) ).div( c._r * c._r + c._j * c._j );
   } // div
 
@@ -247,9 +247,9 @@ public class Complex2d {
    * @author Thomas Leduc
    * @param s
    *          scalar
-   * @return new object of Complex2d keeping the result
+   * @return new object of Complex keeping the result
    */
-  public Complex2d div( double s ) {
+  public Complex div( double s ) {
     return mul( 1. / s );
   } // div
 
@@ -287,7 +287,7 @@ public class Complex2d {
       return false;
     if( getClass( ) != obj.getClass( ) )
       return false;
-    Complex2d other = (Complex2d)obj;
+    Complex other = (Complex)obj;
     if( Double.doubleToLongBits( _j ) != Double.doubleToLongBits( other._j ) )
       return false;
     if( Double.doubleToLongBits( _r ) != Double.doubleToLongBits( other._r ) )
