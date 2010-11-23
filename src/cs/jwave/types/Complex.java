@@ -120,6 +120,78 @@ public class Complex {
   } // getImag
 
   /**
+   * Set the real number.
+   * 
+   * @date 23.11.2010 18:44:52
+   * @author Christian Scheiblich
+   * @param r
+   *          the real number
+   */
+  public void setReal( double r ) {
+    _r = r;
+  } // setReal
+
+  /**
+   * Set the imaginary number.
+   * 
+   * @date 23.11.2010 18:45:16
+   * @author Christian Scheiblich
+   * @param j
+   *          the imaginary number
+   */
+  public void setImag( double j ) {
+    _j = j;
+  } // setImag
+
+  /**
+   * Add to real number.
+   * 
+   * @date 23.11.2010 18:49:57
+   * @author Christian Scheiblich
+   * @param r
+   *          the real number
+   */
+  public void addReal( double r ) {
+    _r += r;
+  } // addReal
+
+  /**
+   * Add to imaginary number.
+   * 
+   * @date 23.11.2010 18:50:23
+   * @author Christian Scheiblich
+   * @param j
+   *          the imaginary number
+   */
+  public void addImag( double j ) {
+    _j += j;
+  } // addImag
+
+  /**
+   * multiply scalar to real number.
+   * 
+   * @date 23.11.2010 18:53:27
+   * @author Christian Scheiblich
+   * @param s
+   *          scalar
+   */
+  public void mulReal( double s ) {
+    _r *= s;
+  } // mulReal
+
+  /**
+   * multiply scalar to imaginary number.
+   * 
+   * @date 23.11.2010 18:54:48
+   * @author Christian Scheiblich
+   * @param s
+   *          scalar
+   */
+  public void mulImag( double s ) {
+    _j *= s;
+  } // mulImag
+
+  /**
    * Calculate the magnitude of the complex number.
    * 
    * @date 19.11.2010 13:24:28

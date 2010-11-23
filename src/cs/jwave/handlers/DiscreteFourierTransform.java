@@ -23,6 +23,8 @@
  */
 package cs.jwave.handlers;
 
+import cs.jwave.types.Complex;
+
 /**
  * The Discrete Fourier Transform (DFT) is - as the name says - the discrete
  * version of the Fourier Transform applied to a discrete complex valued series.
@@ -135,7 +137,96 @@ public class DiscreteFourierTransform extends BasicTransform {
         arrTime[ iR ] += arrFreq[ kR ] * cos - arrFreq[ kC ] * sin;
         arrTime[ iC ] += arrFreq[ kR ] * sin + arrFreq[ kC ] * cos;
 
-      } // a
+      } // k
+
+    } // i
+
+    return arrTime;
+  } // reverse
+
+  /**
+   * The 1-D forward version of the Discrete Fourier Transform (DFT); The input
+   * array arrTime is organized by a class called Complex keeping real and
+   * imaginary part of a complex number. The output arrFreq is organized by the
+   * same scheme.
+   * 
+   * @date 23.11.2010 18:57:34
+   * @author Christian Scheiblich
+   * @param arrTime
+   *          array of type Complex keeping coefficients of complex numbers
+   * @return array of type Complex keeping the discrete fourier transform
+   *         coefficients
+   */
+  public Complex[ ] forward( Complex[ ] arrTime ) {
+
+    int n = arrTime.length;
+
+    Complex[ ] arrFreq = new Complex[ n ]; // result
+
+    for( int i = 0; i < n; i++ ) {
+
+      arrFreq[ i ] = new Complex( ); // 0. , 0.
+
+      double arg = -2. * Math.PI * (double)i / (double)n;
+
+      for( int k = 0; k < n; k++ ) {
+
+        double cos = Math.cos( k * arg );
+        double sin = Math.sin( k * arg );
+
+        double real = arrTime[ k ].getReal( );
+        double imag = arrTime[ k ].getImag( );
+
+        arrFreq[ i ].addReal( real * cos - imag * sin );
+        arrFreq[ i ].addImag( real * sin + imag * cos );
+
+      } // k
+
+      arrFreq[ i ].mulReal(  1. / (double)n );
+      arrFreq[ i ].mulImag(  1. / (double)n );
+
+    } // i
+
+    return arrFreq;
+  } // forward
+
+  /**
+   * The 1-D reverse version of the Discrete Fourier Transform (DFT); The input
+   * array arrFreq is organized by a class called Complex keeping real and
+   * imaginary part of a complex number. The output arrTime is organized by the
+   * same scheme.
+   * 
+   * @date 23.11.2010 19:02:12
+   * @author Christian Scheiblich
+   * @param arrFreq
+   *          array of type Complex keeping the discrete fourier transform
+   *          coefficients
+   * @return array of type Complex keeping coefficients of tiem domain
+   */
+  public Complex[ ] reverse( Complex[ ] arrFreq ) {
+
+    int n = arrFreq.length;
+    Complex[ ] arrTime = new Complex[ n ]; // result
+
+    for( int i = 0; i < n; i++ ) {
+
+      arrTime[ i ] = new Complex( ); // 0. , 0. 
+
+      double arg = 2. * Math.PI * (double)i / (double)n;
+
+      for( int k = 0; k < n; k++ ) {
+
+        double cos = Math.cos( k * arg );
+        double sin = Math.sin( k * arg );
+
+        double real = arrFreq[ k ].getReal( );
+        double imag = arrFreq[ k ].getImag( );
+
+        arrTime[ i ].addReal( real * cos - imag * sin );
+        arrTime[ i ].addImag( real * sin + imag * cos );
+
+      } // k
+
     } // i
 
     return arrTime;

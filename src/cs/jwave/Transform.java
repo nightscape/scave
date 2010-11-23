@@ -24,6 +24,7 @@
 package cs.jwave;
 
 import cs.jwave.handlers.BasicTransform;
+import cs.jwave.types.Complex;
 
 /**
  * Base class for transforms like DiscreteFourierTransform,
@@ -76,6 +77,37 @@ public class Transform {
     return _basicTransform.reverse( arrFreq );
   } // reverse
 
+
+  /**
+   * Performs the forward transform from time domain to frequency or Hilbert
+   * domain for a given array depending on the used transform algorithm by
+   * inheritance.
+   * 
+   * @date 23.11.2010 19:19:24
+   * @author Christian Scheiblich
+   * @param arrTime
+   *          coefficients of 1-D time domain
+   * @return coefficients of 1-D frequency or Hilbert domain
+   */
+  public Complex[ ] forward( Complex[ ] arrTime ) {
+    return _basicTransform.forward( arrTime );
+  } // forward
+
+  /**
+   * Performs the reverse transform from frequency or Hilbert domain to time
+   * domain for a given array depending on the used transform algorithm by
+   * inheritance.
+   * 
+   * @date 23.11.2010 19:19:33
+   * @author Christian Scheiblich
+   * @param arrFreq
+   *          coefficients of 1-D frequency or Hilbert domain
+   * @return coefficients of 1-D time domain
+   */
+  public Complex[ ] reverse( Complex[ ] arrFreq ) {
+    return _basicTransform.reverse( arrFreq );
+  } // reverse
+  
   /**
    * Performs the 2-D forward transform of the specified BasicWave object.
    * 

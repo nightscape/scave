@@ -41,6 +41,7 @@ import cs.jwave.handlers.wavelets.Lege02;
 import cs.jwave.handlers.wavelets.Lege04;
 import cs.jwave.handlers.wavelets.Lege06;
 import cs.jwave.handlers.wavelets.Wavelet;
+import cs.jwave.types.Complex;
 
 /**
  * Tests for the class cs.jwave.Transform.
@@ -50,55 +51,27 @@ import cs.jwave.handlers.wavelets.Wavelet;
  */
 public class JUnitTests {
 
-  /**
-   * Test method for {@link cs.jwave.Transform#forward(double[])}.
-   */
-  @Test
-  public void testDiscreteFourierTransformForwardArray( ) {
+  public void assertArray( Complex[ ] expected, Complex[ ] actual, double delta ) {
 
-    System.out.println( "" );
-    System.out.println( "testDiscreteFourierTransformForwardArray" );
+    int expectedLength = expected.length;
+    int actualLength = actual.length;
 
-    double delta = 1.e-12;
+    assertEquals( expectedLength, actualLength );
 
-    double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1., 1. };
+    for( int c = 0; c < expectedLength; c++ ) {
 
-    showTime( arrTime );
+      double expectedReal = expected[ c ].getReal( );
+      double expectedImag = expected[ c ].getImag( );
 
-    Transform t = new Transform( new DiscreteFourierTransform( ) );
-    double[ ] arrFreq = t.forward( arrTime );
+      double actualReal = actual[ c ].getReal( );
+      double actualImag = actual[ c ].getImag( );
 
-    showFreq( arrFreq );
+      assertEquals( expectedReal, actualReal, delta );
+      assertEquals( expectedImag, actualImag, delta );
 
-    double[ ] expected = { 1., 1., 0., 0., 0., 0, 0., 0. };
-    assertArray( expected, arrFreq, delta );
+    } // c    
 
-  }
-
-  /**
-   * Test method for {@link cs.jwave.Transform#reverse(double[])}.
-   */
-  @Test
-  public void testDiscreteFourierTransformReverseArray( ) {
-
-    System.out.println( "" );
-    System.out.println( "testDiscreteFourierTransformReverseArray" );
-
-    double delta = 1e-12;
-
-    double[ ] arrFreq = { 1., 1., 0., 0., 0., 0, 0., 0. };
-
-    showHilb( arrFreq );
-
-    Transform t = new Transform( new DiscreteFourierTransform( ) );
-    double[ ] arrTime = t.reverse( arrFreq );
-
-    showTime( arrTime );
-
-    double[ ] expected = { 1., 1., 1., 1., 1., 1., 1., 1. };
-    assertArray( expected, arrTime, delta );
-
-  }
+  } // assertArray
 
   /**
    * Test method for {@link cs.jwave.Transform#forward(double[])}.
@@ -1312,6 +1285,20 @@ public class JUnitTests {
       System.out.print( arrHilb[ c ] + " " );
     System.out.println( "" );
   } // showHilb
+
+  protected void showTime( Complex[ ] arrTime ) {
+    System.out.print( "time domain: " + "\t" + "\t" );
+    for( int c = 0; c < arrTime.length; c++ )
+      System.out.print( arrTime[ c ].toString( ) + " " );
+    System.out.println( "" );
+  } // showTime
+
+  protected void showFreq( Complex[ ] arrFreq ) {
+    System.out.print( "frequency domain: " + "\t" );
+    for( int c = 0; c < arrFreq.length; c++ )
+      System.out.print( arrFreq[ c ].toString( ) + " " );
+    System.out.println( "" );
+  } // showHilb  
 
   protected void showTime( double[ ][ ] matrixTime ) {
     System.out.println( "time domain: " + "\t" );

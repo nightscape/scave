@@ -23,6 +23,8 @@
  */
 package cs.jwave.handlers;
 
+import cs.jwave.types.Complex;
+
 /**
  * Basic Wave for transformations like Fast Fourier Transform (FFT), Fast
  * Wavelet Transform (FWT), or Fast Wavelet Packet Transform (WPT). Naming of
@@ -68,6 +70,36 @@ public abstract class BasicTransform {
    * @return coefficients of 1-D time domain
    */
   public abstract double[ ] reverse( double[ ] arrFreq );
+
+  /**
+   * Performs the forward transform from time domain to frequency or Hilbert
+   * domain for a given array depending on the used transform algorithm by
+   * inheritance.
+   * 
+   * @date 23.11.2010 19:17:46
+   * @author Christian Scheiblich
+   * @param arrTime
+   *          coefficients of 1-D time domain
+   * @return coefficients of 1-D frequency or Hilbert domain
+   */
+  public Complex[ ] forward( Complex[ ] arrTime ) {
+    return null;
+  }
+
+  /**
+   * Performs the reverse transform from frequency or Hilbert domain to time
+   * domain for a given array depending on the used transform algorithm by
+   * inheritance.
+   * 
+   * @date 23.11.2010 19:17:59
+   * @author Christian Scheiblich
+   * @param arrFreq
+   *          coefficients of 1-D frequency or Hilbert domain
+   * @return coefficients of 1-D time domain
+   */
+  public Complex[ ] reverse( Complex[ ] arrFreq ) {
+    return null;
+  }
 
   /**
    * Performs the forward transform from time domain to frequency or Hilbert
