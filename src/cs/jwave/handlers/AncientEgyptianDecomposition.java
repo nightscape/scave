@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file FastWaveletTransformArbitrary.java is part of JWave.
+ * This file AncientEgyptianDecomposition.java is part of JWave.
  *
  * @author Christian Scheiblich
  * date 14.08.2010 10:43:28

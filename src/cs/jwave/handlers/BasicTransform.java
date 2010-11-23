@@ -84,7 +84,7 @@ public abstract class BasicTransform {
    */
   public Complex[ ] forward( Complex[ ] arrTime ) {
     return null;
-  }
+  } // forward
 
   /**
    * Performs the reverse transform from frequency or Hilbert domain to time
@@ -99,7 +99,7 @@ public abstract class BasicTransform {
    */
   public Complex[ ] reverse( Complex[ ] arrFreq ) {
     return null;
-  }
+  } // reverse
 
   /**
    * Performs the forward transform from time domain to frequency or Hilbert

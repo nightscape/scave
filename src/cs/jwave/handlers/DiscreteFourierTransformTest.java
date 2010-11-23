@@ -23,8 +23,6 @@
  */
 package cs.jwave.handlers;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 import cs.jwave.JUnitTests;
