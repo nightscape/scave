@@ -21,9 +21,11 @@
  * date 19.11.2010 13:41:10
  * contact source@linux23.de
  */
-package cs.jwave.types;
+package test.java.cs.jwave.types;
 
 import static org.junit.Assert.*;
+
+import main.java.cs.jwave.types.Complex;
 
 import org.junit.Test;
 

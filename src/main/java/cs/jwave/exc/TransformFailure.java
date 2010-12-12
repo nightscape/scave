@@ -21,7 +21,7 @@
  * date 23.02.2010 05:42:23
  * contact source@linux23.de
  */
-package cs.jwave.exc;
+package main.java.cs.jwave.exc;
 
 /**
  * Marking failures for this package; failures that are recoverable

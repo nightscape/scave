@@ -21,7 +21,7 @@
  * date 19.11.2010 13:20:28
  * contact source@linux23.de
  */
-package cs.jwave.types;
+package main.java.cs.jwave.types;
 
 /**
  * A class to represent a Complex Number. A Complex object is immutable once

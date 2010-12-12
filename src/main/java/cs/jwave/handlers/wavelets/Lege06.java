@@ -21,7 +21,7 @@
  * date 03.06.2010 22:04:35
  * contact source@linux23.de
  */
-package cs.jwave.handlers.wavelets;
+package main.java.cs.jwave.handlers.wavelets;
 
 /**
  * Legendre's orthonormal wavelet of six coefficients and the scales; normed,

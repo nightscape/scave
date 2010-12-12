@@ -21,10 +21,10 @@
  * date 23.02.2010 05:42:23
  * contact source@linux23.de
  */
-package cs.jwave;
+package main.java.cs.jwave;
 
-import cs.jwave.handlers.BasicTransform;
-import cs.jwave.types.Complex;
+import main.java.cs.jwave.handlers.BasicTransform;
+import main.java.cs.jwave.types.Complex;
 
 /**
  * Base class for transforms like DiscreteFourierTransform,

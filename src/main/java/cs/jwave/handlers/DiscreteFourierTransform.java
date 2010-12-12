@@ -21,9 +21,9 @@
  * date 25.03.2010 19:56:29
  * contact source@linux23.de
  */
-package cs.jwave.handlers;
+package main.java.cs.jwave.handlers;
 
-import cs.jwave.types.Complex;
+import main.java.cs.jwave.types.Complex;
 
 /**
  * The Discrete Fourier Transform (DFT) is - as the name says - the discrete

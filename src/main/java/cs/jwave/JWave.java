@@ -21,21 +21,21 @@
  * date 23.02.2010 14:26:47
  * contact source@linux23.de
  */
-package cs.jwave;
+package main.java.cs.jwave;
 
-import cs.jwave.handlers.BasicTransform;
-import cs.jwave.handlers.DiscreteFourierTransform;
-import cs.jwave.handlers.FastWaveletTransform;
-import cs.jwave.handlers.WaveletPacketTransform;
-import cs.jwave.handlers.wavelets.Coif06;
-import cs.jwave.handlers.wavelets.Daub02;
-import cs.jwave.handlers.wavelets.Daub03;
-import cs.jwave.handlers.wavelets.Daub04;
-import cs.jwave.handlers.wavelets.Haar02;
-import cs.jwave.handlers.wavelets.Lege02;
-import cs.jwave.handlers.wavelets.Lege04;
-import cs.jwave.handlers.wavelets.Lege06;
-import cs.jwave.handlers.wavelets.Wavelet;
+import main.java.cs.jwave.handlers.BasicTransform;
+import main.java.cs.jwave.handlers.DiscreteFourierTransform;
+import main.java.cs.jwave.handlers.FastWaveletTransform;
+import main.java.cs.jwave.handlers.WaveletPacketTransform;
+import main.java.cs.jwave.handlers.wavelets.Coif06;
+import main.java.cs.jwave.handlers.wavelets.Daub02;
+import main.java.cs.jwave.handlers.wavelets.Daub03;
+import main.java.cs.jwave.handlers.wavelets.Daub04;
+import main.java.cs.jwave.handlers.wavelets.Haar02;
+import main.java.cs.jwave.handlers.wavelets.Lege02;
+import main.java.cs.jwave.handlers.wavelets.Lege04;
+import main.java.cs.jwave.handlers.wavelets.Lege06;
+import main.java.cs.jwave.handlers.wavelets.Wavelet;
 
 /**
  * Main class for doing little test runs for different transform types and

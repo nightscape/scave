@@ -21,17 +21,19 @@
  * date 23.02.2010 05:42:23
  * contact source@linux23.de
  */
-package cs.jwave;
+package test.java.cs.jwave;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import cs.jwave.handlers.FastWaveletTransform;
-import cs.jwave.handlers.wavelets.Coif06;
-import cs.jwave.handlers.wavelets.Daub02;
-import cs.jwave.handlers.wavelets.Haar02;
-import cs.jwave.handlers.wavelets.Wavelet;
-import cs.jwave.types.Complex;
+import main.java.cs.jwave.Transform;
+import main.java.cs.jwave.handlers.BasicTransform;
+import main.java.cs.jwave.handlers.FastWaveletTransform;
+import main.java.cs.jwave.handlers.wavelets.Coif06;
+import main.java.cs.jwave.handlers.wavelets.Daub02;
+import main.java.cs.jwave.handlers.wavelets.Haar02;
+import main.java.cs.jwave.handlers.wavelets.Wavelet;
+import main.java.cs.jwave.types.Complex;
 
 /**
  * Tests for the class cs.jwave.Transform.

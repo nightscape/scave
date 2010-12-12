@@ -21,21 +21,23 @@
  * date 23.11.2010 19:40:11
  * contact source@linux23.de
  */
-package cs.jwave.handlers;
+package test.java.cs.jwave.handlers;
+
+import main.java.cs.jwave.handlers.FastWaveletTransform;
 
 import org.junit.Test;
 
-import cs.jwave.JUnitTests;
-import cs.jwave.Transform;
-import cs.jwave.handlers.wavelets.Coif06;
-import cs.jwave.handlers.wavelets.Daub02;
-import cs.jwave.handlers.wavelets.Daub03;
-import cs.jwave.handlers.wavelets.Daub04;
-import cs.jwave.handlers.wavelets.Haar02;
-import cs.jwave.handlers.wavelets.Haar02Orthogonal;
-import cs.jwave.handlers.wavelets.Lege02;
-import cs.jwave.handlers.wavelets.Lege04;
-import cs.jwave.handlers.wavelets.Lege06;
+import test.java.cs.jwave.JUnitTests;
+import main.java.cs.jwave.Transform;
+import main.java.cs.jwave.handlers.wavelets.Coif06;
+import main.java.cs.jwave.handlers.wavelets.Daub02;
+import main.java.cs.jwave.handlers.wavelets.Daub03;
+import main.java.cs.jwave.handlers.wavelets.Daub04;
+import main.java.cs.jwave.handlers.wavelets.Haar02;
+import main.java.cs.jwave.handlers.wavelets.Haar02Orthogonal;
+import main.java.cs.jwave.handlers.wavelets.Lege02;
+import main.java.cs.jwave.handlers.wavelets.Lege04;
+import main.java.cs.jwave.handlers.wavelets.Lege06;
 
 public class FastWaveletTransformTest extends JUnitTests {
 

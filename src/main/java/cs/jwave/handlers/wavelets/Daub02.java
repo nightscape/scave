@@ -21,7 +21,7 @@
  * date 23.02.2010 05:42:23
  * contact source@linux23.de
  */
-package cs.jwave.handlers.wavelets;
+package main.java.cs.jwave.handlers.wavelets;
 
 /**
  * Ingrid Daubechies' orthonormal wavelet of four coefficients and the scales;

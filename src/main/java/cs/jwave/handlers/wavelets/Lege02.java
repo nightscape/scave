@@ -21,7 +21,7 @@
  * date 08.06.2010 09:32:08
  * contact source@linux23.de
  */
-package cs.jwave.handlers.wavelets;
+package main.java.cs.jwave.handlers.wavelets;
 
 /**
  * Orthonormal Legendre wavelet transform of 2 coefficients based on the

@@ -21,13 +21,14 @@
  * date 23.11.2010 19:05:07
  * contact source@linux23.de
  */
-package cs.jwave.handlers;
+package test.java.cs.jwave.handlers;
 
 import org.junit.Test;
 
-import cs.jwave.JUnitTests;
-import cs.jwave.Transform;
-import cs.jwave.types.Complex;
+import test.java.cs.jwave.JUnitTests;
+import main.java.cs.jwave.Transform;
+import main.java.cs.jwave.handlers.DiscreteFourierTransform;
+import main.java.cs.jwave.types.Complex;
 
 /**
  * Tests for the base methods of class DiscreteFourierTransform.

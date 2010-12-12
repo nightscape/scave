@@ -21,13 +21,16 @@
  * date 23.11.2010 19:41:42
  * contact source@linux23.de
  */
-package cs.jwave.handlers;
+package test.java.cs.jwave.handlers;
 
 import org.junit.Test;
 
-import cs.jwave.JUnitTests;
-import cs.jwave.Transform;
-import cs.jwave.handlers.wavelets.Haar02;
+import test.java.cs.jwave.JUnitTests;
+import main.java.cs.jwave.Transform;
+import main.java.cs.jwave.handlers.AncientEgyptianDecomposition;
+import main.java.cs.jwave.handlers.FastWaveletTransform;
+import main.java.cs.jwave.handlers.WaveletPacketTransform;
+import main.java.cs.jwave.handlers.wavelets.Haar02;
 
 
 public class AncientEgyptianDecompositionTest extends JUnitTests {

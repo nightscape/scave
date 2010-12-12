@@ -21,14 +21,15 @@
  * date 23.11.2010 19:39:23
  * contact source@linux23.de
  */
-package cs.jwave.handlers;
+package test.java.cs.jwave.handlers;
 
 import org.junit.Test;
 
-import cs.jwave.JUnitTests;
-import cs.jwave.Transform;
-import cs.jwave.handlers.wavelets.Daub02;
-import cs.jwave.handlers.wavelets.Haar02;
+import test.java.cs.jwave.JUnitTests;
+import main.java.cs.jwave.Transform;
+import main.java.cs.jwave.handlers.WaveletPacketTransform;
+import main.java.cs.jwave.handlers.wavelets.Daub02;
+import main.java.cs.jwave.handlers.wavelets.Haar02;
 
 public class WaveletPacketTransformTest extends JUnitTests {
 

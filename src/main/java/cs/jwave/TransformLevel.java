@@ -21,7 +21,7 @@
  * date 15.07.2010 13:13:51
  * contact source@linux23.de
  */
-package cs.jwave;
+package main.java.cs.jwave;
 
 import cs.jwave.handlers.BasicTransform;
 

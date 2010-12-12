@@ -21,7 +21,7 @@
  * date 14.08.2010 10:43:28
  * contact source@linux23.de
  */
-package cs.jwave.handlers;
+package main.java.cs.jwave.handlers;
 
 /**
  * A wavelet transform method for arrays and signals of arbitrary lengths, even

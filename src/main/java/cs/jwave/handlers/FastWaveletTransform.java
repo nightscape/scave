@@ -21,9 +21,9 @@
  * date 23.02.2010 05:42:23
  * contact source@linux23.de
  */
-package cs.jwave.handlers;
+package main.java.cs.jwave.handlers;
 
-import cs.jwave.handlers.wavelets.Wavelet;
+import main.java.cs.jwave.handlers.wavelets.Wavelet;
 
 /**
  * Base class for the forward and reverse Fast Wavelet Transform in 1-D, 2-D,
