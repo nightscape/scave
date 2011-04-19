@@ -79,7 +79,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
     if( number < 1 )
       return null;
 
-    int power = Math.getExponent( (double)number );
+    int power = getExponent( (double)number );
 
     int[ ] tmpArr = new int[ power + 1 ]; // max no of possible multipliers
 
@@ -87,9 +87,9 @@ public class AncientEgyptianDecomposition extends BasicTransform {
     double current = (double)number;
     while( current >= 1. ) {
 
-      power = Math.getExponent( current );
+      power = getExponent( current );
       tmpArr[ pos ] = power;
-      current = current - Math.scalb( 1., power ); // 1. * 2 ^ power
+      current = current - scalb( 1., power ); // 1. * 2 ^ power
       pos++;
 
     } // while
@@ -125,7 +125,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
 
       int ancientEgyptianMultiplier = ancientEgyptianMultipliers[ m ];
 
-      number += (int)Math.scalb( 1., ancientEgyptianMultiplier ); // 1. * 2^p
+      number += (int)scalb( 1., ancientEgyptianMultiplier ); // 1. * 2^p
 
     } // m
 
@@ -155,7 +155,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
 
       int ancientEgyptianMultiplier = ancientEgyptianMultipliers[ m ];
 
-      int arrTimeSubLength = (int)Math.scalb( 1., ancientEgyptianMultiplier );
+      int arrTimeSubLength = (int)scalb( 1., ancientEgyptianMultiplier );
 
       double[ ] arrTimeSub = new double[ arrTimeSubLength ];
       for( int i = 0; i < arrTimeSub.length; i++ )
@@ -197,7 +197,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
 
       int ancientEgyptianMultiplier = ancientEgyptianMultipliers[ m ];
 
-      int arrHilbSubLength = (int)Math.scalb( 1., ancientEgyptianMultiplier );
+      int arrHilbSubLength = (int)scalb( 1., ancientEgyptianMultiplier );
 
       double[ ] arrHilbSub = new double[ arrHilbSubLength ];
       for( int i = 0; i < arrHilbSub.length; i++ )
@@ -234,7 +234,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
 
       int ancientEgyptianMultiplier = ancientEgyptianMultipliers[ m ];
 
-      int arrTimeSubLength = (int)Math.scalb( 1., ancientEgyptianMultiplier );
+      int arrTimeSubLength = (int)scalb( 1., ancientEgyptianMultiplier );
 
       double[ ] arrTimeSub = new double[ arrTimeSubLength ];
       for( int i = 0; i < arrTimeSub.length; i++ )
@@ -271,7 +271,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
 
       int ancientEgyptianMultiplier = ancientEgyptianMultipliers[ m ];
 
-      int arrHilbSubLength = (int)Math.scalb( 1., ancientEgyptianMultiplier );
+      int arrHilbSubLength = (int)scalb( 1., ancientEgyptianMultiplier );
 
       double[ ] arrHilbSub = new double[ arrHilbSubLength ];
       for( int i = 0; i < arrHilbSub.length; i++ )
@@ -288,5 +288,32 @@ public class AncientEgyptianDecomposition extends BasicTransform {
 
     return arrTime;
   } // reverse
+
+  /**
+   * Replaced Math.scalb due to google's Android OS is not supporting it in Math
+   * lib.
+   * 
+   * @date 19.04.2011 15:43:11
+   * @author sashi
+   * @param f
+   * @param scaleFactor
+   * @return f times 2^(scaleFactor)
+   */
+  public static double scalb( double f, int scaleFactor ) {
+    return f * Math.pow( 2, scaleFactor );
+  } // scalb
+
+  /**
+   * Replaced Math.getExponent due to google's Android OS is not supporting it
+   * in Math lib.
+   * 
+   * @date 19.04.2011 15:43:16
+   * @author sashi
+   * @param f
+   * @return return p of 2^p <= f < 2^(p+1)
+   */
+  public static int getExponent( double f ) {
+    return (int)( Math.log( f ) / Math.log( 2 ) );
+  } // getExponent
 
 } // class
