@@ -263,6 +263,18 @@ public abstract class Block {
   abstract public double get( int i, int j ) throws BlockException;
 
   /**
+   * Returns a matrix keeping the values, if values are missing. like in index
+   * storage, the places are filled by zero entries.
+   * 
+   * @date 11.06.2011 22:49:45
+   * @author Christian Scheiblich
+   * @return all stored values as an array of an array; matrix style
+   * @throws BlockException
+   *           if no memory is allocated
+   */
+  abstract public double[ ][ ] get( ) throws BlockException;
+
+  /**
    * Sets an entry in the block at LOCAL position (i,j) of the block.
    * 
    * @date 11.06.2011 21:15:42

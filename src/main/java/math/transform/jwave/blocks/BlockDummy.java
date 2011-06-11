@@ -62,6 +62,18 @@ public class BlockDummy extends Block {
   /**
    * Method is not available in case of a dummy.
    * 
+   * @date 11.06.2011 22:51:59
+   * @author tucker
+   * @see math.transform.jwave.blocks.Block#get()
+   */
+  @Override
+  public double[ ][ ] get( ) throws BlockException {
+    throw new BlockFailure( "BlockDummy#get -- method not available" );
+  }
+
+  /**
+   * Method is not available in case of a dummy.
+   * 
    * @date 11.06.2011 21:31:12
    * @author Christian Scheiblich
    * @see math.transform.jwave.blocks.Block#set(int, int)
@@ -92,7 +104,7 @@ public class BlockDummy extends Block {
    */
   @Override
   public void eraseMemory( ) throws BlockException {
-    throw new BlockFailure( "BlockDummy#eraseMemory -- method not available" );    
+    throw new BlockFailure( "BlockDummy#eraseMemory -- method not available" );
   }
 
 } // class

@@ -77,6 +77,28 @@ public class BlockFull extends Block {
   }
 
   /**
+   * Returns all entries as an array of an array; matrix style.
+   * 
+   * @date 11.06.2011 22:52:34
+   * @author tucker
+   * @see math.transform.jwave.blocks.Block#get()
+   */
+  @Override
+  public double[ ][ ] get( ) throws BlockException {
+
+    if( !_isMemAllocated )
+      throw new BlockFailure( "BlockFull#get -- no memory allocated" );
+
+    double[ ][ ] matrix = new double[ _noOfRows ][ _noOfCols ];
+
+    for( int i = 0; i < _noOfRows; i++ )
+      for( int j = 0; j < _noOfCols; j++ )
+        matrix[ i ][ j ] = _matrix[ i ][ j ];
+
+    return matrix;
+  }
+
+  /**
    * Stores an entry if available.
    * 
    * @date 11.06.2011 21:38:51

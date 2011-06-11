@@ -129,6 +129,14 @@ public class BlockTest {
         assertEquals( (double)( i + j + 1 ), val, 0. );
       }
 
+    double[ ][ ] matrix = block.get( );
+
+    for( int i = 0; i < block.getNoOfRows( ); i++ )
+      for( int j = 0; j < block.getNoOfCols( ); j++ ) {
+        double val = matrix[ i ][ j ];
+        assertEquals( (double)( i + j + 1 ), val, 0. );
+      }
+
     block.eraseMemory( );
 
   }
