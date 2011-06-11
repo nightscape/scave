@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file TransformError.java is part of JWave.
+ * This file TransformFailure.java is part of JWave.
  *
  * @author Christian Scheiblich
  * date 23.02.2010 05:42:23
@@ -24,31 +24,31 @@
 package math.transform.jwave.exc;
 
 /**
- * Marking errors for this package; failures that are not recoverable
+ * Marking failures for this package; failures that are recoverable
  * 
- * @date 19.05.2009 09:28:17
+ * @date 19.05.2009 09:26:22
  * @author Christian Scheiblich
  */
-public class TransformError extends TransformException {
+public class JWaveFailure extends JWaveException {
 
   /**
-   * Generated serial ID for this error
+   * Generated serial ID for this failure
    * 
-   * @date 19.05.2009 09:29:04
+   * @date 19.05.2009 09:27:18
    * @author Christian Scheiblich
    */
-  private static final long serialVersionUID = -2757378141408012245L;
+  private static final long serialVersionUID = 5471588833755939370L;
 
   /**
-   * constructor taking an error message
+   * Constructor taking a failure message
    * 
-   * @date 19.05.2009 09:28:17
+   * @date 19.05.2009 09:26:22
    * @author Christian Scheiblich
    * @param message
-   *          stored message for this error
+   *          the stored failure message for this exception
    */
-  public TransformError( String message ) {
+  public JWaveFailure( String message ) {
     super( message );
-  } // TransformError
+  } // TransformFailure
 
 } // class

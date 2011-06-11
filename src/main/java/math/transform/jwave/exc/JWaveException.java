@@ -29,7 +29,7 @@ package math.transform.jwave.exc;
  * @date 16.10.2008 07:30:20
  * @author Christian Scheiblich
  */
-public class TransformException extends Throwable {
+public class JWaveException extends Throwable {
 
   /**
    * Generated serial version ID for this exception
@@ -52,7 +52,7 @@ public class TransformException extends Throwable {
    * @param message
    *          this message should tell exactly what went wrong
    */
-  public TransformException( String message ) {
+  public JWaveException( String message ) {
     _message = "JWave"; // empty
     _message += ":"; // separator
     _message += message; // add message
@@ -67,7 +67,7 @@ public class TransformException extends Throwable {
    * @param e
    *          an object of this class
    */
-  public TransformException( Exception e ) {
+  public JWaveException( Exception e ) {
     _message = e.getMessage( );
   } // TransformException
 
