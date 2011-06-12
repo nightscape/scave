@@ -105,13 +105,15 @@ public class BlockBuilder {
       newBlock.allocateMemory( );
 
       double[ ][ ] matrix = block.get( );
-
+      
       for( int i = 0; i < block.getNoOfRows( ); i++ )
         for( int j = 0; j < block.getNoOfCols( ); j++ ) {
+          
           double val = matrix[ i ][ j ];
+          
           if( val != 0. )
             newBlock.set( i, j, val );
-        }
+        } // for
 
     } // if
 
