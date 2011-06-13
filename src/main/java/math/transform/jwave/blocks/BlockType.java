@@ -32,6 +32,5 @@ package math.transform.jwave.blocks;
 public enum BlockType {
     Dummy,
     Full,
-    Stripe,
     Index
 } // enum

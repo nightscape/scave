@@ -25,7 +25,6 @@ package math.transform.jwave.blocks;
 
 import math.transform.jwave.blocks.exc.BlockError;
 import math.transform.jwave.blocks.exc.BlockException;
-import math.transform.jwave.blocks.exc.BlockFailure;
 
 /**
  * Creates Block objects
@@ -53,13 +52,6 @@ public class BlockController {
         block = new BlockFull( offSetRow, offSetCol, noOfRows, noOfCols );
 
         break;
-
-      case Stripe :
-
-        throw new BlockFailure(
-            "BlockBuilder#create -- requested BlockType is not implemented yet" );
-
-        // break;
 
       case Index :
 
