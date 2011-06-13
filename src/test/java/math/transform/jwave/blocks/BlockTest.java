@@ -44,7 +44,7 @@ public class BlockTest {
    * @throws BlockException
    */
   @Test
-  public void testSparseBlockIndex( ) throws BlockException {
+  public void testBlockIndexSparse( ) throws BlockException {
 
     int noOfRows = 1024;
     int noOfCols = 1024;
@@ -125,15 +125,16 @@ public class BlockTest {
   }
 
   /**
-   * Test method for {@link math.transform.jwave.blocks.Block#getRow(int)}.
+   * Test method for
+   * {@link math.transform.jwave.blocks.Block#BlockIndex(int, int, int, int)}.
    * 
    * @throws BlockException
    */
   @Test
-  public void testGetRow( ) throws BlockException {
+  public void testBlockIndexFull( ) throws BlockException {
 
-    int noOfRows = 1024;
-    int noOfCols = 1024;
+    int noOfRows = 256;
+    int noOfCols = 256;
 
     Block block = BlockController.create( BlockType.Full, 0, 0, noOfRows,
         noOfCols );
@@ -146,61 +147,41 @@ public class BlockTest {
         block.set( i, j, val );
       }
 
-    for( int i = 0; i < block.getNoOfRows( ); i++ ) {
-      double[ ] rowVal = block.getRow( i );
-      for( int j = 0; j < block.getNoOfCols( ); j++ )
-        assertEquals( (double)( i + j + 1 ), rowVal[ j ], 0. );
-    }
+    block = BlockController.convert( BlockType.Index, block );
 
-    block.eraseMemory( );
-
-  }
-
-  /**
-   * Test method for {@link math.transform.jwave.blocks.Block#getCol(int)}.
-   * 
-   * @throws BlockException
-   */
-  @Test
-  public void testGetCol( ) throws BlockException {
-
-    int noOfRows = 1024;
-    int noOfCols = 1024;
-
-    Block block = BlockController.create( BlockType.Full, 0, 0, noOfRows,
-        noOfCols );
-
-    block.allocateMemory( );
+    double[ ][ ] matrix = block.get( );
 
     for( int i = 0; i < block.getNoOfRows( ); i++ )
       for( int j = 0; j < block.getNoOfCols( ); j++ ) {
-        double val = (double)( i + j + 1 );
-        block.set( i, j, val );
+        double val = matrix[ i ][ j ];
+        assertEquals( (double)( i + j + 1 ), val, 0. );
       }
 
-    for( int j = 0; j < block.getNoOfCols( ); j++ ) {
-      double[ ] colVal = block.getRow( j );
-      for( int i = 0; i < block.getNoOfRows( ); i++ )
-        assertEquals( (double)( i + j + 1 ), colVal[ i ], 0. );
-    }
+    block = BlockController.convert( BlockType.Full, block );
+
+    matrix = block.get( );
+
+    for( int i = 0; i < block.getNoOfRows( ); i++ )
+      for( int j = 0; j < block.getNoOfCols( ); j++ ) {
+        double val = matrix[ i ][ j ];
+        assertEquals( (double)( i + j + 1 ), val, 0. );
+      }
 
     block.eraseMemory( );
 
   }
+  
 
   /**
-   * Test method for {@link math.transform.jwave.blocks.Block#get(int, int)}.
+   * Test method for {@link math.transform.jwave.blocks.Block#BlockFull(int, int, int, int)}.
    * 
    * @throws BlockException
    */
   @Test
-  public void testGet( ) throws BlockException {
+  public void testBlockFull( ) throws BlockException {
 
     int noOfRows = 1024;
     int noOfCols = 1024;
-
-    noOfRows = 256;
-    noOfCols = 256;
 
     Block block = BlockController.create( BlockType.Full, 0, 0, noOfRows,
         noOfCols );
@@ -227,41 +208,20 @@ public class BlockTest {
         assertEquals( (double)( i + j + 1 ), val, 0. );
       }
 
-    block = BlockController.convert( BlockType.Index, block );
-
-    matrix = block.get( );
-
-    for( int i = 0; i < block.getNoOfRows( ); i++ )
-      for( int j = 0; j < block.getNoOfCols( ); j++ ) {
-        double val = matrix[ i ][ j ];
-        assertEquals( (double)( i + j + 1 ), val, 0. );
-      }
-
-    block = BlockController.convert( BlockType.Full, block );
-
-    matrix = block.get( );
-
-    for( int i = 0; i < block.getNoOfRows( ); i++ )
-      for( int j = 0; j < block.getNoOfCols( ); j++ ) {
-        double val = matrix[ i ][ j ];
-        assertEquals( (double)( i + j + 1 ), val, 0. );
-      }
-
     block.eraseMemory( );
 
   }
 
   /**
-   * Test method for
-   * {@link math.transform.jwave.blocks.Block#set(int, int, double)}.
+   * Test method for {@link math.transform.jwave.blocks.Block#getRow(int)}.
    * 
    * @throws BlockException
    */
   @Test
-  public void testSet( ) throws BlockException {
+  public void testGetRow( ) throws BlockException {
 
-    int noOfRows = 1024;
-    int noOfCols = 1024;
+    int noOfRows = 64;
+    int noOfCols = 64;
 
     Block block = BlockController.create( BlockType.Full, 0, 0, noOfRows,
         noOfCols );
@@ -274,13 +234,63 @@ public class BlockTest {
         block.set( i, j, val );
       }
 
-    for( int i = 0; i < block.getNoOfRows( ); i++ )
-      for( int j = 0; j < block.getNoOfCols( ); j++ ) {
-        double val = block.get( i, j );
-        assertEquals( (double)( i + j + 1 ), val, 0. );
-      }
+    for( int i = 0; i < block.getNoOfRows( ); i++ ) {
+      double[ ] rowVal = block.getRow( i );
+      for( int j = 0; j < block.getNoOfCols( ); j++ )
+        assertEquals( (double)( i + j + 1 ), rowVal[ j ], 0. );
+    }
+    
+    block = BlockController.convert( BlockType.Index, block );
+    
+    for( int i = 0; i < block.getNoOfRows( ); i++ ) {
+      double[ ] rowVal = block.getRow( i );
+      for( int j = 0; j < block.getNoOfCols( ); j++ )
+        assertEquals( (double)( i + j + 1 ), rowVal[ j ], 0. );
+    }
+    
 
     block.eraseMemory( );
 
   }
+
+  /**
+   * Test method for {@link math.transform.jwave.blocks.Block#getCol(int)}.
+   * 
+   * @throws BlockException
+   */
+  @Test
+  public void testGetCol( ) throws BlockException {
+
+    int noOfRows = 64;
+    int noOfCols = 64;
+
+    Block block = BlockController.create( BlockType.Full, 0, 0, noOfRows,
+        noOfCols );
+
+    block.allocateMemory( );
+
+    for( int i = 0; i < block.getNoOfRows( ); i++ )
+      for( int j = 0; j < block.getNoOfCols( ); j++ ) {
+        double val = (double)( i + j + 1 );
+        block.set( i, j, val );
+      }
+
+    for( int j = 0; j < block.getNoOfCols( ); j++ ) {
+      double[ ] colVal = block.getRow( j );
+      for( int i = 0; i < block.getNoOfRows( ); i++ )
+        assertEquals( (double)( i + j + 1 ), colVal[ i ], 0. );
+    }
+    
+    block = BlockController.convert( BlockType.Index, block );
+    
+    for( int j = 0; j < block.getNoOfCols( ); j++ ) {
+      double[ ] colVal = block.getRow( j );
+      for( int i = 0; i < block.getNoOfRows( ); i++ )
+        assertEquals( (double)( i + j + 1 ), colVal[ i ], 0. );
+    }
+    
+    block.eraseMemory( );
+
+  }
+
 } // class
