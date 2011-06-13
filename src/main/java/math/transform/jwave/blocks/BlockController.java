@@ -33,7 +33,7 @@ import math.transform.jwave.blocks.exc.BlockFailure;
  * @date 11.06.2011 21:25:17
  * @author Christian Scheiblich
  */
-public class BlockBuilder {
+public class BlockController {
 
   public static Block create( BlockType blockType, int offSetRow,
       int offSetCol, int noOfRows, int noOfCols ) throws BlockException {
@@ -63,10 +63,9 @@ public class BlockBuilder {
 
       case Index :
 
-        throw new BlockFailure(
-            "BlockBuilder#create -- requested BlockType is not implemented yet" );
+        block = new BlockIndex( offSetRow, offSetCol, noOfRows, noOfCols );
 
-        // break;
+        break;
 
       default :
 
@@ -105,12 +104,12 @@ public class BlockBuilder {
       newBlock.allocateMemory( );
 
       double[ ][ ] matrix = block.get( );
-      
+
       for( int i = 0; i < block.getNoOfRows( ); i++ )
         for( int j = 0; j < block.getNoOfCols( ); j++ ) {
-          
+
           double val = matrix[ i ][ j ];
-          
+
           if( val != 0. )
             newBlock.set( i, j, val );
         } // for

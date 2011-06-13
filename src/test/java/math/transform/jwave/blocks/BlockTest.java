@@ -38,6 +38,93 @@ import org.junit.Test;
 public class BlockTest {
 
   /**
+   * Test method for
+   * {@link math.transform.jwave.blocks.Block#BlockIndex(int, int, int, int)}.
+   * 
+   * @throws BlockException
+   */
+  @Test
+  public void testSparseBlockIndex( ) throws BlockException {
+
+    int noOfRows = 1024;
+    int noOfCols = 1024;
+
+    Block block = BlockController.create( BlockType.Full, 0, 0, noOfRows,
+        noOfCols );
+
+    block.allocateMemory( );
+
+    block.set( 0, 0, 23.42 );
+
+    block.set( 312, 123, 23.42 );
+    block.set( 123, 312, 23.42 );
+    block.set( 231, 231, 23.42 );
+
+    block.set( 645, 456, 23.42 );
+    block.set( 456, 645, 23.42 );
+    block.set( 564, 564, 23.42 );
+
+    block.set( 1023, 1023, 23.42 );
+
+    block = BlockController.convert( BlockType.Index, block );
+
+    double[ ][ ] matrix = block.get( );
+
+    for( int i = 0; i < block.getNoOfRows( ); i++ )
+      for( int j = 0; j < block.getNoOfCols( ); j++ ) {
+        double val = matrix[ i ][ j ];
+        if( i == 0 && j == 0 )
+          assertEquals( 23.42, val, 0. );
+        else if( i == 312 && j == 123 )
+          assertEquals( 23.42, val, 0. );
+        else if( i == 123 && j == 312 )
+          assertEquals( 23.42, val, 0. );
+        else if( i == 231 && j == 231 )
+          assertEquals( 23.42, val, 0. );
+        else if( i == 645 && j == 456 )
+          assertEquals( 23.42, val, 0. );
+        else if( i == 456 && j == 645 )
+          assertEquals( 23.42, val, 0. );
+        else if( i == 564 && j == 564 )
+          assertEquals( 23.42, val, 0. );
+        else if( i == 1023 && j == 1023 )
+          assertEquals( 23.42, val, 0. );
+        else
+          assertEquals( 0., val, 0. );
+      }
+
+    block = BlockController.convert( BlockType.Full, block );
+
+    matrix = block.get( );
+
+    for( int i = 0; i < block.getNoOfRows( ); i++ )
+      for( int j = 0; j < block.getNoOfCols( ); j++ ) {
+        double val = matrix[ i ][ j ];
+        if( i == 0 && j == 0 )
+          assertEquals( 23.42, val, 0. );
+        else if( i == 312 && j == 123 )
+          assertEquals( 23.42, val, 0. );
+        else if( i == 123 && j == 312 )
+          assertEquals( 23.42, val, 0. );
+        else if( i == 231 && j == 231 )
+          assertEquals( 23.42, val, 0. );
+        else if( i == 645 && j == 456 )
+          assertEquals( 23.42, val, 0. );
+        else if( i == 456 && j == 645 )
+          assertEquals( 23.42, val, 0. );
+        else if( i == 564 && j == 564 )
+          assertEquals( 23.42, val, 0. );
+        else if( i == 1023 && j == 1023 )
+          assertEquals( 23.42, val, 0. );
+        else
+          assertEquals( 0., val, 0. );
+      }
+
+    block.eraseMemory( );
+
+  }
+
+  /**
    * Test method for {@link math.transform.jwave.blocks.Block#getRow(int)}.
    * 
    * @throws BlockException
@@ -48,8 +135,8 @@ public class BlockTest {
     int noOfRows = 1024;
     int noOfCols = 1024;
 
-    Block block = BlockBuilder
-        .create( BlockType.Full, 0, 0, noOfRows, noOfCols );
+    Block block = BlockController.create( BlockType.Full, 0, 0, noOfRows,
+        noOfCols );
 
     block.allocateMemory( );
 
@@ -80,8 +167,8 @@ public class BlockTest {
     int noOfRows = 1024;
     int noOfCols = 1024;
 
-    Block block = BlockBuilder
-        .create( BlockType.Full, 0, 0, noOfRows, noOfCols );
+    Block block = BlockController.create( BlockType.Full, 0, 0, noOfRows,
+        noOfCols );
 
     block.allocateMemory( );
 
@@ -112,8 +199,11 @@ public class BlockTest {
     int noOfRows = 1024;
     int noOfCols = 1024;
 
-    Block block = BlockBuilder
-        .create( BlockType.Full, 0, 0, noOfRows, noOfCols );
+    noOfRows = 256;
+    noOfCols = 256;
+
+    Block block = BlockController.create( BlockType.Full, 0, 0, noOfRows,
+        noOfCols );
 
     block.allocateMemory( );
 
@@ -137,6 +227,26 @@ public class BlockTest {
         assertEquals( (double)( i + j + 1 ), val, 0. );
       }
 
+    block = BlockController.convert( BlockType.Index, block );
+
+    matrix = block.get( );
+
+    for( int i = 0; i < block.getNoOfRows( ); i++ )
+      for( int j = 0; j < block.getNoOfCols( ); j++ ) {
+        double val = matrix[ i ][ j ];
+        assertEquals( (double)( i + j + 1 ), val, 0. );
+      }
+
+    block = BlockController.convert( BlockType.Full, block );
+
+    matrix = block.get( );
+
+    for( int i = 0; i < block.getNoOfRows( ); i++ )
+      for( int j = 0; j < block.getNoOfCols( ); j++ ) {
+        double val = matrix[ i ][ j ];
+        assertEquals( (double)( i + j + 1 ), val, 0. );
+      }
+
     block.eraseMemory( );
 
   }
@@ -153,8 +263,8 @@ public class BlockTest {
     int noOfRows = 1024;
     int noOfCols = 1024;
 
-    Block block = BlockBuilder
-        .create( BlockType.Full, 0, 0, noOfRows, noOfCols );
+    Block block = BlockController.create( BlockType.Full, 0, 0, noOfRows,
+        noOfCols );
 
     block.allocateMemory( );
 
@@ -173,5 +283,4 @@ public class BlockTest {
     block.eraseMemory( );
 
   }
-
 } // class
