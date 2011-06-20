@@ -218,6 +218,8 @@ public class WaveletPacketTransform extends BasicTransform {
    * 
    * @date 15.07.2010 13:44:03
    * @author Christian Scheiblich
+   * @date 20.06.2011 13:05:15
+   * @author Pol Kennel
    * @see math.transform.jwave.handlers.BasicTransform#reverse(double[], int)
    */
   @Override
@@ -229,9 +231,14 @@ public class WaveletPacketTransform extends BasicTransform {
       arrTime[ i ] = arrHilb[ i ];
 
     int level = 0;
+    
     int minWaveLength = _wavelet.getWaveLength( );
+    
     int k = arrTime.length;
-    int h = minWaveLength;
+    
+    // int h = minWaveLength; // bug ... 20110620
+    int h = (int) (arrHilb.length / (Math.pow(2, fromLevel-1))); // added by Pol
+    
     if( arrHilb.length >= minWaveLength ) {
 
       while( h <= arrTime.length && h >= minWaveLength && level < fromLevel ) {

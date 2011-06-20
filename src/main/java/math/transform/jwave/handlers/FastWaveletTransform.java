@@ -197,6 +197,8 @@ public class FastWaveletTransform extends BasicTransform {
    * @author Thomas Haider
    * @date 15.08.2010 00:31:09
    * @author Christian Scheiblich
+   * @date 20.06.2011 13:03:27
+   * @author Pol Kennel
    * @see math.transform.jwave.handlers.BasicTransform#reverse(double[], int)
    */
   @Override
@@ -208,8 +210,12 @@ public class FastWaveletTransform extends BasicTransform {
       arrTime[ i ] = arrHilb[ i ];
 
     int level = 0;
+    
     int minWaveLength = _wavelet.getWaveLength( );
-    int h = minWaveLength;
+    
+    // int h = minWaveLength; // bug ... 20110620
+    int h = (int)( arrHilb.length / ( Math.pow( 2, fromLevel - 1 ) ) ); // added by Pol
+    
     if( arrHilb.length >= minWaveLength ) {
 
       while( h <= arrTime.length && h >= minWaveLength && level < fromLevel ) {
