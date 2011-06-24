@@ -25,6 +25,7 @@ package math.transform.jwave;
 
 import math.transform.jwave.handlers.BasicTransform;
 import math.transform.jwave.handlers.DiscreteFourierTransform;
+import math.transform.jwave.handlers.DiscreteWaveletTransform;
 import math.transform.jwave.handlers.FastWaveletTransform;
 import math.transform.jwave.handlers.WaveletPacketTransform;
 import math.transform.jwave.handlers.wavelets.Coif06;
@@ -72,7 +73,7 @@ public class JWave {
     if( args.length != 2 ) {
       System.err.println( "usage: JWave [transformType] {waveletType}" );
       System.err.println( "" );
-      System.err.println( "transformType: DFT, FWT, WPT" );
+      System.err.println( "transformType: DFT, FWT, WPT, DFT" );
       System.err.println( "waveletType : " + waveletTypeList );
       return;
     } // if args
@@ -110,10 +111,12 @@ public class JWave {
       bWave = new FastWaveletTransform( wavelet );
     else if( tType.equalsIgnoreCase( "wpt" ) )
       bWave = new WaveletPacketTransform( wavelet );
+    else if( tType.equalsIgnoreCase( "dft" ) )
+      bWave = new DiscreteWaveletTransform( wavelet );
     else {
       System.err.println( "usage: JWave [transformType] {waveletType}" );
       System.err.println( "" );
-      System.err.println( "available transforms are DFT, FWT, WPT" );
+      System.err.println( "available transforms are DFT, FWT, WPT, DFT" );
       return;
     } // if tType
 
