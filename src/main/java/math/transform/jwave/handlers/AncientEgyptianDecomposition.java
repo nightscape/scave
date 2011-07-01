@@ -41,7 +41,7 @@ package math.transform.jwave.handlers;
  * @date 14.08.2010 10:43:28
  * @author Christian Scheiblich
  */
-public class AncientEgyptianDecomposition extends BasicTransform {
+public class AncientEgyptianDecomposition extends WaveletTransform {
 
   /**
    * The selected Transform (FWT or WPT) used for the sub arrays of the ancient
@@ -49,7 +49,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
    * Pattern of software design pattern. See:
    * http://en.wikipedia.org/wiki/Composite_pattern#Java
    */
-  protected BasicTransform _transform;
+  protected WaveletTransform _waveTransform;
 
   /**
    * Constructor taking the
@@ -57,8 +57,8 @@ public class AncientEgyptianDecomposition extends BasicTransform {
    * @date 14.08.2010 10:43:28
    * @author Christian Scheiblich
    */
-  public AncientEgyptianDecomposition( BasicTransform transform ) {
-    _transform = transform;
+  public AncientEgyptianDecomposition( WaveletTransform waveTransform ) {
+    _waveTransform = waveTransform;
   } // FastWaveletTransformArbitrary
 
   /**
@@ -144,7 +144,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
    * @see math.transform.jwave.handlers.BasicTransform#forward(double[])
    */
   @Override
-  public double[ ] forward( double[ ] arrTime ) {
+  public double[ ] forwardWavelet( double[ ] arrTime ) {
 
     double[ ] arrHilb = new double[ arrTime.length ];
 
@@ -161,7 +161,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
       for( int i = 0; i < arrTimeSub.length; i++ )
         arrTimeSub[ i ] = arrTime[ i + offSet ];
 
-      double[ ] arrHilbSub = _transform.forward( arrTimeSub );
+      double[ ] arrHilbSub = _waveTransform.forward( arrTimeSub );
 
       for( int i = 0; i < arrHilbSub.length; i++ )
         arrHilb[ i + offSet ] = arrHilbSub[ i ];
@@ -186,7 +186,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
    * @see math.transform.jwave.handlers.BasicTransform#reverse(double[])
    */
   @Override
-  public double[ ] reverse( double[ ] arrHilb ) {
+  public double[ ] reverseWavelet( double[ ] arrHilb ) {
 
     double[ ] arrTime = new double[ arrHilb.length ];
 
@@ -203,7 +203,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
       for( int i = 0; i < arrHilbSub.length; i++ )
         arrHilbSub[ i ] = arrHilb[ i + offSet ];
 
-      double[ ] arrTimeSub = _transform.reverse( arrHilbSub );
+      double[ ] arrTimeSub = _waveTransform.reverse( arrHilbSub );
 
       for( int i = 0; i < arrTimeSub.length; i++ )
         arrTime[ i + offSet ] = arrTimeSub[ i ];
@@ -223,7 +223,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
    * @see math.transform.jwave.handlers.BasicTransform#forward(double[], int)
    */
   @Override
-  public double[ ] forward( double[ ] arrTime, int toLevel ) {
+  public double[ ] forwardWavelet( double[ ] arrTime, int toLevel ) {
 
     double[ ] arrHilb = new double[ arrTime.length ];
 
@@ -240,7 +240,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
       for( int i = 0; i < arrTimeSub.length; i++ )
         arrTimeSub[ i ] = arrTime[ i + offSet ];
 
-      double[ ] arrHilbSub = _transform.forward( arrTimeSub, toLevel );
+      double[ ] arrHilbSub = _waveTransform.forwardWavelet( arrTimeSub, toLevel );
 
       for( int i = 0; i < arrHilbSub.length; i++ )
         arrHilb[ i + offSet ] = arrHilbSub[ i ];
@@ -260,7 +260,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
    * @see math.transform.jwave.handlers.BasicTransform#reverse(double[], int)
    */
   @Override
-  public double[ ] reverse( double[ ] arrHilb, int fromLevel ) {
+  public double[ ] reverseWavelet( double[ ] arrHilb, int fromLevel ) {
 
     double[ ] arrTime = new double[ arrHilb.length ];
 
@@ -277,7 +277,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
       for( int i = 0; i < arrHilbSub.length; i++ )
         arrHilbSub[ i ] = arrHilb[ i + offSet ];
 
-      double[ ] arrTimeSub = _transform.reverse( arrHilbSub, fromLevel );
+      double[ ] arrTimeSub = _waveTransform.reverseWavelet( arrHilbSub, fromLevel );
 
       for( int i = 0; i < arrTimeSub.length; i++ )
         arrTime[ i + offSet ] = arrTimeSub[ i ];

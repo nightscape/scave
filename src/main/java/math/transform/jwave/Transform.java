@@ -24,6 +24,8 @@
 package math.transform.jwave;
 
 import math.transform.jwave.handlers.BasicTransform;
+import math.transform.jwave.handlers.ITransform;
+import math.transform.jwave.handlers.WaveletTransform;
 import math.transform.jwave.types.Complex;
 
 /**
@@ -38,17 +40,37 @@ public class Transform {
   /**
    * Transform object of type base class
    */
-  protected BasicTransform _basicTransform;
-
+  protected ITransform _transform;
+  
   /**
    * Constructor; needs some object like DiscreteFourierTransform,
    * FastWaveletTransform, WaveletPacketTransfom, ...
    * 
    * @date 19.05.2009 09:50:24
    * @author Christian Scheiblich
+   * @param transform Transform object
    */
-  public Transform( BasicTransform basicTransform ) {
-    _basicTransform = basicTransform;
+  public Transform( ITransform transform ) {
+    _transform = transform;
+  } // Transform
+  
+  /**
+   * Constructor; needs some object like DiscreteFourierTransform,
+   * FastWaveletTransform, WaveletPacketTransfom, ... It take also a number of iteration for decomposition
+   * 
+   * @date 19.05.2009 09:50:24
+   * @author Christian Scheiblich
+   */
+  public Transform( ITransform transform, int iteration ) {
+    if( transform instanceof WaveletTransform ) {
+      _transform = transform;
+      ( (WaveletTransform)_transform ).set_iteration( iteration );
+    } else {
+      throw new IllegalArgumentException(
+          "Can't use transform :" + transform.getClass( )
+              + " with a specific level decomposition ;"
+              +	" use Transform( TransformI transform ) constructor instead." );
+    }
   } // Transform
 
   /**
@@ -61,7 +83,7 @@ public class Transform {
    * @return coefficients of frequency or Hilbert domain
    */
   public double[ ] forward( double[ ] arrTime ) {
-    return _basicTransform.forward( arrTime );
+    return _transform.forward( arrTime );
   } // forward
 
   /**
@@ -74,7 +96,7 @@ public class Transform {
    * @return coefficients of time domain
    */
   public double[ ] reverse( double[ ] arrFreq ) {
-    return _basicTransform.reverse( arrFreq );
+    return _transform.reverse( arrFreq );
   } // reverse
 
 
@@ -90,7 +112,7 @@ public class Transform {
    * @return coefficients of 1-D frequency or Hilbert domain
    */
   public Complex[ ] forward( Complex[ ] arrTime ) {
-    return _basicTransform.forward( arrTime );
+    return ((BasicTransform)_transform).forward( arrTime );
   } // forward
 
   /**
@@ -105,7 +127,7 @@ public class Transform {
    * @return coefficients of 1-D time domain
    */
   public Complex[ ] reverse( Complex[ ] arrFreq ) {
-    return _basicTransform.reverse( arrFreq );
+    return ((BasicTransform)_transform).reverse( arrFreq );
   } // reverse
   
   /**
@@ -118,7 +140,7 @@ public class Transform {
    * @return coefficients of 2-D frequency or Hilbert domain
    */
   public double[ ][ ] forward( double[ ][ ] matrixTime ) {
-    return _basicTransform.forward( matrixTime );
+    return _transform.forward( matrixTime );
   } // forward
 
   /**
@@ -131,7 +153,7 @@ public class Transform {
    * @return coefficients of 2-D time domain
    */
   public double[ ][ ] reverse( double[ ][ ] matrixFreq ) {
-    return _basicTransform.reverse( matrixFreq );
+    return _transform.reverse( matrixFreq );
   } // reverse
 
   /**
@@ -144,7 +166,7 @@ public class Transform {
    * @return coefficients of 2-D frequency or Hilbert domain
    */
   public double[ ][ ][ ] forward( double[ ][ ][ ] spaceTime ) {
-    return _basicTransform.forward( spaceTime );
+    return _transform.forward( spaceTime );
   } // forward
 
   /**
@@ -157,7 +179,7 @@ public class Transform {
    * @return coefficients of 2-D time domain
    */
   public double[ ][ ][ ] reverse( double[ ][ ][ ] spaceFreq ) {
-    return _basicTransform.reverse( spaceFreq );
+    return _transform.reverse( spaceFreq );
   } // reverse
-
+  
 } // class

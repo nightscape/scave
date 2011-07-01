@@ -24,6 +24,7 @@
 package math.transform.jwave.handlers;
 
 import math.transform.jwave.handlers.wavelets.Wavelet;
+import math.transform.jwave.handlers.wavelets.IWavelet;
 
 /**
  * Base class for the forward and reverse Wavelet Packet Transform (WPT) also
@@ -33,12 +34,7 @@ import math.transform.jwave.handlers.wavelets.Wavelet;
  * @date 23.02.2010 13:44:05
  * @author Christian Scheiblich
  */
-public class WaveletPacketTransform extends BasicTransform {
-
-  /**
-   * The used wavelet for the specified transform algorithm.
-   */
-  protected Wavelet _wavelet;
+public class WaveletPacketTransform extends WaveletTransform {
 
   /**
    * Constructor receiving a Wavelet object.
@@ -48,8 +44,20 @@ public class WaveletPacketTransform extends BasicTransform {
    * @param wavelet
    *          object of type Wavelet; Haar02, Daub02, Coif06, ...
    */
-  public WaveletPacketTransform( Wavelet wavelet ) {
-    _wavelet = wavelet;
+  public WaveletPacketTransform( IWavelet wavelet ) {
+    super(wavelet);
+  } // WaveletPacketTransform
+  
+  /**
+   * Constructor receiving a Wavelet object.
+   * 
+   * @date 23.02.2010 13:44:05
+   * @author Christian Scheiblich
+   * @param wavelet
+   *          object of type Wavelet; Haar02, Daub02, Coif06, ...
+   */
+  public WaveletPacketTransform( IWavelet wavelet, int iteration ) {
+    super(wavelet, iteration);
   } // WaveletPacketTransform
 
   /**
@@ -63,7 +71,7 @@ public class WaveletPacketTransform extends BasicTransform {
    * @see math.transform.jwave.handlers.BasicTransform#forward(double[])
    */
   @Override
-  public double[ ] forward( double[ ] arrTime ) {
+  public double[ ] forwardWavelet( double[ ] arrTime ) {
 
     double[ ] arrHilb = new double[ arrTime.length ];
     for( int i = 0; i < arrTime.length; i++ )
@@ -115,7 +123,7 @@ public class WaveletPacketTransform extends BasicTransform {
    * @see math.transform.jwave.handlers.BasicTransform#reverse(double[])
    */
   @Override
-  public double[ ] reverse( double[ ] arrHilb ) {
+  public double[ ] reverseWavelet( double[ ] arrHilb ) {
 
     double[ ] arrTime = new double[ arrHilb.length ];
 
@@ -168,7 +176,7 @@ public class WaveletPacketTransform extends BasicTransform {
    * @see math.transform.jwave.handlers.BasicTransform#forward(double[], int)
    */
   @Override
-  public double[ ] forward( double[ ] arrTime, int toLevel ) {
+  public double[ ] forwardWavelet( double[ ] arrTime, int toLevel ) {
 
     double[ ] arrHilb = new double[ arrTime.length ];
     for( int i = 0; i < arrTime.length; i++ )
@@ -223,7 +231,7 @@ public class WaveletPacketTransform extends BasicTransform {
    * @see math.transform.jwave.handlers.BasicTransform#reverse(double[], int)
    */
   @Override
-  public double[ ] reverse( double[ ] arrHilb, int fromLevel ) {
+  public double[ ] reverseWavelet( double[ ] arrHilb, int fromLevel ) {
 
     double[ ] arrTime = new double[ arrHilb.length ];
 

@@ -27,6 +27,7 @@ import math.transform.jwave.handlers.BasicTransform;
 import math.transform.jwave.handlers.DiscreteFourierTransform;
 import math.transform.jwave.handlers.DiscreteWaveletTransform;
 import math.transform.jwave.handlers.FastWaveletTransform;
+import math.transform.jwave.handlers.ITransform;
 import math.transform.jwave.handlers.WaveletPacketTransform;
 import math.transform.jwave.handlers.wavelets.Coif06;
 import math.transform.jwave.handlers.wavelets.Daub02;
@@ -37,6 +38,7 @@ import math.transform.jwave.handlers.wavelets.Lege02;
 import math.transform.jwave.handlers.wavelets.Lege04;
 import math.transform.jwave.handlers.wavelets.Lege06;
 import math.transform.jwave.handlers.wavelets.Wavelet;
+import math.transform.jwave.handlers.wavelets.IWavelet;
 
 /**
  * Main class for doing little test runs for different transform types and
@@ -70,16 +72,16 @@ public class JWave {
 
     String waveletTypeList = "Haar02, Lege02, Daub02, Lege04, Daub03, Lege06, Coif06, Daub04";
 
-    if( args.length != 2 ) {
-      System.err.println( "usage: JWave [transformType] {waveletType}" );
+    if( args.length < 2 && args.length >3 ) {
+      System.err.println( "usage: JWave [transformType] {waveletType} {iteration-Optional}" );
       System.err.println( "" );
-      System.err.println( "transformType: DFT, FWT, WPT, DFT" );
+      System.err.println( "transformType: DFT, FWT, WPT, DWT" );
       System.err.println( "waveletType : " + waveletTypeList );
       return;
     } // if args
 
     String wType = args[ 1 ];
-    Wavelet wavelet = null;
+    IWavelet wavelet = null;
     if( wType.equalsIgnoreCase( "haar02" ) )
       wavelet = new Haar02( );
     else if( wType.equalsIgnoreCase( "lege02" ) )
@@ -104,14 +106,14 @@ public class JWave {
     } // if wType
 
     String tType = args[ 0 ];
-    BasicTransform bWave = null;
+    ITransform bWave = null;
     if( tType.equalsIgnoreCase( "dft" ) )
       bWave = new DiscreteFourierTransform( );
     else if( tType.equalsIgnoreCase( "fwt" ) )
       bWave = new FastWaveletTransform( wavelet );
     else if( tType.equalsIgnoreCase( "wpt" ) )
       bWave = new WaveletPacketTransform( wavelet );
-    else if( tType.equalsIgnoreCase( "dft" ) )
+    else if( tType.equalsIgnoreCase( "dwt" ) )
       bWave = new DiscreteWaveletTransform( wavelet );
     else {
       System.err.println( "usage: JWave [transformType] {waveletType}" );
@@ -119,9 +121,17 @@ public class JWave {
       System.err.println( "available transforms are DFT, FWT, WPT, DFT" );
       return;
     } // if tType
-
-    Transform t = new Transform( bWave );
-
+    
+    // instance of transform
+    Transform t ;
+    
+    if(args.length>2 ){
+      int waveIter = Integer.parseInt(args[2]);
+      t = new Transform( bWave, waveIter );
+    }else{
+      t = new Transform( bWave );
+    }
+      
     double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1. };
 
     System.out.println( "" );

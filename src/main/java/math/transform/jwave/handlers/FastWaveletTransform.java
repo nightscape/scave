@@ -24,6 +24,7 @@
 package math.transform.jwave.handlers;
 
 import math.transform.jwave.handlers.wavelets.Wavelet;
+import math.transform.jwave.handlers.wavelets.IWavelet;
 
 /**
  * Base class for the forward and reverse Fast Wavelet Transform in 1-D, 2-D,
@@ -32,12 +33,7 @@ import math.transform.jwave.handlers.wavelets.Wavelet;
  * @date 10.02.2010 08:10:42
  * @author Christian Scheiblich
  */
-public class FastWaveletTransform extends BasicTransform {
-
-  /**
-   * The selected wavelet for the specified transform algorithm.
-   */
-  protected Wavelet _wavelet;
+public class FastWaveletTransform extends WaveletTransform {
 
   /**
    * Constructor receiving a Wavelet object.
@@ -47,8 +43,20 @@ public class FastWaveletTransform extends BasicTransform {
    * @param wavelet
    *          object of type Wavelet; Haar02, Daub02, Coif06, ...
    */
-  public FastWaveletTransform( Wavelet wavelet ) {
-    _wavelet = wavelet;
+  public FastWaveletTransform( IWavelet wavelet ) {
+    super(wavelet);
+  } // FastWaveletTransform
+  
+  /**
+   * Constructor receiving a Wavelet object.
+   * 
+   * @date 10.02.2010 08:10:42
+   * @author Christian Scheiblich
+   * @param wavelet
+   *          object of type Wavelet; Haar02, Daub02, Coif06, ...
+   */
+  public FastWaveletTransform( IWavelet wavelet, int iteration ) {
+    super(wavelet, iteration);
   } // FastWaveletTransform
 
   /**
@@ -61,7 +69,7 @@ public class FastWaveletTransform extends BasicTransform {
    * @see math.transform.jwave.handlers.BasicTransform#forward(double[])
    */
   @Override
-  public double[ ] forward( double[ ] arrTime ) {
+  public double[ ] forwardWavelet( double[ ] arrTime ) {
 
     double[ ] arrHilb = new double[ arrTime.length ];
     for( int i = 0; i < arrTime.length; i++ )
@@ -105,7 +113,7 @@ public class FastWaveletTransform extends BasicTransform {
    * @see math.transform.jwave.handlers.BasicTransform#reverse(double[])
    */
   @Override
-  public double[ ] reverse( double[ ] arrHilb ) {
+  public double[ ] reverseWavelet( double[ ] arrHilb ) {
 
     double[ ] arrTime = new double[ arrHilb.length ];
 
@@ -153,7 +161,7 @@ public class FastWaveletTransform extends BasicTransform {
    * @see math.transform.jwave.handlers.BasicTransform#forward(double[], int)
    */
   @Override
-  public double[ ] forward( double[ ] arrTime, int toLevel ) {
+  public double[ ] forwardWavelet( double[ ] arrTime, int toLevel ) {
 
     double[ ] arrHilb = new double[ arrTime.length ];
     for( int i = 0; i < arrTime.length; i++ )
@@ -202,7 +210,7 @@ public class FastWaveletTransform extends BasicTransform {
    * @see math.transform.jwave.handlers.BasicTransform#reverse(double[], int)
    */
   @Override
-  public double[ ] reverse( double[ ] arrHilb, int fromLevel ) {
+  public double[ ] reverseWavelet( double[ ] arrHilb, int fromLevel ) {
 
     double[ ] arrTime = new double[ arrHilb.length ];
 

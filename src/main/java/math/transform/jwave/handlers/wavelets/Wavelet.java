@@ -31,7 +31,7 @@ package math.transform.jwave.handlers.wavelets;
  * @date 10.02.2010 08:54:48
  * @author Christian Scheiblich
  */
-public abstract class Wavelet {
+public abstract class Wavelet implements IWavelet {
 
   /**
    * minimal wavelength of the used wavelet and scaling coefficients
