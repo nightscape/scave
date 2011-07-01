@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2010 Christian Scheiblich
+ * Copyright 2010-2011 Christian Scheiblich
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,32 +15,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file Wavelet.java is part of JWave.
+ * This file FastWaveletTransform.java is part of JWave.
  *
  * @author Christian Scheiblich
  * date 23.02.2010 05:42:23
  * contact source@linux23.de
  */
-package math.transform.jwave.handlers.wavelets;
+
+package math.transform.jwave.handlers;
 
 /**
  * 
  * TODO pol explainMeShortly
  *
- * @date 30 juin 2011 10:31:38
+ * @date 30 juin 2011 10:14:22
  * @author Pol Kennel
  */
-public interface IWavelet {
+public interface TransformInterface {
 
-  //wavelets functions
-  public double[ ] forward( double[ ] values );
+  // 1-D
+  public abstract double[ ] forward( double[ ] arrTime );
 
-  public double[ ] reverse( double[ ] values );
+  public abstract double[ ] reverse( double[ ] arrHilb );
 
-  public int getWaveLength( );
+  // 2-D
+  public abstract double[ ][ ] forward( double[ ][ ] matTime );
 
-  public double[ ] getCoeffs( );
+  public abstract double[ ][ ] reverse( double[ ][ ] matHilb );
 
-  public double[ ] getScales( );
-  
+  // 3-D
+  public abstract double[ ][ ][ ] forward( double[ ][ ][ ] spcTime );
+
+  public abstract double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb );
+
 }

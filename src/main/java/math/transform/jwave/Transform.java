@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2010 Christian Scheiblich
+ * Copyright 2010-2011 Christian Scheiblich
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@
 package math.transform.jwave;
 
 import math.transform.jwave.handlers.BasicTransform;
-import math.transform.jwave.handlers.ITransform;
+import math.transform.jwave.handlers.TransformInterface;
 import math.transform.jwave.handlers.WaveletTransform;
 import math.transform.jwave.types.Complex;
 
@@ -40,7 +40,7 @@ public class Transform {
   /**
    * Transform object of type base class
    */
-  protected ITransform _transform;
+  protected TransformInterface _transform;
   
   /**
    * Constructor; needs some object like DiscreteFourierTransform,
@@ -50,7 +50,7 @@ public class Transform {
    * @author Christian Scheiblich
    * @param transform Transform object
    */
-  public Transform( ITransform transform ) {
+  public Transform( TransformInterface transform ) {
     _transform = transform;
   } // Transform
   
@@ -61,7 +61,7 @@ public class Transform {
    * @date 19.05.2009 09:50:24
    * @author Christian Scheiblich
    */
-  public Transform( ITransform transform, int iteration ) {
+  public Transform( TransformInterface transform, int iteration ) {
     if( transform instanceof WaveletTransform ) {
       _transform = transform;
       ( (WaveletTransform)_transform ).set_iteration( iteration );

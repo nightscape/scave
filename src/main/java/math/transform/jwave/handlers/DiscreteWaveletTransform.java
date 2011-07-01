@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2010 Christian Scheiblich
+ * Copyright 2010-2011 Christian Scheiblich
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@
 package math.transform.jwave.handlers;
 
 import math.transform.jwave.handlers.wavelets.Wavelet;
-import math.transform.jwave.handlers.wavelets.IWavelet;
+import math.transform.jwave.handlers.wavelets.WaveletInterface;
 
 
 /**
@@ -45,7 +45,7 @@ public class DiscreteWaveletTransform extends WaveletTransform {
    * @author Pol Kennel
    * @param wavelet
    */
-  public DiscreteWaveletTransform(IWavelet wavelet ) {
+  public DiscreteWaveletTransform(WaveletInterface wavelet ) {
     super(wavelet);
   }
   
@@ -56,7 +56,7 @@ public class DiscreteWaveletTransform extends WaveletTransform {
    * @author Pol Kennel
    * @param wavelet
    */
-  public DiscreteWaveletTransform(IWavelet wavelet, int iteration ) {
+  public DiscreteWaveletTransform(WaveletInterface wavelet, int iteration ) {
     super(wavelet, iteration);
   }
   

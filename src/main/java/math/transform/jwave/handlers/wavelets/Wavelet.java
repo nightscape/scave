@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2010 Christian Scheiblich
+ * Copyright 2010-2011 Christian Scheiblich
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ package math.transform.jwave.handlers.wavelets;
  * @date 10.02.2010 08:54:48
  * @author Christian Scheiblich
  */
-public abstract class Wavelet implements IWavelet {
+public abstract class Wavelet implements WaveletInterface {
 
   /**
    * minimal wavelength of the used wavelet and scaling coefficients

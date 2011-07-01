@@ -1,6 +1,6 @@
 package math.transform.jwave.handlers;
 
-import math.transform.jwave.handlers.wavelets.IWavelet;
+import math.transform.jwave.handlers.wavelets.WaveletInterface;
 
 /**
  * 
@@ -13,7 +13,7 @@ public abstract class WaveletTransform extends BasicTransform {
   
   //----------------------------------- Attributes -------------------------------------------
   
-  protected IWavelet _wavelet ;
+  protected WaveletInterface _wavelet ;
 
   protected int _iteration = -1 ;
   
@@ -21,22 +21,22 @@ public abstract class WaveletTransform extends BasicTransform {
   
   public WaveletTransform(){  }
   
-  public WaveletTransform(IWavelet wavelet){
+  public WaveletTransform(WaveletInterface wavelet){
     _wavelet = wavelet;
   }
   
-  public WaveletTransform(IWavelet wavelet, int iteration){
+  public WaveletTransform(WaveletInterface wavelet, int iteration){
     _wavelet = wavelet;
     _iteration = iteration;
   }
 
   //----------------------------------- Getters / Setters ------------------------------------
   
-  public IWavelet get_wavelet( ) {
+  public WaveletInterface get_wavelet( ) {
     return _wavelet;
   }
 
-  public void set_wavelet( IWavelet _wavelet ) {
+  public void set_wavelet( WaveletInterface _wavelet ) {
     this._wavelet = _wavelet;
   }
 

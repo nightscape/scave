@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2010 Christian Scheiblich
+ * Copyright 2010-2011 Christian Scheiblich
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ import math.transform.jwave.handlers.BasicTransform;
 import math.transform.jwave.handlers.DiscreteFourierTransform;
 import math.transform.jwave.handlers.DiscreteWaveletTransform;
 import math.transform.jwave.handlers.FastWaveletTransform;
-import math.transform.jwave.handlers.ITransform;
+import math.transform.jwave.handlers.TransformInterface;
 import math.transform.jwave.handlers.WaveletPacketTransform;
 import math.transform.jwave.handlers.wavelets.Coif06;
 import math.transform.jwave.handlers.wavelets.Daub02;
@@ -38,7 +38,7 @@ import math.transform.jwave.handlers.wavelets.Lege02;
 import math.transform.jwave.handlers.wavelets.Lege04;
 import math.transform.jwave.handlers.wavelets.Lege06;
 import math.transform.jwave.handlers.wavelets.Wavelet;
-import math.transform.jwave.handlers.wavelets.IWavelet;
+import math.transform.jwave.handlers.wavelets.WaveletInterface;
 
 /**
  * Main class for doing little test runs for different transform types and
@@ -81,7 +81,7 @@ public class JWave {
     } // if args
 
     String wType = args[ 1 ];
-    IWavelet wavelet = null;
+    WaveletInterface wavelet = null;
     if( wType.equalsIgnoreCase( "haar02" ) )
       wavelet = new Haar02( );
     else if( wType.equalsIgnoreCase( "lege02" ) )
@@ -106,7 +106,7 @@ public class JWave {
     } // if wType
 
     String tType = args[ 0 ];
-    ITransform bWave = null;
+    TransformInterface bWave = null;
     if( tType.equalsIgnoreCase( "dft" ) )
       bWave = new DiscreteFourierTransform( );
     else if( tType.equalsIgnoreCase( "fwt" ) )

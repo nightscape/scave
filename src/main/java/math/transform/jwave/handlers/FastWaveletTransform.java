@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2010 Christian Scheiblich
+ * Copyright 2010-2011 Christian Scheiblich
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@
 package math.transform.jwave.handlers;
 
 import math.transform.jwave.handlers.wavelets.Wavelet;
-import math.transform.jwave.handlers.wavelets.IWavelet;
+import math.transform.jwave.handlers.wavelets.WaveletInterface;
 
 /**
  * Base class for the forward and reverse Fast Wavelet Transform in 1-D, 2-D,
@@ -43,7 +43,7 @@ public class FastWaveletTransform extends WaveletTransform {
    * @param wavelet
    *          object of type Wavelet; Haar02, Daub02, Coif06, ...
    */
-  public FastWaveletTransform( IWavelet wavelet ) {
+  public FastWaveletTransform( WaveletInterface wavelet ) {
     super(wavelet);
   } // FastWaveletTransform
   
@@ -55,7 +55,7 @@ public class FastWaveletTransform extends WaveletTransform {
    * @param wavelet
    *          object of type Wavelet; Haar02, Daub02, Coif06, ...
    */
-  public FastWaveletTransform( IWavelet wavelet, int iteration ) {
+  public FastWaveletTransform( WaveletInterface wavelet, int iteration ) {
     super(wavelet, iteration);
   } // FastWaveletTransform
 
