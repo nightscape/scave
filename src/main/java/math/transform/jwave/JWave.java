@@ -72,7 +72,7 @@ public class JWave {
 
     String waveletTypeList = "Haar02, Lege02, Daub02, Lege04, Daub03, Lege06, Coif06, Daub04";
 
-    if( args.length < 2 && args.length >3 ) {
+    if( args.length < 2 || args.length >3 ) {
       System.err.println( "usage: JWave [transformType] {waveletType} {iteration-Optional}" );
       System.err.println( "" );
       System.err.println( "transformType: DFT, FWT, WPT, DWT" );
