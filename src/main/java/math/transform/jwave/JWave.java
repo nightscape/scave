@@ -23,12 +23,12 @@
  */
 package math.transform.jwave;
 
-import math.transform.jwave.handlers.BasicTransform;
-import math.transform.jwave.handlers.DiscreteFourierTransform;
-import math.transform.jwave.handlers.DiscreteWaveletTransform;
-import math.transform.jwave.handlers.FastWaveletTransform;
 import math.transform.jwave.handlers.TransformInterface;
+import math.transform.jwave.handlers.DiscreteFourierTransform;
+import math.transform.jwave.handlers.FastWaveletTransform;
 import math.transform.jwave.handlers.WaveletPacketTransform;
+import math.transform.jwave.handlers.DiscreteWaveletTransform;
+import math.transform.jwave.handlers.wavelets.WaveletInterface;
 import math.transform.jwave.handlers.wavelets.Coif06;
 import math.transform.jwave.handlers.wavelets.Daub02;
 import math.transform.jwave.handlers.wavelets.Daub03;
@@ -37,8 +37,6 @@ import math.transform.jwave.handlers.wavelets.Haar02;
 import math.transform.jwave.handlers.wavelets.Lege02;
 import math.transform.jwave.handlers.wavelets.Lege04;
 import math.transform.jwave.handlers.wavelets.Lege06;
-import math.transform.jwave.handlers.wavelets.Wavelet;
-import math.transform.jwave.handlers.wavelets.WaveletInterface;
 
 /**
  * Main class for doing little test runs for different transform types and
@@ -72,11 +70,13 @@ public class JWave {
 
     String waveletTypeList = "Haar02, Lege02, Daub02, Lege04, Daub03, Lege06, Coif06, Daub04";
 
-    if( args.length < 2 || args.length >3 ) {
-      System.err.println( "usage: JWave [transformType] {waveletType} {iteration-Optional}" );
+    if( args.length < 2 || args.length > 3 ) {
+      System.err
+          .println( "usage: JWave [transformType] {waveletType} {noOfSteps}" );
       System.err.println( "" );
       System.err.println( "transformType: DFT, FWT, WPT, DWT" );
       System.err.println( "waveletType : " + waveletTypeList );
+      System.err.println( "noOfSteps : " + "no of steps forward and reverse; optional" );
       return;
     } // if args
 
@@ -121,18 +121,24 @@ public class JWave {
       System.err.println( "available transforms are DFT, FWT, WPT, DFT" );
       return;
     } // if tType
-    
+
     // instance of transform
-    Transform t ;
-    
-    if(args.length>2 ){
-      int waveIter = Integer.parseInt(args[2]);
-      t = new Transform( bWave, waveIter );
-    }else{
-      t = new Transform( bWave );
-    }
+    Transform t;
+
+    if( args.length > 2 ) {
       
-    double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1. };
+      String argNoOfSteps = args[ 2 ];
+      int noOfSteps = Integer.parseInt( argNoOfSteps );
+      
+      t = new Transform( bWave, noOfSteps ); // perform less steps than possible
+      
+    } else {
+      
+      t = new Transform( bWave ); // perform all steps
+      
+    }
+
+    double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1., 1. };
 
     System.out.println( "" );
     System.out.println( "time domain:" );

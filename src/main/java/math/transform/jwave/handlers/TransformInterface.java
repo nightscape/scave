@@ -26,7 +26,7 @@ package math.transform.jwave.handlers;
 
 /**
  * 
- * TODO pol explainMeShortly
+ * Interface for all transform methods.
  *
  * @date 30 juin 2011 10:14:22
  * @author Pol Kennel
