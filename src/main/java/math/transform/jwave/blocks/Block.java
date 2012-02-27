@@ -178,7 +178,7 @@ public abstract class Block {
   }
 
   /**
-   * Returns the i-th row filled with entries. .ß
+   * Returns the i-th row filled with entries. 
    * 
    * @date 11.06.2011 20:47:39
    * @author Christian Scheiblich
