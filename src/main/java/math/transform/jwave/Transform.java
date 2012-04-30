@@ -1,7 +1,7 @@
 /**
  * JWave - Java implementation of wavelet transform algorithms
  *
- * Copyright 2010-2011 Christian Scheiblich
+ * Copyright 2010-2012 Christian Scheiblich
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@
  *
  * @author Christian Scheiblich
  * date 23.02.2010 05:42:23
- * contact source@linux23.de
+ * contact cscheiblich@googlemail.com
  */
 package math.transform.jwave;
 
