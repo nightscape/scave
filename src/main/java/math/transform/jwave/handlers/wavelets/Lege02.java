@@ -19,7 +19,7 @@
  *
  * @author itechsch
  * date 08.06.2010 09:32:08
- * contact cscheiblich@googlemail.com
+ * contact graetz@mailfish.de
  */
 package math.transform.jwave.handlers.wavelets;
 

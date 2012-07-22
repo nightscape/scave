@@ -19,7 +19,7 @@
  *
  * @author Christian Scheiblich
  * date 23.02.2010 14:26:47
- * contact cscheiblich@googlemail.com
+ * contact graetz@mailfish.de
  */
 package math.transform.jwave;
 

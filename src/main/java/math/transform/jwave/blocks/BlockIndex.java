@@ -19,7 +19,7 @@
  *
  * @author Christian Scheiblich
  * date 12.06.2011 23:45:37
- * contact cscheiblich@googlemail.com
+ * contact graetz@mailfish.de
  */
 package math.transform.jwave.blocks;
 

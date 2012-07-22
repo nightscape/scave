@@ -19,7 +19,7 @@
  *
  * @author tucker
  * date 11.06.2011 21:31:12
- * contact cscheiblich@googlemail.com
+ * contact graetz@mailfish.de
  */
 package math.transform.jwave.blocks;
 

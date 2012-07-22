@@ -19,7 +19,7 @@
  *
  * @author tucker
  * date 23.11.2010 19:05:07
- * contact cscheiblich@googlemail.com
+ * contact graetz@mailfish.de
  */
 package math.transform.jwave.handlers;
 
