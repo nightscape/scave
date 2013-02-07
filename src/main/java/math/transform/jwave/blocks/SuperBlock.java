@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file SuperBlockInterface.java is part of JWave.
+ * This file SuperBlock.java is part of JWave.
  *
  * @author Christian Scheiblich
  * contact graetz@mailfish.de
@@ -32,13 +32,13 @@ import math.transform.jwave.blocks.types.Block;
  * date Feb 6, 2013 3:06:47 PM
  *
  */
-public interface SuperBlockInterface {
+public interface SuperBlock {
   
   /**
    * @author Christian Scheiblich
    * date Feb 6, 2013 3:26:20 PM
    *
-   * Delete all blocks that are stored in the SuperBlock object
+   * Delete all blocks that are stored in the SuperBlockArray object
    * to allow for a rapid memory break downs
    */
   public void eraseMemory( );
@@ -47,7 +47,7 @@ public interface SuperBlockInterface {
    * @author Christian Scheiblich
    * date Feb 6, 2013 3:30:51 PM
    *
-   * @return total number of Blocks that are stored in the SuperBlock object
+   * @return total number of Blocks that are stored in the SuperBlockArray object
    */
   public long computeMemory( );
   
@@ -55,12 +55,12 @@ public interface SuperBlockInterface {
    * @author Christian Scheiblich
    * date Feb 6, 2013 3:31:35 PM
    *
-   * Add a Block to the SuperBlock bz adding it to the internal type of storage.
+   * Add a Block to the SuperBlockArray bz adding it to the internal type of storage.
    * Attention there is no control yet if two Blocks are covering the same area.
    *
    * @param block a valid object of type Block
    */
-  public void pushBlock( Block block );
+  public void addBlock( Block block );
   
   /**
    * @author Christian Scheiblich
@@ -75,7 +75,7 @@ public interface SuperBlockInterface {
    * @author Christian Scheiblich
    * date Feb 6, 2013 3:34:43 PM
    *
-   * @return the number of Block objects that are stored currently in the SuperBlock object.
+   * @return the number of Block objects that are stored currently in the SuperBlockArray object.
    */
   public long getNoBlocks( );
   

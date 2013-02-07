@@ -47,7 +47,7 @@ public class BlockFull extends Block {
    * @author Christian Scheiblich
    * @see math.transform.jwave.blocks.types.Block#Block(int, int, int , int)
    */
-  public BlockFull( int offSetRow, int offSetCol, int noOfRows, int noOfCols )
+  protected BlockFull( int offSetRow, int offSetCol, int noOfRows, int noOfCols )
       throws BlockException {
     super( offSetRow, offSetCol, noOfRows, noOfCols );
   }
@@ -145,6 +145,14 @@ public class BlockFull extends Block {
   public void eraseMemory( ) throws BlockException {
     _matrix = null;
     _isMemAllocated = false;
+  }
+
+  /* (non-Javadoc)
+   * @see math.transform.jwave.blocks.types.Block#computeMemory()
+   */
+  @Override
+  public long computeMemory( ) throws BlockException {    
+    return _noOfRows * _noOfCols * 8; // double
   }
 
 } // class

@@ -89,7 +89,7 @@ public class BlockController {
     Block newBlock = null;
 
     newBlock = create( blockType, block.getOffSetRow( ), block.getOffSetCol( ),
-        block.getNoOfRows( ), block.getNoOfCols( ) );
+        block.getNoRows( ), block.getNoCols( ) );
 
     if( block.isMemAllocated( ) ) {
 
@@ -97,8 +97,8 @@ public class BlockController {
 
       double[ ][ ] matrix = block.get( );
 
-      for( int i = 0; i < block.getNoOfRows( ); i++ )
-        for( int j = 0; j < block.getNoOfCols( ); j++ ) {
+      for( int i = 0; i < block.getNoRows( ); i++ )
+        for( int j = 0; j < block.getNoCols( ); j++ ) {
 
           double val = matrix[ i ][ j ];
 

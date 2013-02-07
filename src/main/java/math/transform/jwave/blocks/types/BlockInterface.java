@@ -47,4 +47,44 @@ public interface BlockInterface {
    */
   public void setBlockNo( int no );
   
+  /**
+   * Get the number of rows the block is holding.
+   * 
+   * @author Christian Scheiblich
+   * date 07.02.2013 05:18:54
+   *
+   * @return the number of rows the block got.
+   */
+  public int getNoRows( );
+  
+  /**
+   * Get the number of cols the block is holding.
+   * 
+   * @author Christian Scheiblich
+   * date 07.02.2013 05:19:17
+   *
+   * @return the number of columns the block got.
+   */
+  public int getNoCols( );
+  
+  /**
+   * Get the offset of the rows of the Block.
+   * 
+   * @author Christian Scheiblich
+   * date 07.02.2013 05:19:47
+   *
+   * @return the upper left position for the rows of the block.
+   */
+  public int getOffSetRow( );
+  
+  /**
+   * Get the offset of the columns of the Block.
+   * 
+   * @author Christian Scheiblich
+   * date 07.02.2013 05:20:11
+   *
+   * @return the upper left position for the columns of the block.
+   */
+  public int getOffSetCol( );
+  
 } // BlockInterface

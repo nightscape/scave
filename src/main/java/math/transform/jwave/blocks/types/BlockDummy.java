@@ -42,7 +42,7 @@ public class BlockDummy extends Block {
    * @author Christian Scheiblich
    * @see math.transform.jwave.blocks.types.Block#Block(int, int, int , int)
    */
-  public BlockDummy( int offSetRow, int offSetCol, int noOfRows, int noOfCols )
+  protected BlockDummy( int offSetRow, int offSetCol, int noOfRows, int noOfCols )
       throws BlockException {
     super( offSetRow, offSetCol, noOfRows, noOfCols );
   }
@@ -105,6 +105,14 @@ public class BlockDummy extends Block {
   @Override
   public void eraseMemory( ) throws BlockException {
     throw new BlockFailure( "BlockDummy#eraseMemory -- method not available" );
+  }
+
+  /* (non-Javadoc)
+   * @see math.transform.jwave.blocks.types.Block#computeMemory()
+   */
+  @Override
+  public long computeMemory( ) throws BlockException {
+    return 0;
   }
 
 } // class

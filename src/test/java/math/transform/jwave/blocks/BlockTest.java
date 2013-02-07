@@ -73,8 +73,8 @@ public class BlockTest {
 
     double[ ][ ] matrix = block.get( );
 
-    for( int i = 0; i < block.getNoOfRows( ); i++ )
-      for( int j = 0; j < block.getNoOfCols( ); j++ ) {
+    for( int i = 0; i < block.getNoRows( ); i++ )
+      for( int j = 0; j < block.getNoCols( ); j++ ) {
         double val = matrix[ i ][ j ];
         if( i == 0 && j == 0 )
           assertEquals( 23.42, val, 0. );
@@ -100,8 +100,8 @@ public class BlockTest {
 
     matrix = block.get( );
 
-    for( int i = 0; i < block.getNoOfRows( ); i++ )
-      for( int j = 0; j < block.getNoOfCols( ); j++ ) {
+    for( int i = 0; i < block.getNoRows( ); i++ )
+      for( int j = 0; j < block.getNoCols( ); j++ ) {
         double val = matrix[ i ][ j ];
         if( i == 0 && j == 0 )
           assertEquals( 23.42, val, 0. );
@@ -144,8 +144,8 @@ public class BlockTest {
 
     block.allocateMemory( );
 
-    for( int i = 0; i < block.getNoOfRows( ); i++ )
-      for( int j = 0; j < block.getNoOfCols( ); j++ ) {
+    for( int i = 0; i < block.getNoRows( ); i++ )
+      for( int j = 0; j < block.getNoCols( ); j++ ) {
         double val = (double)( i + j + 1 );
         block.set( i, j, val );
       }
@@ -154,8 +154,8 @@ public class BlockTest {
 
     double[ ][ ] matrix = block.get( );
 
-    for( int i = 0; i < block.getNoOfRows( ); i++ )
-      for( int j = 0; j < block.getNoOfCols( ); j++ ) {
+    for( int i = 0; i < block.getNoRows( ); i++ )
+      for( int j = 0; j < block.getNoCols( ); j++ ) {
         double val = matrix[ i ][ j ];
         assertEquals( (double)( i + j + 1 ), val, 0. );
       }
@@ -164,8 +164,8 @@ public class BlockTest {
 
     matrix = block.get( );
 
-    for( int i = 0; i < block.getNoOfRows( ); i++ )
-      for( int j = 0; j < block.getNoOfCols( ); j++ ) {
+    for( int i = 0; i < block.getNoRows( ); i++ )
+      for( int j = 0; j < block.getNoCols( ); j++ ) {
         double val = matrix[ i ][ j ];
         assertEquals( (double)( i + j + 1 ), val, 0. );
       }
@@ -191,22 +191,22 @@ public class BlockTest {
 
     block.allocateMemory( );
 
-    for( int i = 0; i < block.getNoOfRows( ); i++ )
-      for( int j = 0; j < block.getNoOfCols( ); j++ ) {
+    for( int i = 0; i < block.getNoRows( ); i++ )
+      for( int j = 0; j < block.getNoCols( ); j++ ) {
         double val = (double)( i + j + 1 );
         block.set( i, j, val );
       }
 
-    for( int i = 0; i < block.getNoOfRows( ); i++ )
-      for( int j = 0; j < block.getNoOfCols( ); j++ ) {
+    for( int i = 0; i < block.getNoRows( ); i++ )
+      for( int j = 0; j < block.getNoCols( ); j++ ) {
         double val = block.get( i, j );
         assertEquals( (double)( i + j + 1 ), val, 0. );
       }
 
     double[ ][ ] matrix = block.get( );
 
-    for( int i = 0; i < block.getNoOfRows( ); i++ )
-      for( int j = 0; j < block.getNoOfCols( ); j++ ) {
+    for( int i = 0; i < block.getNoRows( ); i++ )
+      for( int j = 0; j < block.getNoCols( ); j++ ) {
         double val = matrix[ i ][ j ];
         assertEquals( (double)( i + j + 1 ), val, 0. );
       }
@@ -231,23 +231,23 @@ public class BlockTest {
 
     block.allocateMemory( );
 
-    for( int i = 0; i < block.getNoOfRows( ); i++ )
-      for( int j = 0; j < block.getNoOfCols( ); j++ ) {
+    for( int i = 0; i < block.getNoRows( ); i++ )
+      for( int j = 0; j < block.getNoCols( ); j++ ) {
         double val = (double)( i + j + 1 );
         block.set( i, j, val );
       }
 
-    for( int i = 0; i < block.getNoOfRows( ); i++ ) {
+    for( int i = 0; i < block.getNoRows( ); i++ ) {
       double[ ] rowVal = block.getRow( i );
-      for( int j = 0; j < block.getNoOfCols( ); j++ )
+      for( int j = 0; j < block.getNoCols( ); j++ )
         assertEquals( (double)( i + j + 1 ), rowVal[ j ], 0. );
     }
     
     block = BlockController.convert( BlockType.Index, block );
     
-    for( int i = 0; i < block.getNoOfRows( ); i++ ) {
+    for( int i = 0; i < block.getNoRows( ); i++ ) {
       double[ ] rowVal = block.getRow( i );
-      for( int j = 0; j < block.getNoOfCols( ); j++ )
+      for( int j = 0; j < block.getNoCols( ); j++ )
         assertEquals( (double)( i + j + 1 ), rowVal[ j ], 0. );
     }
     
@@ -272,23 +272,23 @@ public class BlockTest {
 
     block.allocateMemory( );
 
-    for( int i = 0; i < block.getNoOfRows( ); i++ )
-      for( int j = 0; j < block.getNoOfCols( ); j++ ) {
+    for( int i = 0; i < block.getNoRows( ); i++ )
+      for( int j = 0; j < block.getNoCols( ); j++ ) {
         double val = (double)( i + j + 1 );
         block.set( i, j, val );
       }
 
-    for( int j = 0; j < block.getNoOfCols( ); j++ ) {
+    for( int j = 0; j < block.getNoCols( ); j++ ) {
       double[ ] colVal = block.getRow( j );
-      for( int i = 0; i < block.getNoOfRows( ); i++ )
+      for( int i = 0; i < block.getNoRows( ); i++ )
         assertEquals( (double)( i + j + 1 ), colVal[ i ], 0. );
     }
     
     block = BlockController.convert( BlockType.Index, block );
     
-    for( int j = 0; j < block.getNoOfCols( ); j++ ) {
+    for( int j = 0; j < block.getNoCols( ); j++ ) {
       double[ ] colVal = block.getRow( j );
-      for( int i = 0; i < block.getNoOfRows( ); i++ )
+      for( int i = 0; i < block.getNoRows( ); i++ )
         assertEquals( (double)( i + j + 1 ), colVal[ i ], 0. );
     }
     

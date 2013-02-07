@@ -38,33 +38,33 @@ public abstract class Block implements BlockInterface {
    * The number of the block - normally mapped to some array position
    */
   protected int _no;
-
+  
   /**
    * One index of upper left corner of the block in global area.
    */
   protected int _offSetRow;
-
+  
   /**
    * One index of upper left corner of the block in global area.
    */
   protected int _offSetCol;
-
+  
   /**
    * One dimension of the block like M matrix.
    */
   protected int _noOfRows;
-
+  
   /**
    * One dimension of the block like M matrix.
    */
   protected int _noOfCols;
-
+  
   /**
    * Set to false if block has no memory allocated otherwise to true if block
    * has memory allocated.
    */
   protected boolean _isMemAllocated;
-
+  
   /**
    * Constructor taking the information of the upper left corner of the block:
    * e.g. the block is placed at (i,j) == (25,25) in a greater global area.
@@ -85,36 +85,33 @@ public abstract class Block implements BlockInterface {
    *           if the given values are negative or in case of noOfRows and
    *           noOfCols are equal to zero.
    */
-  public Block( int offSetRow, int offSetCol, int noOfRows, int noOfCols )
-      throws BlockException {
-
+  protected Block( int offSetRow, int offSetCol, int noOfRows, int noOfCols ) throws BlockException {
+    
     if( offSetRow < 0 )
       throw new BlockFailure( "Block#Block -- offSetRow is negative ~8>" );
     if( offSetCol < 0 )
       throw new BlockFailure( "Block#Block -- offSetCol is negative ~8>" );
-
+    
     if( noOfRows < 0 )
       throw new BlockFailure( "Block#Block -- noOfRows is negative ~8>" );
     if( noOfCols < 0 )
       throw new BlockFailure( "Block#Block -- noOfCols is negative ~8>" );
-
+    
     if( noOfRows == 0 )
-      throw new BlockFailure(
-          "Block#Block -- noOfRows is zero; must be at least 1 or greater ~8>" );
+      throw new BlockFailure( "Block#Block -- noOfRows is zero; must be at least 1 or greater ~8>" );
     if( noOfCols == 0 )
-      throw new BlockFailure(
-          "Block#Block -- noOfCols is zero; must be at least 1 or greater ~8>" );
-
+      throw new BlockFailure( "Block#Block -- noOfCols is zero; must be at least 1 or greater ~8>" );
+    
     _offSetRow = offSetRow;
     _offSetCol = offSetCol;
-
+    
     _noOfRows = noOfRows;
     _noOfCols = noOfCols;
-
+    
     _isMemAllocated = false;
-
+    
   } // Block
-
+  
   /**
    * Barely answers the question to be or not to be. ~8>
    * 
@@ -127,7 +124,6 @@ public abstract class Block implements BlockInterface {
     return _isMemAllocated;
   }
   
-
   /* (non-Javadoc)
    * @see math.transform.jwave.blocks.types.BlockInterface#setBlockNo(int)
    */
@@ -138,10 +134,10 @@ public abstract class Block implements BlockInterface {
   /* (non-Javadoc)
    * @see math.transform.jwave.blocks.types.BlockInterface#getBlockNo()
    */
-  public int getBlockNo(){
+  public int getBlockNo( ) {
     return _no;
   }
-
+  
   /**
    * Returns the number of rows -- M.
    * 
@@ -149,10 +145,10 @@ public abstract class Block implements BlockInterface {
    * @author Christian Scheiblich
    * @return the M of a matrix as know by the size (M,N)
    */
-  public int getNoOfRows( ) {
+  public int getNoRows( ) {
     return _noOfRows;
   }
-
+  
   /**
    * Returns the number of columns -- N.
    * 
@@ -160,10 +156,10 @@ public abstract class Block implements BlockInterface {
    * @author Christian Scheiblich
    * @return the N of a matrix as know by the size (M,N)
    */
-  public int getNoOfCols( ) {
+  public int getNoCols( ) {
     return _noOfCols;
   }
-
+  
   /**
    * Returns the number of stored entries; for memory counting e.g.
    * 
@@ -171,10 +167,10 @@ public abstract class Block implements BlockInterface {
    * @author Christian Scheiblich
    * @return the number of stored entries in the block
    */
-  public int getNoOfEntries( ) {
+  public int getNoEntries( ) {
     return _noOfRows * _noOfCols;
   }
-
+  
   /**
    * Returns the row offset of the upper left corner -- i.
    * 
@@ -185,7 +181,7 @@ public abstract class Block implements BlockInterface {
   public int getOffSetRow( ) {
     return _offSetRow;
   }
-
+  
   /**
    * Returns the row offset of the upper left corner -- j.
    * 
@@ -196,7 +192,7 @@ public abstract class Block implements BlockInterface {
   public int getOffSetCol( ) {
     return _offSetCol;
   }
-
+  
   /**
    * Returns the i-th row filled with entries. 
    * 
@@ -209,15 +205,15 @@ public abstract class Block implements BlockInterface {
    *           if i is out of bound or no memory is allocated for this block
    */
   public double[ ] getRow( int i ) throws BlockException {
-
+    
     double[ ] row = new double[ _noOfCols ];
-
+    
     for( int j = 0; j < _noOfCols; j++ )
       row[ j ] = get( i, j );
-
+    
     return row;
   }
-
+  
   /**
    * Returns the j-th column filled with entries.
    * 
@@ -230,15 +226,15 @@ public abstract class Block implements BlockInterface {
    *           if j is out of bound or no memory is allocated for this block
    */
   public double[ ] getCol( int j ) throws BlockException {
-
+    
     double[ ] col = new double[ _noOfRows ];
-
+    
     for( int i = 0; i < _noOfRows; i++ )
       col[ i ] = get( i, j );
-
+    
     return col;
   }
-
+  
   /**
    * Checks for the indices being not out of bound.
    * 
@@ -252,21 +248,21 @@ public abstract class Block implements BlockInterface {
    *           if an index is out of bound
    */
   protected void checkIndices( int i, int j ) throws BlockException {
-
+    
     if( i < 0 )
       throw new BlockFailure( "Block#checkIndices -- index i is negative" );
-
+    
     if( j < 0 )
       throw new BlockFailure( "Block#checkIndices -- index j is negative" );
-
+    
     if( i >= _noOfRows )
       throw new BlockFailure( "Block#checkIndices -- index i is out of bound" );
-
+    
     if( j >= _noOfCols )
       throw new BlockFailure( "Block#checkIndices -- index j is out of bound" );
-
+    
   }
-
+  
   /**
    * Returns the stored entry at LOCAL position (i,j) of the block.
    * 
@@ -281,7 +277,7 @@ public abstract class Block implements BlockInterface {
    *           if the pair (i,j) is out of bound or no memory is allocated
    */
   abstract public double get( int i, int j ) throws BlockException;
-
+  
   /**
    * Returns a matrix keeping the values, if values are missing. like in index
    * storage, the places are filled by zero entries.
@@ -293,7 +289,7 @@ public abstract class Block implements BlockInterface {
    *           if no memory is allocated
    */
   abstract public double[ ][ ] get( ) throws BlockException;
-
+  
   /**
    * Sets an entry in the block at LOCAL position (i,j) of the block.
    * 
@@ -309,7 +305,7 @@ public abstract class Block implements BlockInterface {
    *           if the pair (i,j) is out of bound or no memory is allocated
    */
   abstract public void set( int i, int j, double val ) throws BlockException;
-
+  
   /**
    * Allocates memory in case of the instantiated block type.
    * 
@@ -319,7 +315,7 @@ public abstract class Block implements BlockInterface {
    *           if allocations fails due to some reason
    */
   abstract public void allocateMemory( ) throws BlockException;
-
+  
   /**
    * Erases memory in case of the instantiated block type.
    * 
@@ -329,5 +325,15 @@ public abstract class Block implements BlockInterface {
    *           if erasing fails due to some reason
    */
   abstract public void eraseMemory( ) throws BlockException;
-
+  
+  /**
+   * Computes the allocated memeory of the block in Bytes
+   * 
+   * @author Christian Scheiblich
+   * date 07.02.2013 05:50:50
+   *
+   * @throws BlockException
+   */
+  abstract public long computeMemory( ) throws BlockException;
+  
 } // class
