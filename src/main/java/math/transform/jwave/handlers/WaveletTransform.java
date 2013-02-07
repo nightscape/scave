@@ -3,7 +3,7 @@ package math.transform.jwave.handlers;
 import math.transform.jwave.handlers.wavelets.WaveletInterface;
 
 /**
- * TODO pol explainMeShortly
+ * The common class for having a Wavelet transform.
  * 
  * @date 30 juin 2011 14:50:35
  * @author Pol Kennel

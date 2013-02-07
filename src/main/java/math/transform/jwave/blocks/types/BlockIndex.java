@@ -21,7 +21,7 @@
  * date 12.06.2011 23:45:37
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.blocks;
+package math.transform.jwave.blocks.types;
 
 import java.util.ArrayList;
 
@@ -57,7 +57,7 @@ public class BlockIndex extends Block {
    * 
    * @date 12.06.2011 23:45:37
    * @author Christian Scheiblich
-   * @see math.transform.jwave.blocks.Block#Block(int, int, int, int)
+   * @see math.transform.jwave.blocks.types.Block#Block(int, int, int, int)
    */
   public BlockIndex( int offSetRow, int offSetCol, int noOfRows, int noOfCols )
       throws BlockException {
@@ -70,7 +70,7 @@ public class BlockIndex extends Block {
    * 
    * @date 12.06.2011 23:45:37
    * @author Christian Scheiblich
-   * @see math.transform.jwave.blocks.Block#get(int, int)
+   * @see math.transform.jwave.blocks.types.Block#get(int, int)
    */
   @Override
   public double get( int i, int j ) throws BlockException {
@@ -105,7 +105,7 @@ public class BlockIndex extends Block {
    * 
    * @date 12.06.2011 23:45:37
    * @author Christian Scheiblich
-   * @see math.transform.jwave.blocks.Block#get()
+   * @see math.transform.jwave.blocks.types.Block#get()
    */
   @Override
   public double[ ][ ] get( ) throws BlockException {
@@ -126,7 +126,7 @@ public class BlockIndex extends Block {
    * 
    * @date 12.06.2011 23:45:37
    * @author Christian Scheiblich
-   * @see math.transform.jwave.blocks.Block#set(int, int, double)
+   * @see math.transform.jwave.blocks.types.Block#set(int, int, double)
    */
   @Override
   public void set( int i, int j, double val ) throws BlockException {
@@ -164,7 +164,7 @@ public class BlockIndex extends Block {
    * 
    * @date 12.06.2011 23:45:37
    * @author Christian Scheiblich
-   * @see math.transform.jwave.blocks.Block#allocateMemory()
+   * @see math.transform.jwave.blocks.types.Block#allocateMemory()
    */
   @Override
   public void allocateMemory( ) throws BlockException {
@@ -181,7 +181,7 @@ public class BlockIndex extends Block {
    * 
    * @date 12.06.2011 23:45:37
    * @author Christian Scheiblich
-   * @see math.transform.jwave.blocks.Block#eraseMemory()
+   * @see math.transform.jwave.blocks.types.Block#eraseMemory()
    */
   @Override
   public void eraseMemory( ) throws BlockException {

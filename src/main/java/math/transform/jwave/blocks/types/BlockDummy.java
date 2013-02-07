@@ -17,11 +17,11 @@
  *
  * This file BlockDummy.java is part of JWave.
  *
- * @author tucker
+ * @author Christian Scheiblich
  * date 11.06.2011 21:31:12
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.blocks;
+package math.transform.jwave.blocks.types;
 
 import math.transform.jwave.blocks.exc.BlockException;
 import math.transform.jwave.blocks.exc.BlockFailure;
@@ -40,7 +40,7 @@ public class BlockDummy extends Block {
    * 
    * @date 11.06.2011 21:31:12
    * @author Christian Scheiblich
-   * @see math.transform.jwave.blocks.Block#Block(int, int, int , int)
+   * @see math.transform.jwave.blocks.types.Block#Block(int, int, int , int)
    */
   protected BlockDummy( int offSetRow, int offSetCol, int noOfRows, int noOfCols )
       throws BlockException {
@@ -52,7 +52,7 @@ public class BlockDummy extends Block {
    * 
    * @date 11.06.2011 21:31:12
    * @author Christian Scheiblich
-   * @see math.transform.jwave.blocks.Block#get(int, int)
+   * @see math.transform.jwave.blocks.types.Block#get(int, int)
    */
   @Override
   public double get( int i, int j ) throws BlockException {
@@ -63,8 +63,8 @@ public class BlockDummy extends Block {
    * Method is not available in case of a dummy.
    * 
    * @date 11.06.2011 22:51:59
-   * @author tucker
-   * @see math.transform.jwave.blocks.Block#get()
+   * @author Christian Scheiblich
+   * @see math.transform.jwave.blocks.types.Block#get()
    */
   @Override
   public double[ ][ ] get( ) throws BlockException {
@@ -76,7 +76,7 @@ public class BlockDummy extends Block {
    * 
    * @date 11.06.2011 21:31:12
    * @author Christian Scheiblich
-   * @see math.transform.jwave.blocks.Block#set(int, int)
+   * @see math.transform.jwave.blocks.types.Block#set(int, int)
    */
   @Override
   public void set( int i, int j, double val ) throws BlockException {
@@ -88,7 +88,7 @@ public class BlockDummy extends Block {
    * 
    * @date 11.06.2011 21:31:12
    * @author Christian Scheiblich
-   * @see math.transform.jwave.blocks.Block#allocateMemory()
+   * @see math.transform.jwave.blocks.types.Block#allocateMemory()
    */
   @Override
   public void allocateMemory( ) throws BlockException {
@@ -100,7 +100,7 @@ public class BlockDummy extends Block {
    * 
    * @date 11.06.2011 21:31:12
    * @author Christian Scheiblich
-   * @see math.transform.jwave.blocks.Block#eraseMemory()
+   * @see math.transform.jwave.blocks.types.Block#eraseMemory()
    */
   @Override
   public void eraseMemory( ) throws BlockException {

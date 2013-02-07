@@ -216,7 +216,11 @@ public class AncientEgyptianDecomposition extends WaveletTransform {
   } // reverse
 
   /**
-   * TODO Christian Scheiblich explainMeShortly
+   * This forward method decomposes the given array of arbitrary length to sub
+   * arrays while applying the ancient Egyptian decomposition. Each sub array is
+   * transformed by the selected basic transform and the resulting wavelet
+   * coefficients are copied back to their original discrete positions. The
+   * method stops at a certain level of transform, given by a positive number.
    * 
    * @date 14.08.2010 10:43:28
    * @author Christian Scheiblich
@@ -253,7 +257,13 @@ public class AncientEgyptianDecomposition extends WaveletTransform {
   } // forward
 
   /**
-   * TODO Christian Scheiblich explainMeShortly
+   * This reverse method awaits an array of arbitrary length in wavelet space
+   * keeping the wavelet already decomposed by the ancient Egyptian
+   * decomposition. Therefore, each of the existing sub arrays of length 2^p is
+   * reverse transformed by the selected basic transform and the resulting
+   * coefficients of time domain are copied back to their original discrete
+   * positions. The method starts at a certain level of transform, given by
+   * a positive number, going to back to normal space.
    * 
    * @date 14.08.2010 10:43:28
    * @author Christian Scheiblich

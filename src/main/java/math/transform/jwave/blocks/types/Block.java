@@ -17,11 +17,11 @@
  *
  * This file Block.java is part of JWave.
  *
- * @author tucker
+ * @author Christian Scheiblich
  * date 11.06.2011 19:53:52
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.blocks;
+package math.transform.jwave.blocks.types;
 
 import math.transform.jwave.blocks.exc.BlockException;
 import math.transform.jwave.blocks.exc.BlockFailure;
@@ -32,7 +32,12 @@ import math.transform.jwave.blocks.exc.BlockFailure;
  * @date 11.06.2011 19:53:52
  * @author Christian Scheiblich
  */
-public abstract class Block {
+public abstract class Block implements BlockInterface {
+  
+  /**
+   * The number of the block - normally mapped to some array position
+   */
+  protected int _no;
 
   /**
    * One index of upper left corner of the block in global area.
@@ -120,6 +125,21 @@ public abstract class Block {
    */
   public boolean isMemAllocated( ) {
     return _isMemAllocated;
+  }
+  
+
+  /* (non-Javadoc)
+   * @see math.transform.jwave.blocks.types.BlockInterface#setBlockNo(int)
+   */
+  public void setBlockNo( int no ) {
+    _no = no;
+  }
+  
+  /* (non-Javadoc)
+   * @see math.transform.jwave.blocks.types.BlockInterface#getBlockNo()
+   */
+  public int getBlockNo(){
+    return _no;
   }
 
   /**

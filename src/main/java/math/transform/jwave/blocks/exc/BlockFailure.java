@@ -17,7 +17,7 @@
  *
  * This file BlockFailure.java is part of JWave.
  *
- * @author tucker
+ * @author Christian Scheiblich
  * date 11.06.2011 20:06:56
  * contact graetz@mailfish.de
  */

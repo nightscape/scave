@@ -17,7 +17,7 @@
  *
  * This file BlockTest.java is part of JWave.
  *
- * @author tucker
+ * @author Christian Scheiblich
  * date 11.06.2011 22:02:19
  * contact graetz@mailfish.de
  */
@@ -26,6 +26,9 @@ package math.transform.jwave.blocks;
 import static org.junit.Assert.*;
 
 import math.transform.jwave.blocks.exc.BlockException;
+import math.transform.jwave.blocks.types.Block;
+import math.transform.jwave.blocks.types.BlockController;
+import math.transform.jwave.blocks.types.BlockType;
 
 import org.junit.Test;
 
@@ -39,7 +42,7 @@ public class BlockTest {
 
   /**
    * Test method for
-   * {@link math.transform.jwave.blocks.Block#BlockIndex(int, int, int, int)}.
+   * {@link math.transform.jwave.blocks.types.Block#BlockIndex(int, int, int, int)}.
    * 
    * @throws BlockException
    */
@@ -126,7 +129,7 @@ public class BlockTest {
 
   /**
    * Test method for
-   * {@link math.transform.jwave.blocks.Block#BlockIndex(int, int, int, int)}.
+   * {@link math.transform.jwave.blocks.types.Block#BlockIndex(int, int, int, int)}.
    * 
    * @throws BlockException
    */
@@ -173,7 +176,7 @@ public class BlockTest {
   
 
   /**
-   * Test method for {@link math.transform.jwave.blocks.Block#BlockFull(int, int, int, int)}.
+   * Test method for {@link math.transform.jwave.blocks.types.Block#BlockFull(int, int, int, int)}.
    * 
    * @throws BlockException
    */
@@ -213,7 +216,7 @@ public class BlockTest {
   }
 
   /**
-   * Test method for {@link math.transform.jwave.blocks.Block#getRow(int)}.
+   * Test method for {@link math.transform.jwave.blocks.types.Block#getRow(int)}.
    * 
    * @throws BlockException
    */
@@ -254,7 +257,7 @@ public class BlockTest {
   }
 
   /**
-   * Test method for {@link math.transform.jwave.blocks.Block#getCol(int)}.
+   * Test method for {@link math.transform.jwave.blocks.types.Block#getCol(int)}.
    * 
    * @throws BlockException
    */

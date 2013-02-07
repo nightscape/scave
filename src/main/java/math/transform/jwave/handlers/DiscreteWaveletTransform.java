@@ -24,9 +24,7 @@
 
 package math.transform.jwave.handlers;
 
-import math.transform.jwave.handlers.wavelets.Wavelet;
 import math.transform.jwave.handlers.wavelets.WaveletInterface;
-
 
 /**
  * Base class for the forward and reverse Discret Wavelet Transform in 1-D, 2-D,
@@ -36,7 +34,6 @@ import math.transform.jwave.handlers.wavelets.WaveletInterface;
  * @author Pol Kennel
  */
 public class DiscreteWaveletTransform extends WaveletTransform {
-
   
   /**
    * Constructor receiving a WaveletI object.
@@ -45,8 +42,8 @@ public class DiscreteWaveletTransform extends WaveletTransform {
    * @author Pol Kennel
    * @param wavelet
    */
-  public DiscreteWaveletTransform(WaveletInterface wavelet ) {
-    super(wavelet);
+  public DiscreteWaveletTransform( WaveletInterface wavelet ) {
+    super( wavelet );
   }
   
   /**
@@ -56,8 +53,8 @@ public class DiscreteWaveletTransform extends WaveletTransform {
    * @author Pol Kennel
    * @param wavelet
    */
-  public DiscreteWaveletTransform(WaveletInterface wavelet, int iteration ) {
-    super(wavelet, iteration);
+  public DiscreteWaveletTransform( WaveletInterface wavelet, int iteration ) {
+    super( wavelet, iteration );
   }
   
   /**
@@ -75,39 +72,39 @@ public class DiscreteWaveletTransform extends WaveletTransform {
    */
   @Override
   public double[ ] forwardWavelet( double[ ] arrTime ) {
-   
+    
     double[ ] arrHilb = new double[ arrTime.length ];
     for( int i = 0; i < arrTime.length; i++ )
       arrHilb[ i ] = arrTime[ i ];
-
+    
     int level = 0;
     int h = arrTime.length;
     int minWaveLength = _wavelet.getWaveLength( );
     if( h >= minWaveLength ) {
-
+      
       while( h >= minWaveLength ) {
-
+        
         double[ ] iBuf = new double[ h ];
-
+        
         for( int i = 0; i < h; i++ )
           iBuf[ i ] = arrHilb[ i ];
-
+        
         double[ ] oBuf = _wavelet.forward( iBuf );
-
+        
         for( int i = 0; i < h; i++ )
           arrHilb[ i ] = oBuf[ i ];
-
+        
         h = h >> 1;
-
+        
         level++;
-
+        
       } // levels
-
+      
     } // if
     
     return arrHilb;
   }
-
+  
   /**
    * Performs the 1-D reverse transform for arrays of dim N from Hilbert domain
    * to time domain for the given array using the Discrete Wavelet Transform
@@ -124,40 +121,40 @@ public class DiscreteWaveletTransform extends WaveletTransform {
    */
   @Override
   public double[ ] reverseWavelet( double[ ] arrHilb ) {
-
+    
     double[ ] arrTime = new double[ arrHilb.length ];
-
+    
     for( int i = 0; i < arrHilb.length; i++ )
       arrTime[ i ] = arrHilb[ i ];
-
+    
     int level = 0;
     int minWaveLength = _wavelet.getWaveLength( );
     int h = minWaveLength;
     if( arrHilb.length >= minWaveLength ) {
-
+      
       while( h <= arrTime.length && h >= minWaveLength ) {
-
+        
         double[ ] iBuf = new double[ h ];
-
+        
         for( int i = 0; i < h; i++ )
           iBuf[ i ] = arrTime[ i ];
-
+        
         double[ ] oBuf = _wavelet.reverse( iBuf );
-
+        
         for( int i = 0; i < h; i++ )
           arrTime[ i ] = oBuf[ i ];
-
+        
         h = h << 1;
-
+        
         level++;
-
+        
       } // levels
-
+      
     } // if
-
+    
     return arrTime;
   } // reverse
-
+  
   /**
    * Performs the 1-D forward transform for arrays of dim N from time domain to
    * Hilbert domain for the given array using the Discrete Wavelet Transform
@@ -182,36 +179,36 @@ public class DiscreteWaveletTransform extends WaveletTransform {
     double[ ] arrHilb = new double[ arrTime.length ];
     for( int i = 0; i < arrTime.length; i++ )
       arrHilb[ i ] = arrTime[ i ];
-
+    
     int level = 0;
     int h = arrTime.length;
     int minWaveLength = _wavelet.getWaveLength( );
     if( h >= minWaveLength ) {
-
+      
       while( h >= minWaveLength && level < toLevel ) {
-
+        
         double[ ] iBuf = new double[ h ];
-
+        
         for( int i = 0; i < h; i++ )
           iBuf[ i ] = arrHilb[ i ];
-
+        
         double[ ] oBuf = _wavelet.forward( iBuf );
-
+        
         for( int i = 0; i < h; i++ )
           arrHilb[ i ] = oBuf[ i ];
-
+        
         h = h >> 1;
-
+        
         level++;
-
+        
       } // levels
-
+      
     } // if
     
     return arrHilb;
     
   }
-
+  
   /**
    * Performs the 1-D reverse transform for arrays of dim N from Hilbert domain
    * to time domain for the given array using the Discrete Wavelet Transform
@@ -235,10 +232,10 @@ public class DiscreteWaveletTransform extends WaveletTransform {
   public double[ ] reverseWavelet( double[ ] arrHilb, int fromLevel ) {
     
     double[ ] arrTime = new double[ arrHilb.length ];
-
+    
     for( int i = 0; i < arrHilb.length; i++ )
       arrTime[ i ] = arrHilb[ i ];
-
+    
     int level = 0;
     
     int minWaveLength = _wavelet.getWaveLength( );
@@ -247,27 +244,27 @@ public class DiscreteWaveletTransform extends WaveletTransform {
     int h = (int)( arrHilb.length / ( Math.pow( 2, fromLevel - 1 ) ) ); // added by Pol
     
     if( arrHilb.length >= minWaveLength ) {
-
+      
       while( h <= arrTime.length && h >= minWaveLength && level < fromLevel ) {
-
+        
         double[ ] iBuf = new double[ h ];
-
+        
         for( int i = 0; i < h; i++ )
           iBuf[ i ] = arrTime[ i ];
-
+        
         double[ ] oBuf = _wavelet.reverse( iBuf );
-
+        
         for( int i = 0; i < h; i++ )
           arrTime[ i ] = oBuf[ i ];
-
+        
         h = h << 1;
-
+        
         level++;
-
+        
       } // levels
-
+      
     } // if
-
+    
     return arrTime;
     
   }
@@ -287,13 +284,13 @@ public class DiscreteWaveletTransform extends WaveletTransform {
    */
   public double[ ][ ] forwardWavelet( double[ ][ ] matTime ) {
     
-    System.out.println("use bad one!");
+    System.out.println( "use bad one!" );
     
     try {
-      throw new Exception( "dfd");
+      throw new Exception( "dfd" );
     } catch( Exception e ) {
       // TODO pol should implement this try n catch
-      e.printStackTrace();
+      e.printStackTrace( );
     }
     
     int noOfRows = matTime.length;
@@ -302,14 +299,14 @@ public class DiscreteWaveletTransform extends WaveletTransform {
     for( int i = 0; i < matHilb[ 0 ].length; i++ )
       for( int j = 0; j < matHilb.length; j++ )
         matHilb[ i ][ j ] = matTime[ i ][ j ];
-
+    
     int h = Math.min( noOfRows, noOfCols );
     int minWaveLength = _wavelet.getWaveLength( );
     
     if( h >= minWaveLength ) {
-      while( h >= minWaveLength ) {                  // dimension limit
-        
-        for( int i = 0; i < h; i++ ) {               // rows processing
+      while( h >= minWaveLength ) { // dimension limit
+      
+        for( int i = 0; i < h; i++ ) { // rows processing
           double[ ] arrTime = new double[ h ];
           for( int j = 0; j < h; j++ )
             arrTime[ j ] = matHilb[ i ][ j ];
@@ -320,16 +317,16 @@ public class DiscreteWaveletTransform extends WaveletTransform {
             matHilb[ i ][ j ] = arrHilb[ j ];
         }
         
-        for( int j = 0; j < h; j++ ) {               // columns processing
+        for( int j = 0; j < h; j++ ) { // columns processing
           double[ ] arrTime = new double[ h ];
           for( int i = 0; i < h; i++ )
             arrTime[ i ] = matHilb[ i ][ j ];
-
+          
           double[ ] arrHilb = _wavelet.forward( arrTime );
-
+          
           for( int i = 0; i < h; i++ )
             matHilb[ i ][ j ] = arrHilb[ i ];
-        } 
+        }
         
         h = h >> 1;
       }
@@ -337,7 +334,7 @@ public class DiscreteWaveletTransform extends WaveletTransform {
     
     return matHilb;
   }
-
+  
   /**
    * Performs the 2-D reverse transform from frequency or Hilbert or time domain
    * to time domain for a given array using the Discrete Wavelet Transform
@@ -359,15 +356,15 @@ public class DiscreteWaveletTransform extends WaveletTransform {
     for( int i = 0; i < matHilb[ 0 ].length; i++ )
       for( int j = 0; j < matHilb.length; j++ )
         matTime[ i ][ j ] = matHilb[ i ][ j ];
-
+    
     int dim = Math.min( noOfRows, noOfCols );
     int minWaveLength = _wavelet.getWaveLength( );
     int h = minWaveLength;
     
     if( h >= minWaveLength ) {
-      while( h <= dim && h >= minWaveLength ) {              // dimension limit
-        
-        for( int i = 0; i < h; i++ ) {                       // rows processing
+      while( h <= dim && h >= minWaveLength ) { // dimension limit
+      
+        for( int i = 0; i < h; i++ ) { // rows processing
           double[ ] arrHilb = new double[ h ];
           for( int j = 0; j < h; j++ )
             arrHilb[ j ] = matTime[ i ][ j ];
@@ -378,16 +375,16 @@ public class DiscreteWaveletTransform extends WaveletTransform {
             matTime[ i ][ j ] = arrTime[ j ];
         }
         
-        for( int j = 0; j < h; j++ ) {                      // columns processing
+        for( int j = 0; j < h; j++ ) { // columns processing
           double[ ] arrHilb = new double[ h ];
           for( int i = 0; i < h; i++ )
             arrHilb[ i ] = matTime[ i ][ j ];
-
+          
           double[ ] arrTime = _wavelet.reverse( arrHilb );
-
+          
           for( int i = 0; i < h; i++ )
             matTime[ i ][ j ] = arrTime[ i ];
-        } 
+        }
         
         h = h << 1;
       }
@@ -415,7 +412,7 @@ public class DiscreteWaveletTransform extends WaveletTransform {
   @Override
   public double[ ][ ] forwardWavelet( double[ ][ ] matTime, int toLevel ) {
     
-    System.out.println("use good one!");
+    System.out.println( "use good one!" );
     
     int noOfRows = matTime.length;
     int noOfCols = matTime[ 0 ].length;
@@ -423,15 +420,15 @@ public class DiscreteWaveletTransform extends WaveletTransform {
     for( int i = 0; i < matHilb[ 0 ].length; i++ )
       for( int j = 0; j < matHilb.length; j++ )
         matHilb[ i ][ j ] = matTime[ i ][ j ];
-
+    
     int level = 0;
     int h = Math.min( noOfRows, noOfCols );
     int minWaveLength = _wavelet.getWaveLength( );
     
     if( h >= minWaveLength ) {
-      while( h >= minWaveLength && level < toLevel) { // levels
-        
-        for( int i = 0; i < h; i++ ) {                // rows processing
+      while( h >= minWaveLength && level < toLevel ) { // levels
+      
+        for( int i = 0; i < h; i++ ) { // rows processing
           double[ ] arrTime = new double[ h ];
           for( int j = 0; j < h; j++ )
             arrTime[ j ] = matHilb[ i ][ j ];
@@ -442,16 +439,16 @@ public class DiscreteWaveletTransform extends WaveletTransform {
             matHilb[ i ][ j ] = arrHilb[ j ];
         }
         
-        for( int j = 0; j < h; j++ ) {                // columns processing
+        for( int j = 0; j < h; j++ ) { // columns processing
           double[ ] arrTime = new double[ h ];
           for( int i = 0; i < h; i++ )
             arrTime[ i ] = matHilb[ i ][ j ];
-
+          
           double[ ] arrHilb = _wavelet.forward( arrTime );
-
+          
           for( int i = 0; i < h; i++ )
             matHilb[ i ][ j ] = arrHilb[ i ];
-        } 
+        }
         
         h = h >> 1;
         level++;
@@ -480,24 +477,24 @@ public class DiscreteWaveletTransform extends WaveletTransform {
    */
   @Override
   public double[ ][ ] reverseWavelet( double[ ][ ] matHilb, int fromLevel ) {
-
+    
     int noOfRows = matHilb.length;
     int noOfCols = matHilb[ 0 ].length;
     double[ ][ ] matTime = new double[ noOfRows ][ noOfCols ];
     for( int i = 0; i < matHilb[ 0 ].length; i++ )
       for( int j = 0; j < matHilb.length; j++ )
         matTime[ i ][ j ] = matHilb[ i ][ j ];
-
+    
     int level = 0;
     int dim = Math.min( noOfRows, noOfCols );
     int minWaveLength = _wavelet.getWaveLength( );
     int h = (int)( dim / Math.pow( 2, fromLevel - 1 ) );
     
     if( h >= minWaveLength ) {
-
-      while( h <= dim && h >= minWaveLength && level < fromLevel) { // levels
-        
-        for( int i = 0; i < h; i++ ) {                              // rows processing
+      
+      while( h <= dim && h >= minWaveLength && level < fromLevel ) { // levels
+      
+        for( int i = 0; i < h; i++ ) { // rows processing
           double[ ] arrHilb = new double[ h ];
           for( int j = 0; j < h; j++ )
             arrHilb[ j ] = matTime[ i ][ j ];
@@ -508,16 +505,16 @@ public class DiscreteWaveletTransform extends WaveletTransform {
             matTime[ i ][ j ] = arrTime[ j ];
         }
         
-        for( int j = 0; j < h; j++ ) {                              // columns processing
+        for( int j = 0; j < h; j++ ) { // columns processing
           double[ ] arrHilb = new double[ h ];
           for( int i = 0; i < h; i++ )
             arrHilb[ i ] = matTime[ i ][ j ];
-
+          
           double[ ] arrTime = _wavelet.reverse( arrHilb );
-
+          
           for( int i = 0; i < h; i++ )
             matTime[ i ][ j ] = arrTime[ i ];
-        } 
+        }
         
         h = h << 1;
         level++;
@@ -554,6 +551,4 @@ public class DiscreteWaveletTransform extends WaveletTransform {
     
   }
   
-  
-
 }

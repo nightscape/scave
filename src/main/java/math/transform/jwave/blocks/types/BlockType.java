@@ -17,11 +17,11 @@
  *
  * This file BlockType.java is part of JWave.
  *
- * @author tucker
+ * @author Christian Scheiblich
  * date 11.06.2011 21:26:18
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.blocks;
+package math.transform.jwave.blocks.types;
 
 /**
  * Enumerator for different types of Block objects.

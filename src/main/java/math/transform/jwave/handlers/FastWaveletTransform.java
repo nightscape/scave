@@ -23,7 +23,6 @@
  */
 package math.transform.jwave.handlers;
 
-import math.transform.jwave.handlers.wavelets.Wavelet;
 import math.transform.jwave.handlers.wavelets.WaveletInterface;
 
 /**
@@ -34,7 +33,7 @@ import math.transform.jwave.handlers.wavelets.WaveletInterface;
  * @author Christian Scheiblich
  */
 public class FastWaveletTransform extends WaveletTransform {
-
+  
   /**
    * Constructor receiving a Wavelet object.
    * 
@@ -44,7 +43,7 @@ public class FastWaveletTransform extends WaveletTransform {
    *          object of type Wavelet; Haar02, Daub02, Coif06, ...
    */
   public FastWaveletTransform( WaveletInterface wavelet ) {
-    super(wavelet);
+    super( wavelet );
   } // FastWaveletTransform
   
   /**
@@ -56,9 +55,9 @@ public class FastWaveletTransform extends WaveletTransform {
    *          object of type Wavelet; Haar02, Daub02, Coif06, ...
    */
   public FastWaveletTransform( WaveletInterface wavelet, int iteration ) {
-    super(wavelet, iteration);
+    super( wavelet, iteration );
   } // FastWaveletTransform
-
+  
   /**
    * Performs the 1-D forward transform for arrays of dim N from time domain to
    * Hilbert domain for the given array using the Fast Wavelet Transform (FWT)
@@ -70,39 +69,39 @@ public class FastWaveletTransform extends WaveletTransform {
    */
   @Override
   public double[ ] forwardWavelet( double[ ] arrTime ) {
-
+    
     double[ ] arrHilb = new double[ arrTime.length ];
     for( int i = 0; i < arrTime.length; i++ )
       arrHilb[ i ] = arrTime[ i ];
-
+    
     int level = 0;
     int h = arrTime.length;
     int minWaveLength = _wavelet.getWaveLength( );
     if( h >= minWaveLength ) {
-
+      
       while( h >= minWaveLength ) {
-
+        
         double[ ] iBuf = new double[ h ];
-
+        
         for( int i = 0; i < h; i++ )
           iBuf[ i ] = arrHilb[ i ];
-
+        
         double[ ] oBuf = _wavelet.forward( iBuf );
-
+        
         for( int i = 0; i < h; i++ )
           arrHilb[ i ] = oBuf[ i ];
-
+        
         h = h >> 1;
-
+        
         level++;
-
+        
       } // levels
-
+      
     } // if
-
+    
     return arrHilb;
   } // forward
-
+  
   /**
    * Performs the 1-D reverse transform for arrays of dim N from Hilbert domain
    * to time domain for the given array using the Fast Wavelet Transform (FWT)
@@ -114,40 +113,40 @@ public class FastWaveletTransform extends WaveletTransform {
    */
   @Override
   public double[ ] reverseWavelet( double[ ] arrHilb ) {
-
+    
     double[ ] arrTime = new double[ arrHilb.length ];
-
+    
     for( int i = 0; i < arrHilb.length; i++ )
       arrTime[ i ] = arrHilb[ i ];
-
+    
     int level = 0;
     int minWaveLength = _wavelet.getWaveLength( );
     int h = minWaveLength;
     if( arrHilb.length >= minWaveLength ) {
-
+      
       while( h <= arrTime.length && h >= minWaveLength ) {
-
+        
         double[ ] iBuf = new double[ h ];
-
+        
         for( int i = 0; i < h; i++ )
           iBuf[ i ] = arrTime[ i ];
-
+        
         double[ ] oBuf = _wavelet.reverse( iBuf );
-
+        
         for( int i = 0; i < h; i++ )
           arrTime[ i ] = oBuf[ i ];
-
+        
         h = h << 1;
-
+        
         level++;
-
+        
       } // levels
-
+      
     } // if
-
+    
     return arrTime;
   } // reverse
-
+  
   /**
    * Performs the 1-D forward transform for arrays of dim N from time domain to
    * Hilbert domain for the given array using the Fast Wavelet Transform (FWT)
@@ -162,39 +161,39 @@ public class FastWaveletTransform extends WaveletTransform {
    */
   @Override
   public double[ ] forwardWavelet( double[ ] arrTime, int toLevel ) {
-
+    
     double[ ] arrHilb = new double[ arrTime.length ];
     for( int i = 0; i < arrTime.length; i++ )
       arrHilb[ i ] = arrTime[ i ];
-
+    
     int level = 0;
     int h = arrTime.length;
     int minWaveLength = _wavelet.getWaveLength( );
     if( h >= minWaveLength ) {
-
+      
       while( h >= minWaveLength && level < toLevel ) {
-
+        
         double[ ] iBuf = new double[ h ];
-
+        
         for( int i = 0; i < h; i++ )
           iBuf[ i ] = arrHilb[ i ];
-
+        
         double[ ] oBuf = _wavelet.forward( iBuf );
-
+        
         for( int i = 0; i < h; i++ )
           arrHilb[ i ] = oBuf[ i ];
-
+        
         h = h >> 1;
-
+        
         level++;
-
+        
       } // levels
-
+      
     } // if
-
+    
     return arrHilb;
   } // forward
-
+  
   /**
    * Performs the 1-D reverse transform for arrays of dim N from Hilbert domain
    * to time domain for the given array using the Fast Wavelet Transform (FWT)
@@ -211,12 +210,12 @@ public class FastWaveletTransform extends WaveletTransform {
    */
   @Override
   public double[ ] reverseWavelet( double[ ] arrHilb, int fromLevel ) {
-
+    
     double[ ] arrTime = new double[ arrHilb.length ];
-
+    
     for( int i = 0; i < arrHilb.length; i++ )
       arrTime[ i ] = arrHilb[ i ];
-
+    
     int level = 0;
     
     int minWaveLength = _wavelet.getWaveLength( );
@@ -225,28 +224,28 @@ public class FastWaveletTransform extends WaveletTransform {
     int h = (int)( arrHilb.length / ( Math.pow( 2, fromLevel - 1 ) ) ); // added by Pol
     
     if( arrHilb.length >= minWaveLength ) {
-
+      
       while( h <= arrTime.length && h >= minWaveLength && level < fromLevel ) {
-
+        
         double[ ] iBuf = new double[ h ];
-
+        
         for( int i = 0; i < h; i++ )
           iBuf[ i ] = arrTime[ i ];
-
+        
         double[ ] oBuf = _wavelet.reverse( iBuf );
-
+        
         for( int i = 0; i < h; i++ )
           arrTime[ i ] = oBuf[ i ];
-
+        
         h = h << 1;
-
+        
         level++;
-
+        
       } // levels
-
+      
     } // if
-
+    
     return arrTime;
   } // reverse
-
+  
 } // class

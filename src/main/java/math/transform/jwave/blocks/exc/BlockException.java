@@ -17,7 +17,7 @@
  *
  * This file BlockException.java is part of JWave.
  *
- * @author tucker
+ * @author Christian Scheiblich
  * date 11.06.2011 20:04:19
  * contact graetz@mailfish.de
  */

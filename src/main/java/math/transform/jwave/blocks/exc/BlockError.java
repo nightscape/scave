@@ -17,7 +17,7 @@
  *
  * This file BlockError.java is part of JWave.
  *
- * @author tucker
+ * @author Christian Scheiblich
  * date 11.06.2011 20:08:51
  * contact graetz@mailfish.de
  */

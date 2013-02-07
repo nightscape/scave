@@ -17,7 +17,7 @@
  *
  * This file DiscreteFourierTransformTest.java is part of JWave.
  *
- * @author tucker
+ * @author Christian Scheiblich
  * date 23.11.2010 19:05:07
  * contact graetz@mailfish.de
  */
