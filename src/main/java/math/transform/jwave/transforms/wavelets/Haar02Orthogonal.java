@@ -21,7 +21,7 @@
  * date 03.06.2010 09:47:24
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.handlers.wavelets;
+package math.transform.jwave.transforms.wavelets;
 
 /**
  * Alfred Haar's orthogonal wavelet transform.
@@ -103,7 +103,7 @@ public class Haar02Orthogonal extends Wavelet {
    * 
    * @date 03.06.2010 09:47:24
    * @author Christian Scheiblich
-   * @see math.transform.jwave.handlers.wavelets.Wavelet#forward(double[])
+   * @see math.transform.jwave.transforms.wavelets.Wavelet#forward(double[])
    */
   @Override
   public double[ ] forward( double[ ] arrTime ) {
@@ -142,7 +142,7 @@ public class Haar02Orthogonal extends Wavelet {
    * 
    * @date 03.06.2010 09:47:24
    * @author Christian Scheiblich
-   * @see math.transform.jwave.handlers.wavelets.Wavelet#reverse(double[])
+   * @see math.transform.jwave.transforms.wavelets.Wavelet#reverse(double[])
    */
   @Override
   public double[ ] reverse( double[ ] arrHilb ) {

@@ -21,7 +21,7 @@
  * date 23.02.2010 05:42:23
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.handlers.wavelets;
+package math.transform.jwave.transforms.wavelets;
 
 /**
  * Ingrid Daubechies' orthonormal Coiflet wavelet of six coefficients and the

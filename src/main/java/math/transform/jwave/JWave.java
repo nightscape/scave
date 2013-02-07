@@ -24,19 +24,19 @@
 package math.transform.jwave;
 
 import math.transform.jwave.exc.JWaveException;
-import math.transform.jwave.handlers.BasicTransform;
-import math.transform.jwave.handlers.FastWaveletTransform;
-import math.transform.jwave.handlers.DiscreteFourierTransform;
-import math.transform.jwave.handlers.WaveletPacketTransform;
-import math.transform.jwave.handlers.wavelets.Wavelet;
-import math.transform.jwave.handlers.wavelets.Coif06;
-import math.transform.jwave.handlers.wavelets.Daub02;
-import math.transform.jwave.handlers.wavelets.Daub03;
-import math.transform.jwave.handlers.wavelets.Daub04;
-import math.transform.jwave.handlers.wavelets.Haar02;
-import math.transform.jwave.handlers.wavelets.Lege02;
-import math.transform.jwave.handlers.wavelets.Lege04;
-import math.transform.jwave.handlers.wavelets.Lege06;
+import math.transform.jwave.transforms.BasicTransform;
+import math.transform.jwave.transforms.DiscreteFourierTransform;
+import math.transform.jwave.transforms.FastWaveletTransform;
+import math.transform.jwave.transforms.WaveletPacketTransform;
+import math.transform.jwave.transforms.wavelets.Coif06;
+import math.transform.jwave.transforms.wavelets.Daub02;
+import math.transform.jwave.transforms.wavelets.Daub03;
+import math.transform.jwave.transforms.wavelets.Daub04;
+import math.transform.jwave.transforms.wavelets.Haar02;
+import math.transform.jwave.transforms.wavelets.Lege02;
+import math.transform.jwave.transforms.wavelets.Lege04;
+import math.transform.jwave.transforms.wavelets.Lege06;
+import math.transform.jwave.transforms.wavelets.Wavelet;
 
 /**
  * Main class for doing little test runs for different transform types and

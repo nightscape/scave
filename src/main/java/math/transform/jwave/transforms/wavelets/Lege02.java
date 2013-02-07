@@ -21,7 +21,7 @@
  * date 08.06.2010 09:32:08
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.handlers.wavelets;
+package math.transform.jwave.transforms.wavelets;
 
 /**
  * Orthonormal Legendre wavelet transform of 2 coefficients based on the

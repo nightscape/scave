@@ -21,7 +21,7 @@
  * date 25.03.2010 19:56:29
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.handlers;
+package math.transform.jwave.transforms;
 
 import math.transform.jwave.types.Complex;
 
@@ -56,7 +56,7 @@ public class DiscreteFourierTransform extends BasicTransform {
    * 
    * @date 25.03.2010 19:56:29
    * @author Christian Scheiblich
-   * @see math.transform.jwave.handlers.BasicTransform#forward(double[])
+   * @see math.transform.jwave.transforms.BasicTransform#forward(double[])
    */
   @Override
   public double[ ] forward( double[ ] arrTime ) {
@@ -106,7 +106,7 @@ public class DiscreteFourierTransform extends BasicTransform {
    * 
    * @date 25.03.2010 19:56:29
    * @author Christian Scheiblich
-   * @see math.transform.jwave.handlers.BasicTransform#reverse(double[])
+   * @see math.transform.jwave.transforms.BasicTransform#reverse(double[])
    */
   @Override
   public double[ ] reverse( double[ ] arrFreq ) {
@@ -243,7 +243,7 @@ public class DiscreteFourierTransform extends BasicTransform {
    * 
    * @date 25.03.2010 19:56:29
    * @author Christian Scheiblich
-   * @see math.transform.jwave.handlers.BasicTransform#forward(double[][])
+   * @see math.transform.jwave.transforms.BasicTransform#forward(double[][])
    */
   @Override
   public double[ ][ ] forward( double[ ][ ] matTime ) {
@@ -262,7 +262,7 @@ public class DiscreteFourierTransform extends BasicTransform {
    * 
    * @date 25.03.2010 19:56:29
    * @author Christian Scheiblich
-   * @see math.transform.jwave.handlers.BasicTransform#reverse(double[][])
+   * @see math.transform.jwave.transforms.BasicTransform#reverse(double[][])
    */
   @Override
   public double[ ][ ] reverse( double[ ][ ] matFreq ) {
@@ -275,7 +275,7 @@ public class DiscreteFourierTransform extends BasicTransform {
    * 
    * @date 10.07.2010 18:10:43
    * @author Christian Scheiblich
-   * @see math.transform.jwave.handlers.BasicTransform#forward(double[][][])
+   * @see math.transform.jwave.transforms.BasicTransform#forward(double[][][])
    */
   @Override
   public double[ ][ ][ ] forward( double[ ][ ][ ] spcTime ) {
@@ -288,7 +288,7 @@ public class DiscreteFourierTransform extends BasicTransform {
    * 
    * @date 10.07.2010 18:10:45
    * @author Christian Scheiblich
-   * @see math.transform.jwave.handlers.BasicTransform#reverse(double[][][])
+   * @see math.transform.jwave.transforms.BasicTransform#reverse(double[][][])
    */
   @Override
   public double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb ) {

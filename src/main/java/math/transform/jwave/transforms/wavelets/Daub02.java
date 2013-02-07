@@ -15,40 +15,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file Legendre04.java is part of JWave.
+ * This file Daub02.java is part of JWave.
  *
  * @author Christian Scheiblich
- * date 03.06.2010 21:19:04
+ * date 23.02.2010 05:42:23
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.handlers.wavelets;
+package math.transform.jwave.transforms.wavelets;
 
 /**
- * Legendre's orthonormal wavelet of four coefficients and the scales; normed,
- * due to ||*||2 - euclidean norm.
+ * Ingrid Daubechies' orthonormal wavelet of four coefficients and the scales;
+ * normed, due to ||*||2 - euclidean norm.
  * 
- * @date 03.06.2010 21:19:04
+ * @date 10.02.2010 15:42:45
  * @author Christian Scheiblich
  */
-public class Lege04 extends Wavelet {
+public class Daub02 extends Wavelet {
 
   /**
-   * Constructor setting up the orthonormal Legendre4 wavelet coeffs and the
+   * Constructor setting up the orthonormal Daubechie4 wavelet coeffs and the
    * scales; normed, due to ||*||2 - euclidean norm.
    * 
-   * @date 03.06.2010 21:19:04
+   * @date 10.02.2010 15:42:45
    * @author Christian Scheiblich
    */
-  public Lege04( ) {
+  public Daub02( ) {
 
     _waveLength = 4;
 
     _scales = new double[ _waveLength ]; // can be done in static way also; faster?
 
-    _scales[ 0 ] = ( -5. / 8. ) / 1.4142135623730951;
-    _scales[ 1 ] = ( -3. / 8. ) / 1.4142135623730951;
-    _scales[ 2 ] = ( -3. / 8. ) / 1.4142135623730951;
-    _scales[ 3 ] = ( -5. / 8. ) / 1.4142135623730951;
+    double sqrt3 = Math.sqrt( 3. ); // 1.7320508075688772
+
+    _scales[ 0 ] = ( ( 1. + sqrt3 ) / 4. ) / 1.4142135623730951;
+    _scales[ 1 ] = ( ( 3. + sqrt3 ) / 4. ) / 1.4142135623730951;
+    _scales[ 2 ] = ( ( 3. - sqrt3 ) / 4. ) / 1.4142135623730951;
+    _scales[ 3 ] = ( ( 1. - sqrt3 ) / 4. ) / 1.4142135623730951;
 
     _coeffs = new double[ _waveLength ]; // can be done in static way also; faster?
 
@@ -57,6 +59,6 @@ public class Lege04 extends Wavelet {
     _coeffs[ 2 ] = _scales[ 1 ]; //    h1
     _coeffs[ 3 ] = -_scales[ 0 ]; //  -h0
 
-  } // Lege04
-  
+  } // Daub02
+
 } // class

@@ -26,9 +26,9 @@ package math.transform.jwave.handlers;
 import math.transform.jwave.JUnitTests;
 import math.transform.jwave.Transform;
 import math.transform.jwave.exc.JWaveException;
-import math.transform.jwave.handlers.WaveletPacketTransform;
-import math.transform.jwave.handlers.wavelets.Daub02;
-import math.transform.jwave.handlers.wavelets.Haar02;
+import math.transform.jwave.transforms.WaveletPacketTransform;
+import math.transform.jwave.transforms.wavelets.Daub02;
+import math.transform.jwave.transforms.wavelets.Haar02;
 
 import org.junit.Test;
 

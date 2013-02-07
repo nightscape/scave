@@ -23,7 +23,7 @@
  */
 package math.transform.jwave;
 
-import math.transform.jwave.handlers.BasicTransform;
+import math.transform.jwave.transforms.BasicTransform;
 import math.transform.jwave.types.Complex;
 
 /**

@@ -21,7 +21,7 @@
  * date 14.08.2010 10:43:28
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.handlers;
+package math.transform.jwave.transforms;
 
 /**
  * A wavelet transform method for arrays and signals of arbitrary lengths, even
@@ -141,7 +141,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
    * 
    * @date 14.08.2010 10:43:28
    * @author Christian Scheiblich
-   * @see math.transform.jwave.handlers.BasicTransform#forward(double[])
+   * @see math.transform.jwave.transforms.BasicTransform#forward(double[])
    */
   @Override
   public double[ ] forward( double[ ] arrTime ) {
@@ -183,7 +183,7 @@ public class AncientEgyptianDecomposition extends BasicTransform {
    * 
    * @date 14.08.2010 10:43:28
    * @author Christian Scheiblich
-   * @see math.transform.jwave.handlers.BasicTransform#reverse(double[])
+   * @see math.transform.jwave.transforms.BasicTransform#reverse(double[])
    */
   @Override
   public double[ ] reverse( double[ ] arrHilb ) {

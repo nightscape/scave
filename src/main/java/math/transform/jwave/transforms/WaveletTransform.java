@@ -22,12 +22,12 @@
  * date Feb 6, 2013 4:50:31 PM
  *
  */
-package math.transform.jwave.handlers;
+package math.transform.jwave.transforms;
 
 import math.transform.jwave.exc.JWaveError;
 import math.transform.jwave.exc.JWaveException;
 import math.transform.jwave.exc.JWaveFailure;
-import math.transform.jwave.handlers.wavelets.Wavelet;
+import math.transform.jwave.transforms.wavelets.Wavelet;
 
 /**
  * @author Christian Scheiblich

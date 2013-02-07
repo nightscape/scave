@@ -21,11 +21,11 @@
  * date 23.02.2010 13:44:05
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.handlers;
+package math.transform.jwave.transforms;
 
 import math.transform.jwave.exc.JWaveException;
-import math.transform.jwave.handlers.wavelets.Wavelet;
-import math.transform.jwave.handlers.wavelets.WaveletInterface;
+import math.transform.jwave.transforms.wavelets.Wavelet;
+import math.transform.jwave.transforms.wavelets.WaveletInterface;
 
 /**
  * Base class for the forward and reverse Wavelet Packet Transform (WPT) also
@@ -71,7 +71,7 @@ public class WaveletPacketTransform extends WaveletTransform {
    * 
    * @date 23.02.2010 13:44:05
    * @author Christian Scheiblich
-   * @see math.transform.jwave.handlers.BasicTransform#forward(double[])
+   * @see math.transform.jwave.transforms.BasicTransform#forward(double[])
    */
   @Override
   public double[ ] forward( double[ ] arrTime ) {
@@ -123,7 +123,7 @@ public class WaveletPacketTransform extends WaveletTransform {
    * 
    * @date 23.02.2010 13:44:05
    * @author Christian Scheiblich
-   * @see math.transform.jwave.handlers.BasicTransform#reverse(double[])
+   * @see math.transform.jwave.transforms.BasicTransform#reverse(double[])
    */
   @Override
   public double[ ] reverse( double[ ] arrHilb ) {

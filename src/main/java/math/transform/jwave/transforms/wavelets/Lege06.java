@@ -15,46 +15,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file Daub03.java is part of JWave.
+ * This file Lege06.java is part of JWave.
  *
  * @author Christian Scheiblich
- * date 25.03.2010 14:03:20
+ * date 03.06.2010 22:04:35
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.handlers.wavelets;
+package math.transform.jwave.transforms.wavelets;
 
 /**
- * Ingrid Daubechies' orthonormal wavelet of six coefficients and the scales;
- * normed, due to ||*||2 - euclidean norm.
+ * Legendre's orthonormal wavelet of six coefficients and the scales; normed,
+ * due to ||*||2 - euclidean norm.
  * 
- * @date 25.03.2010 14:03:20
+ * @date 03.06.2010 22:04:35
  * @author Christian Scheiblich
  */
-public class Daub03 extends Wavelet {
+public class Lege06 extends Wavelet {
 
   /**
-   * Constructor setting up the orthonormal Daubechie6 wavelet coeffs and the
+   * Constructor setting up the orthonormal Legendre6 wavelet coeffs and the
    * scales; normed, due to ||*||2 - euclidean norm.
    * 
-   * @date 25.03.2010 14:03:20
+   * @date 03.06.2010 22:04:36
    * @author Christian Scheiblich
    */
-  public Daub03( ) {
+  public Lege06( ) {
 
     _waveLength = 6;
 
-    double sqrt02 = 1.4142135623730951;
-    double sqrt10 = Math.sqrt( 10. );
-    double constA = Math.sqrt( 5. + 2. * sqrt10 );
-
     _scales = new double[ _waveLength ]; // can be done in static way also; faster?
 
-    _scales[ 0 ] = ( 1. + 1. * sqrt10 + 1. * constA ) / 16. / sqrt02; // h0
-    _scales[ 1 ] = ( 5. + 1. * sqrt10 + 3. * constA ) / 16. / sqrt02; // h1
-    _scales[ 2 ] = ( 10. - 2. * sqrt10 + 2. * constA ) / 16. / sqrt02; // h2
-    _scales[ 3 ] = ( 10. - 2. * sqrt10 - 2. * constA ) / 16. / sqrt02; // h3
-    _scales[ 4 ] = ( 5. + 1. * sqrt10 - 3. * constA ) / 16. / sqrt02; // h4
-    _scales[ 5 ] = ( 1. + 1. * sqrt10 - 1. * constA ) / 16. / sqrt02; // h5
+    _scales[ 0 ] = -63. / 128. / 1.4142135623730951; // h0
+    _scales[ 1 ] = -35. / 128. / 1.4142135623730951; // h1
+    _scales[ 2 ] = -30. / 128. / 1.4142135623730951; // h2
+    _scales[ 3 ] = -30. / 128. / 1.4142135623730951; // h3
+    _scales[ 4 ] = -35. / 128. / 1.4142135623730951; // h4
+    _scales[ 5 ] = -63. / 128. / 1.4142135623730951; // h5
 
     _coeffs = new double[ _waveLength ]; // can be done in static way also; faster?
 
@@ -64,7 +60,6 @@ public class Daub03 extends Wavelet {
     _coeffs[ 3 ] = -_scales[ 2 ]; //  -h2
     _coeffs[ 4 ] = _scales[ 1 ]; //    h1
     _coeffs[ 5 ] = -_scales[ 0 ]; //  -h0
-
-  } // Daub03
+  } // Lege06
 
 } // class

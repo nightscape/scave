@@ -21,7 +21,7 @@
  * date 26.03.2010 07:35:31
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.handlers.wavelets;
+package math.transform.jwave.transforms.wavelets;
 
 /**
  * Ingrid Daubechies' orthonormal wavelet of eight coefficients and the scales;

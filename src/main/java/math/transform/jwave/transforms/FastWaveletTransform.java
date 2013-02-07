@@ -21,11 +21,11 @@
  * date 23.02.2010 05:42:23
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.handlers;
+package math.transform.jwave.transforms;
 
 import math.transform.jwave.exc.JWaveException;
-import math.transform.jwave.handlers.wavelets.Wavelet;
-import math.transform.jwave.handlers.wavelets.WaveletInterface;
+import math.transform.jwave.transforms.wavelets.Wavelet;
+import math.transform.jwave.transforms.wavelets.WaveletInterface;
 
 /**
  * Base class for the forward and reverse Fast Wavelet Transform in 1-D, 2-D,
@@ -69,7 +69,7 @@ public class FastWaveletTransform extends WaveletTransform {
    * 
    * @date 10.02.2010 08:23:24
    * @author Christian Scheiblich
-   * @see math.transform.jwave.handlers.BasicTransform#forward(double[])
+   * @see math.transform.jwave.transforms.BasicTransform#forward(double[])
    */
   @Override
   public double[ ] forward( double[ ] arrTime ) {
@@ -113,7 +113,7 @@ public class FastWaveletTransform extends WaveletTransform {
    * 
    * @date 10.02.2010 08:23:24
    * @author Christian Scheiblich
-   * @see math.transform.jwave.handlers.BasicTransform#reverse(double[])
+   * @see math.transform.jwave.transforms.BasicTransform#reverse(double[])
    */
   @Override
   public double[ ] reverse( double[ ] arrHilb ) {
