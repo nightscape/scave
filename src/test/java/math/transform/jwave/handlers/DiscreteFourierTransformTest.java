@@ -25,8 +25,8 @@ package math.transform.jwave.handlers;
 
 import math.transform.jwave.JUnitTests;
 import math.transform.jwave.Transform;
+import math.transform.jwave.datatypes.Complex;
 import math.transform.jwave.transforms.DiscreteFourierTransform;
-import math.transform.jwave.types.Complex;
 
 import org.junit.Test;
 
@@ -93,7 +93,7 @@ public class DiscreteFourierTransformTest extends JUnitTests {
 
   /**
    * Test method for
-   * {@link math.transform.jwave.transforms.DiscreteFourierTransform#forward(math.transform.jwave.types.Complex[])}
+   * {@link math.transform.jwave.transforms.DiscreteFourierTransform#forward(math.transform.jwave.datatypes.Complex[])}
    * .
    */
   @Test
@@ -123,7 +123,7 @@ public class DiscreteFourierTransformTest extends JUnitTests {
 
   /**
    * Test method for
-   * {@link math.transform.jwave.transforms.DiscreteFourierTransform#reverse(math.transform.jwave.types.Complex[])}
+   * {@link math.transform.jwave.transforms.DiscreteFourierTransform#reverse(math.transform.jwave.datatypes.Complex[])}
    * .
    */
   @Test

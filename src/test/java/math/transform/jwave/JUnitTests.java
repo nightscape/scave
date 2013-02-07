@@ -27,13 +27,13 @@ package math.transform.jwave;
 import static org.junit.Assert.assertEquals;
 
 import math.transform.jwave.Transform;
+import math.transform.jwave.datatypes.Complex;
 import math.transform.jwave.exc.JWaveException;
 import math.transform.jwave.transforms.FastWaveletTransform;
 import math.transform.jwave.transforms.wavelets.Coif06;
 import math.transform.jwave.transforms.wavelets.Daub02;
 import math.transform.jwave.transforms.wavelets.Haar02;
 import math.transform.jwave.transforms.wavelets.Wavelet;
-import math.transform.jwave.types.Complex;
 
 import org.junit.Test;
 

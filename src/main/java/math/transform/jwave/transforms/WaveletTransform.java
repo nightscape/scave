@@ -27,6 +27,7 @@ package math.transform.jwave.transforms;
 import math.transform.jwave.exc.JWaveError;
 import math.transform.jwave.exc.JWaveException;
 import math.transform.jwave.exc.JWaveFailure;
+import math.transform.jwave.transforms.modes.TransformMode;
 import math.transform.jwave.transforms.wavelets.Wavelet;
 
 /**
@@ -44,6 +45,15 @@ public abstract class WaveletTransform extends BasicTransform {
    *
    */
   protected Wavelet _wavelet;
+  
+  /**
+   * Specifying how the transform should do its job.
+   * 
+   * @author Christian Scheiblich
+   * date Feb 7, 2013 3:22:42 PM
+   *
+   */
+  protected TransformMode _transformMode;
   
   /**
    * The steps the Wavelet transform should do. If it is set to -1,
@@ -94,6 +104,33 @@ public abstract class WaveletTransform extends BasicTransform {
       throw new JWaveFailure( "given steps are smaller than 1" );
     
     _steps = steps;
+    
+  }
+  
+  /**
+   * A Wavelet transform that is reduced to some minor steps depending on the
+   * supported TransformMode object that handles how to treat the given data.
+   * 
+   * @author Christian Scheiblich
+   * date Feb 7, 2013 3:25:01 PM
+   *
+   * @param wavelets
+   * @param transformMode
+   * @throws JWaveException
+   */
+  protected WaveletTransform( Wavelet wavelet, TransformMode transformMode ) throws JWaveException {
+     
+    if( wavelet == null )
+      throw new JWaveError( "Given object Wavelet is null" );
+    
+    _wavelet = wavelet;
+    
+    if( transformMode == null )
+      throw new JWaveError( "Given object TransformMode is null" );
+    
+    _transformMode = transformMode;
+
+    _steps = -1; // allows for the maximum number of steps
     
   }
   

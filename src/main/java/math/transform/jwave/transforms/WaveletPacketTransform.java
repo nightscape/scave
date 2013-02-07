@@ -63,6 +63,8 @@ public class WaveletPacketTransform extends WaveletTransform {
     super( wavelet, iteration );
   } // WaveletPacketTransform
   
+  
+  
   /**
    * Implementation of the 1-D forward wavelet packet transform for arrays of
    * dim N by filtering with the longest wavelet first and then always with both

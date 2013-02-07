@@ -23,7 +23,7 @@
  */
 package math.transform.jwave.transforms;
 
-import math.transform.jwave.types.Complex;
+import math.transform.jwave.datatypes.Complex;
 
 /**
  * The Discrete Fourier Transform (DFT) is - as the name says - the discrete

@@ -21,7 +21,7 @@
  * date 19.11.2010 13:20:28
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.types;
+package math.transform.jwave.datatypes;
 
 /**
  * A class to represent a Complex Number. A Complex object is immutable once

@@ -23,9 +23,9 @@
  */
 package math.transform.jwave.transforms;
 
+import math.transform.jwave.datatypes.Complex;
 import math.transform.jwave.exc.JWaveException;
 import math.transform.jwave.transforms.wavelets.Wavelet;
-import math.transform.jwave.types.Complex;
 
 /**
  * Basic Wave for transformations like Fast Fourier Transform (FFT), Fast
@@ -63,7 +63,6 @@ public abstract class BasicTransform {
    * @return coefficients of 1-D time domain
    */
   public abstract double[ ] reverse( double[ ] arrFreq );
-  
   
   /**
    * Performs the forward transform from time domain to frequency or Hilbert
