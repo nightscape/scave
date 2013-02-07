@@ -23,12 +23,12 @@
  */
 package math.transform.jwave;
 
-import math.transform.jwave.handlers.TransformInterface;
-import math.transform.jwave.handlers.DiscreteFourierTransform;
-import math.transform.jwave.handlers.FastWaveletTransform;
-import math.transform.jwave.handlers.WaveletPacketTransform;
+import math.transform.jwave.handlers.BasicTransform;
 import math.transform.jwave.handlers.DiscreteWaveletTransform;
-import math.transform.jwave.handlers.wavelets.WaveletInterface;
+import math.transform.jwave.handlers.FastWaveletTransform;
+import math.transform.jwave.handlers.DiscreteFourierTransform;
+import math.transform.jwave.handlers.WaveletPacketTransform;
+import math.transform.jwave.handlers.wavelets.Wavelet;
 import math.transform.jwave.handlers.wavelets.Coif06;
 import math.transform.jwave.handlers.wavelets.Daub02;
 import math.transform.jwave.handlers.wavelets.Daub03;
@@ -81,7 +81,7 @@ public class JWave {
     } // if args
 
     String wType = args[ 1 ];
-    WaveletInterface wavelet = null;
+    Wavelet wavelet = null;
     if( wType.equalsIgnoreCase( "haar02" ) )
       wavelet = new Haar02( );
     else if( wType.equalsIgnoreCase( "lege02" ) )
@@ -106,7 +106,7 @@ public class JWave {
     } // if wType
 
     String tType = args[ 0 ];
-    TransformInterface bWave = null;
+    BasicTransform bWave = null;
     if( tType.equalsIgnoreCase( "dft" ) )
       bWave = new DiscreteFourierTransform( );
     else if( tType.equalsIgnoreCase( "fwt" ) )

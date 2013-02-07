@@ -41,7 +41,7 @@ package math.transform.jwave.handlers;
  * @date 14.08.2010 10:43:28
  * @author Christian Scheiblich
  */
-public class AncientEgyptianDecomposition extends WaveletTransform {
+public class AncientEgyptianDecomposition extends BasicTransform {
 
   /**
    * The selected Transform (FWT or WPT) used for the sub arrays of the ancient
@@ -49,7 +49,7 @@ public class AncientEgyptianDecomposition extends WaveletTransform {
    * Pattern of software design pattern. See:
    * http://en.wikipedia.org/wiki/Composite_pattern#Java
    */
-  protected WaveletTransform _waveTransform;
+  protected BasicTransform _waveTransform;
 
   /**
    * Constructor taking the
@@ -57,9 +57,9 @@ public class AncientEgyptianDecomposition extends WaveletTransform {
    * @date 14.08.2010 10:43:28
    * @author Christian Scheiblich
    */
-  public AncientEgyptianDecomposition( WaveletTransform waveTransform ) {
+  public AncientEgyptianDecomposition( BasicTransform waveTransform ) {
     _waveTransform = waveTransform;
-  } // FastWaveletTransformArbitrary
+  } // FastBasicTransformArbitrary
 
   /**
    * The method converts a positive integer to the ancient Egyptian multipliers
@@ -144,7 +144,7 @@ public class AncientEgyptianDecomposition extends WaveletTransform {
    * @see math.transform.jwave.handlers.BasicTransform#forward(double[])
    */
   @Override
-  public double[ ] forwardWavelet( double[ ] arrTime ) {
+  public double[ ] forward( double[ ] arrTime ) {
 
     double[ ] arrHilb = new double[ arrTime.length ];
 
@@ -186,7 +186,7 @@ public class AncientEgyptianDecomposition extends WaveletTransform {
    * @see math.transform.jwave.handlers.BasicTransform#reverse(double[])
    */
   @Override
-  public double[ ] reverseWavelet( double[ ] arrHilb ) {
+  public double[ ] reverse( double[ ] arrHilb ) {
 
     double[ ] arrTime = new double[ arrHilb.length ];
 
@@ -227,7 +227,7 @@ public class AncientEgyptianDecomposition extends WaveletTransform {
    * @see math.transform.jwave.handlers.BasicTransform#forward(double[], int)
    */
   @Override
-  public double[ ] forwardWavelet( double[ ] arrTime, int toLevel ) {
+  public double[ ] forward( double[ ] arrTime, int toLevel ) {
 
     double[ ] arrHilb = new double[ arrTime.length ];
 
@@ -244,7 +244,7 @@ public class AncientEgyptianDecomposition extends WaveletTransform {
       for( int i = 0; i < arrTimeSub.length; i++ )
         arrTimeSub[ i ] = arrTime[ i + offSet ];
 
-      double[ ] arrHilbSub = _waveTransform.forwardWavelet( arrTimeSub, toLevel );
+      double[ ] arrHilbSub = _waveTransform.forward( arrTimeSub, toLevel );
 
       for( int i = 0; i < arrHilbSub.length; i++ )
         arrHilb[ i + offSet ] = arrHilbSub[ i ];
@@ -270,7 +270,7 @@ public class AncientEgyptianDecomposition extends WaveletTransform {
    * @see math.transform.jwave.handlers.BasicTransform#reverse(double[], int)
    */
   @Override
-  public double[ ] reverseWavelet( double[ ] arrHilb, int fromLevel ) {
+  public double[ ] reverse( double[ ] arrHilb, int fromLevel ) {
 
     double[ ] arrTime = new double[ arrHilb.length ];
 
@@ -287,7 +287,7 @@ public class AncientEgyptianDecomposition extends WaveletTransform {
       for( int i = 0; i < arrHilbSub.length; i++ )
         arrHilbSub[ i ] = arrHilb[ i + offSet ];
 
-      double[ ] arrTimeSub = _waveTransform.reverseWavelet( arrHilbSub, fromLevel );
+      double[ ] arrTimeSub = _waveTransform.reverse( arrHilbSub, fromLevel );
 
       for( int i = 0; i < arrTimeSub.length; i++ )
         arrTime[ i + offSet ] = arrTimeSub[ i ];

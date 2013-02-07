@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file FastWaveletTransform.java is part of JWave.
+ * This file FastBasicTransform.java is part of JWave.
  *
  * @author Christian Scheiblich
  * date 23.02.2010 05:42:23
@@ -24,6 +24,7 @@
 
 package math.transform.jwave.handlers;
 
+import math.transform.jwave.handlers.wavelets.Wavelet;
 import math.transform.jwave.handlers.wavelets.WaveletInterface;
 
 /**
@@ -42,7 +43,7 @@ public class DiscreteWaveletTransform extends WaveletTransform {
    * @author Pol Kennel
    * @param wavelet
    */
-  public DiscreteWaveletTransform( WaveletInterface wavelet ) {
+  public DiscreteWaveletTransform( Wavelet wavelet ) {
     super( wavelet );
   }
   
@@ -53,7 +54,7 @@ public class DiscreteWaveletTransform extends WaveletTransform {
    * @author Pol Kennel
    * @param wavelet
    */
-  public DiscreteWaveletTransform( WaveletInterface wavelet, int iteration ) {
+  public DiscreteWaveletTransform( Wavelet wavelet, int iteration ) {
     super( wavelet, iteration );
   }
   
@@ -71,7 +72,7 @@ public class DiscreteWaveletTransform extends WaveletTransform {
    * @see math.transform.jwave.handlers.BasicTransform#forward(double[])
    */
   @Override
-  public double[ ] forwardWavelet( double[ ] arrTime ) {
+  public double[ ] forward( double[ ] arrTime ) {
     
     double[ ] arrHilb = new double[ arrTime.length ];
     for( int i = 0; i < arrTime.length; i++ )
@@ -120,7 +121,7 @@ public class DiscreteWaveletTransform extends WaveletTransform {
    * @see math.transform.jwave.handlers.BasicTransform#reverse(double[])
    */
   @Override
-  public double[ ] reverseWavelet( double[ ] arrHilb ) {
+  public double[ ] reverse( double[ ] arrHilb ) {
     
     double[ ] arrTime = new double[ arrHilb.length ];
     
@@ -174,7 +175,7 @@ public class DiscreteWaveletTransform extends WaveletTransform {
    * @see math.transform.jwave.handlers.BasicTransform#forward(double[], int)
    */
   @Override
-  public double[ ] forwardWavelet( double[ ] arrTime, int toLevel ) {
+  public double[ ] forward( double[ ] arrTime, int toLevel ) {
     
     double[ ] arrHilb = new double[ arrTime.length ];
     for( int i = 0; i < arrTime.length; i++ )
@@ -229,7 +230,7 @@ public class DiscreteWaveletTransform extends WaveletTransform {
    * @see math.transform.jwave.handlers.BasicTransform#reverse(double[], int)
    */
   @Override
-  public double[ ] reverseWavelet( double[ ] arrHilb, int fromLevel ) {
+  public double[ ] reverse( double[ ] arrHilb, int fromLevel ) {
     
     double[ ] arrTime = new double[ arrHilb.length ];
     
@@ -280,9 +281,9 @@ public class DiscreteWaveletTransform extends WaveletTransform {
    * @author Pol Kennel
    * @param matTime
    *          coefficients of 2-D time domain
-   * @see math.transform.jwave.handlers.DiscreteWaveletTransform#forward(double[][])
+   * @see math.transform.jwave.handlers.DiscreteBasicTransform#forward(double[][])
    */
-  public double[ ][ ] forwardWavelet( double[ ][ ] matTime ) {
+  public double[ ][ ] forward( double[ ][ ] matTime ) {
     
     System.out.println( "use bad one!" );
     
@@ -346,9 +347,9 @@ public class DiscreteWaveletTransform extends WaveletTransform {
    * @author Pol Kennel
    * @param matHilb
    *          coefficients of 2-D Hilbert domain
-   * @see math.transform.jwave.handlers.DiscreteWaveletTransform#reverse(double[][])
+   * @see math.transform.jwave.handlers.DiscreteBasicTransform#reverse(double[][])
    */
-  public double[ ][ ] reverseWavelet( double[ ][ ] matHilb ) {
+  public double[ ][ ] reverse( double[ ][ ] matHilb ) {
     
     int noOfRows = matHilb.length;
     int noOfCols = matHilb[ 0 ].length;
@@ -407,10 +408,10 @@ public class DiscreteWaveletTransform extends WaveletTransform {
    *          coefficients of 2-D time domain
    * @param toLevel
    *          iteration number
-   * @see math.transform.jwave.handlers.DiscreteWaveletTransform#forward(double[][])
+   * @see math.transform.jwave.handlers.DiscreteBasicTransform#forward(double[][])
    */
-  @Override
-  public double[ ][ ] forwardWavelet( double[ ][ ] matTime, int toLevel ) {
+ // @Override
+  public double[ ][ ] forward( double[ ][ ] matTime, int toLevel ) {
     
     System.out.println( "use good one!" );
     
@@ -473,10 +474,10 @@ public class DiscreteWaveletTransform extends WaveletTransform {
    *          coefficients of 2-D Hilbert domain
    * @param fromLevel
    *          iteration number
-   * @see math.transform.jwave.handlers.DiscreteWaveletTransform#reverse(double[][])
+   * @see math.transform.jwave.handlers.DiscreteBasicTransform#reverse(double[][])
    */
-  @Override
-  public double[ ][ ] reverseWavelet( double[ ][ ] matHilb, int fromLevel ) {
+//  @Override
+  public double[ ][ ] reverse( double[ ][ ] matHilb, int fromLevel ) {
     
     int noOfRows = matHilb.length;
     int noOfCols = matHilb[ 0 ].length;
@@ -532,7 +533,7 @@ public class DiscreteWaveletTransform extends WaveletTransform {
    * @author pol
    * @see math.transform.jwave.handlers.BasicTransform#forward(double[][][])
    */
-  public double[ ][ ][ ] forwardWavelet( double[ ][ ][ ] spcTime ) {
+  public double[ ][ ][ ] forward( double[ ][ ][ ] spcTime ) {
     // TODO 
     return spcTime;
   }
@@ -545,7 +546,7 @@ public class DiscreteWaveletTransform extends WaveletTransform {
    * @author pol
    * @see math.transform.jwave.handlers.BasicTransform#reverse(double[][][])
    */
-  public double[ ][ ][ ] reverseWavelet( double[ ][ ][ ] spcHilb ) {
+  public double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb ) {
     // TODO
     return spcHilb;
     

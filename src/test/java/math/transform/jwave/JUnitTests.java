@@ -99,7 +99,7 @@ public class JUnitTests {
 
     double[ ] arrTime = { 1., 1. };
 
-    testFastWaveletTransformRounding( arrTime, new Haar02( ), delta );
+    testFastBasicTransformRounding( arrTime, new Haar02( ), delta );
 
   } // testRounding
 
@@ -136,7 +136,7 @@ public class JUnitTests {
 
     double[ ] arrTime = { 1., 1., 1., 1. };
 
-    testFastWaveletTransformRounding( arrTime, new Daub02( ), delta );
+    testFastBasicTransformRounding( arrTime, new Daub02( ), delta );
 
   } // testRounding
 
@@ -171,7 +171,7 @@ public class JUnitTests {
 
     double[ ] arrTime = { 1., 1., 1., 1., 1., 1. };
 
-    testFastWaveletTransformRounding( arrTime, new Coif06( ), delta );
+    testFastBasicTransformRounding( arrTime, new Coif06( ), delta );
 
   } // testRounding
 
@@ -182,7 +182,7 @@ public class JUnitTests {
    * @date 10.02.2010 10:28:00
    * @author Christian Scheiblich
    */
-  public void testFastWaveletTransformRounding( double[ ] arr, Wavelet wavelet,
+  public void testFastBasicTransformRounding( double[ ] arr, Wavelet wavelet,
       double delta ) {
 
     long noOfSteps = 10000000;

@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file FastWaveletTransformTest.java is part of JWave.
+ * This file FastBasicTransformTest.java is part of JWave.
  *
  * @author Christian Scheiblich
  * date 23.11.2010 19:40:11
@@ -45,10 +45,10 @@ public class FastWaveletTransformTest extends JUnitTests {
    * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
    */
   @Test
-  public void testFastWaveletTransformForwardHaar02Array( ) {
+  public void testFastBasicTransformForwardHaar02Array( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformForwardHaar02Array" );
+    System.out.println( "testFastBasicTransformForwardHaar02Array" );
 
     double delta = 1.e-12;
 
@@ -70,10 +70,10 @@ public class FastWaveletTransformTest extends JUnitTests {
    * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
    */
   @Test
-  public void testFastWaveletTransformReverseHaar02Array( ) {
+  public void testFastBasicTransformReverseHaar02Array( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformReverseHaar02Array" );
+    System.out.println( "testFastBasicTransformReverseHaar02Array" );
 
     double delta = 1e-12;
 
@@ -95,10 +95,10 @@ public class FastWaveletTransformTest extends JUnitTests {
    * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
    */
   @Test
-  public void testFastWaveletTransformForwardHaar02ArrayRandom( ) {
+  public void testFastBasicTransformForwardHaar02ArrayRandom( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformForwardHaar02ArrayRandom" );
+    System.out.println( "testFastBasicTransformForwardHaar02ArrayRandom" );
 
     double delta = 1.e-12;
 
@@ -122,10 +122,10 @@ public class FastWaveletTransformTest extends JUnitTests {
    * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
    */
   @Test
-  public void testFastWaveletTransformReverseHaar02ArrayRandom( ) {
+  public void testFastBasicTransformReverseHaar02ArrayRandom( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformReverseHaar02ArrayRandom" );
+    System.out.println( "testFastBasicTransformReverseHaar02ArrayRandom" );
 
     double delta = 1e-12;
 
@@ -149,10 +149,10 @@ public class FastWaveletTransformTest extends JUnitTests {
    * Test method for {@link math.transform.jwave.Transform#forward(double[][])}.
    */
   @Test
-  public void testFastWaveletTransformForwardHaar02Matrix( ) {
+  public void testFastBasicTransformForwardHaar02Matrix( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformForwardHaar02Matrix" );
+    System.out.println( "testFastBasicTransformForwardHaar02Matrix" );
 
     double delta = 1.e-12;
 
@@ -176,10 +176,10 @@ public class FastWaveletTransformTest extends JUnitTests {
    * Test method for {@link math.transform.jwave.Transform#reverse(double[][])}.
    */
   @Test
-  public void testFastWaveletTransformReverseHaar02Matrix( ) {
+  public void testFastBasicTransformReverseHaar02Matrix( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformReverseHaar02Matrix" );
+    System.out.println( "testFastBasicTransformReverseHaar02Matrix" );
 
     double delta = 1.e-12;
 
@@ -203,10 +203,10 @@ public class FastWaveletTransformTest extends JUnitTests {
    * Test method for {@link math.transform.jwave.Transform#forward(double[][][])}.
    */
   @Test
-  public void testFastWaveletTransformForwardHaar02Space( ) {
+  public void testFastBasicTransformForwardHaar02Space( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformForwardHaar02Space" );
+    System.out.println( "testFastBasicTransformForwardHaar02Space" );
 
     double delta = 1.e-12;
 
@@ -244,10 +244,10 @@ public class FastWaveletTransformTest extends JUnitTests {
    * Test method for {@link math.transform.jwave.Transform#reverse(double[][][])}.
    */
   @Test
-  public void testFastWaveletTransformReverseHaar02Space( ) {
+  public void testFastBasicTransformReverseHaar02Space( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformReverseHaar02Space" );
+    System.out.println( "testFastBasicTransformReverseHaar02Space" );
 
     double delta = 1.e-12;
 
@@ -286,10 +286,10 @@ public class FastWaveletTransformTest extends JUnitTests {
    * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
    */
   @Test
-  public void testFastWaveletTransformForwardHaar02OrthogonalArray( ) {
+  public void testFastBasicTransformForwardHaar02OrthogonalArray( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformForwardHaar02OrthogonalArray" );
+    System.out.println( "testFastBasicTransformForwardHaar02OrthogonalArray" );
 
     double delta = 1.e-12;
 
@@ -312,10 +312,10 @@ public class FastWaveletTransformTest extends JUnitTests {
    * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
    */
   @Test
-  public void testFastWaveletTransformReverseHaar02OrthogonalArray( ) {
+  public void testFastBasicTransformReverseHaar02OrthogonalArray( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformReverseHaar02OrthogonalArray" );
+    System.out.println( "testFastBasicTransformReverseHaar02OrthogonalArray" );
 
     double delta = 1e-12;
 
@@ -338,10 +338,10 @@ public class FastWaveletTransformTest extends JUnitTests {
    * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
    */
   @Test
-  public void testFastWaveletTransformForwardLege02Array( ) {
+  public void testFastBasicTransformForwardLege02Array( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformForwardLege02Array" );
+    System.out.println( "testFastBasicTransformForwardLege02Array" );
 
     double delta = 1.e-12;
 
@@ -363,10 +363,10 @@ public class FastWaveletTransformTest extends JUnitTests {
    * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
    */
   @Test
-  public void testFastWaveletTransformReverseLege02Array( ) {
+  public void testFastBasicTransformReverseLege02Array( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformReverseLege02Array" );
+    System.out.println( "testFastBasicTransformReverseLege02Array" );
 
     double delta = 1e-12;
 
@@ -388,10 +388,10 @@ public class FastWaveletTransformTest extends JUnitTests {
    * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
    */
   @Test
-  public void testFastWaveletTransformForwardDaub04Array( ) {
+  public void testFastBasicTransformForwardDaub04Array( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformForwardDaub04Array" );
+    System.out.println( "testFastBasicTransformForwardDaub04Array" );
 
     double delta = 1.e-12;
 
@@ -413,10 +413,10 @@ public class FastWaveletTransformTest extends JUnitTests {
    * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
    */
   @Test
-  public void testFastWaveletTransformReverseDaub04Array( ) {
+  public void testFastBasicTransformReverseDaub04Array( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformReverseDaub04Array" );
+    System.out.println( "testFastBasicTransformReverseDaub04Array" );
 
     double delta = 1.e-12;
 
@@ -438,10 +438,10 @@ public class FastWaveletTransformTest extends JUnitTests {
    * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
    */
   @Test
-  public void testFastWaveletTransformForwardLege04Array( ) {
+  public void testFastBasicTransformForwardLege04Array( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformForwardLege04Array" );
+    System.out.println( "testFastBasicTransformForwardLege04Array" );
 
     double delta = 1.e-12;
 
@@ -463,10 +463,10 @@ public class FastWaveletTransformTest extends JUnitTests {
    * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
    */
   @Test
-  public void testFastWaveletTransformReverseLege04Array( ) {
+  public void testFastBasicTransformReverseLege04Array( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformReverseLege04Array" );
+    System.out.println( "testFastBasicTransformReverseLege04Array" );
 
     double delta = 1.e-12;
 
@@ -488,10 +488,10 @@ public class FastWaveletTransformTest extends JUnitTests {
    * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
    */
   @Test
-  public void testFastWaveletTransformForwardDaub06Array( ) {
+  public void testFastBasicTransformForwardDaub06Array( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformForwardDaub06Array" );
+    System.out.println( "testFastBasicTransformForwardDaub06Array" );
 
     double delta = 1.e-12;
 
@@ -513,10 +513,10 @@ public class FastWaveletTransformTest extends JUnitTests {
    * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
    */
   @Test
-  public void testFastWaveletTransformReverseDaub06Array( ) {
+  public void testFastBasicTransformReverseDaub06Array( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformReverseDaub06Array" );
+    System.out.println( "testFastBasicTransformReverseDaub06Array" );
 
     double delta = 1.e-12;
 
@@ -538,10 +538,10 @@ public class FastWaveletTransformTest extends JUnitTests {
    * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
    */
   @Test
-  public void testFastWaveletTransformForwardLege06Array( ) {
+  public void testFastBasicTransformForwardLege06Array( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformForwardLege06Array" );
+    System.out.println( "testFastBasicTransformForwardLege06Array" );
 
     double delta = 1.e-12;
 
@@ -563,10 +563,10 @@ public class FastWaveletTransformTest extends JUnitTests {
    * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
    */
   @Test
-  public void testFastWaveletTransformReverseLege06Array( ) {
+  public void testFastBasicTransformReverseLege06Array( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformReverseLege06Array" );
+    System.out.println( "testFastBasicTransformReverseLege06Array" );
 
     double delta = 1.e-12;
 
@@ -588,10 +588,10 @@ public class FastWaveletTransformTest extends JUnitTests {
    * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
    */
   @Test
-  public void testFastWaveletTransformForwardCoif06Array( ) {
+  public void testFastBasicTransformForwardCoif06Array( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformForwardCoif06Array" );
+    System.out.println( "testFastBasicTransformForwardCoif06Array" );
 
     double delta = 1.e-12;
 
@@ -613,10 +613,10 @@ public class FastWaveletTransformTest extends JUnitTests {
    * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
    */
   @Test
-  public void testFastWaveletTransformReverseCoif06Array( ) {
+  public void testFastBasicTransformReverseCoif06Array( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformReverseCoif06Array" );
+    System.out.println( "testFastBasicTransformReverseCoif06Array" );
 
     double delta = 1.e-12;
 
@@ -638,10 +638,10 @@ public class FastWaveletTransformTest extends JUnitTests {
    * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
    */
   @Test
-  public void testFastWaveletTransformForwardDaub08Array( ) {
+  public void testFastBasicTransformForwardDaub08Array( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformForwardDaub08Array" );
+    System.out.println( "testFastBasicTransformForwardDaub08Array" );
 
     double delta = 1.e-3;
 
@@ -665,10 +665,10 @@ public class FastWaveletTransformTest extends JUnitTests {
    * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
    */
   @Test
-  public void testFastWaveletTransformReverseDaub08Array( ) {
+  public void testFastBasicTransformReverseDaub08Array( ) {
 
     System.out.println( "" );
-    System.out.println( "testFastWaveletTransformReverseDaub08Array" );
+    System.out.println( "testFastBasicTransformReverseDaub08Array" );
 
     double delta = 1.e-3;
 

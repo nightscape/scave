@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file FastWaveletTransformTest.java is part of JWave.
+ * This file FastBasicTransformTest.java is part of JWave.
  *
  * @author Christian Scheiblich
  * date 23.11.2010 19:40:11
@@ -37,10 +37,10 @@ public class DiscretWaveletTransformTest extends JUnitTests{
    * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
    */
   @Test
-  public void testDiscreteWaveletTransformForwardHaar02Array( ) {
+  public void testDiscreteBasicTransformForwardHaar02Array( ) {
 
     System.out.println( "" );
-    System.out.println( "testDiscreteWaveletTransformForwardHaar02Array" );
+    System.out.println( "testDiscreteBasicTransformForwardHaar02Array" );
 
     double delta = 1.e-12;
 
@@ -62,10 +62,10 @@ public class DiscretWaveletTransformTest extends JUnitTests{
    * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
    */
   @Test
-  public void testDiscreteWaveletTransformReverseHaar02Array( ) {
+  public void testDiscreteBasicTransformReverseHaar02Array( ) {
 
     System.out.println( "" );
-    System.out.println( "testDiscreteWaveletTransformReverseHaar02Array" );
+    System.out.println( "testDiscreteBasicTransformReverseHaar02Array" );
 
     double delta = 1e-12;
 
@@ -87,10 +87,10 @@ public class DiscretWaveletTransformTest extends JUnitTests{
    * Test method for {@link math.transform.jwave.Transform#forward(double[][])}.
    */
   @Test
-  public void testDiscretWaveletTransformForwardHaar02Matrix( ) {
+  public void testDiscretBasicTransformForwardHaar02Matrix( ) {
 
     System.out.println( "" );
-    System.out.println( "testDiscretWaveletTransformForwardHaar02Matrix" );
+    System.out.println( "testDiscretBasicTransformForwardHaar02Matrix" );
 
     double delta = 1.e-12;
 
@@ -114,10 +114,10 @@ public class DiscretWaveletTransformTest extends JUnitTests{
    * Test method for {@link math.transform.jwave.Transform#reverse(double[][])}.
    */
   @Test
-  public void testDiscreteWaveletTransformReverseHaar02Matrix( ) {
+  public void testDiscreteBasicTransformReverseHaar02Matrix( ) {
 
     System.out.println( "" );
-    System.out.println( "testDiscreteWaveletTransformReverseHaar02Matrix" );
+    System.out.println( "testDiscreteBasicTransformReverseHaar02Matrix" );
 
     double delta = 1.e-12;
 
@@ -141,10 +141,10 @@ public class DiscretWaveletTransformTest extends JUnitTests{
    * Test method for {@link math.transform.jwave.Transform#forward(double[][][])}.
    */
   @Test
-  public void testDiscreteWaveletTransformForwardHaar02Space( ) {
+  public void testDiscreteBasicTransformForwardHaar02Space( ) {
 
     System.out.println( "" );
-    System.out.println( "testDiscreteWaveletTransformForwardHaar02Space" );
+    System.out.println( "testDiscreteBasicTransformForwardHaar02Space" );
 
     double delta = 1.e-12;
 
@@ -182,10 +182,10 @@ public class DiscretWaveletTransformTest extends JUnitTests{
    * Test method for {@link math.transform.jwave.Transform#reverse(double[][][])}.
    */
   @Test
-  public void testDiscreteWaveletTransformReverseHaar02Space( ) {
+  public void testDiscreteBasicTransformReverseHaar02Space( ) {
 
     System.out.println( "" );
-    System.out.println( "testDiscreteWaveletTransformReverseHaar02Space" );
+    System.out.println( "testDiscreteBasicTransformReverseHaar02Space" );
 
     double delta = 1.e-12;
 

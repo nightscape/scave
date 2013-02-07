@@ -35,7 +35,7 @@ import math.transform.jwave.handlers.wavelets.WaveletInterface;
  * @author Christian Scheiblich
  */
 public class WaveletPacketTransform extends WaveletTransform {
-
+  
   /**
    * Constructor receiving a Wavelet object.
    * 
@@ -44,8 +44,8 @@ public class WaveletPacketTransform extends WaveletTransform {
    * @param wavelet
    *          object of type Wavelet; Haar02, Daub02, Coif06, ...
    */
-  public WaveletPacketTransform( WaveletInterface wavelet ) {
-    super(wavelet);
+  public WaveletPacketTransform( Wavelet wavelet ) {
+    super( wavelet );
   } // WaveletPacketTransform
   
   /**
@@ -56,10 +56,10 @@ public class WaveletPacketTransform extends WaveletTransform {
    * @param wavelet
    *          object of type Wavelet; Haar02, Daub02, Coif06, ...
    */
-  public WaveletPacketTransform( WaveletInterface wavelet, int iteration ) {
-    super(wavelet, iteration);
+  public WaveletPacketTransform( Wavelet wavelet, int iteration ) {
+    super( wavelet, iteration );
   } // WaveletPacketTransform
-
+  
   /**
    * Implementation of the 1-D forward wavelet packet transform for arrays of
    * dim N by filtering with the longest wavelet first and then always with both
@@ -71,47 +71,47 @@ public class WaveletPacketTransform extends WaveletTransform {
    * @see math.transform.jwave.handlers.BasicTransform#forward(double[])
    */
   @Override
-  public double[ ] forwardWavelet( double[ ] arrTime ) {
-
+  public double[ ] forward( double[ ] arrTime ) {
+    
     double[ ] arrHilb = new double[ arrTime.length ];
     for( int i = 0; i < arrTime.length; i++ )
       arrHilb[ i ] = arrTime[ i ];
-
+    
     int level = 0;
     int k = arrTime.length;
     int h = arrTime.length;
     int minWaveLength = _wavelet.getWaveLength( );
     if( h >= minWaveLength ) {
-
+      
       while( h >= minWaveLength ) {
-
+        
         int g = k / h; // 1 -> 2 -> 4 -> 8 -> ...
-
+        
         for( int p = 0; p < g; p++ ) {
-
+          
           double[ ] iBuf = new double[ h ];
-
+          
           for( int i = 0; i < h; i++ )
             iBuf[ i ] = arrHilb[ i + ( p * h ) ];
-
+          
           double[ ] oBuf = _wavelet.forward( iBuf );
-
+          
           for( int i = 0; i < h; i++ )
             arrHilb[ i + ( p * h ) ] = oBuf[ i ];
-
+          
         } // packets
-
+        
         h = h >> 1;
-
+        
         level++;
-
+        
       } // levels
-
+      
     } // if
-
+    
     return arrHilb;
   } // forward
-
+  
   /**
    * Implementation of the 1-D reverse wavelet packet transform for arrays of
    * dim N by filtering with the smallest wavelet for all sub bands -- low and
@@ -123,48 +123,48 @@ public class WaveletPacketTransform extends WaveletTransform {
    * @see math.transform.jwave.handlers.BasicTransform#reverse(double[])
    */
   @Override
-  public double[ ] reverseWavelet( double[ ] arrHilb ) {
-
+  public double[ ] reverse( double[ ] arrHilb ) {
+    
     double[ ] arrTime = new double[ arrHilb.length ];
-
+    
     for( int i = 0; i < arrHilb.length; i++ )
       arrTime[ i ] = arrHilb[ i ];
-
+    
     int level = 0;
     int minWaveLength = _wavelet.getWaveLength( );
     int k = arrTime.length;
     int h = minWaveLength;
     if( arrHilb.length >= minWaveLength ) {
-
+      
       while( h <= arrTime.length && h >= minWaveLength ) {
-
+        
         int g = k / h; // ... -> 8 -> 4 -> 2 -> 1
-
+        
         for( int p = 0; p < g; p++ ) {
-
+          
           double[ ] iBuf = new double[ h ];
-
+          
           for( int i = 0; i < h; i++ )
             iBuf[ i ] = arrTime[ i + ( p * h ) ];
-
+          
           double[ ] oBuf = _wavelet.reverse( iBuf );
-
+          
           for( int i = 0; i < h; i++ )
             arrTime[ i + ( p * h ) ] = oBuf[ i ];
-
+          
         } // packets
-
+        
         h = h << 1;
-
+        
         level++;
-
+        
       } // levels
-
+      
     } // if
-
+    
     return arrTime;
   } // reverse
-
+  
   /**
    * Implementation of the 1-D forward wavelet packet transform for arrays of
    * dim N by filtering with the longest wavelet first and then always with both
@@ -176,47 +176,47 @@ public class WaveletPacketTransform extends WaveletTransform {
    * @see math.transform.jwave.handlers.BasicTransform#forward(double[], int)
    */
   @Override
-  public double[ ] forwardWavelet( double[ ] arrTime, int toLevel ) {
-
+  public double[ ] forward( double[ ] arrTime, int toLevel ) {
+    
     double[ ] arrHilb = new double[ arrTime.length ];
     for( int i = 0; i < arrTime.length; i++ )
       arrHilb[ i ] = arrTime[ i ];
-
+    
     int level = 0;
     int k = arrTime.length;
     int h = arrTime.length;
     int minWaveLength = _wavelet.getWaveLength( );
     if( h >= minWaveLength ) {
-
+      
       while( h >= minWaveLength && level < toLevel ) {
-
+        
         int g = k / h; // 1 -> 2 -> 4 -> 8 -> ...
-
+        
         for( int p = 0; p < g; p++ ) {
-
+          
           double[ ] iBuf = new double[ h ];
-
+          
           for( int i = 0; i < h; i++ )
             iBuf[ i ] = arrHilb[ i + ( p * h ) ];
-
+          
           double[ ] oBuf = _wavelet.forward( iBuf );
-
+          
           for( int i = 0; i < h; i++ )
             arrHilb[ i + ( p * h ) ] = oBuf[ i ];
-
+          
         } // packets
-
+        
         h = h >> 1;
-
+        
         level++;
-
+        
       } // levels
-
+      
     } // if
-
+    
     return arrHilb;
   } // forward
-
+  
   /**
    * Implementation of the 1-D reverse wavelet packet transform for arrays of
    * dim N by filtering with the smallest wavelet for all sub bands -- low and
@@ -231,13 +231,13 @@ public class WaveletPacketTransform extends WaveletTransform {
    * @see math.transform.jwave.handlers.BasicTransform#reverse(double[], int)
    */
   @Override
-  public double[ ] reverseWavelet( double[ ] arrHilb, int fromLevel ) {
-
+  public double[ ] reverse( double[ ] arrHilb, int fromLevel ) {
+    
     double[ ] arrTime = new double[ arrHilb.length ];
-
+    
     for( int i = 0; i < arrHilb.length; i++ )
       arrTime[ i ] = arrHilb[ i ];
-
+    
     int level = 0;
     
     int minWaveLength = _wavelet.getWaveLength( );
@@ -245,37 +245,37 @@ public class WaveletPacketTransform extends WaveletTransform {
     int k = arrTime.length;
     
     // int h = minWaveLength; // bug ... 20110620
-    int h = (int) (arrHilb.length / (Math.pow(2, fromLevel-1))); // added by Pol
+    int h = (int)( arrHilb.length / ( Math.pow( 2, fromLevel - 1 ) ) ); // added by Pol
     
     if( arrHilb.length >= minWaveLength ) {
-
+      
       while( h <= arrTime.length && h >= minWaveLength && level < fromLevel ) {
-
+        
         int g = k / h; // ... -> 8 -> 4 -> 2 -> 1
-
+        
         for( int p = 0; p < g; p++ ) {
-
+          
           double[ ] iBuf = new double[ h ];
-
+          
           for( int i = 0; i < h; i++ )
             iBuf[ i ] = arrTime[ i + ( p * h ) ];
-
+          
           double[ ] oBuf = _wavelet.reverse( iBuf );
-
+          
           for( int i = 0; i < h; i++ )
             arrTime[ i + ( p * h ) ] = oBuf[ i ];
-
+          
         } // packets
-
+        
         h = h << 1;
-
+        
         level++;
-
+        
       } // levels
-
+      
     } // if
-
+    
     return arrTime;
   } // reverse
-
+  
 } // class

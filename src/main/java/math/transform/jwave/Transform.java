@@ -24,13 +24,11 @@
 package math.transform.jwave;
 
 import math.transform.jwave.handlers.BasicTransform;
-import math.transform.jwave.handlers.TransformInterface;
-import math.transform.jwave.handlers.WaveletTransform;
 import math.transform.jwave.types.Complex;
 
 /**
  * Base class for transforms like DiscreteFourierTransform,
- * FastWaveletTransform, and WaveletPacketTransform.
+ * FastBasicTransform, and WaveletPacketTransform.
  * 
  * @date 19.05.2009 09:43:40
  * @author Christian Scheiblich
@@ -40,31 +38,35 @@ public class Transform {
   /**
    * Transform object of type base class
    */
-  protected TransformInterface _transform;
+  protected BasicTransform _transform;
   
   /**
    * Constructor; needs some object like DiscreteFourierTransform,
-   * FastWaveletTransform, WaveletPacketTransfom, ...
+   * FastBasicTransform, WaveletPacketTransfom, ...
    * 
    * @date 19.05.2009 09:50:24
    * @author Christian Scheiblich
    * @param transform Transform object
    */
-  public Transform( TransformInterface transform ) {
+  public Transform( BasicTransform transform ) {
     _transform = transform;
   } // Transform
   
   /**
    * Constructor; needs some object like DiscreteFourierTransform,
-   * FastWaveletTransform, WaveletPacketTransfom, ... It take also a number of iteration for decomposition
+   * FastBasicTransform, WaveletPacketTransfom, ... It take also a number of iteration for decomposition
    * 
    * @date 19.05.2009 09:50:24
    * @author Christian Scheiblich
    */
-  public Transform( TransformInterface transform, int iteration ) {
-    if( transform instanceof WaveletTransform ) {
+  public Transform( BasicTransform transform, int iteration ) {
+    if( transform instanceof BasicTransform ) {
       _transform = transform;
-      ( (WaveletTransform)_transform ).set_iteration( iteration );
+      
+      // TODO realize the leveld transform in GOOD Software Engineering style
+      
+//      ( (WaveletTransform)_transform ).set_iteration( iteration );
+ 
     } else {
       throw new IllegalArgumentException(
           "Can't use transform :" + transform.getClass( )

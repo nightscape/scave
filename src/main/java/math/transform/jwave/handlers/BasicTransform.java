@@ -23,6 +23,7 @@
  */
 package math.transform.jwave.handlers;
 
+import math.transform.jwave.handlers.wavelets.Wavelet;
 import math.transform.jwave.types.Complex;
 
 /**
@@ -34,7 +35,7 @@ import math.transform.jwave.types.Complex;
  * @date 08.02.2010 11:11:59
  * @author Christian Scheiblich
  */
-public abstract class BasicTransform implements TransformInterface {
+public abstract class BasicTransform {
 
   /**
    * Constructor; does nothing
@@ -45,6 +46,16 @@ public abstract class BasicTransform implements TransformInterface {
   protected BasicTransform( ) {
   } // BasicTransform
 
+  /**
+   * taking the selected Wavelet aking the wavelet
+   * 
+   * @author Christian Scheiblich
+   * date Feb 6, 2013 4:49:18 PM
+   *
+   * @param wavelet
+   */
+  protected BasicTransform( Wavelet wavelet ) { } // BasicTransform
+  
   /**
    * Performs the forward transform from time domain to frequency or Hilbert
    * domain for a given array depending on the used transform algorithm by
@@ -70,6 +81,36 @@ public abstract class BasicTransform implements TransformInterface {
    * @return coefficients of 1-D time domain
    */
   public abstract double[ ] reverse( double[ ] arrFreq );
+  
+
+  /**
+   * Performs the forward transform from time domain to frequency or Hilbert
+   * domain by a given number of steps for a given array depending on the
+   * used transform algorithm by inheritance.
+   * 
+   * 
+   * @author Christian Scheiblich
+   * date Feb 6, 2013 4:58:44 PM
+   *
+   * @param arrTime
+   * @param steps
+   * @return
+   */
+  public abstract double[ ] forward( double[ ] arrTime, int steps );
+
+  /**
+   * Performs the reverse transform from frequency or Hilbert domain of a
+   * certain level to time domain for a given array depending on the used
+   * transform algorithm by inheritance.
+   * 
+   * @author Christian Scheiblich
+   * date Feb 6, 2013 4:59:46 PM
+   *
+   * @param arrTime
+   * @param steps
+   * @return
+   */
+  public abstract double[ ] reverse( double[ ] arrTime, int steps );
 
   /**
    * Performs the forward transform from time domain to frequency or Hilbert

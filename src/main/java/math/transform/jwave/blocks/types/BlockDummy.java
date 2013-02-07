@@ -42,7 +42,7 @@ public class BlockDummy extends Block {
    * @author Christian Scheiblich
    * @see math.transform.jwave.blocks.types.Block#Block(int, int, int , int)
    */
-  protected BlockDummy( int offSetRow, int offSetCol, int noOfRows, int noOfCols )
+  public BlockDummy( int offSetRow, int offSetCol, int noOfRows, int noOfCols )
       throws BlockException {
     super( offSetRow, offSetCol, noOfRows, noOfCols );
   }
