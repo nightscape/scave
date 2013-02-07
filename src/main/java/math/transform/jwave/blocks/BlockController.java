@@ -25,6 +25,11 @@ package math.transform.jwave.blocks;
 
 import math.transform.jwave.blocks.exc.BlockError;
 import math.transform.jwave.blocks.exc.BlockException;
+import math.transform.jwave.blocks.types.Block;
+import math.transform.jwave.blocks.types.BlockDummy;
+import math.transform.jwave.blocks.types.BlockFull;
+import math.transform.jwave.blocks.types.BlockIndex;
+import math.transform.jwave.blocks.types.BlockType;
 
 /**
  * Creates Block objects

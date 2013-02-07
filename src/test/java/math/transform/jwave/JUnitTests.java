@@ -1,4 +1,5 @@
 /**
+
  * JWave - Java implementation of wavelet transform algorithms
  *
  * Copyright 2010-2012 Christian Scheiblich
