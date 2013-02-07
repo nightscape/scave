@@ -25,6 +25,7 @@ package math.transform.jwave.handlers;
 
 import math.transform.jwave.JUnitTests;
 import math.transform.jwave.Transform;
+import math.transform.jwave.exc.JWaveException;
 import math.transform.jwave.handlers.WaveletPacketTransform;
 import math.transform.jwave.handlers.wavelets.Daub02;
 import math.transform.jwave.handlers.wavelets.Haar02;
@@ -36,9 +37,10 @@ public class WaveletPacketTransformTest extends JUnitTests {
 
   /**
    * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
+   * @throws JWaveException 
    */
   @Test
-  public void testWaveletPacketTransformForwardHaar02Array( ) {
+  public void testWaveletPacketTransformForwardHaar02Array( ) throws JWaveException {
 
     System.out.println( "" );
     System.out.println( "testWaveletPacketTransformForwardHaar02Array" );
@@ -61,9 +63,10 @@ public class WaveletPacketTransformTest extends JUnitTests {
 
   /**
    * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
+   * @throws JWaveException 
    */
   @Test
-  public void testWaveletPacketTransformReverseHaar02Array( ) {
+  public void testWaveletPacketTransformReverseHaar02Array( ) throws JWaveException {
 
     System.out.println( "" );
     System.out.println( "testWaveletPacketTransformReverseHaar02Array" );
@@ -86,9 +89,10 @@ public class WaveletPacketTransformTest extends JUnitTests {
 
   /**
    * Test method for {@link math.transform.jwave.Transform#forward(double[][])}.
+   * @throws JWaveException 
    */
   @Test
-  public void testWaveletPacketTransformForwardHaar02Matrix( ) {
+  public void testWaveletPacketTransformForwardHaar02Matrix( ) throws JWaveException {
 
     System.out.println( "" );
     System.out.println( "testWaveletPacketTransformForwardHaar02Matrix" );
@@ -113,9 +117,10 @@ public class WaveletPacketTransformTest extends JUnitTests {
 
   /**
    * Test method for {@link math.transform.jwave.Transform#reverse(double[][])}.
+   * @throws JWaveException 
    */
   @Test
-  public void testWaveletPacketTransformReverseHaar02Matrix( ) {
+  public void testWaveletPacketTransformReverseHaar02Matrix( ) throws JWaveException {
 
     System.out.println( "" );
     System.out.println( "testWaveletPacketTransformReverseHaar02Matrix" );
@@ -140,9 +145,10 @@ public class WaveletPacketTransformTest extends JUnitTests {
 
   /**
    * Test method for {@link math.transform.jwave.Transform#forward(double[][][])}.
+   * @throws JWaveException 
    */
   @Test
-  public void testWaveletPacketTransformForwardHaar02Space( ) {
+  public void testWaveletPacketTransformForwardHaar02Space( ) throws JWaveException {
 
     System.out.println( "" );
     System.out.println( "testWaveletPacketTransformForwardHaar02Space" );
@@ -181,9 +187,10 @@ public class WaveletPacketTransformTest extends JUnitTests {
 
   /**
    * Test method for {@link math.transform.jwave.Transform#reverse(double[][][])}.
+   * @throws JWaveException 
    */
   @Test
-  public void testWaveletPacketTransformReverseHaar02Space( ) {
+  public void testWaveletPacketTransformReverseHaar02Space( ) throws JWaveException {
 
     System.out.println( "" );
     System.out.println( "testWaveletPacketTransformReverseHaar02Space" );
@@ -223,9 +230,10 @@ public class WaveletPacketTransformTest extends JUnitTests {
 
   /**
    * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
+   * @throws JWaveException 
    */
   @Test
-  public void testWaveletPacketTransformForwardDaub04ArrayRandom( ) {
+  public void testWaveletPacketTransformForwardDaub04ArrayRandom( ) throws JWaveException {
 
     System.out.println( "" );
     System.out.println( "testWaveletPacketTransformForwardDaub04ArrayRandom" );
@@ -250,9 +258,10 @@ public class WaveletPacketTransformTest extends JUnitTests {
 
   /**
    * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
+   * @throws JWaveException 
    */
   @Test
-  public void testWaveletPacketTransformReverseDaub04ArrayRandom( ) {
+  public void testWaveletPacketTransformReverseDaub04ArrayRandom( ) throws JWaveException {
 
     System.out.println( "" );
     System.out.println( "testWaveletPacketTransformReverseDaub04ArrayRandom" );

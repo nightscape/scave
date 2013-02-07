@@ -27,6 +27,7 @@ package math.transform.jwave;
 import static org.junit.Assert.assertEquals;
 
 import math.transform.jwave.Transform;
+import math.transform.jwave.exc.JWaveException;
 import math.transform.jwave.handlers.FastWaveletTransform;
 import math.transform.jwave.handlers.wavelets.Coif06;
 import math.transform.jwave.handlers.wavelets.Daub02;
@@ -73,9 +74,10 @@ public class JUnitTests {
    * 
    * @date 10.02.2010 10:28:00
    * @author Christian Scheiblich
+   * @throws JWaveException 
    */
   @Test
-  public void testRoundingHaar02FWT( ) {
+  public void testRoundingHaar02FWT( ) throws JWaveException {
 
     //    Performing: 1000000000 forward and reverse transforms ...
     //    0%-------------------------------------50%----------------------------------100%
@@ -110,9 +112,10 @@ public class JUnitTests {
    * 
    * @date 10.02.2010 10:28:00
    * @author Christian Scheiblich
+   * @throws JWaveException 
    */
   @Test
-  public void testRoundingDaub04FWT( ) {
+  public void testRoundingDaub04FWT( ) throws JWaveException {
 
     //    Performing: 10000000 forward and reverse transforms ...
     //    0%-------------------------------------50%----------------------------------100%
@@ -147,9 +150,10 @@ public class JUnitTests {
    * 
    * @date 10.02.2010 10:28:00
    * @author Christian Scheiblich
+   * @throws JWaveException 
    */
   @Test
-  public void testRoundingCoif06FWT( ) {
+  public void testRoundingCoif06FWT( ) throws JWaveException {
 
     //    Performing: 10000000 forward and reverse transforms ...
     //
@@ -182,9 +186,10 @@ public class JUnitTests {
    * 
    * @date 10.02.2010 10:28:00
    * @author Christian Scheiblich
+   * @throws JWaveException 
    */
   public void testFastBasicTransformRounding( double[ ] arr, Wavelet wavelet,
-      double delta ) {
+      double delta ) throws JWaveException {
 
     long noOfSteps = 10000000;
 

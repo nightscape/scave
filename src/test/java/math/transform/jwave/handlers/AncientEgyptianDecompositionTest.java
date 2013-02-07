@@ -25,6 +25,7 @@ package math.transform.jwave.handlers;
 
 import math.transform.jwave.JUnitTests;
 import math.transform.jwave.Transform;
+import math.transform.jwave.exc.JWaveException;
 import math.transform.jwave.handlers.AncientEgyptianDecomposition;
 import math.transform.jwave.handlers.FastWaveletTransform;
 import math.transform.jwave.handlers.WaveletPacketTransform;
@@ -38,9 +39,10 @@ public class AncientEgyptianDecompositionTest extends JUnitTests {
 
   /**
    * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
+   * @throws JWaveException 
    */
   @Test
-  public void testAncientEgyptianDecompositionFwtForwardHaar02Array( ) {
+  public void testAncientEgyptianDecompositionFwtForwardHaar02Array( ) throws JWaveException {
 
     System.out.println( "" );
     System.out
@@ -65,9 +67,10 @@ public class AncientEgyptianDecompositionTest extends JUnitTests {
 
   /**
    * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
+   * @throws JWaveException 
    */
   @Test
-  public void testAncientEgyptianDecompositionFwtReverseHaar02Array( ) {
+  public void testAncientEgyptianDecompositionFwtReverseHaar02Array( ) throws JWaveException {
 
     System.out.println( "" );
     System.out
@@ -92,9 +95,10 @@ public class AncientEgyptianDecompositionTest extends JUnitTests {
 
   /**
    * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
+   * @throws JWaveException 
    */
   @Test
-  public void testAncientEgyptianDecompositionWptForwardHaar02Array( ) {
+  public void testAncientEgyptianDecompositionWptForwardHaar02Array( ) throws JWaveException {
 
     System.out.println( "" );
     System.out
@@ -120,9 +124,10 @@ public class AncientEgyptianDecompositionTest extends JUnitTests {
 
   /**
    * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
+   * @throws JWaveException 
    */
   @Test
-  public void testAncientEgyptianDecompositionWptReverseHaar02Array( ) {
+  public void testAncientEgyptianDecompositionWptReverseHaar02Array( ) throws JWaveException {
 
     System.out.println( "" );
     System.out

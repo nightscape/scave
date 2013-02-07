@@ -296,17 +296,5 @@ public class DiscreteFourierTransform extends BasicTransform {
     return null;
   } // reverse
 
-  @Override
-  public double[ ] forward( double[ ] arrTime, int steps ) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  @Override
-  public double[ ] reverse( double[ ] arrTime, int steps ) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
 
 } // class
