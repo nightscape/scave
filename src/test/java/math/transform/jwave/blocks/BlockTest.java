@@ -27,6 +27,7 @@ import static org.junit.Assert.*;
 
 import math.transform.jwave.blocks.exc.BlockException;
 import math.transform.jwave.blocks.types.Block;
+import math.transform.jwave.blocks.types.BlockController;
 import math.transform.jwave.blocks.types.BlockType;
 
 import org.junit.Test;
