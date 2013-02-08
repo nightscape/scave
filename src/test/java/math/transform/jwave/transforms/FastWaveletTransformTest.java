@@ -21,7 +21,7 @@
  * date 23.11.2010 19:40:11
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.handlers;
+package math.transform.jwave.transforms;
 
 import math.transform.jwave.JUnitTests;
 import math.transform.jwave.Transform;
