@@ -15,76 +15,58 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file SuperBlockArray.java is part of JWave.
+ * This file SuperBlockLinkedHashMap.java is part of JWave.
  *
  * @author Christian Scheiblich
  * contact graetz@mailfish.de
- * date 07.02.2013 05:44:13
+ * date 08.02.2013 05:53:23
  *
  */
 package math.transform.jwave.blocks;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import math.transform.jwave.blocks.exc.BlockException;
 import math.transform.jwave.blocks.types.Block;
 
 /**
  * Class for storing Block objects that join together to a Matrix.
- * The class is using an ArrayList for storage.
+ * The class is using a linkedHashMap for storage.
  * 
  * @author Christian Scheiblich
- * date 07.02.2013 05:44:13
+ * date 08.02.2013 05:53:23
  *
  */
-public class SuperBlockArray implements SuperBlock {
-
-  /**
-   * ArrayList of Block objects as simplest way for storage.
-   * 
-   * @author Christian Scheiblich
-   * date 07.02.2013 06:58:58
-   *
-   */
-  private ArrayList< Block > _blocks;
-  
+public class SuperBlockLinkedHashMap implements SuperBlock {
   
   /**
-   * Creates the object SuperBlock
+   * A linked hash map that remembers the sequence of input, which is
+   * important to get the Block back as added.
    * 
    * @author Christian Scheiblich
-   * date 07.02.2013 07:00:06
+   * date 08.02.2013 06:00:27
    *
-   * @param _blocks
    */
-  public SuperBlockArray( ) {
+  protected LinkedHashMap< Integer, Block > _blocks;
+  
+  /**
+   * Getting LinkedHashMap to memory.
+   * 
+   * @author Christian Scheiblich
+   * date 08.02.2013 05:53:24
+   *
+   */
+  public SuperBlockLinkedHashMap( ) {
     
-    _blocks = new ArrayList< Block >( );
-  
+    _blocks = new LinkedHashMap< Integer, Block >( );
+    
   }
-
+  
   /* (non-Javadoc)
    * @see math.transform.jwave.blocks.SuperBlock#eraseMemory()
    */
   @Override
   public void eraseMemory( ) {
-    
-    try {
-      
-      long noBlocks = getNoBlocks( );
-      
-      ArrayList< Block > blocks = getArrOfBlocks( );
-      
-      for( long i = 0; i < noBlocks; i++ ) {
-        
-        Block block = blocks.get( (int)i );
-        
-        block.eraseMemory( );
-        
-      } // i
-      
-    } catch( BlockException e ) {
-      e.printStackTrace( );
-    }
     
   }
   
@@ -94,28 +76,22 @@ public class SuperBlockArray implements SuperBlock {
   @Override
   public long computeMemory( ) {
     
-    long occupiedMemory = 0;
+    long memory = 0;
     
     try {
       
-      long noBlocks = getNoBlocks( );
+      int noBlocks = _blocks.size( );
       
-      ArrayList< Block > blocks = getArrOfBlocks( );
-      
-      for( long i = 0; i < noBlocks; i++ ) {
+      for( int i = 0; i < noBlocks; i++ ) {
         
-        Block block = blocks.get( (int)i );
+        memory += _blocks.get( i ).computeMemory( );
         
-        occupiedMemory += block.computeMemory( );
-        
-      } // i
-      
+      }
     } catch( BlockException e ) {
       e.printStackTrace( );
     }
     
-    return occupiedMemory;
-    
+    return memory;
   }
   
   /* (non-Javadoc)
@@ -123,8 +99,10 @@ public class SuperBlockArray implements SuperBlock {
    */
   @Override
   public void addBlock( Block block ) {
- 
-    _blocks.add( block );
+    
+    int blockNo = block.getBlockNo( );
+    
+    _blocks.put( blockNo, block );
     
   }
   
@@ -133,8 +111,10 @@ public class SuperBlockArray implements SuperBlock {
    */
   @Override
   public Block getBlock( int no ) {
-
-    return _blocks.get( no );
+    
+    Block block = _blocks.get( no );
+    
+    return block;
     
   }
   
@@ -143,7 +123,9 @@ public class SuperBlockArray implements SuperBlock {
    */
   @Override
   public long getNoBlocks( ) {
+    
     return _blocks.size( );
+    
   }
   
   /* (non-Javadoc)
@@ -151,9 +133,21 @@ public class SuperBlockArray implements SuperBlock {
    */
   @Override
   public ArrayList< Block > getArrOfBlocks( ) {
-  
-    return new ArrayList< Block >( _blocks );
-  
+    
+    int noBlocks = _blocks.size( );
+    
+    ArrayList< Block > arrBlocks = new ArrayList< Block >( noBlocks );
+    
+    for( int i = 0; i < noBlocks; i++ ) {
+      
+      Block block = _blocks.get( i );
+      
+      arrBlocks.add( block );
+      
+    }
+    
+    return arrBlocks;
+    
   }
   
 }
