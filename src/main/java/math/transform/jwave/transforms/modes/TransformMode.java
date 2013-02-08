@@ -25,7 +25,6 @@
 package math.transform.jwave.transforms.modes;
 
 import math.transform.jwave.exc.JWaveException;
-import math.transform.jwave.exc.JWaveFailure;
 
 /**
  * Base class to specify a transform mode: e. g. if JWave should do

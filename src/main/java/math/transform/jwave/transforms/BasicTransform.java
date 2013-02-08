@@ -24,8 +24,6 @@
 package math.transform.jwave.transforms;
 
 import math.transform.jwave.datatypes.Complex;
-import math.transform.jwave.exc.JWaveException;
-import math.transform.jwave.transforms.wavelets.Wavelet;
 
 /**
  * Basic Wave for transformations like Fast Fourier Transform (FFT), Fast

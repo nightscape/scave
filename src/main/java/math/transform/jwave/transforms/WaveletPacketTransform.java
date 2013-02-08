@@ -25,7 +25,6 @@ package math.transform.jwave.transforms;
 
 import math.transform.jwave.exc.JWaveException;
 import math.transform.jwave.transforms.wavelets.Wavelet;
-import math.transform.jwave.transforms.wavelets.WaveletInterface;
 
 /**
  * Base class for the forward and reverse Wavelet Packet Transform (WPT) also
