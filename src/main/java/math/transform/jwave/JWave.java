@@ -122,7 +122,6 @@ public class JWave {
         return;
       } // if tType
     } catch( JWaveException e ) {
-      // TODO Auto-generated catch block
       e.printStackTrace( );
     }
     

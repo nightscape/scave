@@ -247,7 +247,6 @@ public class DiscreteFourierTransform extends BasicTransform {
    */
   @Override
   public double[ ][ ] forward( double[ ][ ] matTime ) {
-    // TODO someone should implement this method
     return null;
   } // forward
 
@@ -266,7 +265,6 @@ public class DiscreteFourierTransform extends BasicTransform {
    */
   @Override
   public double[ ][ ] reverse( double[ ][ ] matFreq ) {
-    // TODO someone should implement this method
     return null;
   } // reverse
 
@@ -279,7 +277,6 @@ public class DiscreteFourierTransform extends BasicTransform {
    */
   @Override
   public double[ ][ ][ ] forward( double[ ][ ][ ] spcTime ) {
-    // TODO someone should implement this method
     return null;
   } // forward
 
@@ -292,7 +289,6 @@ public class DiscreteFourierTransform extends BasicTransform {
    */
   @Override
   public double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb ) {
-    // TODO someone should implement this method
     return null;
   } // reverse
 
