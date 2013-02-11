@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file AncientEgyptianBuildStrategy.java is part of JWave.
+ * This file BuildStrategyAncientEgyptian.java is part of JWave.
  *
  * @author Christian Scheiblich
  * contact graetz@mailfish.de
@@ -34,7 +34,7 @@ import math.transform.jwave.tools.AncientEgyptianMultiplication;
  * date Feb 11, 2013 3:10:33 PM
  *
  */
-public class AncientEgyptianBuildStrategy extends BuildStrategy {
+public class BuildStrategyAncientEgyptian extends BuildStrategy {
   
   private AncientEgyptianMultiplication _ancientEgyptianMultiplication;
   
@@ -45,7 +45,7 @@ public class AncientEgyptianBuildStrategy extends BuildStrategy {
    * @param noUnkowns
    * @throws JWaveException
    */
-  public AncientEgyptianBuildStrategy( int noUnkowns ) throws JWaveException {
+  public BuildStrategyAncientEgyptian( int noUnkowns ) throws JWaveException {
     
     super( noUnkowns );
   
