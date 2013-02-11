@@ -23,8 +23,7 @@
  */
 package math.transform.jwave.superblocks.blocks;
 
-import math.transform.jwave.superblocks.exc.BlockException;
-import math.transform.jwave.superblocks.exc.BlockFailure;
+import math.transform.jwave.superblocks.blocks.exc.*;
 
 /**
  * Class for generating dummy blocks that keep information about position and

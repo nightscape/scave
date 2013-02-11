@@ -27,7 +27,7 @@ package math.transform.jwave.superblocks;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import math.transform.jwave.superblocks.blocks.Block;
-import math.transform.jwave.superblocks.exc.BlockException;
+import math.transform.jwave.superblocks.exc.SuperBlockException;
 
 /**
  * Class for storing Block objects that join together to a Matrix.
@@ -87,7 +87,7 @@ public class SuperBlockLinkedHashMap implements SuperBlock {
         memory += _blocks.get( i ).computeMemory( );
         
       }
-    } catch( BlockException e ) {
+    } catch( SuperBlockException e ) {
       e.printStackTrace( );
     }
     

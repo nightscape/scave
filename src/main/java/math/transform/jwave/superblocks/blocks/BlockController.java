@@ -23,8 +23,8 @@
  */
 package math.transform.jwave.superblocks.blocks;
 
-import math.transform.jwave.superblocks.exc.BlockError;
-import math.transform.jwave.superblocks.exc.BlockException;
+import math.transform.jwave.superblocks.exc.SuperBlockError;
+import math.transform.jwave.superblocks.exc.SuperBlockException;
 
 /**
  * Creates Block objects
@@ -35,7 +35,7 @@ import math.transform.jwave.superblocks.exc.BlockException;
 public class BlockController {
 
   public static Block create( BlockType blockType, int offSetRow,
-      int offSetCol, int noOfRows, int noOfCols ) throws BlockException {
+      int offSetCol, int noOfRows, int noOfCols ) throws SuperBlockException {
 
     Block block = null;
 
@@ -61,7 +61,7 @@ public class BlockController {
 
       default :
 
-        throw new BlockError(
+        throw new SuperBlockError(
             "BlockBuilder#create -- given BlockType is not defined" );
 
     } // switch
@@ -80,11 +80,11 @@ public class BlockController {
    * @param block
    *          the pattern block keeping memory or not
    * @return a new block object as a copy for the the requested type
-   * @throws BlockException
+   * @throws SuperBlockException
    *           if off sets or sizes are negative or out of bound
    */
   public static Block convert( BlockType blockType, Block block )
-      throws BlockException {
+      throws SuperBlockException {
 
     Block newBlock = null;
 

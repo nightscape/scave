@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file BlockFailure.java is part of JWave.
+ * This file SuperBlockFailure.java is part of JWave.
  *
  * @author Christian Scheiblich
  * date 11.06.2011 20:06:56
@@ -29,7 +29,7 @@ package math.transform.jwave.superblocks.exc;
  * @date 11.06.2011 20:06:56
  * @author Christian Scheiblich
  */
-public class BlockFailure extends BlockException {
+public class SuperBlockFailure extends SuperBlockException {
 
   /**
    * Generated serial id.
@@ -46,7 +46,7 @@ public class BlockFailure extends BlockException {
    * @author Christian Scheiblich
    * @param message
    */
-  public BlockFailure( String message ) {
+  public SuperBlockFailure( String message ) {
     super( message );
   }
 
@@ -57,7 +57,7 @@ public class BlockFailure extends BlockException {
    * @author Christian Scheiblich
    * @param e  object of type java.lang.Exception
    */
-  public BlockFailure( Exception e ) {
+  public SuperBlockFailure( Exception e ) {
     super( e );
   }
 

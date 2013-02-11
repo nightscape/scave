@@ -1,7 +1,7 @@
 /**
- * JWave - Java implementation of wavelet transform algorithms
+ * JWave
  *
- * Copyright 2010-2012 Christian Scheiblich
+ * Copyright 2010-2013 Christian Scheiblich
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,51 +15,48 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file BlockError.java is part of JWave.
+ * This file BlockFailure.java is part of JWave.
  *
  * @author Christian Scheiblich
- * date 11.06.2011 20:08:51
  * contact graetz@mailfish.de
+ * date Feb 11, 2013 2:47:32 PM
+ *
  */
-package math.transform.jwave.superblocks.exc;
+package math.transform.jwave.superblocks.blocks.exc;
+
 
 /**
- * Error class as an non-recoverable exception.
- *
- * @date 11.06.2011 20:08:51
  * @author Christian Scheiblich
+ * date Feb 11, 2013 2:47:32 PM
+ *
  */
-public class BlockError extends BlockException {
-
+public class BlockFailure extends BlockException {
+  
   /**
-   * Generated serial id.
-   *
-   * @date 11.06.2011 20:09:56
    * @author Christian Scheiblich
+   * date Feb 11, 2013 2:47:47 PM
+   *
    */
-  private static final long serialVersionUID = 3813313081473155788L;
+  private static final long serialVersionUID = 4627006925537451321L;
 
   /**
-   * Constructor for error message.
-   *
-   * @date 11.06.2011 20:08:51
    * @author Christian Scheiblich
+   * date Feb 11, 2013 2:47:32 PM
+   *
    * @param message
    */
-  public BlockError( String message ) {
+  public BlockFailure( String message ) {
     super( message );
   }
-
+  
   /**
-   * Constructor taking any Java based exception.
-   * 
-   * @date 11.06.2011 20:08:51
    * @author Christian Scheiblich
+   * date Feb 11, 2013 2:47:32 PM
+   *
    * @param e
-   *          object of type java.lang.Exception
    */
-  public BlockError( Exception e ) {
+  public BlockFailure( Exception e ) {
     super( e );
   }
-
-} // class
+  
+}

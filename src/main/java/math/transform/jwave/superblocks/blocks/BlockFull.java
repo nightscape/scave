@@ -23,8 +23,7 @@
  */
 package math.transform.jwave.superblocks.blocks;
 
-import math.transform.jwave.superblocks.exc.BlockException;
-import math.transform.jwave.superblocks.exc.BlockFailure;
+import math.transform.jwave.superblocks.blocks.exc.*;
 
 /**
  * Class for generating full blocks that keep information about position and
@@ -67,8 +66,8 @@ public class BlockFull extends Block {
 
     try {
       checkIndices( i, j ); // check for correct indices
-    } catch( BlockException blockException ) {
-      String exceptionMsg = blockException.getMessage( );
+    } catch( BlockException superBlockException ) {
+      String exceptionMsg = superBlockException.getMessage( );
       throw new BlockFailure( "BlockFull#get -- " + exceptionMsg );
     }
 
@@ -112,8 +111,8 @@ public class BlockFull extends Block {
 
     try {
       checkIndices( i, j ); // check for correct indices
-    } catch( BlockException blockException ) {
-      String exceptionMsg = blockException.getMessage( );
+    } catch( BlockException superBlockException ) {
+      String exceptionMsg = superBlockException.getMessage( );
       throw new BlockFailure( "BlockFull#set -- " + exceptionMsg );
     }
 

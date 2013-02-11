@@ -28,7 +28,7 @@ import static org.junit.Assert.*;
 import math.transform.jwave.superblocks.blocks.Block;
 import math.transform.jwave.superblocks.blocks.BlockController;
 import math.transform.jwave.superblocks.blocks.BlockType;
-import math.transform.jwave.superblocks.exc.BlockException;
+import math.transform.jwave.superblocks.exc.SuperBlockException;
 
 import org.junit.Test;
 
@@ -44,10 +44,10 @@ public class BlockTest {
    * Test method for
    * {@link math.transform.jwave.superblocks.blocks.Block#BlockIndex(int, int, int, int)}.
    * 
-   * @throws BlockException
+   * @throws SuperBlockException
    */
   @Test
-  public void testBlockIndexSparse( ) throws BlockException {
+  public void testBlockIndexSparse( ) throws SuperBlockException {
 
     int noOfRows = 1024;
     int noOfCols = 1024;
@@ -131,10 +131,10 @@ public class BlockTest {
    * Test method for
    * {@link math.transform.jwave.superblocks.blocks.Block#BlockIndex(int, int, int, int)}.
    * 
-   * @throws BlockException
+   * @throws SuperBlockException
    */
   @Test
-  public void testBlockIndexFull( ) throws BlockException {
+  public void testBlockIndexFull( ) throws SuperBlockException {
 
     int noOfRows = 256;
     int noOfCols = 256;
@@ -178,10 +178,10 @@ public class BlockTest {
   /**
    * Test method for {@link math.transform.jwave.superblocks.blocks.Block#BlockFull(int, int, int, int)}.
    * 
-   * @throws BlockException
+   * @throws SuperBlockException
    */
   @Test
-  public void testBlockFull( ) throws BlockException {
+  public void testBlockFull( ) throws SuperBlockException {
 
     int noOfRows = 1024;
     int noOfCols = 1024;
@@ -218,10 +218,10 @@ public class BlockTest {
   /**
    * Test method for {@link math.transform.jwave.superblocks.blocks.Block#getRow(int)}.
    * 
-   * @throws BlockException
+   * @throws SuperBlockException
    */
   @Test
-  public void testGetRow( ) throws BlockException {
+  public void testGetRow( ) throws SuperBlockException {
 
     int noOfRows = 64;
     int noOfCols = 64;
@@ -259,10 +259,10 @@ public class BlockTest {
   /**
    * Test method for {@link math.transform.jwave.superblocks.blocks.Block#getCol(int)}.
    * 
-   * @throws BlockException
+   * @throws SuperBlockException
    */
   @Test
-  public void testGetCol( ) throws BlockException {
+  public void testGetCol( ) throws SuperBlockException {
 
     int noOfRows = 64;
     int noOfCols = 64;

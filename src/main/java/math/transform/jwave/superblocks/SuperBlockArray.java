@@ -26,7 +26,7 @@ package math.transform.jwave.superblocks;
 
 import java.util.ArrayList;
 import math.transform.jwave.superblocks.blocks.Block;
-import math.transform.jwave.superblocks.exc.BlockException;
+import math.transform.jwave.superblocks.exc.SuperBlockException;
 
 /**
  * Class for storing Block objects that join together to a Matrix.
@@ -82,7 +82,7 @@ public class SuperBlockArray implements SuperBlock {
         
       } // i
       
-    } catch( BlockException e ) {
+    } catch( SuperBlockException e ) {
       e.printStackTrace( );
     }
     
@@ -110,7 +110,7 @@ public class SuperBlockArray implements SuperBlock {
         
       } // i
       
-    } catch( BlockException e ) {
+    } catch( SuperBlockException e ) {
       e.printStackTrace( );
     }
     

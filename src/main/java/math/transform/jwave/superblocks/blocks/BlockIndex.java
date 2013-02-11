@@ -24,9 +24,7 @@
 package math.transform.jwave.superblocks.blocks;
 
 import java.util.ArrayList;
-import math.transform.jwave.superblocks.exc.BlockError;
-import math.transform.jwave.superblocks.exc.BlockException;
-import math.transform.jwave.superblocks.exc.BlockFailure;
+import math.transform.jwave.superblocks.blocks.exc.*;
 
 /**
  * A block that stores given data sparse to reduce memory costs.
@@ -79,8 +77,8 @@ public class BlockIndex extends Block {
     boolean isOccupied = false;
     try {
       isOccupied = isOccupied( i, j );
-    } catch( BlockException blockException ) {
-      String exceptionMsg = blockException.getMessage( );
+    } catch( BlockException superBlockException ) {
+      String exceptionMsg = superBlockException.getMessage( );
       throw new BlockFailure( "BlockIndex#get -- " + exceptionMsg );
     }
     
@@ -135,8 +133,8 @@ public class BlockIndex extends Block {
     boolean isOccupied = false;
     try {
       isOccupied = isOccupied( i, j );
-    } catch( BlockException blockException ) {
-      String exceptionMsg = blockException.getMessage( );
+    } catch( BlockException superBlockException ) {
+      String exceptionMsg = superBlockException.getMessage( );
       throw new BlockFailure( "BlockIndex#set -- " + exceptionMsg );
     }
     
@@ -214,8 +212,8 @@ public class BlockIndex extends Block {
     
     try {
       checkIndices( i, j ); // check for correct indices
-    } catch( BlockException blockException ) {
-      String exceptionMsg = blockException.getMessage( );
+    } catch( BlockException superBlockException ) {
+      String exceptionMsg = superBlockException.getMessage( );
       throw new BlockFailure( "BlockIndex#isOccupied -- " + exceptionMsg );
     }
     
@@ -256,8 +254,8 @@ public class BlockIndex extends Block {
     
     try {
       checkIndices( i, j ); // check for correct indices
-    } catch( BlockException blockException ) {
-      String exceptionMsg = blockException.getMessage( );
+    } catch( BlockException superBlockException ) {
+      String exceptionMsg = superBlockException.getMessage( );
       throw new BlockFailure( "BlockIndex#getOccupiedIndexRow -- " + exceptionMsg );
     }
     

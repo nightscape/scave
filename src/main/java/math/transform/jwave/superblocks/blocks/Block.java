@@ -23,8 +23,7 @@
  */
 package math.transform.jwave.superblocks.blocks;
 
-import math.transform.jwave.superblocks.exc.BlockException;
-import math.transform.jwave.superblocks.exc.BlockFailure;
+import math.transform.jwave.superblocks.blocks.exc.*;
 
 /**
  * A Block that keeps some matrix based values inside stored in different ways.

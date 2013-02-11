@@ -1,7 +1,7 @@
 /**
- * JWave - Java implementation of wavelet transform algorithms
+ * JWave
  *
- * Copyright 2010-2012 Christian Scheiblich
+ * Copyright 2010-2013 Christian Scheiblich
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,50 +18,47 @@
  * This file BlockException.java is part of JWave.
  *
  * @author Christian Scheiblich
- * date 11.06.2011 20:04:19
  * contact graetz@mailfish.de
+ * date Feb 11, 2013 2:46:06 PM
+ *
  */
-package math.transform.jwave.superblocks.exc;
+package math.transform.jwave.superblocks.blocks.exc;
 
-import math.transform.jwave.exc.JWaveException;
+import math.transform.jwave.superblocks.exc.SuperBlockException;
+
 
 /**
- * Exception class for the block package.
- * 
- * @date 11.06.2011 20:04:19
  * @author Christian Scheiblich
+ * date Feb 11, 2013 2:46:06 PM
+ *
  */
-public class BlockException extends JWaveException {
-
+public class BlockException extends SuperBlockException {
+  
   /**
-   * Generated serial id.
-   * 
-   * @date 11.06.2011 20:05:43
    * @author Christian Scheiblich
+   * date Feb 11, 2013 2:46:36 PM
+   *
    */
-  private static final long serialVersionUID = 3348636428006375494L;
+  private static final long serialVersionUID = 8039031915291034048L;
 
   /**
-   * Constructor for exception message.
-   * 
-   * @date 11.06.2011 20:04:19
    * @author Christian Scheiblich
+   * date Feb 11, 2013 2:46:06 PM
+   *
    * @param message
    */
   public BlockException( String message ) {
     super( message );
   }
-
+  
   /**
-   * Constructor taking any Java based exception.
-   * 
-   * @date 11.06.2011 20:04:19
    * @author Christian Scheiblich
+   * date Feb 11, 2013 2:46:06 PM
+   *
    * @param e
-   *          object of type java.lang.Exception
    */
   public BlockException( Exception e ) {
     super( e );
   }
-
-} // class
+  
+}
