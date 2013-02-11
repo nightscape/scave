@@ -24,6 +24,9 @@
  */
 package math.transform.jwave.blocks;
 
+import java.util.ArrayList;
+import math.transform.jwave.exc.JWaveException;
+import math.transform.jwave.exc.JWaveFailure;
 
 /**
  * Class for different philosophies of building up a SuperBlocks by
@@ -36,7 +39,8 @@ package math.transform.jwave.blocks;
 public abstract class BuildPhilosophy {
   
   /**
-   * size of a squared matrix.
+   * The size of a squared matrix is actually the number of rows or
+   * the number of columns.
    * 
    * @author Christian Scheiblich
    * date 08.02.2013 07:06:31
@@ -63,13 +67,44 @@ public abstract class BuildPhilosophy {
   protected int _noCols;
   
   /**
+   * An array keeping the off set numbers for splitting the total
+   * number of rows into several parts that are chosen by the
+   * selected build philosophy.
+   * 
+   * @author Christian Scheiblich
+   * date Feb 11, 2013 12:42:46 PM
+   *
+   */
+  protected ArrayList< Integer > _arrSplitRows2Parts;
+  
+  /**
+   * An array keeping the off set numbers for splitting the total
+   * number of rows into several parts that are chosen by the
+   * selected build philosophy.
+   * 
+   * @author Christian Scheiblich
+   * date Feb 11, 2013 12:44:02 PM
+   *
+   */
+  protected ArrayList< Integer > _arrSplitCols2Parts;  
+  
+  /**
    * Standard Constructor building it up.
    * 
    * @author Christian Scheiblich
    * date 08.02.2013 07:07:42
    *
    */
-  protected BuildPhilosophy( ) {
+  protected BuildPhilosophy( int noUnkowns ) throws JWaveException {
+    
+    if( noUnkowns < 1 )
+      throw new JWaveFailure( "number of unkowns is smaller than 1 unkown - not possible" );
+    
+    _size = noUnkowns;
+    
+    _arrSplitRows2Parts = null; // set to null, due to not knowing if and how those are used
+    
+    _arrSplitCols2Parts = null; // set to null, due to not knowing if and how those are used
     
   }
   
