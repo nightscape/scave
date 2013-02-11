@@ -77,8 +77,8 @@ public class BlockIndex extends Block {
     boolean isOccupied = false;
     try {
       isOccupied = isOccupied( i, j );
-    } catch( BlockException superBlockException ) {
-      String exceptionMsg = superBlockException.getMessage( );
+    } catch( BlockException blockException ) {
+      String exceptionMsg = blockException.getMessage( );
       throw new BlockFailure( "BlockIndex#get -- " + exceptionMsg );
     }
     
@@ -133,8 +133,8 @@ public class BlockIndex extends Block {
     boolean isOccupied = false;
     try {
       isOccupied = isOccupied( i, j );
-    } catch( BlockException superBlockException ) {
-      String exceptionMsg = superBlockException.getMessage( );
+    } catch( BlockException blockException ) {
+      String exceptionMsg = blockException.getMessage( );
       throw new BlockFailure( "BlockIndex#set -- " + exceptionMsg );
     }
     
@@ -212,8 +212,8 @@ public class BlockIndex extends Block {
     
     try {
       checkIndices( i, j ); // check for correct indices
-    } catch( BlockException superBlockException ) {
-      String exceptionMsg = superBlockException.getMessage( );
+    } catch( BlockException blockException ) {
+      String exceptionMsg = blockException.getMessage( );
       throw new BlockFailure( "BlockIndex#isOccupied -- " + exceptionMsg );
     }
     
@@ -254,8 +254,8 @@ public class BlockIndex extends Block {
     
     try {
       checkIndices( i, j ); // check for correct indices
-    } catch( BlockException superBlockException ) {
-      String exceptionMsg = superBlockException.getMessage( );
+    } catch( BlockException blockException ) {
+      String exceptionMsg = blockException.getMessage( );
       throw new BlockFailure( "BlockIndex#getOccupiedIndexRow -- " + exceptionMsg );
     }
     
@@ -264,11 +264,13 @@ public class BlockIndex extends Block {
     boolean isFound = false;
     
     while( !isFound && p < _arrI.size( ) ) {
-      if( i == _arrI.get( p ) ) {
+      
+      if( i == _arrI.get( p ) )
         if( j == _arrJ.get( p ) )
           isFound = true;
-      } // if
+        
       p++;
+      
     } // whiles
     
     if( isFound ) {

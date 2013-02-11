@@ -27,6 +27,7 @@ package math.transform.jwave.superblocks;
 import java.util.ArrayList;
 import math.transform.jwave.exc.JWaveException;
 import math.transform.jwave.exc.JWaveFailure;
+import math.transform.jwave.superblocks.exc.SuperBlockException;
 
 /**
  * Class for different philosophies of building up a SuperBlocks by
@@ -86,7 +87,7 @@ public abstract class BuildPhilosophy {
    * date Feb 11, 2013 12:44:02 PM
    *
    */
-  protected ArrayList< Integer > _arrSplitCols2Parts;  
+  protected ArrayList< Integer > _arrSplitCols2Parts;
   
   /**
    * Standard Constructor building it up.
@@ -107,5 +108,29 @@ public abstract class BuildPhilosophy {
     _arrSplitCols2Parts = null; // set to null, due to not knowing if and how those are used
     
   }
+  
+  /**
+   * Returns an array keeping the decomposition for the rows.
+   * 
+   * @author Christian Scheiblich
+   * date Feb 11, 2013 3:21:27 PM
+   *
+   * @return
+   * @throws SuperBlockException
+   */
+  public abstract int[ ] generateRowDecomposition( ) throws SuperBlockException;
+  
+  /**
+   * Returns an array keeping the decomposition for the columns. Might
+   * call in the most decompositions the method for the rows again,
+   * while symmetry of the block decomposition is mainly requested.
+   * 
+   * @author Christian Scheiblich
+   * date Feb 11, 2013 3:22:02 PM
+   *
+   * @return
+   * @throws SuperBlockException
+   */
+  public abstract int[ ] generateColDecomposition( ) throws SuperBlockException;
   
 }

@@ -66,8 +66,8 @@ public class BlockFull extends Block {
 
     try {
       checkIndices( i, j ); // check for correct indices
-    } catch( BlockException superBlockException ) {
-      String exceptionMsg = superBlockException.getMessage( );
+    } catch( BlockException blockException ) {
+      String exceptionMsg = blockException.getMessage( );
       throw new BlockFailure( "BlockFull#get -- " + exceptionMsg );
     }
 
@@ -111,8 +111,8 @@ public class BlockFull extends Block {
 
     try {
       checkIndices( i, j ); // check for correct indices
-    } catch( BlockException superBlockException ) {
-      String exceptionMsg = superBlockException.getMessage( );
+    } catch( BlockException blockException ) {
+      String exceptionMsg = blockException.getMessage( );
       throw new BlockFailure( "BlockFull#set -- " + exceptionMsg );
     }
 
