@@ -49,7 +49,10 @@ public class SupberBlockController {
   public SupberBlockController( ) {
   }
   
-  public void createSuperBlock( BuildPhilosophy buildPhilosophy, BlockType blockType ) {
+  public void createSuperBlock( BuildStrategy buildStrategy, BlockType blockType ) {
+    
+    
+    
     
   }
   

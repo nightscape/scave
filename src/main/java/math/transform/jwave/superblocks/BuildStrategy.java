@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file BuildPhilosophy.java is part of JWave.
+ * This file BuildStrategy.java is part of JWave.
  *
  * @author Christian Scheiblich
  * contact graetz@mailfish.de
@@ -37,7 +37,7 @@ import math.transform.jwave.superblocks.exc.SuperBlockException;
  * date 08.02.2013 07:02:54
  *
  */
-public abstract class BuildPhilosophy {
+public abstract class BuildStrategy {
   
   /**
    * The size of a squared matrix is actually the number of rows or
@@ -96,7 +96,7 @@ public abstract class BuildPhilosophy {
    * date 08.02.2013 07:07:42
    *
    */
-  protected BuildPhilosophy( int noUnkowns ) throws JWaveException {
+  protected BuildStrategy( int noUnkowns ) throws JWaveException {
     
     if( noUnkowns < 1 )
       throw new JWaveFailure( "number of unkowns is smaller than 1 unkown - not possible" );
