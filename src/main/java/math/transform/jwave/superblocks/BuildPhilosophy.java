@@ -22,7 +22,7 @@
  * date 08.02.2013 07:02:54
  *
  */
-package math.transform.jwave.blocks;
+package math.transform.jwave.superblocks;
 
 import java.util.ArrayList;
 import math.transform.jwave.exc.JWaveException;

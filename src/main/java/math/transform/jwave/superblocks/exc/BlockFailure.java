@@ -15,50 +15,49 @@
  * See the License for the specific language governing permissions and
  * limitations under the License. 
  *
- * This file BlockError.java is part of JWave.
+ * This file BlockFailure.java is part of JWave.
  *
  * @author Christian Scheiblich
- * date 11.06.2011 20:08:51
+ * date 11.06.2011 20:06:56
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.blocks.exc;
+package math.transform.jwave.superblocks.exc;
 
 /**
- * Error class as an non-recoverable exception.
- *
- * @date 11.06.2011 20:08:51
+ * Failure class as an recoverable exception.
+ * 
+ * @date 11.06.2011 20:06:56
  * @author Christian Scheiblich
  */
-public class BlockError extends BlockException {
+public class BlockFailure extends BlockException {
 
   /**
    * Generated serial id.
    *
-   * @date 11.06.2011 20:09:56
+   * @date 11.06.2011 20:08:17
    * @author Christian Scheiblich
    */
-  private static final long serialVersionUID = 3813313081473155788L;
+  private static final long serialVersionUID = -1020584447000514150L;
 
   /**
-   * Constructor for error message.
-   *
-   * @date 11.06.2011 20:08:51
+   * Constructor for failure message.
+   * 
+   * @date 11.06.2011 20:06:56
    * @author Christian Scheiblich
    * @param message
    */
-  public BlockError( String message ) {
+  public BlockFailure( String message ) {
     super( message );
   }
 
   /**
    * Constructor taking any Java based exception.
    * 
-   * @date 11.06.2011 20:08:51
+   * @date 11.06.2011 20:06:56
    * @author Christian Scheiblich
-   * @param e
-   *          object of type java.lang.Exception
+   * @param e  object of type java.lang.Exception
    */
-  public BlockError( Exception e ) {
+  public BlockFailure( Exception e ) {
     super( e );
   }
 

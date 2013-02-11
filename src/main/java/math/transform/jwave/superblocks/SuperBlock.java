@@ -22,10 +22,10 @@
  * date Feb 6, 2013 3:06:47 PM
  *
  */
-package math.transform.jwave.blocks;
+package math.transform.jwave.superblocks;
 
 import java.util.ArrayList;
-import math.transform.jwave.blocks.types.Block;
+import math.transform.jwave.superblocks.types.Block;
 
 /**
  * @author Christian Scheiblich

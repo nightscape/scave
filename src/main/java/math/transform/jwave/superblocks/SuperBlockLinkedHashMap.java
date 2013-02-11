@@ -22,12 +22,12 @@
  * date 08.02.2013 05:53:23
  *
  */
-package math.transform.jwave.blocks;
+package math.transform.jwave.superblocks;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import math.transform.jwave.blocks.exc.BlockException;
-import math.transform.jwave.blocks.types.Block;
+import math.transform.jwave.superblocks.exc.BlockException;
+import math.transform.jwave.superblocks.types.Block;
 
 /**
  * Class for storing Block objects that join together to a Matrix.
@@ -63,7 +63,7 @@ public class SuperBlockLinkedHashMap implements SuperBlock {
   }
   
   /* (non-Javadoc)
-   * @see math.transform.jwave.blocks.SuperBlock#eraseMemory()
+   * @see math.transform.jwave.superblocks.SuperBlock#eraseMemory()
    */
   @Override
   public void eraseMemory( ) {
@@ -71,7 +71,7 @@ public class SuperBlockLinkedHashMap implements SuperBlock {
   }
   
   /* (non-Javadoc)
-   * @see math.transform.jwave.blocks.SuperBlock#computeMemory()
+   * @see math.transform.jwave.superblocks.SuperBlock#computeMemory()
    */
   @Override
   public long computeMemory( ) {
@@ -95,7 +95,7 @@ public class SuperBlockLinkedHashMap implements SuperBlock {
   }
   
   /* (non-Javadoc)
-   * @see math.transform.jwave.blocks.SuperBlock#addBlock(math.transform.jwave.blocks.types.Block)
+   * @see math.transform.jwave.superblocks.SuperBlock#addBlock(math.transform.jwave.superblocks.types.Block)
    */
   @Override
   public void addBlock( Block block ) {
@@ -107,7 +107,7 @@ public class SuperBlockLinkedHashMap implements SuperBlock {
   }
   
   /* (non-Javadoc)
-   * @see math.transform.jwave.blocks.SuperBlock#getBlock(int)
+   * @see math.transform.jwave.superblocks.SuperBlock#getBlock(int)
    */
   @Override
   public Block getBlock( int no ) {
@@ -119,7 +119,7 @@ public class SuperBlockLinkedHashMap implements SuperBlock {
   }
   
   /* (non-Javadoc)
-   * @see math.transform.jwave.blocks.SuperBlock#getNoBlocks()
+   * @see math.transform.jwave.superblocks.SuperBlock#getNoBlocks()
    */
   @Override
   public long getNoBlocks( ) {
@@ -129,7 +129,7 @@ public class SuperBlockLinkedHashMap implements SuperBlock {
   }
   
   /* (non-Javadoc)
-   * @see math.transform.jwave.blocks.SuperBlock#getArrOfBlocks()
+   * @see math.transform.jwave.superblocks.SuperBlock#getArrOfBlocks()
    */
   @Override
   public ArrayList< Block > getArrOfBlocks( ) {

@@ -21,10 +21,10 @@
  * date 11.06.2011 19:53:52
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.blocks.types;
+package math.transform.jwave.superblocks.types;
 
-import math.transform.jwave.blocks.exc.BlockException;
-import math.transform.jwave.blocks.exc.BlockFailure;
+import math.transform.jwave.superblocks.exc.BlockException;
+import math.transform.jwave.superblocks.exc.BlockFailure;
 
 /**
  * A Block that keeps some matrix based values inside stored in different ways.
@@ -125,14 +125,14 @@ public abstract class Block implements BlockInterface {
   }
   
   /* (non-Javadoc)
-   * @see math.transform.jwave.blocks.types.BlockInterface#setBlockNo(int)
+   * @see math.transform.jwave.superblocks.types.BlockInterface#setBlockNo(int)
    */
   public void setBlockNo( int no ) {
     _no = no;
   }
   
   /* (non-Javadoc)
-   * @see math.transform.jwave.blocks.types.BlockInterface#getBlockNo()
+   * @see math.transform.jwave.superblocks.types.BlockInterface#getBlockNo()
    */
   public int getBlockNo( ) {
     return _no;

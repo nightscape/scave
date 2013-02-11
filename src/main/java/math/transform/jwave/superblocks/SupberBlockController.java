@@ -22,9 +22,9 @@
  * date 08.02.2013 06:54:39
  *
  */
-package math.transform.jwave.blocks;
+package math.transform.jwave.superblocks;
 
-import math.transform.jwave.blocks.types.BlockType;
+import math.transform.jwave.superblocks.types.BlockType;
 
 /**
  * Class for building a SuperBlock object as a representation of a matrix.

@@ -21,10 +21,10 @@
  * date 11.06.2011 21:25:17
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.blocks.types;
+package math.transform.jwave.superblocks.types;
 
-import math.transform.jwave.blocks.exc.BlockError;
-import math.transform.jwave.blocks.exc.BlockException;
+import math.transform.jwave.superblocks.exc.BlockError;
+import math.transform.jwave.superblocks.exc.BlockException;
 
 /**
  * Creates Block objects
