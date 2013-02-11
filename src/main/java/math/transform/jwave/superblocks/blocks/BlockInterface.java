@@ -22,7 +22,7 @@
  * date Feb 6, 2013 3:14:20 PM
  *
  */
-package math.transform.jwave.superblocks.types;
+package math.transform.jwave.superblocks.blocks;
 
 /**
  * @author Christian Scheiblich

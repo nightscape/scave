@@ -25,7 +25,7 @@
 package math.transform.jwave.superblocks;
 
 import java.util.ArrayList;
-import math.transform.jwave.superblocks.types.Block;
+import math.transform.jwave.superblocks.blocks.Block;
 
 /**
  * @author Christian Scheiblich

@@ -21,7 +21,7 @@
  * date 11.06.2011 19:53:52
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.superblocks.types;
+package math.transform.jwave.superblocks.blocks;
 
 import math.transform.jwave.superblocks.exc.BlockException;
 import math.transform.jwave.superblocks.exc.BlockFailure;
@@ -125,14 +125,14 @@ public abstract class Block implements BlockInterface {
   }
   
   /* (non-Javadoc)
-   * @see math.transform.jwave.superblocks.types.BlockInterface#setBlockNo(int)
+   * @see math.transform.jwave.superblocks.blocks.BlockInterface#setBlockNo(int)
    */
   public void setBlockNo( int no ) {
     _no = no;
   }
   
   /* (non-Javadoc)
-   * @see math.transform.jwave.superblocks.types.BlockInterface#getBlockNo()
+   * @see math.transform.jwave.superblocks.blocks.BlockInterface#getBlockNo()
    */
   public int getBlockNo( ) {
     return _no;

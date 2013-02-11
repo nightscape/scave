@@ -21,7 +21,7 @@
  * date 11.06.2011 21:26:18
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.superblocks.types;
+package math.transform.jwave.superblocks.blocks;
 
 /**
  * Enumerator for different types of Block objects.

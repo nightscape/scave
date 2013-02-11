@@ -21,7 +21,7 @@
  * date 11.06.2011 21:25:17
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.superblocks.types;
+package math.transform.jwave.superblocks.blocks;
 
 import math.transform.jwave.superblocks.exc.BlockError;
 import math.transform.jwave.superblocks.exc.BlockException;

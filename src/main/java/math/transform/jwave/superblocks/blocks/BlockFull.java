@@ -21,7 +21,7 @@
  * date 11.06.2011 21:38:51
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.superblocks.types;
+package math.transform.jwave.superblocks.blocks;
 
 import math.transform.jwave.superblocks.exc.BlockException;
 import math.transform.jwave.superblocks.exc.BlockFailure;
@@ -45,7 +45,7 @@ public class BlockFull extends Block {
    * 
    * @date 11.06.2011 21:38:51
    * @author Christian Scheiblich
-   * @see math.transform.jwave.superblocks.types.Block#Block(int, int, int , int)
+   * @see math.transform.jwave.superblocks.blocks.Block#Block(int, int, int , int)
    */
   protected BlockFull( int offSetRow, int offSetCol, int noOfRows, int noOfCols )
       throws BlockException {
@@ -57,7 +57,7 @@ public class BlockFull extends Block {
    * 
    * @date 11.06.2011 21:38:51
    * @author Christian Scheiblich
-   * @see math.transform.jwave.superblocks.types.Block#get(int, int)
+   * @see math.transform.jwave.superblocks.blocks.Block#get(int, int)
    */
   @Override
   public double get( int i, int j ) throws BlockException {
@@ -80,7 +80,7 @@ public class BlockFull extends Block {
    * 
    * @date 11.06.2011 22:52:34
    * @author Christian Scheiblich
-   * @see math.transform.jwave.superblocks.types.Block#get()
+   * @see math.transform.jwave.superblocks.blocks.Block#get()
    */
   @Override
   public double[ ][ ] get( ) throws BlockException {
@@ -102,7 +102,7 @@ public class BlockFull extends Block {
    * 
    * @date 11.06.2011 21:38:51
    * @author Christian Scheiblich
-   * @see math.transform.jwave.superblocks.types.Block#set(int, int)
+   * @see math.transform.jwave.superblocks.blocks.Block#set(int, int)
    */
   @Override
   public void set( int i, int j, double val ) throws BlockException {
@@ -125,7 +125,7 @@ public class BlockFull extends Block {
    * 
    * @date 11.06.2011 21:38:51
    * @author Christian Scheiblich
-   * @see math.transform.jwave.superblocks.types.Block#allocateMemory()
+   * @see math.transform.jwave.superblocks.blocks.Block#allocateMemory()
    */
   @Override
   public void allocateMemory( ) throws BlockException {
@@ -139,7 +139,7 @@ public class BlockFull extends Block {
    * 
    * @date 11.06.2011 21:38:51
    * @author Christian Scheiblich
-   * @see math.transform.jwave.superblocks.types.Block#eraseMemory()
+   * @see math.transform.jwave.superblocks.blocks.Block#eraseMemory()
    */
   @Override
   public void eraseMemory( ) throws BlockException {
@@ -148,7 +148,7 @@ public class BlockFull extends Block {
   }
 
   /* (non-Javadoc)
-   * @see math.transform.jwave.superblocks.types.Block#computeMemory()
+   * @see math.transform.jwave.superblocks.blocks.Block#computeMemory()
    */
   @Override
   public long computeMemory( ) throws BlockException {    

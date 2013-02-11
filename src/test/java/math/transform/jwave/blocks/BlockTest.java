@@ -25,10 +25,10 @@ package math.transform.jwave.blocks;
 
 import static org.junit.Assert.*;
 
+import math.transform.jwave.superblocks.blocks.Block;
+import math.transform.jwave.superblocks.blocks.BlockController;
+import math.transform.jwave.superblocks.blocks.BlockType;
 import math.transform.jwave.superblocks.exc.BlockException;
-import math.transform.jwave.superblocks.types.Block;
-import math.transform.jwave.superblocks.types.BlockController;
-import math.transform.jwave.superblocks.types.BlockType;
 
 import org.junit.Test;
 
@@ -42,7 +42,7 @@ public class BlockTest {
 
   /**
    * Test method for
-   * {@link math.transform.jwave.superblocks.types.Block#BlockIndex(int, int, int, int)}.
+   * {@link math.transform.jwave.superblocks.blocks.Block#BlockIndex(int, int, int, int)}.
    * 
    * @throws BlockException
    */
@@ -129,7 +129,7 @@ public class BlockTest {
 
   /**
    * Test method for
-   * {@link math.transform.jwave.superblocks.types.Block#BlockIndex(int, int, int, int)}.
+   * {@link math.transform.jwave.superblocks.blocks.Block#BlockIndex(int, int, int, int)}.
    * 
    * @throws BlockException
    */
@@ -176,7 +176,7 @@ public class BlockTest {
   
 
   /**
-   * Test method for {@link math.transform.jwave.superblocks.types.Block#BlockFull(int, int, int, int)}.
+   * Test method for {@link math.transform.jwave.superblocks.blocks.Block#BlockFull(int, int, int, int)}.
    * 
    * @throws BlockException
    */
@@ -216,7 +216,7 @@ public class BlockTest {
   }
 
   /**
-   * Test method for {@link math.transform.jwave.superblocks.types.Block#getRow(int)}.
+   * Test method for {@link math.transform.jwave.superblocks.blocks.Block#getRow(int)}.
    * 
    * @throws BlockException
    */
@@ -257,7 +257,7 @@ public class BlockTest {
   }
 
   /**
-   * Test method for {@link math.transform.jwave.superblocks.types.Block#getCol(int)}.
+   * Test method for {@link math.transform.jwave.superblocks.blocks.Block#getCol(int)}.
    * 
    * @throws BlockException
    */

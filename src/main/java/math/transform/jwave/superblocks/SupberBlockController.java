@@ -24,7 +24,7 @@
  */
 package math.transform.jwave.superblocks;
 
-import math.transform.jwave.superblocks.types.BlockType;
+import math.transform.jwave.superblocks.blocks.BlockType;
 
 /**
  * Class for building a SuperBlock object as a representation of a matrix.
