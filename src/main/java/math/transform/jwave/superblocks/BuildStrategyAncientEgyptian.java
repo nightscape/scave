@@ -48,6 +48,10 @@ public class BuildStrategyAncientEgyptian extends BuildStrategy {
   public BuildStrategyAncientEgyptian( int noUnkowns ) throws JWaveException {
     
     super( noUnkowns );
+    
+    _noRows = noUnkowns;
+    
+    _noCols = noUnkowns;
   
     _ancientEgyptianMultiplication = new AncientEgyptianMultiplication( );
     
@@ -61,6 +65,9 @@ public class BuildStrategyAncientEgyptian extends BuildStrategy {
     try {
       
       rowDecomposition = _ancientEgyptianMultiplication.decompose( _noRows );
+          
+      for( int i = 0; i < rowDecomposition.length; i++ )
+        rowDecomposition[ i ] = (int)_ancientEgyptianMultiplication.scalb( 1., rowDecomposition[ i ] );
     
     } catch( JWaveException e ) {
 
@@ -80,7 +87,10 @@ public class BuildStrategyAncientEgyptian extends BuildStrategy {
     try {
       
       colDecomposition = _ancientEgyptianMultiplication.decompose( _noCols );
-    
+      
+      for( int j = 0; j < colDecomposition.length; j++ )
+        colDecomposition[ j ] = (int)_ancientEgyptianMultiplication.scalb( 1., colDecomposition[ j ] );    
+      
     } catch( JWaveException e ) {
 
       throw new SuperBlockException( e.getMessage( ) );

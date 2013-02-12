@@ -24,10 +24,7 @@
  */
 package math.transform.jwave.tools;
 
-import java.util.ArrayList;
-import math.transform.jwave.exc.JWaveError;
-import math.transform.jwave.exc.JWaveException;
-import math.transform.jwave.exc.JWaveFailure;
+import math.transform.jwave.exc.*;
 
 /**
  * @author Christian Scheiblich

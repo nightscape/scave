@@ -25,6 +25,11 @@ package math.transform.jwave.blocks;
 
 import static org.junit.Assert.*;
 
+import math.transform.jwave.exc.JWaveException;
+import math.transform.jwave.superblocks.BuildStrategyAncientEgyptian;
+import math.transform.jwave.superblocks.SuperBlock;
+import math.transform.jwave.superblocks.SuperBlockController;
+import math.transform.jwave.superblocks.SuperBlockType;
 import math.transform.jwave.superblocks.blocks.Block;
 import math.transform.jwave.superblocks.blocks.BlockController;
 import math.transform.jwave.superblocks.blocks.BlockType;
@@ -294,6 +299,25 @@ public class BlockTest {
     
     block.eraseMemory( );
 
+  }
+  
+  @Test
+  public void testSuperBlockController( ) throws SuperBlockException {
+    
+    try {
+    
+      @SuppressWarnings( "unused" )
+      SuperBlock superBlock = null;
+      
+      superBlock = SuperBlockController.createSuperBlock( new BuildStrategyAncientEgyptian( 31 ), SuperBlockType.Array, BlockType.Dummy );
+    
+      superBlock = SuperBlockController.createSuperBlock( new BuildStrategyAncientEgyptian( 32 ), SuperBlockType.Array, BlockType.Dummy );
+      
+    } catch( JWaveException e ) {
+      e.printStackTrace();
+    }
+        
+    
   }
 
 } // class

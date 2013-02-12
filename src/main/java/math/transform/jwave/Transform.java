@@ -63,7 +63,7 @@ public class Transform {
     if( transform instanceof BasicTransform ) {
       _transform = transform;
       
-      // TODO realize the leveld transform in GOOD Software Engineering style
+      // TODO realize the level transform in GOOD Software Engineering style
       
 //      ( (WaveletTransform)_transform ).set_iteration( iteration );
  
