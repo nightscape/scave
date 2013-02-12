@@ -44,14 +44,6 @@ import math.transform.jwave.superblocks.exc.SuperBlockException;
  */
 public class SuperBlockController {
   
-  /**
-   * @author Christian Scheiblich
-   * date 08.02.2013 06:54:39
-   *
-   */
-  public SuperBlockController( ) {
-  }
-  
   public static SuperBlock createSuperBlock( BuildStrategy buildStrategy, SuperBlockType superBlockType, BlockType blockType ) throws SuperBlockException {
     
     if( buildStrategy == null )
