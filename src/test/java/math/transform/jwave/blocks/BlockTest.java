@@ -25,15 +25,15 @@ package math.transform.jwave.blocks;
 
 import static org.junit.Assert.*;
 
-import math.transform.jwave.exc.JWaveException;
-import math.transform.jwave.superblocks.BuildStrategyAncientEgyptian;
-import math.transform.jwave.superblocks.SuperBlock;
-import math.transform.jwave.superblocks.SuperBlockController;
-import math.transform.jwave.superblocks.SuperBlockType;
-import math.transform.jwave.superblocks.blocks.Block;
-import math.transform.jwave.superblocks.blocks.BlockController;
-import math.transform.jwave.superblocks.blocks.BlockType;
-import math.transform.jwave.superblocks.exc.SuperBlockException;
+import math.jwave.exc.JWaveException;
+import math.jwave.superblocks.BuildStrategyAncientEgyptian;
+import math.jwave.superblocks.SuperBlock;
+import math.jwave.superblocks.SuperBlockController;
+import math.jwave.superblocks.SuperBlockType;
+import math.jwave.superblocks.blocks.Block;
+import math.jwave.superblocks.blocks.BlockController;
+import math.jwave.superblocks.blocks.BlockType;
+import math.jwave.superblocks.exc.SuperBlockException;
 
 import org.junit.Test;
 
@@ -47,7 +47,7 @@ public class BlockTest {
 
   /**
    * Test method for
-   * {@link math.transform.jwave.superblocks.blocks.Block#BlockIndex(int, int, int, int)}.
+   * {@link math.jwave.superblocks.blocks.Block#BlockIndex(int, int, int, int)}.
    * 
    * @throws SuperBlockException
    */
@@ -134,7 +134,7 @@ public class BlockTest {
 
   /**
    * Test method for
-   * {@link math.transform.jwave.superblocks.blocks.Block#BlockIndex(int, int, int, int)}.
+   * {@link math.jwave.superblocks.blocks.Block#BlockIndex(int, int, int, int)}.
    * 
    * @throws SuperBlockException
    */
@@ -181,7 +181,7 @@ public class BlockTest {
   
 
   /**
-   * Test method for {@link math.transform.jwave.superblocks.blocks.Block#BlockFull(int, int, int, int)}.
+   * Test method for {@link math.jwave.superblocks.blocks.Block#BlockFull(int, int, int, int)}.
    * 
    * @throws SuperBlockException
    */
@@ -221,7 +221,7 @@ public class BlockTest {
   }
 
   /**
-   * Test method for {@link math.transform.jwave.superblocks.blocks.Block#getRow(int)}.
+   * Test method for {@link math.jwave.superblocks.blocks.Block#getRow(int)}.
    * 
    * @throws SuperBlockException
    */
@@ -262,7 +262,7 @@ public class BlockTest {
   }
 
   /**
-   * Test method for {@link math.transform.jwave.superblocks.blocks.Block#getCol(int)}.
+   * Test method for {@link math.jwave.superblocks.blocks.Block#getCol(int)}.
    * 
    * @throws SuperBlockException
    */

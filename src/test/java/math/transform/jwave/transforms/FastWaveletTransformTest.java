@@ -23,25 +23,25 @@
  */
 package math.transform.jwave.transforms;
 
+import math.jwave.Transform;
+import math.jwave.exc.JWaveException;
+import math.jwave.transforms.FastWaveletTransform;
+import math.jwave.transforms.wavelets.Coif06;
+import math.jwave.transforms.wavelets.Daub02;
+import math.jwave.transforms.wavelets.Daub03;
+import math.jwave.transforms.wavelets.Daub04;
+import math.jwave.transforms.wavelets.Haar02;
+import math.jwave.transforms.wavelets.Haar02Orthogonal;
+import math.jwave.transforms.wavelets.Lege02;
+import math.jwave.transforms.wavelets.Lege04;
+import math.jwave.transforms.wavelets.Lege06;
 import math.transform.jwave.JUnitTests;
-import math.transform.jwave.Transform;
-import math.transform.jwave.exc.JWaveException;
-import math.transform.jwave.transforms.FastWaveletTransform;
-import math.transform.jwave.transforms.wavelets.Coif06;
-import math.transform.jwave.transforms.wavelets.Daub02;
-import math.transform.jwave.transforms.wavelets.Daub03;
-import math.transform.jwave.transforms.wavelets.Daub04;
-import math.transform.jwave.transforms.wavelets.Haar02;
-import math.transform.jwave.transforms.wavelets.Haar02Orthogonal;
-import math.transform.jwave.transforms.wavelets.Lege02;
-import math.transform.jwave.transforms.wavelets.Lege04;
-import math.transform.jwave.transforms.wavelets.Lege06;
 import org.junit.Test;
 
 public class FastWaveletTransformTest extends JUnitTests {
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
+   * Test method for {@link math.jwave.Transform#forward(double[])}.
    * @throws JWaveException 
    */
   @Test
@@ -71,7 +71,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
+   * Test method for {@link math.jwave.Transform#reverse(double[])}.
    * @throws JWaveException 
    */
   @Test
@@ -101,7 +101,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
+   * Test method for {@link math.jwave.Transform#forward(double[])}.
    * @throws JWaveException 
    */
   @Test
@@ -131,7 +131,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
+   * Test method for {@link math.jwave.Transform#reverse(double[])}.
    * @throws JWaveException 
    */
   @Test
@@ -161,7 +161,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#forward(double[][])}.
+   * Test method for {@link math.jwave.Transform#forward(double[][])}.
    * @throws JWaveException 
    */
   @Test
@@ -207,7 +207,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#reverse(double[][])}.
+   * Test method for {@link math.jwave.Transform#reverse(double[][])}.
    * @throws JWaveException 
    */
   @Test
@@ -253,7 +253,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#forward(double[][][])}.
+   * Test method for {@link math.jwave.Transform#forward(double[][][])}.
    * @throws JWaveException 
    */
   @Test
@@ -363,7 +363,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#reverse(double[][][])}.
+   * Test method for {@link math.jwave.Transform#reverse(double[][][])}.
    * @throws JWaveException 
    */
   @Test
@@ -474,7 +474,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
+   * Test method for {@link math.jwave.Transform#forward(double[])}.
    * @throws JWaveException 
    */
   @Test
@@ -504,7 +504,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
+   * Test method for {@link math.jwave.Transform#reverse(double[])}.
    * @throws JWaveException 
    */
   @Test
@@ -534,7 +534,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
+   * Test method for {@link math.jwave.Transform#forward(double[])}.
    * @throws JWaveException 
    */
   @Test
@@ -564,7 +564,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
+   * Test method for {@link math.jwave.Transform#reverse(double[])}.
    * @throws JWaveException 
    */
   @Test
@@ -594,7 +594,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
+   * Test method for {@link math.jwave.Transform#forward(double[])}.
    * @throws JWaveException 
    */
   @Test
@@ -624,7 +624,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
+   * Test method for {@link math.jwave.Transform#reverse(double[])}.
    * @throws JWaveException 
    */
   @Test
@@ -654,7 +654,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
+   * Test method for {@link math.jwave.Transform#forward(double[])}.
    * @throws JWaveException 
    */
   @Test
@@ -684,7 +684,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
+   * Test method for {@link math.jwave.Transform#reverse(double[])}.
    * @throws JWaveException 
    */
   @Test
@@ -714,7 +714,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
+   * Test method for {@link math.jwave.Transform#forward(double[])}.
    * @throws JWaveException 
    */
   @Test
@@ -744,7 +744,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
+   * Test method for {@link math.jwave.Transform#reverse(double[])}.
    * @throws JWaveException 
    */
   @Test
@@ -774,7 +774,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
+   * Test method for {@link math.jwave.Transform#forward(double[])}.
    * @throws JWaveException 
    */
   @Test
@@ -804,7 +804,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
+   * Test method for {@link math.jwave.Transform#reverse(double[])}.
    * @throws JWaveException 
    */
   @Test
@@ -834,7 +834,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
+   * Test method for {@link math.jwave.Transform#forward(double[])}.
    * @throws JWaveException 
    */
   @Test
@@ -864,7 +864,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
+   * Test method for {@link math.jwave.Transform#reverse(double[])}.
    * @throws JWaveException 
    */
   @Test
@@ -894,7 +894,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
+   * Test method for {@link math.jwave.Transform#forward(double[])}.
    * @throws JWaveException 
    */
   @Test
@@ -924,7 +924,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
+   * Test method for {@link math.jwave.Transform#reverse(double[])}.
    * @throws JWaveException 
    */
   @Test
@@ -954,7 +954,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
+   * Test method for {@link math.jwave.Transform#forward(double[])}.
    * @throws JWaveException 
    */
   @Test
@@ -984,7 +984,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   }
   
   /**
-   * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
+   * Test method for {@link math.jwave.Transform#reverse(double[])}.
    * @throws JWaveException 
    */
   @Test

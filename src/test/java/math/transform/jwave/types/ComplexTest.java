@@ -27,7 +27,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import math.transform.jwave.datatypes.Complex;
+import math.jwave.datatypes.Complex;
 
 import org.junit.Test;
 
@@ -41,7 +41,7 @@ import org.junit.Test;
 public class ComplexTest {
 
   /**
-   * Test method for {@link math.transform.jwave.datatypes.Complex#getReal()}.
+   * Test method for {@link math.jwave.datatypes.Complex#getReal()}.
    */
   @Test
   public void testGetReal( ) {
@@ -51,7 +51,7 @@ public class ComplexTest {
   }
 
   /**
-   * Test method for {@link math.transform.jwave.datatypes.Complex#getImag()}.
+   * Test method for {@link math.jwave.datatypes.Complex#getImag()}.
    */
   @Test
   public void testGetImag( ) {
@@ -61,7 +61,7 @@ public class ComplexTest {
   }
 
   /**
-   * Test method for {@link math.transform.jwave.datatypes.Complex#getMag()}.
+   * Test method for {@link math.jwave.datatypes.Complex#getMag()}.
    */
   @Test
   public void testGetMag( ) {
@@ -73,7 +73,7 @@ public class ComplexTest {
   }
 
   /**
-   * Test method for {@link math.transform.jwave.datatypes.Complex#getPhi()}.
+   * Test method for {@link math.jwave.datatypes.Complex#getPhi()}.
    */
   @Test
   public void testGetPhi( ) {
@@ -116,7 +116,7 @@ public class ComplexTest {
 
   /**
    * Test method for
-   * {@link math.transform.jwave.datatypes.Complex#add(math.transform.jwave.datatypes.Complex)}.
+   * {@link math.jwave.datatypes.Complex#add(math.jwave.datatypes.Complex)}.
    */
   @Test
   public void testAdd( ) {
@@ -129,7 +129,7 @@ public class ComplexTest {
 
   /**
    * Test method for
-   * {@link math.transform.jwave.datatypes.Complex#sub(math.transform.jwave.datatypes.Complex)}.
+   * {@link math.jwave.datatypes.Complex#sub(math.jwave.datatypes.Complex)}.
    */
   @Test
   public void testSub( ) {
@@ -142,7 +142,7 @@ public class ComplexTest {
 
   /**
    * Test method for
-   * {@link math.transform.jwave.datatypes.Complex#mul(math.transform.jwave.datatypes.Complex)}.
+   * {@link math.jwave.datatypes.Complex#mul(math.jwave.datatypes.Complex)}.
    */
   @Test
   public void testMulComplex( ) {
@@ -154,7 +154,7 @@ public class ComplexTest {
   }
 
   /**
-   * Test method for {@link math.transform.jwave.datatypes.Complex#mul(double)}.
+   * Test method for {@link math.jwave.datatypes.Complex#mul(double)}.
    */
   @Test
   public void testMulDouble( ) {
@@ -167,7 +167,7 @@ public class ComplexTest {
 
   /**
    * Test method for
-   * {@link math.transform.jwave.datatypes.Complex#div(math.transform.jwave.datatypes.Complex)}.
+   * {@link math.jwave.datatypes.Complex#div(math.jwave.datatypes.Complex)}.
    */
   @Test
   public void testDivComplex( ) {
@@ -179,7 +179,7 @@ public class ComplexTest {
   }
 
   /**
-   * Test method for {@link math.transform.jwave.datatypes.Complex#div(double)}.
+   * Test method for {@link math.jwave.datatypes.Complex#div(double)}.
    */
   @Test
   public void testDivDouble( ) {
@@ -192,7 +192,7 @@ public class ComplexTest {
 
   /**
    * Test method for
-   * {@link math.transform.jwave.datatypes.Complex#equals(math.transform.jwave.datatypes.Complex)}.
+   * {@link math.jwave.datatypes.Complex#equals(math.jwave.datatypes.Complex)}.
    */
   @Test
   public void testEquals( ) {

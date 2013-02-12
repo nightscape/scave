@@ -26,20 +26,20 @@ package math.transform.jwave;
 
 import static org.junit.Assert.assertEquals;
 
-import math.transform.jwave.Transform;
-import math.transform.jwave.datatypes.Complex;
-import math.transform.jwave.exc.JWaveException;
-import math.transform.jwave.transforms.FastWaveletTransform;
-import math.transform.jwave.transforms.wavelets.Coif06;
-import math.transform.jwave.transforms.wavelets.Daub02;
-import math.transform.jwave.transforms.wavelets.Haar02;
-import math.transform.jwave.transforms.wavelets.Wavelet;
+import math.jwave.Transform;
+import math.jwave.datatypes.Complex;
+import math.jwave.exc.JWaveException;
+import math.jwave.transforms.FastWaveletTransform;
+import math.jwave.transforms.wavelets.Coif06;
+import math.jwave.transforms.wavelets.Daub02;
+import math.jwave.transforms.wavelets.Haar02;
+import math.jwave.transforms.wavelets.Wavelet;
 
 import org.junit.Test;
 
 
 /**
- * Tests for the class math.transform.jwave.Transform.
+ * Tests for the class math.jwave.Transform.
  * 
  * @date 10.02.2010 09:43:08
  * @author Christian Scheiblich

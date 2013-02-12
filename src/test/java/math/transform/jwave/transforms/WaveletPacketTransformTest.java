@@ -23,12 +23,12 @@
  */
 package math.transform.jwave.transforms;
 
+import math.jwave.Transform;
+import math.jwave.exc.JWaveException;
+import math.jwave.transforms.WaveletPacketTransform;
+import math.jwave.transforms.wavelets.Daub02;
+import math.jwave.transforms.wavelets.Haar02;
 import math.transform.jwave.JUnitTests;
-import math.transform.jwave.Transform;
-import math.transform.jwave.exc.JWaveException;
-import math.transform.jwave.transforms.WaveletPacketTransform;
-import math.transform.jwave.transforms.wavelets.Daub02;
-import math.transform.jwave.transforms.wavelets.Haar02;
 
 import org.junit.Test;
 
@@ -36,7 +36,7 @@ import org.junit.Test;
 public class WaveletPacketTransformTest extends JUnitTests {
 
   /**
-   * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
+   * Test method for {@link math.jwave.Transform#forward(double[])}.
    * @throws JWaveException 
    */
   @Test
@@ -62,7 +62,7 @@ public class WaveletPacketTransformTest extends JUnitTests {
   }
 
   /**
-   * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
+   * Test method for {@link math.jwave.Transform#reverse(double[])}.
    * @throws JWaveException 
    */
   @Test
@@ -88,7 +88,7 @@ public class WaveletPacketTransformTest extends JUnitTests {
   }
 
   /**
-   * Test method for {@link math.transform.jwave.Transform#forward(double[][])}.
+   * Test method for {@link math.jwave.Transform#forward(double[][])}.
    * @throws JWaveException 
    */
   @Test
@@ -116,7 +116,7 @@ public class WaveletPacketTransformTest extends JUnitTests {
   }
 
   /**
-   * Test method for {@link math.transform.jwave.Transform#reverse(double[][])}.
+   * Test method for {@link math.jwave.Transform#reverse(double[][])}.
    * @throws JWaveException 
    */
   @Test
@@ -144,7 +144,7 @@ public class WaveletPacketTransformTest extends JUnitTests {
   }
 
   /**
-   * Test method for {@link math.transform.jwave.Transform#forward(double[][][])}.
+   * Test method for {@link math.jwave.Transform#forward(double[][][])}.
    * @throws JWaveException 
    */
   @Test
@@ -186,7 +186,7 @@ public class WaveletPacketTransformTest extends JUnitTests {
   }
 
   /**
-   * Test method for {@link math.transform.jwave.Transform#reverse(double[][][])}.
+   * Test method for {@link math.jwave.Transform#reverse(double[][][])}.
    * @throws JWaveException 
    */
   @Test
@@ -229,7 +229,7 @@ public class WaveletPacketTransformTest extends JUnitTests {
   }
 
   /**
-   * Test method for {@link math.transform.jwave.Transform#forward(double[])}.
+   * Test method for {@link math.jwave.Transform#forward(double[])}.
    * @throws JWaveException 
    */
   @Test
@@ -257,7 +257,7 @@ public class WaveletPacketTransformTest extends JUnitTests {
   }
 
   /**
-   * Test method for {@link math.transform.jwave.Transform#reverse(double[])}.
+   * Test method for {@link math.jwave.Transform#reverse(double[])}.
    * @throws JWaveException 
    */
   @Test

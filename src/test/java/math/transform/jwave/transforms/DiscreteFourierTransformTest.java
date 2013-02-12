@@ -23,10 +23,10 @@
  */
 package math.transform.jwave.transforms;
 
+import math.jwave.Transform;
+import math.jwave.datatypes.Complex;
+import math.jwave.transforms.DiscreteFourierTransform;
 import math.transform.jwave.JUnitTests;
-import math.transform.jwave.Transform;
-import math.transform.jwave.datatypes.Complex;
-import math.transform.jwave.transforms.DiscreteFourierTransform;
 
 import org.junit.Test;
 
@@ -41,7 +41,7 @@ public class DiscreteFourierTransformTest extends JUnitTests {
 
   /**
    * Test method for
-   * {@link math.transform.jwave.transforms.DiscreteFourierTransform#forward(double[])}.
+   * {@link math.jwave.transforms.DiscreteFourierTransform#forward(double[])}.
    */
   @Test
   public void testForwardDoubleArray( ) {
@@ -67,7 +67,7 @@ public class DiscreteFourierTransformTest extends JUnitTests {
 
   /**
    * Test method for
-   * {@link math.transform.jwave.transforms.DiscreteFourierTransform#reverse(double[])}.
+   * {@link math.jwave.transforms.DiscreteFourierTransform#reverse(double[])}.
    */
   @Test
   public void testReverseDoubleArray( ) {
@@ -93,7 +93,7 @@ public class DiscreteFourierTransformTest extends JUnitTests {
 
   /**
    * Test method for
-   * {@link math.transform.jwave.transforms.DiscreteFourierTransform#forward(math.transform.jwave.datatypes.Complex[])}
+   * {@link math.jwave.transforms.DiscreteFourierTransform#forward(math.jwave.datatypes.Complex[])}
    * .
    */
   @Test
@@ -123,7 +123,7 @@ public class DiscreteFourierTransformTest extends JUnitTests {
 
   /**
    * Test method for
-   * {@link math.transform.jwave.transforms.DiscreteFourierTransform#reverse(math.transform.jwave.datatypes.Complex[])}
+   * {@link math.jwave.transforms.DiscreteFourierTransform#reverse(math.jwave.datatypes.Complex[])}
    * .
    */
   @Test
