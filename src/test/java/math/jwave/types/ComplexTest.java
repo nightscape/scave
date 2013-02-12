@@ -21,7 +21,7 @@
  * date 19.11.2010 13:41:10
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.types;
+package math.jwave.types;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

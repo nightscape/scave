@@ -21,8 +21,9 @@
  * date 23.11.2010 19:40:11
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.transforms;
+package math.jwave.transforms;
 
+import math.jwave.JUnitTests;
 import math.jwave.Transform;
 import math.jwave.exc.JWaveException;
 import math.jwave.transforms.FastWaveletTransform;
@@ -35,7 +36,6 @@ import math.jwave.transforms.wavelets.Haar02Orthogonal;
 import math.jwave.transforms.wavelets.Lege02;
 import math.jwave.transforms.wavelets.Lege04;
 import math.jwave.transforms.wavelets.Lege06;
-import math.transform.jwave.JUnitTests;
 import org.junit.Test;
 
 public class FastWaveletTransformTest extends JUnitTests {

@@ -22,7 +22,7 @@
  * date 23.02.2010 05:42:23
  * contact graetz@mailfish.de
  */
-package math.transform.jwave;
+package math.jwave;
 
 import static org.junit.Assert.assertEquals;
 

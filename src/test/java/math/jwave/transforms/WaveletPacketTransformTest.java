@@ -21,14 +21,14 @@
  * date 23.11.2010 19:39:23
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.transforms;
+package math.jwave.transforms;
 
+import math.jwave.JUnitTests;
 import math.jwave.Transform;
 import math.jwave.exc.JWaveException;
 import math.jwave.transforms.WaveletPacketTransform;
 import math.jwave.transforms.wavelets.Daub02;
 import math.jwave.transforms.wavelets.Haar02;
-import math.transform.jwave.JUnitTests;
 
 import org.junit.Test;
 

@@ -21,12 +21,12 @@
  * date 23.11.2010 19:05:07
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.transforms;
+package math.jwave.transforms;
 
+import math.jwave.JUnitTests;
 import math.jwave.Transform;
 import math.jwave.datatypes.Complex;
 import math.jwave.transforms.DiscreteFourierTransform;
-import math.transform.jwave.JUnitTests;
 
 import org.junit.Test;
 

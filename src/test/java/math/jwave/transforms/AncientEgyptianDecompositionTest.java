@@ -21,15 +21,15 @@
  * date 23.11.2010 19:41:42
  * contact graetz@mailfish.de
  */
-package math.transform.jwave.transforms;
+package math.jwave.transforms;
 
+import math.jwave.JUnitTests;
 import math.jwave.Transform;
 import math.jwave.exc.JWaveException;
 import math.jwave.transforms.AncientEgyptianDecomposition;
 import math.jwave.transforms.FastWaveletTransform;
 import math.jwave.transforms.WaveletPacketTransform;
 import math.jwave.transforms.wavelets.Haar02;
-import math.transform.jwave.JUnitTests;
 
 import org.junit.Test;
 
