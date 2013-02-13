@@ -44,8 +44,16 @@ public class FastWaveletTransform extends WaveletTransform {
    *          object of type Wavelet; Haar02, Daub02, Coif06, ...
    * @throws JWaveException 
    */
-  public FastWaveletTransform( Wavelet wavelet ) throws JWaveException {
+  public FastWaveletTransform( Wavelet wavelet ) {
+    
     super( wavelet );
+    
+    try {
+      checkConfig( );
+    } catch( JWaveException e ) {
+      e.printStackTrace( );
+    }
+    
   } // FastBasicTransform
   
   /**
@@ -55,10 +63,20 @@ public class FastWaveletTransform extends WaveletTransform {
    * @author Christian Scheiblich
    * @param wavelet
    *          object of type Wavelet; Haar02, Daub02, Coif06, ...
+   * @param steps
+   *          how many steps the algorithm should perform
    * @throws JWaveException 
    */
-  public FastWaveletTransform( Wavelet wavelet, int iteration ) throws JWaveException {
-    super( wavelet, iteration );
+  public FastWaveletTransform( Wavelet wavelet, int steps ) {
+    
+    super( wavelet, steps );
+    
+    try {
+      checkConfig( );
+    } catch( JWaveException e ) {
+      e.printStackTrace( );
+    }
+    
   } // FastBasicTransform
   
   /**
@@ -152,5 +170,5 @@ public class FastWaveletTransform extends WaveletTransform {
     
     return arrTime;
   }// reverse  
-   
+  
 } // class

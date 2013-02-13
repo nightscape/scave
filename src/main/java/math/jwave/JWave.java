@@ -23,7 +23,6 @@
  */
 package math.jwave;
 
-import math.jwave.exc.JWaveException;
 import math.jwave.transforms.BasicTransform;
 import math.jwave.transforms.DiscreteFourierTransform;
 import math.jwave.transforms.FastWaveletTransform;
@@ -107,23 +106,19 @@ public class JWave {
     String tType = args[ 0 ];
     BasicTransform bWave = null;
     
-    try {
-      if( tType.equalsIgnoreCase( "dft" ) )
-        bWave = new DiscreteFourierTransform( );
-      else if( tType.equalsIgnoreCase( "fwt" ) )
-        
-        bWave = new FastWaveletTransform( wavelet );
-      else if( tType.equalsIgnoreCase( "wpt" ) )
-        bWave = new WaveletPacketTransform( wavelet );
-      else {
-        System.err.println( "usage: JWave [transformType] {waveletType}" );
-        System.err.println( "" );
-        System.err.println( "available transforms are DFT, FWT, WPT" );
-        return;
-      } // if tType
-    } catch( JWaveException e ) {
-      e.printStackTrace( );
-    }
+    if( tType.equalsIgnoreCase( "dft" ) )
+      bWave = new DiscreteFourierTransform( );
+    else if( tType.equalsIgnoreCase( "fwt" ) )
+      
+      bWave = new FastWaveletTransform( wavelet );
+    else if( tType.equalsIgnoreCase( "wpt" ) )
+      bWave = new WaveletPacketTransform( wavelet );
+    else {
+      System.err.println( "usage: JWave [transformType] {waveletType}" );
+      System.err.println( "" );
+      System.err.println( "available transforms are DFT, FWT, WPT" );
+      return;
+    } // if tType
     
     // instance of transform
     Transform t;

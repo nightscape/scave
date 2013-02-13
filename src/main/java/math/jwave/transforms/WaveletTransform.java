@@ -71,13 +71,10 @@ public abstract class WaveletTransform extends BasicTransform {
    *
    * @param wavelet
    */
-  protected WaveletTransform( Wavelet wavelet ) throws JWaveException {
-    
-    if( wavelet == null )
-      throw new JWaveError( "Given object Wavelet is null" );
+  protected WaveletTransform( Wavelet wavelet ) {
     
     _wavelet = wavelet;
-
+    
     _steps = -1; // allows for the maximum number of steps
     
   }
@@ -93,15 +90,9 @@ public abstract class WaveletTransform extends BasicTransform {
    * @param steps
    * @throws JWaveException
    */
-  protected WaveletTransform( Wavelet wavelet, int steps ) throws JWaveException {
-    
-    if( wavelet == null )
-      throw new JWaveError( "Given object Wavelet is null" );
+  protected WaveletTransform( Wavelet wavelet, int steps ) {
     
     _wavelet = wavelet;
-    
-    if( steps < 1 )
-      throw new JWaveFailure( "given steps are smaller than 1" );
     
     _steps = steps;
     
@@ -118,19 +109,31 @@ public abstract class WaveletTransform extends BasicTransform {
    * @param transformMode
    * @throws JWaveException
    */
-  protected WaveletTransform( Wavelet wavelet, TransformMode transformMode ) throws JWaveException {
-     
-    if( wavelet == null )
-      throw new JWaveError( "Given object Wavelet is null" );
+  protected WaveletTransform( Wavelet wavelet, TransformMode transformMode ) {
     
     _wavelet = wavelet;
     
-    if( transformMode == null )
-      throw new JWaveError( "Given object TransformMode is null" );
-    
     _transformMode = transformMode;
-
+    
     _steps = -1; // allows for the maximum number of steps
+    
+  }
+  
+  /**
+   * The method checks the configuration of the Wavelet transform.
+   * 
+   * @author Christian Scheiblich
+   * date Feb 13, 2013 1:05:41 PM
+   *
+   * @throws JWaveException
+   */
+  protected void checkConfig( ) throws JWaveException {
+    
+    if( _wavelet == null )
+      throw new JWaveError( "WaveletTransfrom#checkConfig -- given object Wavelet is null" );
+    
+    if( _steps == 0 || _steps < -1 ) // allowed: {-1,1,2,3, ...}
+      throw new JWaveFailure( "WaveletTransfrom#checkConfig -- given steps are not valid: " + _steps );
     
   }
   

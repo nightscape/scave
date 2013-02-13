@@ -45,8 +45,15 @@ public class WaveletPacketTransform extends WaveletTransform {
    *          object of type Wavelet; Haar02, Daub02, Coif06, ...
    * @throws JWaveException 
    */
-  public WaveletPacketTransform( Wavelet wavelet ) throws JWaveException {
+  public WaveletPacketTransform( Wavelet wavelet ) {
     super( wavelet );
+    
+    try {
+      checkConfig( );
+    } catch( JWaveException e ) {
+      e.printStackTrace( );
+    }
+    
   } // WaveletPacketTransform
   
   /**
@@ -56,13 +63,21 @@ public class WaveletPacketTransform extends WaveletTransform {
    * @author Christian Scheiblich
    * @param wavelet
    *          object of type Wavelet; Haar02, Daub02, Coif06, ...
+   * @param steps
+   *          how many steps the algorithm should perform
    * @throws JWaveException 
    */
-  public WaveletPacketTransform( Wavelet wavelet, int iteration ) throws JWaveException {
-    super( wavelet, iteration );
+  public WaveletPacketTransform( Wavelet wavelet, int steps ) {
+    
+    super( wavelet, steps );
+    
+    try {
+      checkConfig( );
+    } catch( JWaveException e ) {
+      e.printStackTrace( );
+    }
+    
   } // WaveletPacketTransform
-  
-  
   
   /**
    * Implementation of the 1-D forward wavelet packet transform for arrays of
@@ -87,7 +102,7 @@ public class WaveletPacketTransform extends WaveletTransform {
     int minWaveLength = _wavelet.getWaveLength( );
     if( h >= minWaveLength ) {
       
-      while( h >= minWaveLength  && ( level < _steps || _steps == -1 ) ) {
+      while( h >= minWaveLength && ( level < _steps || _steps == -1 ) ) {
         
         int g = k / h; // 1 -> 2 -> 4 -> 8 -> ...
         
@@ -140,7 +155,7 @@ public class WaveletPacketTransform extends WaveletTransform {
     int h = minWaveLength;
     if( arrHilb.length >= minWaveLength ) {
       
-      while( h <= arrTime.length && h >= minWaveLength  && ( level < _steps || _steps == -1 ) ) {
+      while( h <= arrTime.length && h >= minWaveLength && ( level < _steps || _steps == -1 ) ) {
         
         int g = k / h; // ... -> 8 -> 4 -> 2 -> 1
         
@@ -168,5 +183,5 @@ public class WaveletPacketTransform extends WaveletTransform {
     
     return arrTime;
   } // reverse
-   
+  
 } // class
