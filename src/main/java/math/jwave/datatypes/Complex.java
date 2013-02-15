@@ -32,17 +32,17 @@ package math.jwave.datatypes;
  * @author Christian Scheiblich
  */
 public class Complex {
-
+  
   /**
    * The real number.
    */
   private double _r;
-
+  
   /**
    * The imaginary number.
    */
   private double _j;
-
+  
   /**
    * Standard constructor.
    * 
@@ -53,7 +53,7 @@ public class Complex {
     _r = 0.;
     _j = 0.;
   } // Complex
-
+  
   /**
    * Copy constructor.
    * 
@@ -66,7 +66,7 @@ public class Complex {
     _r = c._r;
     _j = c._j;
   } // Complex
-
+  
   /**
    * Constructor taking real and imaginary number.
    * 
@@ -81,7 +81,7 @@ public class Complex {
     _r = r;
     _j = j;
   } // Complex
-
+  
   /**
    * Display the current Complex as a String, for usage in println( ) and
    * elsewhere.
@@ -96,7 +96,7 @@ public class Complex {
       sb.append( '+' ); // else append(i) appends - sign
     return sb.append( _j ).append( 'j' ).toString( );
   } // toString
-
+  
   /**
    * Return the real number.
    * 
@@ -107,7 +107,7 @@ public class Complex {
   public double getReal( ) {
     return _r;
   } // getReal( )
-
+  
   /**
    * Return the imaginary number.
    * 
@@ -118,7 +118,7 @@ public class Complex {
   public double getImag( ) {
     return _j;
   } // getImag
-
+  
   /**
    * Set the real number.
    * 
@@ -130,7 +130,7 @@ public class Complex {
   public void setReal( double r ) {
     _r = r;
   } // setReal
-
+  
   /**
    * Set the imaginary number.
    * 
@@ -142,7 +142,7 @@ public class Complex {
   public void setImag( double j ) {
     _j = j;
   } // setImag
-
+  
   /**
    * Add to real number.
    * 
@@ -154,7 +154,7 @@ public class Complex {
   public void addReal( double r ) {
     _r += r;
   } // addReal
-
+  
   /**
    * Add to imaginary number.
    * 
@@ -166,7 +166,7 @@ public class Complex {
   public void addImag( double j ) {
     _j += j;
   } // addImag
-
+  
   /**
    * multiply scalar to real number.
    * 
@@ -178,7 +178,7 @@ public class Complex {
   public void mulReal( double s ) {
     _r *= s;
   } // mulReal
-
+  
   /**
    * multiply scalar to imaginary number.
    * 
@@ -190,7 +190,7 @@ public class Complex {
   public void mulImag( double s ) {
     _j *= s;
   } // mulImag
-
+  
   /**
    * Calculate the magnitude of the complex number.
    * 
@@ -201,7 +201,7 @@ public class Complex {
   public double getMag( ) {
     return Math.sqrt( _r * _r + _j * _j );
   } // getMag( )
-
+  
   /**
    * Calculates the angle phi of a complex number.
    * 
@@ -223,7 +223,7 @@ public class Complex {
       return 360. - phi;
     return Math.toDegrees( Math.atan( Math.abs( _j / _r ) ) );
   } // getPhi( )
-
+  
   /**
    * Returns the stored values as new double array: [ real, imag ].
    * 
@@ -232,10 +232,12 @@ public class Complex {
    * @return returns stored values as array [ real, imag ]
    */
   public double[ ] toArr( ) {
-    double[ ] arr = { _r, _j };
+    double[ ] arr = {
+    _r, _j
+    };
     return arr;
   } // toArr
-
+  
   /**
    * Returns the conjugate complex number of this complex number.
    * 
@@ -246,7 +248,7 @@ public class Complex {
   public Complex conjugate( ) {
     return new Complex( _r, -_j );
   } // conjugate
-
+  
   /**
    * Add another complex number to this one and return.
    * 
@@ -259,7 +261,7 @@ public class Complex {
   public Complex add( Complex c ) {
     return new Complex( _r + c._r, _j + c._j );
   } // add
-
+  
   /**
    * Subtract another complex number from this one.
    * 
@@ -272,7 +274,7 @@ public class Complex {
   public Complex sub( Complex c ) {
     return new Complex( _r - c._r, _j - c._j );
   } // sub
-
+  
   /**
    * Multiply this complex number times another one.
    * 
@@ -285,7 +287,7 @@ public class Complex {
   public Complex mul( Complex c ) {
     return new Complex( _r * c._r - _j * c._j, _r * c._j + _j * c._r );
   } // mul
-
+  
   /**
    * Multiply this complex number times a scalar.
    * 
@@ -298,7 +300,7 @@ public class Complex {
   public Complex mul( double s ) {
     return new Complex( _r * s, _j * s );
   } // mul
-
+  
   /**
    * Divide this complex number by another one.
    * 
@@ -311,7 +313,7 @@ public class Complex {
   public Complex div( Complex c ) {
     return mul( c.conjugate( ) ).div( c._r * c._r + c._j * c._j );
   } // div
-
+  
   /**
    * Divide this complex number by a scalar.
    * 
@@ -324,7 +326,7 @@ public class Complex {
   public Complex div( double s ) {
     return mul( 1. / s );
   } // div
-
+  
   /**
    * Generates a hash code for this object.
    * 
@@ -343,7 +345,7 @@ public class Complex {
     result = prime * result + (int)( temp ^ ( temp >>> 32 ) );
     return result;
   } // hashCode  
-
+  
   /**
    * Compare this Complex number with another one.
    * 
@@ -366,7 +368,7 @@ public class Complex {
       return false;
     return true;
   } // equals
-
+  
   /**
    * Print this complex number to console.
    * 
@@ -379,7 +381,7 @@ public class Complex {
     else
       System.out.println( getReal( ) + " + j" + getImag( ) );
   } // show
-
+  
   /**
    * Print this complex number to console with an identifier before.
    * 
@@ -390,12 +392,11 @@ public class Complex {
    */
   public void show( String ident ) {
     if( _j < 0 )
-      System.out.println( ident + ": " + getReal( ) + " - j"
-          + Math.abs( getImag( ) ) );
+      System.out.println( ident + ": " + getReal( ) + " - j" + Math.abs( getImag( ) ) );
     else
       System.out.println( ident + ": " + getReal( ) + " + j" + getImag( ) );
   } // show
-
+  
   /**
    * Print magnitude to console out.
    * 
@@ -405,7 +406,7 @@ public class Complex {
   public void showMag( ) {
     System.out.println( getMag( ) );
   } // showMag
-
+  
   /**
    * Print angle to console out.
    * 
@@ -415,5 +416,5 @@ public class Complex {
   public void showPhi( ) {
     System.out.println( getPhi( ) );
   } // showPhi
-
+  
 } // class

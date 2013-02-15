@@ -30,125 +30,130 @@ import math.jwave.transforms.AncientEgyptianDecomposition;
 import math.jwave.transforms.FastWaveletTransform;
 import math.jwave.transforms.WaveletPacketTransform;
 import math.jwave.transforms.wavelets.Haar02;
-
 import org.junit.Test;
 
-
-
 public class AncientEgyptianDecompositionTest extends JUnitTests {
-
+  
   /**
    * Test method for {@link math.jwave.Transform#forward(double[])}.
    * @throws JWaveException 
    */
   @Test
   public void testAncientEgyptianDecompositionFwtForwardHaar02Array( ) throws JWaveException {
-
+    
     System.out.println( "" );
-    System.out
-        .println( "testAncientEgyptianDecompositionFwtForwardHaar02Array" );
-
+    System.out.println( "testAncientEgyptianDecompositionFwtForwardHaar02Array" );
+    
     double delta = 1.e-12;
-
-    double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1. }; // length 7 = 2^2 + 2^1 + 2^0
-
+    
+    double[ ] arrTime = {
+    1., 1., 1., 1., 1., 1., 1.
+    }; // length 7 = 2^2 + 2^1 + 2^0
+    
     showTime( arrTime );
-
-    Transform t = new Transform( new AncientEgyptianDecomposition(
-        new FastWaveletTransform( new Haar02( ) ) ) );
+    
+    Transform t = new Transform( new AncientEgyptianDecomposition( new FastWaveletTransform( new Haar02( ) ) ) );
     double[ ] arrHilb = t.forward( arrTime );
-
+    
     showHilb( arrHilb );
-
-    double[ ] expected = { 2., 0., 0., 0., Math.sqrt( 2. ), 0., 1. };
+    
+    double[ ] expected = {
+    2., 0., 0., 0., Math.sqrt( 2. ), 0., 1.
+    };
     assertArray( expected, arrHilb, delta );
-
+    
   }
-
+  
   /**
    * Test method for {@link math.jwave.Transform#reverse(double[])}.
    * @throws JWaveException 
    */
   @Test
   public void testAncientEgyptianDecompositionFwtReverseHaar02Array( ) throws JWaveException {
-
+    
     System.out.println( "" );
-    System.out
-        .println( "testAncientEgyptianDecompositionFwtReverseHaar02Array" );
-
+    System.out.println( "testAncientEgyptianDecompositionFwtReverseHaar02Array" );
+    
     double delta = 1e-12;
-
-    double[ ] arrHilb = { 2., 0., 0., 0., Math.sqrt( 2. ), 0., 1. }; // length 7 = 2^2 + 2^1 + 2^0
-
+    
+    double[ ] arrHilb = {
+    2., 0., 0., 0., Math.sqrt( 2. ), 0., 1.
+    }; // length 7 = 2^2 + 2^1 + 2^0
+    
     showHilb( arrHilb );
-
-    Transform t = new Transform( new AncientEgyptianDecomposition(
-        new FastWaveletTransform( new Haar02( ) ) ) );
+    
+    Transform t = new Transform( new AncientEgyptianDecomposition( new FastWaveletTransform( new Haar02( ) ) ) );
     double[ ] arrTime = t.reverse( arrHilb );
-
+    
     showTime( arrTime );
-
-    double[ ] expected = { 1., 1., 1., 1., 1., 1., 1. };
+    
+    double[ ] expected = {
+    1., 1., 1., 1., 1., 1., 1.
+    };
     assertArray( expected, arrTime, delta );
-
+    
   }
-
+  
   /**
    * Test method for {@link math.jwave.Transform#forward(double[])}.
    * @throws JWaveException 
    */
   @Test
   public void testAncientEgyptianDecompositionWptForwardHaar02Array( ) throws JWaveException {
-
+    
     System.out.println( "" );
-    System.out
-        .println( "testAncientEgyptianDecompositionWptForwardHaar02Array" );
-
+    System.out.println( "testAncientEgyptianDecompositionWptForwardHaar02Array" );
+    
     double delta = 1.e-12;
-
-    double[ ] arrTime = { 1., 2., 3., 4., 2., 0., 1. }; // length 7 = 2^2 + 2^1 + 2^0
-
+    
+    double[ ] arrTime = {
+    1., 2., 3., 4., 2., 0., 1.
+    }; // length 7 = 2^2 + 2^1 + 2^0
+    
     showTime( arrTime );
-
-    Transform t = new Transform( new AncientEgyptianDecomposition(
-        new WaveletPacketTransform( new Haar02( ) ) ) );
+    
+    Transform t = new Transform( new AncientEgyptianDecomposition( new WaveletPacketTransform( new Haar02( ) ) ) );
     double[ ] arrHilb = t.forward( arrTime );
-
+    
     showHilb( arrHilb );
-
+    
     double sqrt2 = Math.sqrt( 2. );
-    double[ ] expected = { 5., -2., -1., 0., sqrt2, sqrt2, 1. };
+    double[ ] expected = {
+    5., -2., -1., 0., sqrt2, sqrt2, 1.
+    };
     assertArray( expected, arrHilb, delta );
-
+    
   }
-
+  
   /**
    * Test method for {@link math.jwave.Transform#reverse(double[])}.
    * @throws JWaveException 
    */
   @Test
   public void testAncientEgyptianDecompositionWptReverseHaar02Array( ) throws JWaveException {
-
+    
     System.out.println( "" );
-    System.out
-        .println( "testAncientEgyptianDecompositionWptReverseHaar02Array" );
-
+    System.out.println( "testAncientEgyptianDecompositionWptReverseHaar02Array" );
+    
     double delta = 1e-12;
-
+    
     double sqrt2 = Math.sqrt( 2. );
-    double[ ] arrHilb = { 5., -2., -1., 0., sqrt2, sqrt2, 1. };
-
+    double[ ] arrHilb = {
+    5., -2., -1., 0., sqrt2, sqrt2, 1.
+    };
+    
     showHilb( arrHilb );
-
-    Transform t = new Transform( new AncientEgyptianDecomposition(
-        new WaveletPacketTransform( new Haar02( ) ) ) );
+    
+    Transform t = new Transform( new AncientEgyptianDecomposition( new WaveletPacketTransform( new Haar02( ) ) ) );
     double[ ] arrTime = t.reverse( arrHilb );
-
+    
     showTime( arrTime );
-
-    double[ ] expected = { 1., 2., 3., 4., 2., 0., 1. };
+    
+    double[ ] expected = {
+    1., 2., 3., 4., 2., 0., 1.
+    };
     assertArray( expected, arrTime, delta );
-
+    
   }
-
+  
 }

@@ -37,7 +37,7 @@ import math.jwave.datatypes.Complex;
  * @author Christian Scheiblich
  */
 public class DiscreteFourierTransform extends BasicTransform {
-
+  
   /**
    * Constructor; does nothing
    * 
@@ -46,7 +46,7 @@ public class DiscreteFourierTransform extends BasicTransform {
    */
   public DiscreteFourierTransform( ) {
   } // DiscreteFourierTransform
-
+  
   /**
    * The 1-D forward version of the Discrete Fourier Transform (DFT); The input
    * array arrTime is organized by real and imaginary parts of a complex number
@@ -60,43 +60,43 @@ public class DiscreteFourierTransform extends BasicTransform {
    */
   @Override
   public double[ ] forward( double[ ] arrTime ) {
-
+    
     int m = arrTime.length;
     double[ ] arrFreq = new double[ m ]; // result
-
+    
     int n = m >> 1; // half of m
-
+    
     for( int i = 0; i < n; i++ ) {
-
+      
       int iR = i * 2;
       int iC = i * 2 + 1;
-
+      
       arrFreq[ iR ] = 0.;
       arrFreq[ iC ] = 0.;
-
+      
       double arg = -2. * Math.PI * (double)i / (double)n;
-
+      
       for( int k = 0; k < n; k++ ) {
-
+        
         int kR = k * 2;
         int kC = k * 2 + 1;
-
+        
         double cos = Math.cos( k * arg );
         double sin = Math.sin( k * arg );
-
+        
         arrFreq[ iR ] += arrTime[ kR ] * cos - arrTime[ kC ] * sin;
         arrFreq[ iC ] += arrTime[ kR ] * sin + arrTime[ kC ] * cos;
-
+        
       } // k
-
+      
       arrFreq[ iR ] /= (double)n;
       arrFreq[ iC ] /= (double)n;
-
+      
     } // i
-
+    
     return arrFreq;
   } // forward
-
+  
   /**
    * The 1-D reverse version of the Discrete Fourier Transform (DFT); The input
    * array arrFreq is organized by real and imaginary parts of a complex number
@@ -110,40 +110,40 @@ public class DiscreteFourierTransform extends BasicTransform {
    */
   @Override
   public double[ ] reverse( double[ ] arrFreq ) {
-
+    
     int m = arrFreq.length;
     double[ ] arrTime = new double[ m ]; // result
-
+    
     int n = m >> 1; // half of m
-
+    
     for( int i = 0; i < n; i++ ) {
-
+      
       int iR = i * 2;
       int iC = i * 2 + 1;
-
+      
       arrTime[ iR ] = 0.;
       arrTime[ iC ] = 0.;
-
+      
       double arg = 2. * Math.PI * (double)i / (double)n;
-
+      
       for( int k = 0; k < n; k++ ) {
-
+        
         int kR = k * 2;
         int kC = k * 2 + 1;
-
+        
         double cos = Math.cos( k * arg );
         double sin = Math.sin( k * arg );
-
+        
         arrTime[ iR ] += arrFreq[ kR ] * cos - arrFreq[ kC ] * sin;
         arrTime[ iC ] += arrFreq[ kR ] * sin + arrFreq[ kC ] * cos;
-
+        
       } // k
-
+      
     } // i
-
+    
     return arrTime;
   } // reverse
-
+  
   /**
    * The 1-D forward version of the Discrete Fourier Transform (DFT); The input
    * array arrTime is organized by a class called Complex keeping real and
@@ -158,38 +158,38 @@ public class DiscreteFourierTransform extends BasicTransform {
    *         coefficients
    */
   public Complex[ ] forward( Complex[ ] arrTime ) {
-
+    
     int n = arrTime.length;
-
+    
     Complex[ ] arrFreq = new Complex[ n ]; // result
-
+    
     for( int i = 0; i < n; i++ ) {
-
+      
       arrFreq[ i ] = new Complex( ); // 0. , 0.
-
+      
       double arg = -2. * Math.PI * (double)i / (double)n;
-
+      
       for( int k = 0; k < n; k++ ) {
-
+        
         double cos = Math.cos( k * arg );
         double sin = Math.sin( k * arg );
-
+        
         double real = arrTime[ k ].getReal( );
         double imag = arrTime[ k ].getImag( );
-
+        
         arrFreq[ i ].addReal( real * cos - imag * sin );
         arrFreq[ i ].addImag( real * sin + imag * cos );
-
+        
       } // k
-
-      arrFreq[ i ].mulReal(  1. / (double)n );
-      arrFreq[ i ].mulImag(  1. / (double)n );
-
+      
+      arrFreq[ i ].mulReal( 1. / (double)n );
+      arrFreq[ i ].mulImag( 1. / (double)n );
+      
     } // i
-
+    
     return arrFreq;
   } // forward
-
+  
   /**
    * The 1-D reverse version of the Discrete Fourier Transform (DFT); The input
    * array arrFreq is organized by a class called Complex keeping real and
@@ -204,34 +204,34 @@ public class DiscreteFourierTransform extends BasicTransform {
    * @return array of type Complex keeping coefficients of tiem domain
    */
   public Complex[ ] reverse( Complex[ ] arrFreq ) {
-
+    
     int n = arrFreq.length;
     Complex[ ] arrTime = new Complex[ n ]; // result
-
+    
     for( int i = 0; i < n; i++ ) {
-
+      
       arrTime[ i ] = new Complex( ); // 0. , 0. 
-
+      
       double arg = 2. * Math.PI * (double)i / (double)n;
-
+      
       for( int k = 0; k < n; k++ ) {
-
+        
         double cos = Math.cos( k * arg );
         double sin = Math.sin( k * arg );
-
+        
         double real = arrFreq[ k ].getReal( );
         double imag = arrFreq[ k ].getImag( );
-
+        
         arrTime[ i ].addReal( real * cos - imag * sin );
         arrTime[ i ].addImag( real * sin + imag * cos );
-
+        
       } // k
-
+      
     } // i
-
+    
     return arrTime;
   } // reverse
-
+  
   /**
    * The 2-D forward version of the Discrete Fourier Transform (DFT); The input
    * array matTime is organized by real and imaginary parts of a complex number
@@ -249,7 +249,7 @@ public class DiscreteFourierTransform extends BasicTransform {
   public double[ ][ ] forward( double[ ][ ] matTime ) {
     return null;
   } // forward
-
+  
   /**
    * The 2-D reverse version of the Discrete Fourier Transform (DFT); The input
    * array matFreq is organized by real and imaginary parts of a complex number
@@ -267,7 +267,7 @@ public class DiscreteFourierTransform extends BasicTransform {
   public double[ ][ ] reverse( double[ ][ ] matFreq ) {
     return null;
   } // reverse
-
+  
   /**
    * The 3-D forward version of the Discrete Fourier Transform (DFT);
    * 
@@ -279,7 +279,7 @@ public class DiscreteFourierTransform extends BasicTransform {
   public double[ ][ ][ ] forward( double[ ][ ][ ] spcTime ) {
     return null;
   } // forward
-
+  
   /**
    * The 3-D reverse version of the Discrete Fourier Transform (DFT);
    * 
@@ -291,6 +291,5 @@ public class DiscreteFourierTransform extends BasicTransform {
   public double[ ][ ][ ] reverse( double[ ][ ][ ] spcHilb ) {
     return null;
   } // reverse
-
-
+  
 } // class

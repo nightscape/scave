@@ -30,7 +30,7 @@ package math.jwave.exc;
  * @author Christian Scheiblich
  */
 public class JWaveException extends Throwable {
-
+  
   /**
    * Generated serial version ID for this exception
    * 
@@ -38,12 +38,12 @@ public class JWaveException extends Throwable {
    * @author Christian Scheiblich
    */
   private static final long serialVersionUID = -4165486739091019056L;
-
+  
   /**
    * Member var for the stored exception message
    */
   protected String _message; // exception message
-
+  
   /**
    * Constructor for storing a handed exception message
    * 
@@ -58,7 +58,7 @@ public class JWaveException extends Throwable {
     _message += message; // add message
     _message += "\n"; // break line
   } // TransformException
-
+  
   /**
    * Copy constructor; use this for a quick fix of sub types
    * 
@@ -70,7 +70,7 @@ public class JWaveException extends Throwable {
   public JWaveException( Exception e ) {
     _message = e.getMessage( );
   } // TransformException
-
+  
   /**
    * Returns the stored exception message as a string
    * 
@@ -82,7 +82,7 @@ public class JWaveException extends Throwable {
   public String getMessage( ) {
     return _message;
   } // getMessage
-
+  
   /**
    * Displays the stored exception message at console out
    * 
@@ -92,7 +92,7 @@ public class JWaveException extends Throwable {
   public void showMessage( ) {
     System.out.println( _message );
   } // showMessage
-
+  
   /**
    * Nuke the run and print stack trace
    * 
@@ -118,5 +118,5 @@ public class JWaveException extends Throwable {
     this.showMessage( );
     this.printStackTrace( );
   } // nuke
-
+  
 } // class

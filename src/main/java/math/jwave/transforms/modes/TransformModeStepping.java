@@ -27,7 +27,6 @@ package math.jwave.transforms.modes;
 import math.jwave.exc.JWaveException;
 import math.jwave.exc.JWaveFailure;
 
-
 /**
  * Class for indicating that there will be a stepping from either the
  * base level of the normal space or taking the Hilbert space as a

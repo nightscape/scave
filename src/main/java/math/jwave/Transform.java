@@ -34,7 +34,7 @@ import math.jwave.transforms.BasicTransform;
  * @author Christian Scheiblich
  */
 public class Transform {
-
+  
   /**
    * Transform object of type base class
    */
@@ -65,16 +65,13 @@ public class Transform {
       
       // TODO realize the level transform in GOOD Software Engineering style
       
-//      ( (WaveletTransform)_transform ).set_iteration( iteration );
- 
+      //      ( (WaveletTransform)_transform ).set_iteration( iteration );
+      
     } else {
-      throw new IllegalArgumentException(
-          "Can't use transform :" + transform.getClass( )
-              + " with a specific level decomposition ;"
-              +	" use Transform( TransformI transform ) constructor instead." );
+      throw new IllegalArgumentException( "Can't use transform :" + transform.getClass( ) + " with a specific level decomposition ;" + " use Transform( TransformI transform ) constructor instead." );
     }
   } // Transform
-
+  
   /**
    * Performs the forward transform of the specified BasicWave object.
    * 
@@ -87,7 +84,7 @@ public class Transform {
   public double[ ] forward( double[ ] arrTime ) {
     return _transform.forward( arrTime );
   } // forward
-
+  
   /**
    * Performs the reverse transform of the specified BasicWave object.
    * 
@@ -100,8 +97,7 @@ public class Transform {
   public double[ ] reverse( double[ ] arrFreq ) {
     return _transform.reverse( arrFreq );
   } // reverse
-
-
+  
   /**
    * Performs the forward transform from time domain to frequency or Hilbert
    * domain for a given array depending on the used transform algorithm by
@@ -114,9 +110,9 @@ public class Transform {
    * @return coefficients of 1-D frequency or Hilbert domain
    */
   public Complex[ ] forward( Complex[ ] arrTime ) {
-    return ((BasicTransform)_transform).forward( arrTime );
+    return ( (BasicTransform)_transform ).forward( arrTime );
   } // forward
-
+  
   /**
    * Performs the reverse transform from frequency or Hilbert domain to time
    * domain for a given array depending on the used transform algorithm by
@@ -129,7 +125,7 @@ public class Transform {
    * @return coefficients of 1-D time domain
    */
   public Complex[ ] reverse( Complex[ ] arrFreq ) {
-    return ((BasicTransform)_transform).reverse( arrFreq );
+    return ( (BasicTransform)_transform ).reverse( arrFreq );
   } // reverse
   
   /**
@@ -144,7 +140,7 @@ public class Transform {
   public double[ ][ ] forward( double[ ][ ] matrixTime ) {
     return _transform.forward( matrixTime );
   } // forward
-
+  
   /**
    * Performs the 2-D reverse transform of the specified BasicWave object.
    * 
@@ -157,7 +153,7 @@ public class Transform {
   public double[ ][ ] reverse( double[ ][ ] matrixFreq ) {
     return _transform.reverse( matrixFreq );
   } // reverse
-
+  
   /**
    * Performs the 3-D forward transform of the specified BasicWave object.
    * 
@@ -170,7 +166,7 @@ public class Transform {
   public double[ ][ ][ ] forward( double[ ][ ][ ] spaceTime ) {
     return _transform.forward( spaceTime );
   } // forward
-
+  
   /**
    * Performs the 3-D reverse transform of the specified BasicWave object.
    * 

@@ -27,7 +27,6 @@ package math.jwave.transforms.modes;
 import math.jwave.exc.JWaveException;
 import math.jwave.exc.JWaveFailure;
 
-
 /**
  * Class for indicating that there will be a starting level of transform
  * and an end level of the transform, which allows for specialized
@@ -38,7 +37,6 @@ import math.jwave.exc.JWaveFailure;
  *
  */
 public class TransformModeLeveling extends TransformMode {
-
   
   /**
    * Hand to integer to allow for going from a certain start level to a certain
@@ -63,10 +61,10 @@ public class TransformModeLeveling extends TransformMode {
     
     if( _fromLevel < _toLevel )
       _steps = _toLevel - _fromLevel; // positive steps
-    
+      
     if( _toLevel < _fromLevel )
       _steps = _fromLevel - _toLevel; // positive steps
-    
+      
   }
   
 }

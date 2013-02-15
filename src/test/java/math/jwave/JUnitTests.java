@@ -25,7 +25,6 @@
 package math.jwave;
 
 import static org.junit.Assert.assertEquals;
-
 import math.jwave.Transform;
 import math.jwave.datatypes.Complex;
 import math.jwave.exc.JWaveException;
@@ -34,9 +33,7 @@ import math.jwave.transforms.wavelets.Coif06;
 import math.jwave.transforms.wavelets.Daub02;
 import math.jwave.transforms.wavelets.Haar02;
 import math.jwave.transforms.wavelets.Wavelet;
-
 import org.junit.Test;
-
 
 /**
  * Tests for the class math.jwave.Transform.
@@ -45,29 +42,29 @@ import org.junit.Test;
  * @author Christian Scheiblich
  */
 public class JUnitTests {
-
+  
   public void assertArray( Complex[ ] expected, Complex[ ] actual, double delta ) {
-
+    
     int expectedLength = expected.length;
     int actualLength = actual.length;
-
+    
     assertEquals( expectedLength, actualLength );
-
+    
     for( int c = 0; c < expectedLength; c++ ) {
-
+      
       double expectedReal = expected[ c ].getReal( );
       double expectedImag = expected[ c ].getImag( );
-
+      
       double actualReal = actual[ c ].getReal( );
       double actualImag = actual[ c ].getImag( );
-
+      
       assertEquals( expectedReal, actualReal, delta );
       assertEquals( expectedImag, actualImag, delta );
-
+      
     } // c    
-
+    
   } // assertArray
-
+  
   /**
    * Test method to check the rounding error of several forward and reverse
    * transforms.
@@ -78,7 +75,7 @@ public class JUnitTests {
    */
   @Test
   public void testRoundingHaar02FWT( ) throws JWaveException {
-
+    
     //    Performing: 1000000000 forward and reverse transforms ...
     //    0%-------------------------------------50%----------------------------------100%
     //    oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
@@ -94,18 +91,20 @@ public class JUnitTests {
     //
     //    Relative error [%] ...
     //    time domain:    1.5700924593797794E-5 1.5700924593797794E-5 
-
+    
     System.out.println( "" );
     System.out.println( "testRoundingHaar02FWT" );
-
+    
     double delta = 1.e-8;
-
-    double[ ] arrTime = { 1., 1. };
-
+    
+    double[ ] arrTime = {
+    1., 1.
+    };
+    
     testFastBasicTransformRounding( arrTime, new Haar02( ), delta );
-
+    
   } // testRounding
-
+  
   /**
    * Test method to check the rounding error of several forward and reverse
    * transforms.
@@ -116,7 +115,7 @@ public class JUnitTests {
    */
   @Test
   public void testRoundingDaub04FWT( ) throws JWaveException {
-
+    
     //    Performing: 10000000 forward and reverse transforms ...
     //    0%-------------------------------------50%----------------------------------100%
     //    oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
@@ -132,18 +131,20 @@ public class JUnitTests {
     //
     //    Relative error [%] ...
     //    time domain:    4.474198789239381E-12 4.529709940470639E-12 4.474198789239381E-12 4.529709940470639E-12 
-
+    
     System.out.println( "" );
     System.out.println( "testRoundingDaub04FWT" );
-
+    
     double delta = 1.e-8;
-
-    double[ ] arrTime = { 1., 1., 1., 1. };
-
+    
+    double[ ] arrTime = {
+    1., 1., 1., 1.
+    };
+    
     testFastBasicTransformRounding( arrTime, new Daub02( ), delta );
-
+    
   } // testRounding
-
+  
   /**
    * Test method to check the rounding error of several forward and reverse
    * transforms.
@@ -154,7 +155,7 @@ public class JUnitTests {
    */
   @Test
   public void testRoundingCoif06FWT( ) throws JWaveException {
-
+    
     //    Performing: 10000000 forward and reverse transforms ...
     //
     //    Input ...
@@ -168,18 +169,20 @@ public class JUnitTests {
     //
     //    Relative error [%] ...
     //    time domain:    3.1086244689504383E-13 2.4424906541753444E-13 5.10702591327572E-13 2.4424906541753444E-13 3.3306690738754696E-13 2.220446049250313E-13  
-
+    
     System.out.println( "" );
     System.out.println( "testRoundingCoif06FWT" );
-
+    
     double delta = 1.e-8;
-
-    double[ ] arrTime = { 1., 1., 1., 1., 1., 1. };
-
+    
+    double[ ] arrTime = {
+    1., 1., 1., 1., 1., 1.
+    };
+    
     testFastBasicTransformRounding( arrTime, new Coif06( ), delta );
-
+    
   } // testRounding
-
+  
   /**
    * Test method to check the rounding error of several forward and reverse
    * transforms.
@@ -188,27 +191,25 @@ public class JUnitTests {
    * @author Christian Scheiblich
    * @throws JWaveException 
    */
-  public void testFastBasicTransformRounding( double[ ] arr, Wavelet wavelet,
-      double delta ) throws JWaveException {
-
+  public void testFastBasicTransformRounding( double[ ] arr, Wavelet wavelet, double delta ) throws JWaveException {
+    
     long noOfSteps = 10000000;
-
+    
     noOfSteps = 1000;
-
+    
     double[ ] arrTime = arr;
-
+    
     showTime( arrTime );
-
+    
     double[ ] arrTimeRound = new double[ arrTime.length ];
     for( int c = 0; c < arrTime.length; c++ )
       arrTimeRound[ c ] = arrTime[ c ];
-
+    
     Transform t = new Transform( new FastWaveletTransform( wavelet ) );
-
+    
     System.out.println( "" );
     System.out.println( "" );
-    System.out.print( "Performing: " + noOfSteps
-        + " forward and reverse transforms ..." );
+    System.out.print( "Performing: " + noOfSteps + " forward and reverse transforms ..." );
     // Bar bar = new Bar( new BarHandlerOs( noOfSteps ) );
     for( long s = 0; s < noOfSteps; s++ ) {
       arrTimeRound = t.reverse( t.forward( arrTimeRound ) );
@@ -216,91 +217,88 @@ public class JUnitTests {
     } // s
     System.out.println( "" );
     System.out.println( "" );
-
+    
     assertArray( arrTime, arrTimeRound, delta );
-
+    
     System.out.println( "Input ..." );
     showTime( arrTime );
     System.out.println( "" );
-
+    
     System.out.println( "Result ..." );
     showTime( arrTimeRound );
     System.out.println( "" );
-
+    
     double[ ] arrTimeErrorAbs = new double[ arrTimeRound.length ];
     for( int c = 0; c < arrTimeRound.length; c++ )
       arrTimeErrorAbs[ c ] = Math.abs( arrTimeRound[ c ] - arrTime[ c ] );
-
+    
     System.out.println( "Absolute error" );
     showTime( arrTimeErrorAbs );
     System.out.println( "" );
-
+    
     double[ ] arrTimeErrorRel = new double[ arrTimeRound.length ];
     for( int c = 0; c < arrTimeRound.length; c++ )
-      arrTimeErrorRel[ c ] = Math.abs( ( arrTimeRound[ c ] - arrTime[ c ] )
-          * 100. / arrTime[ c ] );
-
+      arrTimeErrorRel[ c ] = Math.abs( ( arrTimeRound[ c ] - arrTime[ c ] ) * 100. / arrTime[ c ] );
+    
     System.out.println( "Relative error [%] ..." );
     showTime( arrTimeErrorRel );
     System.out.println( "" );
-
+    
   } // testRounding
-
+  
   protected void assertArray( double[ ] expected, double[ ] actual, double delta ) {
     for( int i = 0; i < expected.length; i++ )
       assertEquals( expected[ i ], actual[ i ], delta );
   } // assertMatrix
-
-  protected void assertMatrix( double[ ][ ] expected, double[ ][ ] actual,
-      double delta ) {
+  
+  protected void assertMatrix( double[ ][ ] expected, double[ ][ ] actual, double delta ) {
     for( int i = 0; i < expected.length; i++ )
       for( int j = 0; j < expected[ i ].length; j++ )
         assertEquals( expected[ i ][ j ], actual[ i ][ j ], delta );
   } // assertMatrix
-
-  protected void assertSpace( double[ ][ ][ ] expected, double[ ][ ][ ] actual,
-      double delta ) {
+  
+  protected void assertSpace( double[ ][ ][ ] expected, double[ ][ ][ ] actual, double delta ) {
     for( int i = 0; i < expected.length; i++ )
       for( int j = 0; j < expected[ i ].length; j++ )
         for( int k = 0; k < expected[ i ][ j ].length; k++ )
           assertEquals( expected[ i ][ j ][ k ], actual[ i ][ j ][ k ], delta );
   } // assertSpace
-
+  
   protected void showTime( double[ ] arrTime ) {
     System.out.print( "time domain: " + "\t" + "\t" );
     for( int c = 0; c < arrTime.length; c++ )
       System.out.print( arrTime[ c ] + " " );
     System.out.println( "" );
   } // showTime
-
+  
   protected void showFreq( double[ ] arrFreq ) {
     System.out.print( "frequency domain: " + "\t" );
     for( int c = 0; c < arrFreq.length; c++ )
       System.out.print( arrFreq[ c ] + " " );
     System.out.println( "" );
   } // showHilb
-
+  
   protected void showHilb( double[ ] arrHilb ) {
     System.out.print( "Hilbert domain: " + "\t" );
     for( int c = 0; c < arrHilb.length; c++ )
       System.out.print( arrHilb[ c ] + " " );
     System.out.println( "" );
   } // showHilb
-
+  
   protected void showTime( Complex[ ] arrTime ) {
     System.out.print( "time domain: " + "\t" + "\t" );
     for( int c = 0; c < arrTime.length; c++ )
       System.out.print( arrTime[ c ].toString( ) + " " );
     System.out.println( "" );
   } // showTime
-
+  
   protected void showFreq( Complex[ ] arrFreq ) {
     System.out.print( "frequency domain: " + "\t" );
     for( int c = 0; c < arrFreq.length; c++ )
       System.out.print( arrFreq[ c ].toString( ) + " " );
     System.out.println( "" );
   } // showHilb  
-
+  
   protected void showTime( double[ ][ ] matrixTime ) {
     System.out.println( "time domain: " + "\t" );
     for( int i = 0; i < matrixTime.length; i++ ) {
@@ -310,7 +308,7 @@ public class JUnitTests {
     }
     System.out.println( "" );
   } // showTime 
-
+  
   protected void showFreq( double[ ][ ] matrixFreq ) {
     System.out.println( "frequency domain: " + "\t" );
     for( int i = 0; i < matrixFreq.length; i++ ) {
@@ -320,7 +318,7 @@ public class JUnitTests {
     }
     System.out.println( "" );
   } // showFreq
-
+  
   protected void showHilb( double[ ][ ] matrixHilb ) {
     System.out.println( "Hilbert domain: " + "\t" );
     for( int i = 0; i < matrixHilb.length; i++ ) {
@@ -330,7 +328,7 @@ public class JUnitTests {
     }
     System.out.println( "" );
   } // showHilb
-
+  
   protected void showTime( double[ ][ ][ ] spaceTime ) {
     System.out.println( "time domain: " + "\t" );
     for( int i = 0; i < spaceTime.length; i++ ) {
@@ -343,7 +341,7 @@ public class JUnitTests {
     }
     System.out.println( "" );
   } // showTime   
-
+  
   protected void showFreq( double[ ][ ][ ] spaceTime ) {
     System.out.println( "frequency domain: " + "\t" );
     for( int i = 0; i < spaceTime.length; i++ ) {
@@ -356,7 +354,7 @@ public class JUnitTests {
     }
     System.out.println( "" );
   } // showFreq   
-
+  
   protected void showHilb( double[ ][ ][ ] spaceTime ) {
     System.out.println( "Hilbert domain: " + "\t" );
     for( int i = 0; i < spaceTime.length; i++ ) {
@@ -369,5 +367,5 @@ public class JUnitTests {
     }
     System.out.println( "" );
   } // showHilb   
-
+  
 } // class

@@ -30,7 +30,7 @@ package math.jwave.exc;
  * @author Christian Scheiblich
  */
 public class JWaveFailure extends JWaveException {
-
+  
   /**
    * Generated serial ID for this failure
    * 
@@ -38,7 +38,7 @@ public class JWaveFailure extends JWaveException {
    * @author Christian Scheiblich
    */
   private static final long serialVersionUID = 5471588833755939370L;
-
+  
   /**
    * Constructor taking a failure message
    * 
@@ -50,5 +50,5 @@ public class JWaveFailure extends JWaveException {
   public JWaveFailure( String message ) {
     super( message );
   } // TransformFailure
-
+  
 } // class

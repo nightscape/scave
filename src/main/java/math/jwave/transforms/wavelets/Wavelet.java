@@ -32,22 +32,22 @@ package math.jwave.transforms.wavelets;
  * @author Christian Scheiblich
  */
 public abstract class Wavelet implements WaveletInterface {
-
+  
   /**
    * minimal wavelength of the used wavelet and scaling coefficients
    */
   protected int _waveLength;
-
+  
   /**
    * coefficients of the wavelet; wavelet function
    */
   protected double[ ] _coeffs;
-
+  
   /**
    * coefficients of the scales; scaling function
    */
   protected double[ ] _scales;
-
+  
   /**
    * Constructor; predefine members to init values
    * 
@@ -59,7 +59,7 @@ public abstract class Wavelet implements WaveletInterface {
     _coeffs = null;
     _scales = null;
   } // Wavelet
-
+  
   /**
    * Performs the forward transform for the given array from time domain to
    * Hilbert domain and returns a new array of the same size keeping
@@ -73,30 +73,30 @@ public abstract class Wavelet implements WaveletInterface {
    * @return coefficients represented by frequency domain
    */
   public double[ ] forward( double[ ] arrTime ) {
-
+    
     double[ ] arrHilb = new double[ arrTime.length ];
-
+    
     int k = 0;
     int h = arrTime.length >> 1;
-
+    
     for( int i = 0; i < h; i++ ) {
-
+      
       for( int j = 0; j < _waveLength; j++ ) {
-
+        
         k = ( i << 1 ) + j;
         while( k >= arrTime.length )
           k -= arrTime.length;
-
+        
         arrHilb[ i ] += arrTime[ k ] * _scales[ j ]; // low pass filter - energy (approximation)
         arrHilb[ i + h ] += arrTime[ k ] * _coeffs[ j ]; // high pass filter - details 
-
+        
       } // wavelet
-
+      
     } // h
-
+    
     return arrHilb;
   } // forward
-
+  
   /**
    * Performs the reverse transform for the given array from Hilbert domain to
    * time domain and returns a new array of the same size keeping coefficients
@@ -110,29 +110,28 @@ public abstract class Wavelet implements WaveletInterface {
    * @return coefficients represented by time domain
    */
   public double[ ] reverse( double[ ] arrHilb ) {
-
+    
     double[ ] arrTime = new double[ arrHilb.length ];
-
+    
     int k = 0;
     int h = arrHilb.length >> 1;
     for( int i = 0; i < h; i++ ) {
-
+      
       for( int j = 0; j < _waveLength; j++ ) {
-
+        
         k = ( i << 1 ) + j;
         while( k >= arrHilb.length )
           k -= arrHilb.length;
-
-        arrTime[ k ] += ( arrHilb[ i ] * _scales[ j ] + arrHilb[ i + h ]
-            * _coeffs[ j ] ); // adding up details times energy (approximation)
-
+        
+        arrTime[ k ] += ( arrHilb[ i ] * _scales[ j ] + arrHilb[ i + h ] * _coeffs[ j ] ); // adding up details times energy (approximation)
+        
       } // wavelet
-
+      
     } //  h
-
+    
     return arrTime;
   } // reverse
-
+  
   /**
    * Returns the minimal wavelength for the used wavelet.
    * 
@@ -143,7 +142,7 @@ public abstract class Wavelet implements WaveletInterface {
   public int getWaveLength( ) {
     return _waveLength;
   } // getWaveLength
-
+  
   /**
    * Returns the number of coeffs (and scales).
    * 
@@ -154,7 +153,7 @@ public abstract class Wavelet implements WaveletInterface {
   public int getLength( ) {
     return _coeffs.length;
   } // getLength
-
+  
   /**
    * Returns a double array with the coeffs.
    * 
@@ -168,7 +167,7 @@ public abstract class Wavelet implements WaveletInterface {
       coeffs[ c ] = _coeffs[ c ];
     return coeffs;
   } // getCoeffs
-
+  
   /**
    * Returns a double array with the scales (of a wavelet).
    * 
@@ -182,5 +181,5 @@ public abstract class Wavelet implements WaveletInterface {
       scales[ s ] = _scales[ s ];
     return scales;
   } // getScales
-
+  
 } // class

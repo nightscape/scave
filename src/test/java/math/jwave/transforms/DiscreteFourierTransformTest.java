@@ -27,9 +27,7 @@ import math.jwave.JUnitTests;
 import math.jwave.Transform;
 import math.jwave.datatypes.Complex;
 import math.jwave.transforms.DiscreteFourierTransform;
-
 import org.junit.Test;
-
 
 /**
  * Tests for the base methods of class DiscreteFourierTransform.
@@ -38,59 +36,67 @@ import org.junit.Test;
  * @author Christian Scheiblich
  */
 public class DiscreteFourierTransformTest extends JUnitTests {
-
+  
   /**
    * Test method for
    * {@link math.jwave.transforms.DiscreteFourierTransform#forward(double[])}.
    */
   @Test
   public void testForwardDoubleArray( ) {
-
+    
     System.out.println( "" );
     System.out.println( "testDiscreteFourierTransformForwardDoubleArray" );
-
+    
     double delta = 1.e-12;
-
-    double[ ] arrTime = { 1., 1., 1., 1., 1., 1., 1., 1. };
-
+    
+    double[ ] arrTime = {
+    1., 1., 1., 1., 1., 1., 1., 1.
+    };
+    
     showTime( arrTime );
-
+    
     Transform t = new Transform( new DiscreteFourierTransform( ) );
     double[ ] arrFreq = t.forward( arrTime );
-
+    
     showFreq( arrFreq );
-
-    double[ ] expected = { 1., 1., 0., 0., 0., 0, 0., 0. };
+    
+    double[ ] expected = {
+    1., 1., 0., 0., 0., 0, 0., 0.
+    };
     assertArray( expected, arrFreq, delta );
-
+    
   } // testForwardDoubleArray
-
+  
   /**
    * Test method for
    * {@link math.jwave.transforms.DiscreteFourierTransform#reverse(double[])}.
    */
   @Test
   public void testReverseDoubleArray( ) {
-
+    
     System.out.println( "" );
     System.out.println( "testDiscreteFourierTransformReverseDoubleArray" );
-
+    
     double delta = 1e-12;
-
-    double[ ] arrFreq = { 1., 1., 0., 0., 0., 0, 0., 0. };
-
+    
+    double[ ] arrFreq = {
+    1., 1., 0., 0., 0., 0, 0., 0.
+    };
+    
     showHilb( arrFreq );
-
+    
     Transform t = new Transform( new DiscreteFourierTransform( ) );
     double[ ] arrTime = t.reverse( arrFreq );
-
+    
     showTime( arrTime );
-
-    double[ ] expected = { 1., 1., 1., 1., 1., 1., 1., 1. };
+    
+    double[ ] expected = {
+    1., 1., 1., 1., 1., 1., 1., 1.
+    };
     assertArray( expected, arrTime, delta );
-
+    
   } // testReverseDoubleArray
-
+  
   /**
    * Test method for
    * {@link math.jwave.transforms.DiscreteFourierTransform#forward(math.jwave.datatypes.Complex[])}
@@ -98,29 +104,31 @@ public class DiscreteFourierTransformTest extends JUnitTests {
    */
   @Test
   public void testForwardComplexArray( ) {
-
+    
     System.out.println( "" );
     System.out.println( "testDiscreteFourierTransformForwardComplexArray" );
-
+    
     double delta = 1.e-12;
-
-    Complex[ ] arrTime = { new Complex( 1., 1. ), new Complex( 1., 1. ),
-        new Complex( 1., 1. ), new Complex( 1., 1. ) };
-
+    
+    Complex[ ] arrTime = {
+    new Complex( 1., 1. ), new Complex( 1., 1. ), new Complex( 1., 1. ), new Complex( 1., 1. )
+    };
+    
     showTime( arrTime );
-
+    
     Transform t = new Transform( new DiscreteFourierTransform( ) );
     Complex[ ] arrFreq = t.forward( arrTime );
-
+    
     showFreq( arrFreq );
-
-    Complex[ ] expected = { new Complex( 1., 1. ), new Complex( 0., 0. ),
-        new Complex( 0., 0. ), new Complex( 0., 0. ) };
-
+    
+    Complex[ ] expected = {
+    new Complex( 1., 1. ), new Complex( 0., 0. ), new Complex( 0., 0. ), new Complex( 0., 0. )
+    };
+    
     assertArray( expected, arrFreq, delta );
-
+    
   } // testForwardComplexArray
-
+  
   /**
    * Test method for
    * {@link math.jwave.transforms.DiscreteFourierTransform#reverse(math.jwave.datatypes.Complex[])}
@@ -130,24 +138,26 @@ public class DiscreteFourierTransformTest extends JUnitTests {
   public void testReverseComplexArray( ) {
     System.out.println( "" );
     System.out.println( "testDiscreteFourierTransformReverseDoubleArray" );
-
+    
     double delta = 1e-12;
-
-    Complex[ ] arrFreq = { new Complex( 1., 1. ), new Complex( 0., 0. ),
-        new Complex( 0., 0. ), new Complex( 0., 0. ) };
-
+    
+    Complex[ ] arrFreq = {
+    new Complex( 1., 1. ), new Complex( 0., 0. ), new Complex( 0., 0. ), new Complex( 0., 0. )
+    };
+    
     showFreq( arrFreq );
-
+    
     Transform t = new Transform( new DiscreteFourierTransform( ) );
     Complex[ ] arrTime = t.reverse( arrFreq );
-
+    
     showTime( arrTime );
-
-    Complex[ ] expected = { new Complex( 1., 1. ), new Complex( 1., 1. ),
-        new Complex( 1., 1. ), new Complex( 1., 1. ) };
-
+    
+    Complex[ ] expected = {
+    new Complex( 1., 1. ), new Complex( 1., 1. ), new Complex( 1., 1. ), new Complex( 1., 1. )
+    };
+    
     assertArray( expected, arrTime, delta );
-
+    
   } // testReverseComplexArray
-
+  
 }

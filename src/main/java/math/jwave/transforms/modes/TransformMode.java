@@ -86,6 +86,5 @@ public abstract class TransformMode {
     _toLevel = -1; // not used
     _fromLevel = -1; // not used
   }
-
   
 }

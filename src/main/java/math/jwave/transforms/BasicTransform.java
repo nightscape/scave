@@ -35,7 +35,7 @@ import math.jwave.datatypes.Complex;
  * @author Christian Scheiblich
  */
 public abstract class BasicTransform {
-    
+  
   /**
    * Performs the forward transform from time domain to frequency or Hilbert
    * domain for a given array depending on the used transform algorithm by

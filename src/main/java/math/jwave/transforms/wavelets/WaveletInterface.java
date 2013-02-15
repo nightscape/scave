@@ -34,15 +34,15 @@ package math.jwave.transforms.wavelets;
  * 
  */
 public interface WaveletInterface {
-
+  
   public double[ ] forward( double[ ] values );
-
+  
   public double[ ] reverse( double[ ] values );
-
+  
   public int getWaveLength( );
-
+  
   public double[ ] getCoeffs( );
-
+  
   public double[ ] getScales( );
   
 }

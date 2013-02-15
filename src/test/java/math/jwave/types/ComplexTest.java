@@ -26,11 +26,8 @@ package math.jwave.types;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
 import math.jwave.datatypes.Complex;
-
 import org.junit.Test;
-
 
 /**
  * JUnit test cases for class Complex.
@@ -39,7 +36,7 @@ import org.junit.Test;
  * @author Christian Scheiblich
  */
 public class ComplexTest {
-
+  
   /**
    * Test method for {@link math.jwave.datatypes.Complex#getReal()}.
    */
@@ -49,7 +46,7 @@ public class ComplexTest {
     double real = a.getReal( );
     assertEquals( 1., real, 0. );
   }
-
+  
   /**
    * Test method for {@link math.jwave.datatypes.Complex#getImag()}.
    */
@@ -59,7 +56,7 @@ public class ComplexTest {
     double imag = a.getImag( );
     assertEquals( 1., imag, 0. );
   }
-
+  
   /**
    * Test method for {@link math.jwave.datatypes.Complex#getMag()}.
    */
@@ -71,15 +68,15 @@ public class ComplexTest {
     mag = a1.getMag( );
     assertEquals( 2., mag, 0. );
   }
-
+  
   /**
    * Test method for {@link math.jwave.datatypes.Complex#getPhi()}.
    */
   @Test
   public void testGetPhi( ) {
-
+    
     double phi = 0.;
-
+    
     // 1. quarter
     Complex a1 = new Complex( 1., 0. );
     phi = a1.getPhi( );
@@ -90,7 +87,7 @@ public class ComplexTest {
     Complex c1 = new Complex( 0., 1. );
     phi = c1.getPhi( );
     assertEquals( 90., phi, 0. );
-
+    
     // 2. quarter
     Complex a2 = new Complex( -1., 1. );
     phi = a2.getPhi( );
@@ -98,7 +95,7 @@ public class ComplexTest {
     Complex b2 = new Complex( -1., 0. );
     phi = b2.getPhi( );
     assertEquals( 180., phi, 0. );
-
+    
     // 3. quarter
     Complex a3 = new Complex( -1., -1. );
     phi = a3.getPhi( );
@@ -106,14 +103,14 @@ public class ComplexTest {
     Complex b3 = new Complex( 0., -1. );
     phi = b3.getPhi( );
     assertEquals( 270., phi, 0. );
-
+    
     // 4. quarter
     Complex a4 = new Complex( 1., -1. );
     phi = a4.getPhi( );
     assertEquals( 315., phi, 0. );
-
+    
   }
-
+  
   /**
    * Test method for
    * {@link math.jwave.datatypes.Complex#add(math.jwave.datatypes.Complex)}.
@@ -126,7 +123,7 @@ public class ComplexTest {
     assertEquals( 2., c.getReal( ), 0. );
     assertEquals( 2., c.getImag( ), 0. );
   }
-
+  
   /**
    * Test method for
    * {@link math.jwave.datatypes.Complex#sub(math.jwave.datatypes.Complex)}.
@@ -139,7 +136,7 @@ public class ComplexTest {
     assertEquals( 1., c.getReal( ), 0. );
     assertEquals( 1., c.getImag( ), 0. );
   }
-
+  
   /**
    * Test method for
    * {@link math.jwave.datatypes.Complex#mul(math.jwave.datatypes.Complex)}.
@@ -152,7 +149,7 @@ public class ComplexTest {
     assertEquals( 0., c.getReal( ), 0. );
     assertEquals( 2., c.getImag( ), 0. );
   }
-
+  
   /**
    * Test method for {@link math.jwave.datatypes.Complex#mul(double)}.
    */
@@ -164,7 +161,7 @@ public class ComplexTest {
     assertEquals( 2., c.getReal( ), 0. );
     assertEquals( 2., c.getImag( ), 0. );
   }
-
+  
   /**
    * Test method for
    * {@link math.jwave.datatypes.Complex#div(math.jwave.datatypes.Complex)}.
@@ -177,7 +174,7 @@ public class ComplexTest {
     assertEquals( 1., c.getReal( ), 0. );
     assertEquals( 1., c.getImag( ), 0. );
   }
-
+  
   /**
    * Test method for {@link math.jwave.datatypes.Complex#div(double)}.
    */
@@ -189,41 +186,41 @@ public class ComplexTest {
     assertEquals( .5, c.getReal( ), 0. );
     assertEquals( .5, c.getImag( ), 0. );
   }
-
+  
   /**
    * Test method for
    * {@link math.jwave.datatypes.Complex#equals(math.jwave.datatypes.Complex)}.
    */
   @Test
   public void testEquals( ) {
-
+    
     boolean isEqual = false;
-
+    
     Complex a = new Complex( 1., 1. );
     Complex b = new Complex( 1., 1. );
     isEqual = a.equals( b );
     assertTrue( isEqual );
-
+    
     Complex c = new Complex( 1., 1. );
     Complex d = new Complex( 1., 2. );
     isEqual = c.equals( d );
     assertFalse( isEqual );
-
+    
     Complex e = new Complex( 1., 2. );
     Complex f = new Complex( 1., 1. );
     isEqual = e.equals( f );
     assertFalse( isEqual );
-
+    
     Complex g = new Complex( 2., 1. );
     Complex h = new Complex( 1., 1. );
     isEqual = g.equals( h );
     assertFalse( isEqual );
-
+    
     Complex i = new Complex( 1., 1. );
     Complex j = new Complex( 2., 1. );
     isEqual = i.equals( j );
     assertFalse( isEqual );
-
+    
   }
-
+  
 }

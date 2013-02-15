@@ -31,7 +31,7 @@ package math.jwave.transforms.wavelets;
  * @author Christian Scheiblich
  */
 public class Lege06 extends Wavelet {
-
+  
   /**
    * Constructor setting up the orthonormal Legendre6 wavelet coeffs and the
    * scales; normed, due to ||*||2 - euclidean norm.
@@ -40,20 +40,20 @@ public class Lege06 extends Wavelet {
    * @author Christian Scheiblich
    */
   public Lege06( ) {
-
+    
     _waveLength = 6;
-
+    
     _scales = new double[ _waveLength ]; // can be done in static way also; faster?
-
+    
     _scales[ 0 ] = -63. / 128. / 1.4142135623730951; // h0
     _scales[ 1 ] = -35. / 128. / 1.4142135623730951; // h1
     _scales[ 2 ] = -30. / 128. / 1.4142135623730951; // h2
     _scales[ 3 ] = -30. / 128. / 1.4142135623730951; // h3
     _scales[ 4 ] = -35. / 128. / 1.4142135623730951; // h4
     _scales[ 5 ] = -63. / 128. / 1.4142135623730951; // h5
-
+    
     _coeffs = new double[ _waveLength ]; // can be done in static way also; faster?
-
+    
     _coeffs[ 0 ] = _scales[ 5 ]; //    h5
     _coeffs[ 1 ] = -_scales[ 4 ]; //  -h4
     _coeffs[ 2 ] = _scales[ 3 ]; //    h3
@@ -61,5 +61,5 @@ public class Lege06 extends Wavelet {
     _coeffs[ 4 ] = _scales[ 1 ]; //    h1
     _coeffs[ 5 ] = -_scales[ 0 ]; //  -h0
   } // Lege06
-
+  
 } // class
