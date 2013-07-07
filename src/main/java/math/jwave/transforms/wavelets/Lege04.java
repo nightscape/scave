@@ -30,6 +30,7 @@ package math.jwave.transforms.wavelets;
  * @date 03.06.2010 21:19:04
  * @author Christian Scheiblich
  */
+@Deprecated
 public class Lege04 extends Wavelet {
   
   /**

@@ -48,16 +48,17 @@ public class Daub04 extends Wavelet {
     double sqrt02 = 1.4142135623730951;
     
     // TODO Get analytical formulation, due to its precision; this is around 1.e-3 only
+    // values are from: http://de.wikipedia.org/wiki/Daubechies-Wavelets
     _scales[ 0 ] = 0.32580343; //  0.32580343
     _scales[ 1 ] = 1.01094572; //  1.01094572
     _scales[ 2 ] = 0.8922014; //  0.8922014
     _scales[ 3 ] = -0.03967503; // -0.03967503
-    _scales[ 4 ] = -0.2645071; // -0.2645071
+    _scales[ 4 ] = -0.26450717; // -0.2645071
     _scales[ 5 ] = 0.0436163; //  0.0436163
     _scales[ 6 ] = 0.0465036; //  0.0465036
     _scales[ 7 ] = -0.01498699; // -0.01498699
     
-    // normalize to square root of 2 for being orthonormal 
+    // divide to square root of 2 for being an orthonormal wavelet (instead of orthogonal) 
     for( int i = 0; i < _waveLength; i++ )
       _scales[ i ] /= sqrt02;
     

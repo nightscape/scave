@@ -30,6 +30,7 @@ package math.jwave.transforms.wavelets;
  * @date 25.03.2010 14:03:20
  * @author Christian Scheiblich
  */
+@Deprecated
 public class Daub03 extends Wavelet {
   
   /**
@@ -43,7 +44,7 @@ public class Daub03 extends Wavelet {
     
     _waveLength = 6;
     
-    double sqrt02 = 1.4142135623730951;
+    double sqrt02 = 1.4142135623730951; // Math.sqrt( 2. )
     double sqrt10 = Math.sqrt( 10. );
     double constA = Math.sqrt( 5. + 2. * sqrt10 );
     

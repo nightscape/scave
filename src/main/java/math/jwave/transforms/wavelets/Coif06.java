@@ -30,6 +30,7 @@ package math.jwave.transforms.wavelets;
  * @date 10.02.2010 16:32:38
  * @author Christian Scheiblich
  */
+@Deprecated
 public class Coif06 extends Wavelet {
   
   /**

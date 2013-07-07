@@ -67,7 +67,8 @@ public class JWave {
    */
   public static void main( String[ ] args ) {
     
-    String waveletTypeList = "Haar02, Lege02, Daub02, Lege04, Daub03, Lege06, Coif06, Daub04";
+//    String waveletTypeList = "Haar02, Daub02, Daub03, Daub04, Lege02, Lege04, Lege06, Coif06";
+    String waveletTypeList = "Haar02, Daub02, Daub04, Lege02";
     
     if( args.length < 2 || args.length > 3 ) {
       System.err.println( "usage: JWave [transformType] {waveletType} {noOfSteps}" );
@@ -84,18 +85,18 @@ public class JWave {
       wavelet = new Haar02( );
     else if( wType.equalsIgnoreCase( "lege02" ) )
       wavelet = new Lege02( );
-    else if( wType.equalsIgnoreCase( "daub04" ) )
+    else if( wType.equalsIgnoreCase( "daub02" ) )
       wavelet = new Daub02( );
+    else if( wType.equalsIgnoreCase( "daub03" ) )
+      wavelet = new Daub03( );
+    else if( wType.equalsIgnoreCase( "daub04" ) )
+      wavelet = new Daub04( );
     else if( wType.equalsIgnoreCase( "lege04" ) )
       wavelet = new Lege04( );
-    else if( wType.equalsIgnoreCase( "daub06" ) )
-      wavelet = new Daub03( );
     else if( wType.equalsIgnoreCase( "lege06" ) )
       wavelet = new Lege06( );
     else if( wType.equalsIgnoreCase( "coif06" ) )
-      wavelet = new Coif06( );
-    else if( wType.equalsIgnoreCase( "daub08" ) )
-      wavelet = new Daub04( );
+      wavelet = new Coif06( );      
     else {
       System.err.println( "usage: JWave [transformType] {waveletType}" );
       System.err.println( "" );

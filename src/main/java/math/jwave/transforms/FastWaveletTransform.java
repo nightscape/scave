@@ -96,7 +96,7 @@ public class FastWaveletTransform extends WaveletTransform {
       arrHilb[ i ] = arrTime[ i ];
     
     int level = 0;
-    int h = arrTime.length;
+    int h = arrHilb.length;
     int minWaveLength = _wavelet.getWaveLength( );
     if( h >= minWaveLength ) {
       
