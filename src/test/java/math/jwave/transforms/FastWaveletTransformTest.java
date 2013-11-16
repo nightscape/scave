@@ -104,7 +104,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   public void testFastBasicTransformForwardHaar02ArrayLong( ) throws JWaveException {
     
     System.out.println( "" );
-    System.out.println( "testFastBasicTransformForwardHaar02Array" );
+    System.out.println( "testFastBasicTransformForwardHaar02ArrayLong" );
     
     double delta = 1.e-12;
     
@@ -130,7 +130,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   public void testFastBasicTransformReverseHaar02ArrayLong( ) throws JWaveException {
     
     System.out.println( "" );
-    System.out.println( "testFastBasicTransformReverseHaar02Array" );
+    System.out.println( "testFastBasicTransformReverseHaar02ArrayLong" );
     
     double delta = 1e-12;
     
@@ -705,7 +705,7 @@ public class FastWaveletTransformTest extends JUnitTests {
     assertArray( expected, arrTime, delta );
     
   }
-  
+   
   /**
    * Test method for {@link math.jwave.Transform#forward(double[])}.
    * @throws JWaveException 
@@ -954,7 +954,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   public void testFastBasicTransformForwardDaub08Array( ) throws JWaveException {
     
     System.out.println( "" );
-    System.out.println( "testFastBasicTransformForwardDaub08Array" );
+    System.out.println( "testFastBasicTransformForwardDaub04Array" );
     
     double delta = 1.e-3;
     
@@ -984,7 +984,7 @@ public class FastWaveletTransformTest extends JUnitTests {
   public void testFastBasicTransformReverseDaub08Array( ) throws JWaveException {
     
     System.out.println( "" );
-    System.out.println( "testFastBasicTransformReverseDaub08Array" );
+    System.out.println( "testFastBasicTransformReverseDaub04Array" );
     
     double delta = 1.e-3;
     
@@ -1005,6 +1005,61 @@ public class FastWaveletTransformTest extends JUnitTests {
     assertArray( expected, arrTime, delta );
     
   }
+  
+  
+  @Test
+  public void testFastBasicTransformForwardDaub04ArrayLong( ) throws JWaveException {
+    
+    System.out.println( "" );
+    System.out.println( "testFastBasicTransformForwardDaub04ArrayLong" );
+    
+    double delta = 1.e-2;
+    
+    double[ ] arrTime = { // array of length 64
+    1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.
+    };
+    
+    showTime( arrTime );
+    
+    Transform t = new Transform( new FastWaveletTransform( new Daub04( ) ) );
+    double[ ] arrHilb = t.forward( arrTime );
+    
+    showHilb( arrHilb );
+    
+    double[ ] expected = { // array of length 64
+    4., 4., 4., 4., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.
+    }; // orthonormal Hilbert space
+    assertArray( expected, arrHilb, delta );
+    
+  }
+  
+  @Test
+  public void testFastBasicTransformReverseDaub04ArrayLong( ) throws JWaveException {
+    
+    System.out.println( "" );
+    System.out.println( "testFastBasicTransformReverseDaub04ArrayLong" );
+    
+    double delta = 1e-2;
+    
+    double[ ] arrHilb = {  // array of length 64
+    4., 4., 4., 4., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.
+    }; // orthonormal Hilbert space
+    
+    showHilb( arrHilb );
+    
+    Transform t = new Transform( new FastWaveletTransform( new Daub04( ) ) );
+    double[ ] arrTime = t.reverse( arrHilb );
+    
+    showTime( arrTime );
+    
+    double[ ] expected = {  // array of length 64
+    1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.
+    
+    };
+    assertArray( expected, arrTime, delta );
+    
+  }
+ 
   
   /**
    * Test method for {@link math.jwave.Transform#forward(double[])}.
