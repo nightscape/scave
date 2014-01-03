@@ -90,45 +90,23 @@ public class WaveletPacketTransform extends WaveletTransform {
    * @author Christian Scheiblich
    * @see math.jwave.transforms.BasicTransform#forward(double[])
    */
-  @Override
-  public double[ ] forward( double[ ] arrTime ) {
+  protected void forwardTransform( double[ ] arrHilb, int h ) {
+    int g = arrHilb.length / h; // 1 -> 2 -> 4 -> 8 -> ...
 
-    double[ ] arrHilb = Arrays.copyOf( arrTime, arrTime.length );
+    for( int p = 0; p < g; p++ ) {
 
-    int level = 0;
-    int k = arrTime.length;
-    int h = arrTime.length;
-    int minWaveLength = _wavelet.getWaveLength( );
-    if( h >= minWaveLength ) {
+      double[ ] iBuf = new double[ h ];
 
-      while( h >= minWaveLength && ( level < _steps || _steps == -1 ) ) {
+      for( int i = 0; i < h; i++ )
+        iBuf[ i ] = arrHilb[ i + ( p * h ) ];
 
-        int g = k / h; // 1 -> 2 -> 4 -> 8 -> ...
+      double[ ] oBuf = _wavelet.forward( iBuf );
 
-        for( int p = 0; p < g; p++ ) {
+      for( int i = 0; i < h; i++ )
+        arrHilb[ i + ( p * h ) ] = oBuf[ i ];
 
-          double[ ] iBuf = new double[ h ];
-
-          for( int i = 0; i < h; i++ )
-            iBuf[ i ] = arrHilb[ i + ( p * h ) ];
-
-          double[ ] oBuf = _wavelet.forward( iBuf );
-
-          for( int i = 0; i < h; i++ )
-            arrHilb[ i + ( p * h ) ] = oBuf[ i ];
-
-        } // packets
-
-        h = h >> 1;
-
-        level++;
-
-      } // levels
-
-    } // if
-
-    return arrHilb;
-  } // forward
+    } // packets
+  }
 
   /**
    * Implementation of the 1-D reverse wavelet packet transform for arrays of

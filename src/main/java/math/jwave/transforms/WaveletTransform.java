@@ -137,6 +137,32 @@ public abstract class WaveletTransform extends BasicTransform {
       throw new JWaveFailure( "WaveletTransfrom#checkConfig -- given steps are not valid: " + _steps );
 
   }
+  @Override
+  public double[ ] forward( double[ ] arrTime ) {
+  
+    double[ ] arrHilb = Arrays.copyOf( arrTime, arrTime.length );
+  
+    int level = 0;
+    int h = arrTime.length;
+    int minWaveLength = _wavelet.getWaveLength( );
+    if( h >= minWaveLength ) {
+  
+      while( h >= minWaveLength && ( level < _steps || _steps == -1 ) ) {
+  
+        forwardTransform( arrHilb, h );
+  
+        h = h >> 1;
+  
+        level++;
+  
+      } // levels
+  
+    } // if
+  
+    return arrHilb;
+  } // forward
+
+  protected abstract void forwardTransform( double[ ] arrTime, int h );
 
   @Override
   public double[ ] reverse( double[ ] arrHilb ) {

@@ -23,7 +23,6 @@
  */
 package math.jwave.transforms;
 
-import java.util.Arrays;
 import math.jwave.exc.JWaveException;
 import math.jwave.transforms.wavelets.Wavelet;
 
@@ -89,38 +88,17 @@ public class FastWaveletTransform extends WaveletTransform {
    * @author Christian Scheiblich
    * @see math.jwave.transforms.BasicTransform#forward(double[])
    */
-  @Override
-  public double[ ] forward( double[ ] arrTime ) {
+  protected void forwardTransform( double[ ] arrHilb, int h ) {
+    double[ ] iBuf = new double[ h ];
 
-    double[ ] arrHilb = Arrays.copyOf( arrTime, arrTime.length );
+    for( int i = 0; i < h; i++ )
+      iBuf[ i ] = arrHilb[ i ];
 
-    int level = 0;
-    int h = arrHilb.length;
-    int minWaveLength = _wavelet.getWaveLength( );
-    if( h >= minWaveLength ) {
+    double[ ] oBuf = _wavelet.forward( iBuf );
 
-      while( h >= minWaveLength && ( level < _steps || _steps == -1 ) ) {
-
-        double[ ] iBuf = new double[ h ];
-
-        for( int i = 0; i < h; i++ )
-          iBuf[ i ] = arrHilb[ i ];
-
-        double[ ] oBuf = _wavelet.forward( iBuf );
-
-        for( int i = 0; i < h; i++ )
-          arrHilb[ i ] = oBuf[ i ];
-
-        h = h >> 1;
-
-        level++;
-
-      } // levels
-
-    } // if
-
-    return arrHilb;
-  } // forward
+    for( int i = 0; i < h; i++ )
+      arrHilb[ i ] = oBuf[ i ];
+  }
 
   /**
    * Performs the 1-D reverse transform for arrays of dim N from Hilbert domain
