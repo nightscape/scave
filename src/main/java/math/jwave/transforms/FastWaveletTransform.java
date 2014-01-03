@@ -23,6 +23,7 @@
  */
 package math.jwave.transforms;
 
+import java.util.Arrays;
 import math.jwave.exc.JWaveException;
 import math.jwave.transforms.wavelets.Wavelet;
 
@@ -34,7 +35,7 @@ import math.jwave.transforms.wavelets.Wavelet;
  * @author Christian Scheiblich
  */
 public class FastWaveletTransform extends WaveletTransform {
-  
+
   /**
    * Constructor receiving a Wavelet object.
    * 
@@ -45,17 +46,17 @@ public class FastWaveletTransform extends WaveletTransform {
    * @throws JWaveException 
    */
   public FastWaveletTransform( Wavelet wavelet ) {
-    
+
     super( wavelet );
-    
+
     try {
       checkConfig( );
     } catch( JWaveException e ) {
       e.printStackTrace( );
     }
-    
+
   } // FastBasicTransform
-  
+
   /**
    * Constructor receiving a Wavelet object.
    * 
@@ -68,17 +69,17 @@ public class FastWaveletTransform extends WaveletTransform {
    * @throws JWaveException 
    */
   public FastWaveletTransform( Wavelet wavelet, int steps ) {
-    
+
     super( wavelet, steps );
-    
+
     try {
       checkConfig( );
     } catch( JWaveException e ) {
       e.printStackTrace( );
     }
-    
+
   } // FastBasicTransform
-  
+
   /**
    * Performs the 1-D forward transform for arrays of dim N from time domain to
    * Hilbert domain for the given array using the Fast Wavelet Transform (FWT)
@@ -90,39 +91,37 @@ public class FastWaveletTransform extends WaveletTransform {
    */
   @Override
   public double[ ] forward( double[ ] arrTime ) {
-    
-    double[ ] arrHilb = new double[ arrTime.length ];
-    for( int i = 0; i < arrTime.length; i++ )
-      arrHilb[ i ] = arrTime[ i ];
-    
+
+    double[ ] arrHilb = Arrays.copyOf( arrTime, arrTime.length );
+
     int level = 0;
     int h = arrHilb.length;
     int minWaveLength = _wavelet.getWaveLength( );
     if( h >= minWaveLength ) {
-      
+
       while( h >= minWaveLength && ( level < _steps || _steps == -1 ) ) {
-        
+
         double[ ] iBuf = new double[ h ];
-        
+
         for( int i = 0; i < h; i++ )
           iBuf[ i ] = arrHilb[ i ];
-        
+
         double[ ] oBuf = _wavelet.forward( iBuf );
-        
+
         for( int i = 0; i < h; i++ )
           arrHilb[ i ] = oBuf[ i ];
-        
+
         h = h >> 1;
-        
+
         level++;
-        
+
       } // levels
-      
+
     } // if
-    
+
     return arrHilb;
   } // forward
-  
+
   /**
    * Performs the 1-D reverse transform for arrays of dim N from Hilbert domain
    * to time domain for the given array using the Fast Wavelet Transform (FWT)
@@ -132,43 +131,16 @@ public class FastWaveletTransform extends WaveletTransform {
    * @author Christian Scheiblich
    * @see math.jwave.transforms.BasicTransform#reverse(double[])
    */
-  @Override
-  public double[ ] reverse( double[ ] arrHilb ) {
-    
-    double[ ] arrTime = new double[ arrHilb.length ];
-    
-    for( int i = 0; i < arrHilb.length; i++ )
-      arrTime[ i ] = arrHilb[ i ];
-    
-    int level = 0;
-    int minWaveLength = _wavelet.getWaveLength( );
-    int h = minWaveLength;
-    //  int h = (int)( arrHilb.length / ( Math.pow( 2, _steps - 1 ) ) ); // added by Pol
-    if( arrHilb.length >= minWaveLength ) {
-      
-      // while( h <= arrTime.length && h >= minWaveLength ) {
-      
-      while( h <= arrTime.length && h >= minWaveLength && ( level < _steps || _steps == -1 ) ) {
-        
-        double[ ] iBuf = new double[ h ];
-        
-        for( int i = 0; i < h; i++ )
-          iBuf[ i ] = arrTime[ i ];
-        
-        double[ ] oBuf = _wavelet.reverse( iBuf );
-        
-        for( int i = 0; i < h; i++ )
-          arrTime[ i ] = oBuf[ i ];
-        
-        h = h << 1;
-        
-        level++;
-        
-      } // levels
-      
-    } // if
-    
-    return arrTime;
-  }// reverse  
-  
+  protected void reverseTransform( double[ ] arrTime, int h ) {
+    double[ ] iBuf = new double[ h ];
+
+    for( int i = 0; i < h; i++ )
+      iBuf[ i ] = arrTime[ i ];
+
+    double[ ] oBuf = _wavelet.reverse( iBuf );
+
+    for( int i = 0; i < h; i++ )
+      arrTime[ i ] = oBuf[ i ];
+  }
+
 } // class

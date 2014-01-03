@@ -24,6 +24,7 @@
  */
 package math.jwave.transforms;
 
+import java.util.Arrays;
 import math.jwave.exc.JWaveError;
 import math.jwave.exc.JWaveException;
 import math.jwave.exc.JWaveFailure;
@@ -36,7 +37,7 @@ import math.jwave.transforms.wavelets.Wavelet;
  *
  */
 public abstract class WaveletTransform extends BasicTransform {
-  
+
   /**
    * The used wavelet for transforming
    * 
@@ -45,7 +46,7 @@ public abstract class WaveletTransform extends BasicTransform {
    *
    */
   protected Wavelet _wavelet;
-  
+
   /**
    * Specifying how the transform should do its job.
    * 
@@ -54,7 +55,7 @@ public abstract class WaveletTransform extends BasicTransform {
    *
    */
   protected TransformMode _transformMode;
-  
+
   /**
    * The steps the Wavelet transform should do. If it is set to -1,
    * the transform algorithms perform the maximum number of steps.
@@ -64,7 +65,7 @@ public abstract class WaveletTransform extends BasicTransform {
    *
    */
   protected int _steps;
-  
+
   /**
    * @author Christian Scheiblich
    * date Feb 6, 2013 4:51:01 PM
@@ -72,13 +73,13 @@ public abstract class WaveletTransform extends BasicTransform {
    * @param wavelet
    */
   protected WaveletTransform( Wavelet wavelet ) {
-    
+
     _wavelet = wavelet;
-    
+
     _steps = -1; // allows for the maximum number of steps
-    
+
   }
-  
+
   /**
    * A Wavelet transform that is reduced to minor steps as given
    * by a positive number.
@@ -91,13 +92,13 @@ public abstract class WaveletTransform extends BasicTransform {
    * @throws JWaveException
    */
   protected WaveletTransform( Wavelet wavelet, int steps ) {
-    
+
     _wavelet = wavelet;
-    
+
     _steps = steps;
-    
+
   }
-  
+
   /**
    * A Wavelet transform that is reduced to some minor steps depending on the
    * supported TransformMode object that handles how to treat the given data.
@@ -110,15 +111,15 @@ public abstract class WaveletTransform extends BasicTransform {
    * @throws JWaveException
    */
   protected WaveletTransform( Wavelet wavelet, TransformMode transformMode ) {
-    
+
     _wavelet = wavelet;
-    
+
     _transformMode = transformMode;
-    
+
     _steps = -1; // allows for the maximum number of steps
-    
+
   }
-  
+
   /**
    * The method checks the configuration of the Wavelet transform.
    * 
@@ -128,13 +129,31 @@ public abstract class WaveletTransform extends BasicTransform {
    * @throws JWaveException
    */
   protected void checkConfig( ) throws JWaveException {
-    
+
     if( _wavelet == null )
       throw new JWaveError( "WaveletTransfrom#checkConfig -- given object Wavelet is null" );
-    
+
     if( _steps == 0 || _steps < -1 ) // allowed: {-1,1,2,3, ...}
       throw new JWaveFailure( "WaveletTransfrom#checkConfig -- given steps are not valid: " + _steps );
-    
+
   }
-  
+
+  @Override
+  public double[ ] reverse( double[ ] arrHilb ) {
+    double[ ] arrTime = Arrays.copyOf( arrHilb, arrHilb.length );
+    int level = 0;
+    int minWaveLength = _wavelet.getWaveLength( );
+    int h = minWaveLength;
+    //  int h = (int)( arrHilb.length / ( Math.pow( 2, _steps - 1 ) ) ); // added by Pol
+    if( arrHilb.length >= minWaveLength ) {
+      while( h <= arrTime.length && h >= minWaveLength && ( level < _steps || _steps == -1 ) ) {
+        reverseTransform( arrTime, h );
+        h = h << 1;
+        level++;
+      } // levels
+    } // if
+    return arrTime;
+  }
+
+  protected abstract void reverseTransform( double[ ] arrTime, int h );
 }
