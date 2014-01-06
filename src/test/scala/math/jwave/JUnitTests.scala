@@ -1,14 +1,12 @@
 package math.jwave
 
-import org.junit.Assert.assertEquals
+import org.junit.Assert._
 import math.jwave.transforms.FastWaveletTransform
 import math.jwave.transforms.wavelets.Coif06
 import math.jwave.transforms.wavelets.Daub02
 import math.jwave.transforms.wavelets.Haar02
 import math.jwave.transforms.wavelets.Wavelet
 import org.junit.Test
-//remove if not needed
-import scala.collection.JavaConversions._
 
 /**
  * Tests for the class math.jwave.Transform.
@@ -97,8 +95,7 @@ class JUnitTests {
     noOfSteps = 1000
     val arrTime = arr
     showTime(arrTime)
-    var arrTimeRound = Array.ofDim[Double](arrTime.length)
-    for (c <- 0 until arrTime.length) arrTimeRound(c) = arrTime(c)
+    var arrTimeRound = arrTime.clone
     val t = new Transform(new FastWaveletTransform(wavelet))
     println("")
     println("")
@@ -115,16 +112,15 @@ class JUnitTests {
     println("Result ...")
     showTime(arrTimeRound)
     println("")
-    val arrTimeErrorAbs = Array.ofDim[Double](arrTimeRound.length)
-    for (c <- 0 until arrTimeRound.length) arrTimeErrorAbs(c) = Math.abs(arrTimeRound(c) - arrTime(c))
+    val arrTimeErrorAbs = arrTimeRound.zip(arrTime).map{ case (a,b) => (a - b).abs }
     println("Absolute error")
     showTime(arrTimeErrorAbs)
     println("")
-    val arrTimeErrorRel = Array.ofDim[Double](arrTimeRound.length)
-    for (c <- 0 until arrTimeRound.length) arrTimeErrorRel(c) = Math.abs((arrTimeRound(c) - arrTime(c)) * 100. / arrTime(c))
+    val arrTimeErrorRel = arrTimeRound.zip(arrTime).map{ case (a,b) => (a - b).abs * 100 / b }
     println("Relative error [%] ...")
     showTime(arrTimeErrorRel)
     println("")
+    assertTrue(arrTimeErrorRel.max < 1.0E-10)
   }
 
   protected def assertArray(expected: Array[Double], actual: Array[Double], delta: Double) {
