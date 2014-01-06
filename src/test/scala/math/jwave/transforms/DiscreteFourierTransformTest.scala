@@ -2,8 +2,8 @@ package math.jwave.transforms
 
 import math.jwave.JUnitTests
 import math.jwave.Transform
-import math.jwave.datatypes.Complex
 import org.junit.Test
+import spire.implicits._
 
 /**
  * Tests for the base methods of class DiscreteFourierTransform.

@@ -1,7 +1,6 @@
 package math.jwave
 
 import org.junit.Assert.assertEquals
-import math.jwave.datatypes.Complex
 import math.jwave.transforms.FastWaveletTransform
 import math.jwave.transforms.wavelets.Coif06
 import math.jwave.transforms.wavelets.Daub02
@@ -18,16 +17,17 @@ import scala.collection.JavaConversions._
  * @author Christian Scheiblich
  */
 class JUnitTests {
+  type Complex = spire.math.Complex[Double]
 
   def assertArray(expected: Array[Complex], actual: Array[Complex], delta: Double) {
     val expectedLength = expected.length
     val actualLength = actual.length
     assertEquals(expectedLength, actualLength)
     for (c <- 0 until expectedLength) {
-      val expectedReal = expected(c).getReal
-      val expectedImag = expected(c).getImag
-      val actualReal = actual(c).getReal
-      val actualImag = actual(c).getImag
+      val expectedReal = expected(c).real
+      val expectedImag = expected(c).imag
+      val actualReal = actual(c).real
+      val actualImag = actual(c).imag
       assertEquals(expectedReal, actualReal, delta)
       assertEquals(expectedImag, actualImag, delta)
     }

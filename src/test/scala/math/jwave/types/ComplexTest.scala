@@ -3,10 +3,8 @@ package math.jwave.types
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
-import math.jwave.datatypes.Complex
 import org.junit.Test
-//remove if not needed
-import scala.collection.JavaConversions._
+import spire.implicits._
 
 /**
  * JUnit test cases for class Complex.
@@ -15,24 +13,25 @@ import scala.collection.JavaConversions._
  * @author Christian Scheiblich
  */
 class ComplexTest {
+  type Complex = spire.math.Complex[Double]
 
   /**
-   * Test method for {@link math.jwave.datatypes.Complex#getReal()}.
+   * Test method for {@link math.jwave.datatypes.Complex#real()}.
    */
   @Test
-  def testGetReal() {
+  def testreal() {
     val a = new Complex(1., 1.)
-    val real = a.getReal
+    val real = a.real
     assertEquals(1., real, 0.)
   }
 
   /**
-   * Test method for {@link math.jwave.datatypes.Complex#getImag()}.
+   * Test method for {@link math.jwave.datatypes.Complex#imag()}.
    */
   @Test
-  def testGetImag() {
+  def testimag() {
     val a = new Complex(1., 1.)
-    val imag = a.getImag
+    val imag = a.imag
     assertEquals(1., imag, 0.)
   }
 
@@ -40,43 +39,11 @@ class ComplexTest {
    * Test method for {@link math.jwave.datatypes.Complex#getMag()}.
    */
   @Test
-  def testGetMag() {
+  def testNorm() {
     var mag = 0.
     val a1 = new Complex(Math.sqrt(2.), Math.sqrt(2.))
-    mag = a1.getMag
-    assertEquals(2., mag, 0.)
-  }
-
-  /**
-   * Test method for {@link math.jwave.datatypes.Complex#getPhi()}.
-   */
-  @Test
-  def testGetPhi() {
-    var phi = 0.
-    val a1 = new Complex(1., 0.)
-    phi = a1.getPhi
-    assertEquals(0., phi, 0.)
-    val b1 = new Complex(1., 1.)
-    phi = b1.getPhi
-    assertEquals(45., phi, 0.)
-    val c1 = new Complex(0., 1.)
-    phi = c1.getPhi
-    assertEquals(90., phi, 0.)
-    val a2 = new Complex(-1., 1.)
-    phi = a2.getPhi
-    assertEquals(135., phi, 0.)
-    val b2 = new Complex(-1., 0.)
-    phi = b2.getPhi
-    assertEquals(180., phi, 0.)
-    val a3 = new Complex(-1., -1.)
-    phi = a3.getPhi
-    assertEquals(225., phi, 0.)
-    val b3 = new Complex(0., -1.)
-    phi = b3.getPhi
-    assertEquals(270., phi, 0.)
-    val a4 = new Complex(1., -1.)
-    phi = a4.getPhi
-    assertEquals(315., phi, 0.)
+    mag = a1.norm
+    assertEquals(4., mag, 0.00000001)
   }
 
   /**
@@ -87,9 +54,9 @@ class ComplexTest {
   def testAdd() {
     val a = new Complex(1., 1.)
     val b = new Complex(1., 1.)
-    val c = a.add(b)
-    assertEquals(2., c.getReal, 0.)
-    assertEquals(2., c.getImag, 0.)
+    val c = a + b
+    assertEquals(2., c.real, 0.)
+    assertEquals(2., c.imag, 0.)
   }
 
   /**
@@ -100,9 +67,9 @@ class ComplexTest {
   def testSub() {
     val a = new Complex(2., 2.)
     val b = new Complex(1., 1.)
-    val c = a.sub(b)
-    assertEquals(1., c.getReal, 0.)
-    assertEquals(1., c.getImag, 0.)
+    val c = a - b
+    assertEquals(1., c.real, 0.)
+    assertEquals(1., c.imag, 0.)
   }
 
   /**
@@ -113,9 +80,9 @@ class ComplexTest {
   def testMulComplex() {
     val a = new Complex(1., 1.)
     val b = new Complex(1., 1.)
-    val c = a.mul(b)
-    assertEquals(0., c.getReal, 0.)
-    assertEquals(2., c.getImag, 0.)
+    val c = a * b
+    assertEquals(0., c.real, 0.)
+    assertEquals(2., c.imag, 0.)
   }
 
   /**
@@ -125,9 +92,9 @@ class ComplexTest {
   def testMulDouble() {
     val a = new Complex(1., 1.)
     val s = 2.
-    val c = a.mul(s)
-    assertEquals(2., c.getReal, 0.)
-    assertEquals(2., c.getImag, 0.)
+    val c = a * s
+    assertEquals(2., c.real, 0.)
+    assertEquals(2., c.imag, 0.)
   }
 
   /**
@@ -138,9 +105,9 @@ class ComplexTest {
   def testDivComplex() {
     val a = new Complex(0., 2.)
     val b = new Complex(1., 1.)
-    val c = a.div(b)
-    assertEquals(1., c.getReal, 0.)
-    assertEquals(1., c.getImag, 0.)
+    val c = a / b
+    assertEquals(1., c.real, 0.)
+    assertEquals(1., c.imag, 0.)
   }
 
   /**
@@ -150,9 +117,9 @@ class ComplexTest {
   def testDivDouble() {
     val a = new Complex(1., 1.)
     val s = 2.
-    val c = a.div(s)
-    assertEquals(.5, c.getReal, 0.)
-    assertEquals(.5, c.getImag, 0.)
+    val c = a / s
+    assertEquals(.5, c.real, 0.)
+    assertEquals(.5, c.imag, 0.)
   }
 
   /**

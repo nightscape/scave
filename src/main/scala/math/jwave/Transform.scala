@@ -1,9 +1,6 @@
 package math.jwave
 
-import math.jwave.datatypes.Complex
 import math.jwave.transforms.BasicTransform
-//remove if not needed
-import scala.collection.JavaConversions._
 
 /**
  * Base class for transforms like DiscreteFourierTransform,
@@ -13,6 +10,7 @@ import scala.collection.JavaConversions._
  * @author Christian Scheiblich
  */
 class Transform(protected var _transform: BasicTransform) {
+  type Complex = spire.math.Complex[Double]
 
   /**
    * Constructor; needs some object like DiscreteFourierTransform,

@@ -1,6 +1,6 @@
 package math.jwave.transforms
 
-import math.jwave.datatypes.Complex
+import spire.implicits._
 
 /**
  * The Discrete Fourier Transform (DFT) is - as the name says - the discrete
@@ -100,18 +100,16 @@ class DiscreteFourierTransform extends BasicTransform {
     val n = arrTime.length
     val arrFreq = Array.ofDim[Complex](n)
     for (i <- 0 until n) {
-      arrFreq(i) = new Complex()
+      arrFreq(i) = new Complex(0., 0.)
       val arg = -2. * Math.PI * i.toDouble / n.toDouble
       for (k <- 0 until n) {
         val cos = Math.cos(k * arg)
         val sin = Math.sin(k * arg)
-        val real = arrTime(k).getReal
-        val imag = arrTime(k).getImag
-        arrFreq(i).addReal(real * cos - imag * sin)
-        arrFreq(i).addImag(real * sin + imag * cos)
+        val real = arrTime(k).real
+        val imag = arrTime(k).imag
+        arrFreq(i) += new Complex(real * cos - imag * sin, real * sin + imag * cos)
       }
-      arrFreq(i).mulReal(1. / n.toDouble)
-      arrFreq(i).mulImag(1. / n.toDouble)
+      arrFreq(i) *= 1. / n.toDouble
     }
     arrFreq
   }
@@ -133,15 +131,14 @@ class DiscreteFourierTransform extends BasicTransform {
     val n = arrFreq.length
     val arrTime = Array.ofDim[Complex](n)
     for (i <- 0 until n) {
-      arrTime(i) = new Complex()
+      arrTime(i) = new Complex(0., 0.)
       val arg = 2. * Math.PI * i.toDouble / n.toDouble
       for (k <- 0 until n) {
         val cos = Math.cos(k * arg)
         val sin = Math.sin(k * arg)
-        val real = arrFreq(k).getReal
-        val imag = arrFreq(k).getImag
-        arrTime(i).addReal(real * cos - imag * sin)
-        arrTime(i).addImag(real * sin + imag * cos)
+        val real = arrFreq(k).real
+        val imag = arrFreq(k).imag
+        arrTime(i) += new Complex(real * cos - imag * sin, real * sin + imag * cos)
       }
     }
     arrTime

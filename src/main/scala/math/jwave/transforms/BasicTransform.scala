@@ -1,6 +1,5 @@
 package math.jwave.transforms
 
-import math.jwave.datatypes.Complex
 
 /**
  * Basic Wave for transformations like Fast Fourier Transform (FFT), Fast
@@ -12,6 +11,7 @@ import math.jwave.datatypes.Complex
  * @author Christian Scheiblich
  */
 abstract class BasicTransform {
+  type Complex = spire.math.Complex[Double]
 
   /**
    * Performs the forward transform from time domain to frequency or Hilbert
