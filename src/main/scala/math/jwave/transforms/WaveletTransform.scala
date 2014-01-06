@@ -1,9 +1,6 @@
 package math.jwave.transforms
 
 import java.util.Arrays
-import math.jwave.exc.JWaveError
-import math.jwave.exc.JWaveException
-import math.jwave.exc.JWaveFailure
 import math.jwave.transforms.modes.TransformMode
 import math.jwave.transforms.wavelets.Wavelet
 import _root_.scala.annotation.tailrec

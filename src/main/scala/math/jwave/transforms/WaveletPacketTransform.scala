@@ -1,6 +1,5 @@
 package math.jwave.transforms
 
-import math.jwave.exc.JWaveException
 import math.jwave.transforms.wavelets.Wavelet
 /**
  * Base class for the forward and reverse Wavelet Packet Transform (WPT) also
