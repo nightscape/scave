@@ -29,7 +29,7 @@ package math.jwave.transforms.wavelets;
  * @date 03.06.2010 09:47:24
  * @author Christian Scheiblich
  */
-public class Haar02Orthogonal extends Wavelet {
+class Haar02Orthogonal extends Wavelet {
   
   /**
    * Constructor setting up the orthogonal Haar wavelet coeffs and the scales;
@@ -37,21 +37,20 @@ public class Haar02Orthogonal extends Wavelet {
    * @date 03.06.2010 09:47:24
    * @author Christian Scheiblich
    */
-  public Haar02Orthogonal( ) {
     
     _waveLength = 2;
     
-    _coeffs = new double[ _waveLength ]; // can be done in static way also; faster?
+    _coeffs = Array[Double]( // can be done in static way also; faster?
     
     // Orthogonal wavelet coefficients; NOT orthonormal, due to missing sqrt(2.) 
-    _coeffs[ 0 ] = 1.; // w0 
-    _coeffs[ 1 ] = -1.; //  w1
+    1.,
+    -1.)
     
-    _scales = new double[ _waveLength ]; // can be done in static way also; faster?
+    _scales = Array[Double]( // can be done in static way also; faster?
     
     // Rule for constructing an orthogonal vector in R^2 -- scales
-    _scales[ 0 ] = -_coeffs[ 1 ]; // -w1 
-    _scales[ 1 ] = _coeffs[ 0 ]; // w0
+    -_coeffs(1),
+    _coeffs(0))
     //
     // Remark on mathematics (perpendicular, orthogonal, and orthonormal):
     // 
@@ -93,8 +92,7 @@ public class Haar02Orthogonal extends Wavelet {
     // _scales[ 0 ] = -_coeffs[ 1 ]; // -w1 
     // _scales[ 1 ] = _coeffs[ 0 ]; // w0
     // The ||.||_2 norm will shrink compared to the input signal's norm.
-    
-  } // Haar02
+  
   
   /**
    * The forward wavelet transform using the Alfred Haar's wavelet. The arrTime
@@ -105,34 +103,24 @@ public class Haar02Orthogonal extends Wavelet {
    * @author Christian Scheiblich
    * @see math.jwave.transforms.wavelets.Wavelet#forward(double[])
    */
-  @Override
-  public double[ ] forward( double[ ] arrTime ) {
-    
-    double[ ] arrHilb = new double[ arrTime.length ];
-    
-    int k = 0;
-    int h = arrTime.length >> 1;
-    
-    for( int i = 0; i < h; i++ ) {
-      
-      for( int j = 0; j < _waveLength; j++ ) {
-        
-        k = ( i << 1 ) + j;
-        if( k >= arrTime.length )
-          k -= arrTime.length;
-        
-        arrHilb[ i ] += arrTime[ k ] * _scales[ j ]; // low pass filter - energy
-        arrHilb[ i + h ] += arrTime[ k ] * _coeffs[ j ]; // high pass filter - details
-        
+
+  override def forward(arrTime: Array[Double]): Array[Double] = {
+    val arrHilb = Array.ofDim[Double](arrTime.length)
+    var k = 0
+    val h = arrTime.length >> 1
+    for (i <- 0 until h; j <- 0 until _waveLength) {
+      k = (i << 1) + j
+      if (k >= arrTime.length) k -= arrTime.length
+ // low pass filter - energy
+      arrHilb(i) += arrTime(k) * _scales(j)
+ // high pass filter - details
+      arrHilb(i + h) += arrTime(k) * _coeffs(j)
         // by each summation, "energy" is added, due to the orthogonal Haar Wavelet.
-        
-      } // wavelet
-      
-    } // h
-    
-    return arrHilb;
-  } // forward
-  
+    }
+    arrHilb
+  }
+
+
   /**
    * The reverse wavelet transform using the Alfred Haar's wavelet. The arrHilb
    * array keeping coefficients of Hilbert domain should be of length 2 to the
@@ -144,31 +132,21 @@ public class Haar02Orthogonal extends Wavelet {
    * @author Christian Scheiblich
    * @see math.jwave.transforms.wavelets.Wavelet#reverse(double[])
    */
-  @Override
-  public double[ ] reverse( double[ ] arrHilb ) {
-    
-    double[ ] arrTime = new double[ arrHilb.length ];
-    
-    int k = 0;
-    int h = arrHilb.length >> 1;
-    for( int i = 0; i < h; i++ ) {
-      
-      for( int j = 0; j < _waveLength; j++ ) {
-        
-        k = ( i << 1 ) + j;
-        if( k >= arrHilb.length )
-          k -= arrHilb.length;
-        
-        arrTime[ k ] += ( arrHilb[ i ] * _scales[ j ] + arrHilb[ i + h ] * _coeffs[ j ] ); // adding up details times energy
-        
-        // The factor .5 gets necessary here to reduce the added "energy" of the forward method
-        arrTime[ k ] *= .5; // correction of the up sampled "energy" -- ||.||_2 euclidean norm
-        
-      } // wavelet
-      
-    } //  h
-    
-    return arrTime;
-  } // reverse
-  
-} // class
+
+  override def reverse(arrHilb: Array[Double]): Array[Double] = {
+    val arrTime = Array.ofDim[Double](arrHilb.length)
+    var k = 0
+    val h = arrHilb.length >> 1
+    for (i <- 0 until h; j <- 0 until _waveLength) {
+      k = (i << 1) + j
+      if (k >= arrHilb.length) k -= arrHilb.length
+       // adding up details times energy
+      arrTime(k) += (arrHilb(i) * _scales(j) + arrHilb(i + h) * _coeffs(j))
+      // The factor .5 gets necessary here to reduce the added "energy" of the forward method
+      // correction of the up sampled "energy" -- ||.||_2 euclidean norm
+      arrTime(k) *= .5
+    }
+    arrTime
+  }
+}
+

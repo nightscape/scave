@@ -33,16 +33,16 @@ package math.jwave.transforms.wavelets;
  * @author Christian Scheiblich
  * 
  */
-public interface WaveletInterface {
+trait WaveletInterface {
   
-  public double[ ] forward( double[ ] values );
+  def forward( values: Array[Double] ): Array[Double]
   
-  public double[ ] reverse( double[ ] values );
+  def reverse( values: Array[Double] ): Array[Double]
   
-  public int getWaveLength( );
+  def getWaveLength( ):Int;
   
-  public double[ ] getCoeffs( );
+  def getCoeffs( ): Array[Double]
   
-  public double[ ] getScales( );
+  def getScales( ): Array[Double]
   
 }

@@ -18,8 +18,6 @@ class FastWaveletTransform(wavelet: Wavelet, steps: Int) extends WaveletTransfor
    * Hilbert domain for the given array using the Fast Wavelet Transform (FWT)
    * algorithm.
    * 
-   * @date 10.02.2010 08:23:24
-   * @author Christian Scheiblich
    * @see math.jwave.transforms.BasicTransform#forward(double[])
    */
   protected def forwardTransform(arrHilb: Array[Double], h: Int) = {
@@ -32,8 +30,6 @@ class FastWaveletTransform(wavelet: Wavelet, steps: Int) extends WaveletTransfor
    * to time domain for the given array using the Fast Wavelet Transform (FWT)
    * algorithm and the selected wavelet.
    * 
-   * @date 10.02.2010 08:23:24
-   * @author Christian Scheiblich
    * @see math.jwave.transforms.BasicTransform#reverse(double[])
    */
 
