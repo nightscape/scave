@@ -10,9 +10,6 @@ import org.junit.Test
 
 /**
  * Tests for the class math.jwave.Transform.
- *
- * @date 10.02.2010 09:43:08
- * @author Christian Scheiblich
  */
 class JUnitTests extends org.scalatest.Matchers {
   type Complex = spire.math.Complex[Double]
