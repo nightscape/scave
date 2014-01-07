@@ -52,23 +52,17 @@ class Wavelet(val wavelength: Int, val coefficients: Array[Double], val scales: 
 
     val arrHilb = new Array[Double](arrTime.length);
 
-    var k = 0;
-    var h = arrTime.length >> 1;
+    val h = arrTime.length >> 1;
 
     for (i <- 0 until h) {
       for (j <- 0 until wavelength) {
-        k = (i << 1) + j;
-        while (k >= arrTime.length)
-          k -= arrTime.length;
+        val k = ((i << 1) + j) % arrTime.length
         arrHilb(i) += arrTime(k) * scales(j) // low pass filter - energy (approximation)
         arrHilb(i + h) += arrTime(k) * coefficients(j) // high pass filter - details 
-
-      } // wavelet
-
-    } // h
-
-    return arrHilb;
-  } // forward
+      }
+    }
+    arrHilb
+  }
 
   /**
    * Performs the reverse transform for the given array from Hilbert domain to
@@ -76,8 +70,6 @@ class Wavelet(val wavelength: Int, val coefficients: Array[Double], val scales: 
    * of time domain and should be of length 2 to the power of p -- length = 2^p
    * where p is a positive integer.
    *
-   * @date 10.02.2010 08:19:24
-   * @author Christian Scheiblich
    * @param arrHilb
    *          array keeping frequency domain coefficients
    * @return coefficients represented by time domain
@@ -86,28 +78,19 @@ class Wavelet(val wavelength: Int, val coefficients: Array[Double], val scales: 
 
     val arrTime = new Array[Double](arrHilb.length)
 
-    var k = 0;
-    var h = arrHilb.length >> 1;
+    val h = arrHilb.length >> 1;
     for (i <- 0 until h) {
       for (j <- 0 until wavelength) {
-        k = (i << 1) + j;
-        while (k >= arrHilb.length)
-          k -= arrHilb.length;
-
+        val k = ((i << 1) + j) % arrHilb.length
         arrTime(k) += (arrHilb(i) * scales(j) + arrHilb(i + h) * coefficients(j)) // adding up details times energy (approximation)
-
-      } // wavelet
-
-    } //  h
-
-    return arrTime;
+      }
+    }
+    arrTime
   }
 
   /**
    * Returns the number of coeffs (and scales).
    *
-   * @date 08.02.2010 13:11:47
-   * @author Christian Scheiblich
    * @return integer representing the number of coeffs.
    */
   def getLength(): Int = coefficients.length;
