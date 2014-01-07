@@ -41,7 +41,7 @@ class Daub03 extends Wavelet {
    * @author Christian Scheiblich
    */
 
-  _waveLength = 6;
+  wavelength = 6;
 
   val sqrt02 = 1.4142135623730951; // Math.sqrt( 2. )
   val sqrt10 = Math.sqrt(10.);

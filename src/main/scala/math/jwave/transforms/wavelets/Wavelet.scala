@@ -31,12 +31,12 @@ import scala.annotation.meta.beanSetter
  * scaling function, the base wavelength, the forward transform method, and the
  * reverse transform method.
  *
- * @param _wavelength minimal wavelength of the used wavelet and scaling coefficients
+ * @param wavelength minimal wavelength of the used wavelet and scaling coefficients
  * @param _coeffs coefficients of the wavelet; wavelet function
  * @param _scales coefficients of the scales; scaling function
  */
 
-abstract class Wavelet(@beanSetter var _waveLength: Int, @beanSetter var _coeffs: Array[Double], @beanSetter var _scales: Array[Double]) extends WaveletInterface {
+class Wavelet(var wavelength: Int, var _coeffs: Array[Double], var _scales: Array[Double]) extends WaveletInterface {
 
   /**
    * Constructor; predefine members to init values
@@ -61,7 +61,7 @@ abstract class Wavelet(@beanSetter var _waveLength: Int, @beanSetter var _coeffs
     var h = arrTime.length >> 1;
 
     for (i <- 0 until h) {
-      for (j <- 0 until _waveLength) {
+      for (j <- 0 until wavelength) {
         k = (i << 1) + j;
         while (k >= arrTime.length)
           k -= arrTime.length;
@@ -94,7 +94,7 @@ abstract class Wavelet(@beanSetter var _waveLength: Int, @beanSetter var _coeffs
     var k = 0;
     var h = arrHilb.length >> 1;
     for (i <- 0 until h) {
-      for (j <- 0 until _waveLength) {
+      for (j <- 0 until wavelength) {
         k = (i << 1) + j;
         while (k >= arrHilb.length)
           k -= arrHilb.length;
@@ -115,7 +115,7 @@ abstract class Wavelet(@beanSetter var _waveLength: Int, @beanSetter var _coeffs
    * @author Christian Scheiblich
    * @return the minimal wavelength for this basic wave
    */
-  def getWaveLength(): Int = _waveLength
+  def getWaveLength(): Int = wavelength
 
   /**
    * Returns the number of coeffs (and scales).

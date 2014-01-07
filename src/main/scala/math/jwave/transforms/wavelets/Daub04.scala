@@ -40,7 +40,7 @@ class Daub04 extends Wavelet {
    * @author Christian Scheiblich
    */
 
-  _waveLength = 8;
+  wavelength = 8;
   // TODO Get analytical formulation, due to its precision; this is around 1.e-3 only
   // values are from: http://de.wikipedia.org/wiki/Daubechies-Wavelets
   val sqrt02 = 1.4142135623730951;

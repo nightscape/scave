@@ -42,7 +42,7 @@ class Coif06 extends Wavelet {
    * @author Christian Scheiblich
    */
 
-  _waveLength = 6; // minimal array size for transform
+  wavelength = 6; // minimal array size for transform
 
   val sqrt15 = Math.sqrt(15.);
 

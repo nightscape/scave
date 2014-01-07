@@ -41,7 +41,7 @@ class Lege06 extends Wavelet {
    * @author Christian Scheiblich
    */
 
-  _waveLength = 6;
+  wavelength = 6;
 
   _scales = Array[Double](
     -63. / 128. / 1.4142135623730951,

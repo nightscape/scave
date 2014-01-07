@@ -11,7 +11,7 @@ package math.jwave.transforms.wavelets;
 @Deprecated
 class Daub02 extends Wavelet {
 
-  _waveLength = 4;
+  wavelength = 4;
   val sqrt3 = Math.sqrt(3.) // 1.7320508075688772
 
   _scales = Array[Double]( // can be done in static way also; faster?

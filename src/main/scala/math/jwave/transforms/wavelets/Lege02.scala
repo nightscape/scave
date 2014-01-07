@@ -43,7 +43,7 @@ class Lege02 extends Wavelet {
    * @author Christian Scheiblich
    */
 
-  _waveLength = 2;
+  wavelength = 2;
 
   _coeffs = Array[Double](
 

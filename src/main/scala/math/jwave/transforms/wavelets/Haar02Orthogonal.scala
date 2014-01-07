@@ -38,7 +38,7 @@ class Haar02Orthogonal extends Wavelet {
    * @author Christian Scheiblich
    */
     
-    _waveLength = 2;
+    wavelength = 2;
     
     _coeffs = Array[Double]( // can be done in static way also; faster?
     
@@ -108,7 +108,7 @@ class Haar02Orthogonal extends Wavelet {
     val arrHilb = Array.ofDim[Double](arrTime.length)
     var k = 0
     val h = arrTime.length >> 1
-    for (i <- 0 until h; j <- 0 until _waveLength) {
+    for (i <- 0 until h; j <- 0 until wavelength) {
       k = (i << 1) + j
       if (k >= arrTime.length) k -= arrTime.length
  // low pass filter - energy
@@ -137,7 +137,7 @@ class Haar02Orthogonal extends Wavelet {
     val arrTime = Array.ofDim[Double](arrHilb.length)
     var k = 0
     val h = arrHilb.length >> 1
-    for (i <- 0 until h; j <- 0 until _waveLength) {
+    for (i <- 0 until h; j <- 0 until wavelength) {
       k = (i << 1) + j
       if (k >= arrHilb.length) k -= arrHilb.length
        // adding up details times energy

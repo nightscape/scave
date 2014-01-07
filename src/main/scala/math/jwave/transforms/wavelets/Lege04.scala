@@ -41,7 +41,7 @@ class Lege04 extends Wavelet {
    * @author Christian Scheiblich
    */
 
-  _waveLength = 4;
+  wavelength = 4;
 
   _scales = Array[Double]( // can be done in static way also; faster?
 
