@@ -26,37 +26,16 @@ package math.jwave.transforms.wavelets;
 /**
  * Legendre's orthonormal wavelet of six coefficients and the scales; normed,
  * due to ||*||2 - euclidean norm.
- *
- * @date 03.06.2010 22:04:35
- * @author Christian Scheiblich
  */
 @Deprecated
-class Lege06 extends Wavelet {
+object Lege06 extends Wavelet(6, Wavelet.coefficientsFromScales(Lege06Constants.scales), Lege06Constants.scales)
 
-  /**
-   * Constructor setting up the orthonormal Legendre6 wavelet coeffs and the
-   * scales; normed, due to ||*||2 - euclidean norm.
-   *
-   * @date 03.06.2010 22:04:36
-   * @author Christian Scheiblich
-   */
-
-  wavelength = 6;
-
-  _scales = Array[Double](
+object Lege06Constants {
+  val scales = Array[Double](
     -63. / 128. / 1.4142135623730951,
     -35. / 128. / 1.4142135623730951,
     -30. / 128. / 1.4142135623730951,
     -30. / 128. / 1.4142135623730951,
     -35. / 128. / 1.4142135623730951,
     -63. / 128. / 1.4142135623730951)
-
-  _coeffs = Array[Double](
-    _scales(5),
-    -_scales(4),
-    _scales(3),
-    -_scales(2),
-    _scales(1),
-    -_scales(0))
-
-} // class
+}

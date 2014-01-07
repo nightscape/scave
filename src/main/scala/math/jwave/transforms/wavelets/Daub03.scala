@@ -26,40 +26,21 @@ package math.jwave.transforms.wavelets;
 /**
  * Ingrid Daubechies' orthonormal wavelet of six coefficients and the scales;
  * normed, due to ||*||2 - euclidean norm.
- *
- * @date 25.03.2010 14:03:20
- * @author Christian Scheiblich
  */
+
 @Deprecated
-class Daub03 extends Wavelet {
+object Daub03 extends Wavelet(6, Wavelet.coefficientsFromScales(Daub03Constants.scales), Daub03Constants.scales)
 
-  /**
-   * Constructor setting up the orthonormal Daubechie6 wavelet coeffs and the
-   * scales; normed, due to ||*||2 - euclidean norm.
-   *
-   * @date 25.03.2010 14:03:20
-   * @author Christian Scheiblich
-   */
-
-  wavelength = 6;
-
+object Daub03Constants {
   val sqrt02 = 1.4142135623730951; // Math.sqrt( 2. )
   val sqrt10 = Math.sqrt(10.);
   val constA = Math.sqrt(5. + 2. * sqrt10);
 
-  _scales = Array[Double](
+  val scales = Array[Double](
     (1. + 1. * sqrt10 + 1. * constA) / 16. / sqrt02,
     (5. + 1. * sqrt10 + 3. * constA) / 16. / sqrt02,
     (10. - 2. * sqrt10 + 2. * constA) / 16. / sqrt02,
     (10. - 2. * sqrt10 - 2. * constA) / 16. / sqrt02,
     (5. + 1. * sqrt10 - 3. * constA) / 16. / sqrt02,
     (1. + 1. * sqrt10 - 1. * constA) / 16. / sqrt02)
-
-  _coeffs = Array[Double](
-    _scales(5),
-    -_scales(4),
-    _scales(3),
-    -_scales(2),
-    _scales(1),
-    -_scales(0))
 }

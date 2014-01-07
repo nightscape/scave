@@ -29,7 +29,9 @@ package math.jwave.transforms.wavelets;
  * @date 08.02.2010 12:46:34
  * @author Christian Scheiblich
  */
-class Haar02 extends Wavelet {
+object Haar02 extends Wavelet(2, Haar02Constants.coefficients, Haar02Constants.scales)
+
+object Haar02Constants {
 
   /**
    * Constructor setting up the orthonormal Haar2 wavelet coeffs and the scales;
@@ -40,15 +42,13 @@ class Haar02 extends Wavelet {
    * @author Christian Scheiblich
    */
 
-  wavelength = 2;
-
-  _coeffs = Array[Double](
+  val coefficients = Array[Double](
 
     1. / 1.4142135623730951,
     -1. / 1.4142135623730951)
-  _scales = Array[Double](
-    -_coeffs(1),
-    _coeffs(0))
+  val scales = Array[Double](
+    -coefficients(1),
+    coefficients(0))
 
   /**
    * The forward wavelet transform using the Alfred Haar's wavelet.

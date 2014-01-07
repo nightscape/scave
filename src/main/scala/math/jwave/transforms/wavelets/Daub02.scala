@@ -8,23 +8,16 @@ package math.jwave.transforms.wavelets;
  * @date 25.03.2010 14:03:20
  * @author Christian Scheiblich
  */
+import Daub02Constants._
 @Deprecated
-class Daub02 extends Wavelet {
+object Daub02 extends Wavelet(4, Wavelet.coefficientsFromScales(scales), scales)
 
-  wavelength = 4;
+object Daub02Constants {
   val sqrt3 = Math.sqrt(3.) // 1.7320508075688772
-
-  _scales = Array[Double]( // can be done in static way also; faster?
+  val scales = Array[Double](
 
     ((1. + sqrt3) / 4.) / 1.4142135623730951,
     ((3. + sqrt3) / 4.) / 1.4142135623730951,
     ((3. - sqrt3) / 4.) / 1.4142135623730951,
     ((1. - sqrt3) / 4.) / 1.4142135623730951)
-
-  _coeffs = Array[Double]( // can be done in static way also; faster?
-
-    _scales(3),
-    -_scales(2),
-    _scales(1),
-    -_scales(0))
 }

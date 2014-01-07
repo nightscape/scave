@@ -26,26 +26,16 @@ package math.jwave.transforms.wavelets;
 /**
  * Ingrid Daubechies' orthonormal wavelet of eight coefficients and the scales;
  * normed, due to ||*||2 - euclidean norm.
- *
- * @date 26.03.2010 07:35:31
- * @author Christian Scheiblich
  */
-class Daub04 extends Wavelet {
+object Daub04 extends Wavelet(8, Wavelet.coefficientsFromScales(Daub04Constants.scales), Daub04Constants.scales)
 
-  /**
-   * Constructor setting up the orthonormal Daubechie6 wavelet coeffs and the
-   * scales; normed, due to ||*||2 - euclidean norm.
-   *
-   * @date 26.03.2010 07:35:31
-   * @author Christian Scheiblich
-   */
+object Daub04Constants {
 
-  wavelength = 8;
   // TODO Get analytical formulation, due to its precision; this is around 1.e-3 only
   // values are from: http://de.wikipedia.org/wiki/Daubechies-Wavelets
-  val sqrt02 = 1.4142135623730951;
+  val sqrt02 = 1.4142135623730951
 
-  _scales = Array[Double](
+  val scales = Array[Double](
     0.32580343,
     1.01094572,
     0.8922014,
@@ -53,18 +43,7 @@ class Daub04 extends Wavelet {
     -0.26450717,
     0.0436163,
     0.0465036,
-    -0.01498699 // divide to square root of 2 for being an orthonormal wavelet (instead of orthogonal) 
+    -0.01498699
+    // divide to square root of 2 for being an orthonormal wavelet (instead of orthogonal) 
     ).map(_ / sqrt02)
-
-  _coeffs = Array[Double](
-
-    _scales(7),
-    -_scales(6),
-    _scales(5),
-    -_scales(4),
-    _scales(3),
-    -_scales(2),
-    _scales(1),
-    -_scales(0))
-
 }

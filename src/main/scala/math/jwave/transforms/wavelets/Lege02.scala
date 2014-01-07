@@ -27,32 +27,15 @@ package math.jwave.transforms.wavelets;
  * Orthonormal Legendre wavelet transform of 2 coefficients based on the
  * Legendre polynomial. But, actually for the smallest Legendre wavelet, the
  * wavelet is the mirrored Haar Wavelet.
- *
- * @date 08.06.2010 09:32:08
- * @author Christian Scheiblich
  */
-class Lege02 extends Wavelet {
+object Lege02 extends Wavelet(2, Lege02Constants.coefficients, Lege02Constants.scales)
 
-  /**
-   * Constructor setting up the orthonormal Legendre 2 wavelet coeffs and the
-   * scales; normed, due to ||*||_2 -- euclidean norm. Actually these
-   * coefficients are the mirrored ones of Alfred Haar's wavelet -- see class
-   * Haar02 and Haar02Orthogonal.
-   *
-   * @date 08.06.2010 09:32:08
-   * @author Christian Scheiblich
-   */
-
-  wavelength = 2;
-
-  _coeffs = Array[Double](
-
+object Lege02Constants {
+  val coefficients = Array[Double](
     -1. / 1.4142135623730951,
     1. / 1.4142135623730951)
 
-  _scales = Array[Double](
-
-    -_coeffs(1),
-    _coeffs(0))
-
-} // class
+  val scales = Array[Double](
+    -coefficients(1),
+    coefficients(0))
+}

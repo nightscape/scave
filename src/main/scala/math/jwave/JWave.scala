@@ -41,7 +41,15 @@ object JWave {
     }
     val wType = args(1)
     var wavelet: Wavelet = null
-    if (wType.equalsIgnoreCase("haar02")) wavelet = new Haar02() else if (wType.equalsIgnoreCase("lege02")) wavelet = new Lege02() else if (wType.equalsIgnoreCase("daub02")) wavelet = new Daub02() else if (wType.equalsIgnoreCase("daub03")) wavelet = new Daub03() else if (wType.equalsIgnoreCase("daub04")) wavelet = new Daub04() else if (wType.equalsIgnoreCase("lege04")) wavelet = new Lege04() else if (wType.equalsIgnoreCase("lege06")) wavelet = new Lege06() else if (wType.equalsIgnoreCase("coif06")) wavelet = new Coif06() else {
+    if (wType.equalsIgnoreCase("haar02")) wavelet = Haar02
+    else if (wType.equalsIgnoreCase("lege02")) wavelet = Lege02
+    else if (wType.equalsIgnoreCase("daub02")) wavelet = Daub02
+    else if (wType.equalsIgnoreCase("daub03")) wavelet = Daub03
+    else if (wType.equalsIgnoreCase("daub04")) wavelet = Daub04
+    else if (wType.equalsIgnoreCase("lege04")) wavelet = Lege04
+    else if (wType.equalsIgnoreCase("lege06")) wavelet = Lege06
+    else if (wType.equalsIgnoreCase("coif06")) wavelet = Coif06
+    else {
       System.err.println("usage: JWave [transformType] {waveletType}")
       System.err.println("")
       System.err.println("available wavelets are " + waveletTypeList)

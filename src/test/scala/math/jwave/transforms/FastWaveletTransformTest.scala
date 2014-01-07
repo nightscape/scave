@@ -26,7 +26,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1.e-12
     val arrTime = Array(1., 1., 1., 1.)
     showTime(arrTime)
-    val t = new Transform(new FastWaveletTransform(new Haar02()))
+    val t = new Transform(new FastWaveletTransform(Haar02))
     val arrHilb = t.forward(arrTime)
     showHilb(arrHilb)
     val expected = Array(2., 0., 0., 0.)
@@ -44,7 +44,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1e-12
     val arrHilb = Array(2., 0., 0., 0.)
     showHilb(arrHilb)
-    val t = new Transform(new FastWaveletTransform(new Haar02()))
+    val t = new Transform(new FastWaveletTransform(Haar02))
     val arrTime = t.reverse(arrHilb)
     showTime(arrTime)
     val expected = Array(1., 1., 1., 1.)
@@ -58,7 +58,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1.e-12
     val arrTime = Array(1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.)
     showTime(arrTime)
-    val t = new Transform(new FastWaveletTransform(new Haar02()))
+    val t = new Transform(new FastWaveletTransform(Haar02))
     val arrHilb = t.forward(arrTime)
     showHilb(arrHilb)
     val expected = Array(8., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.)
@@ -72,7 +72,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1e-12
     val arrHilb = Array(8., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.)
     showHilb(arrHilb)
-    val t = new Transform(new FastWaveletTransform(new Haar02()))
+    val t = new Transform(new FastWaveletTransform(Haar02))
     val arrTime = t.reverse(arrHilb)
     showTime(arrTime)
     val expected = Array(1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.)
@@ -90,7 +90,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1.e-12
     val arrTime = Array(1.2, 2.3, 3.4, 4.5, 5.4, 4.3, 3.2, 2.1)
     showTime(arrTime)
-    val t = new Transform(new FastWaveletTransform(new Haar02()))
+    val t = new Transform(new FastWaveletTransform(Haar02))
     val arrHilb = t.forward(arrTime)
     showHilb(arrHilb)
     val expected = Array(9.333809511662427, -1.2727922061357857, -2.1999999999999997, 2.2, -0.7778174593052021, -0.7778174593052025, 0.7778174593052025, 0.7778174593052023)
@@ -108,7 +108,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1e-12
     val arrHilb = Array(9.333809511662427, -1.2727922061357857, -2.1999999999999997, 2.2, -0.7778174593052021, -0.7778174593052025, 0.7778174593052025, 0.7778174593052023)
     showHilb(arrHilb)
-    val t = new Transform(new FastWaveletTransform(new Haar02()))
+    val t = new Transform(new FastWaveletTransform(Haar02))
     val arrTime = t.reverse(arrHilb)
     showTime(arrTime)
     val expected = Array(1.2, 2.3, 3.4, 4.5, 5.4, 4.3, 3.2, 2.1)
@@ -126,7 +126,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1.e-12
     val matrixTime = Array(Array(1., 1., 1., 1.), Array(1., 1., 1., 1.), Array(1., 1., 1., 1.), Array(1., 1., 1., 1.))
     showTime(matrixTime)
-    val t = new Transform(new FastWaveletTransform(new Haar02()))
+    val t = new Transform(new FastWaveletTransform(Haar02))
     val matrixHilb = t.forward(matrixTime)
     showHilb(matrixHilb)
     val expected = Array(Array(4., 0., 0., 0.), Array(0., 0., 0., 0.), Array(0., 0., 0., 0.), Array(0., 0., 0., 0.))
@@ -144,7 +144,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1.e-12
     val matrixHilb = Array(Array(4., 0., 0., 0.), Array(0., 0., 0., 0.), Array(0., 0., 0., 0.), Array(0., 0., 0., 0.))
     showHilb(matrixHilb)
-    val t = new Transform(new FastWaveletTransform(new Haar02()))
+    val t = new Transform(new FastWaveletTransform(Haar02))
     val matrixTime = t.reverse(matrixHilb)
     showTime(matrixTime)
     val expected = Array(Array(1., 1., 1., 1.), Array(1., 1., 1., 1.), Array(1., 1., 1., 1.), Array(1., 1., 1., 1.))
@@ -162,7 +162,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1.e-12
     val spaceTime = Array(Array(Array(1., 1., 1., 1.), Array(1., 1., 1., 1.), Array(1., 1., 1., 1.), Array(1., 1., 1., 1.)), Array(Array(1., 1., 1., 1.), Array(1., 1., 1., 1.), Array(1., 1., 1., 1.), Array(1., 1., 1., 1.)), Array(Array(1., 1., 1., 1.), Array(1., 1., 1., 1.), Array(1., 1., 1., 1.), Array(1., 1., 1., 1.)), Array(Array(1., 1., 1., 1.), Array(1., 1., 1., 1.), Array(1., 1., 1., 1.), Array(1., 1., 1., 1.)))
     showTime(spaceTime)
-    val t = new Transform(new FastWaveletTransform(new Haar02()))
+    val t = new Transform(new FastWaveletTransform(Haar02))
     val spaceHilb = t.forward(spaceTime)
     showHilb(spaceHilb)
     val expected = Array(Array(Array(8., 0., 0., 0.), Array(0., 0., 0., 0.), Array(0., 0., 0., 0.), Array(0., 0., 0., 0.)), Array(Array(0., 0., 0., 0.), Array(0., 0., 0., 0.), Array(0., 0., 0., 0.), Array(0., 0., 0., 0.)), Array(Array(0., 0., 0., 0.), Array(0., 0., 0., 0.), Array(0., 0., 0., 0.), Array(0., 0., 0., 0.)), Array(Array(0., 0., 0., 0.), Array(0., 0., 0., 0.), Array(0., 0., 0., 0.), Array(0., 0., 0., 0.)))
@@ -180,7 +180,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1.e-12
     val spaceHilb = Array(Array(Array(8., 0., 0., 0.), Array(0., 0., 0., 0.), Array(0., 0., 0., 0.), Array(0., 0., 0., 0.)), Array(Array(0., 0., 0., 0.), Array(0., 0., 0., 0.), Array(0., 0., 0., 0.), Array(0., 0., 0., 0.)), Array(Array(0., 0., 0., 0.), Array(0., 0., 0., 0.), Array(0., 0., 0., 0.), Array(0., 0., 0., 0.)), Array(Array(0., 0., 0., 0.), Array(0., 0., 0., 0.), Array(0., 0., 0., 0.), Array(0., 0., 0., 0.)))
     showHilb(spaceHilb)
-    val t = new Transform(new FastWaveletTransform(new Haar02()))
+    val t = new Transform(new FastWaveletTransform(Haar02))
     val spaceTime = t.reverse(spaceHilb)
     showTime(spaceTime)
     val expected = Array(Array(Array(1., 1., 1., 1.), Array(1., 1., 1., 1.), Array(1., 1., 1., 1.), Array(1., 1., 1., 1.)), Array(Array(1., 1., 1., 1.), Array(1., 1., 1., 1.), Array(1., 1., 1., 1.), Array(1., 1., 1., 1.)), Array(Array(1., 1., 1., 1.), Array(1., 1., 1., 1.), Array(1., 1., 1., 1.), Array(1., 1., 1., 1.)), Array(Array(1., 1., 1., 1.), Array(1., 1., 1., 1.), Array(1., 1., 1., 1.), Array(1., 1., 1., 1.)))
@@ -198,7 +198,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1.e-12
     val arrTime = Array(1., 1., 1., 1.)
     showTime(arrTime)
-    val t = new Transform(new FastWaveletTransform(new Haar02Orthogonal()))
+    val t = new Transform(new FastWaveletTransform(Haar02Orthogonal))
     val arrHilb = t.forward(arrTime)
     showHilb(arrHilb)
     val expected = Array(4., 0., 0., 0.)
@@ -216,7 +216,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1e-12
     val arrHilb = Array(4., 0., 0., 0.)
     showHilb(arrHilb)
-    val t = new Transform(new FastWaveletTransform(new Haar02Orthogonal()))
+    val t = new Transform(new FastWaveletTransform(Haar02Orthogonal))
     val arrTime = t.reverse(arrHilb)
     showTime(arrTime)
     val expected = Array(1., 1., 1., 1.)
@@ -234,7 +234,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1.e-12
     val arrTime = Array(1., 1., 1., 1.)
     showTime(arrTime)
-    val t = new Transform(new FastWaveletTransform(new Lege02()))
+    val t = new Transform(new FastWaveletTransform(Lege02))
     val arrHilb = t.forward(arrTime)
     showHilb(arrHilb)
     val expected = Array(2., 0., 0., 0.)
@@ -252,7 +252,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1e-12
     val arrHilb = Array(2., 0., 0., 0.)
     showHilb(arrHilb)
-    val t = new Transform(new FastWaveletTransform(new Lege02()))
+    val t = new Transform(new FastWaveletTransform(Lege02))
     val arrTime = t.reverse(arrHilb)
     showTime(arrTime)
     val expected = Array(1., 1., 1., 1.)
@@ -270,7 +270,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1.e-12
     val arrTime = Array(1., 1., 1., 1., 1., 1., 1., 1.)
     showTime(arrTime)
-    val t = new Transform(new FastWaveletTransform(new Daub02()))
+    val t = new Transform(new FastWaveletTransform(Daub02))
     val arrHilb = t.forward(arrTime)
     showHilb(arrHilb)
     val expected = Array(2., 2., 0., 0., 0., 0., 0., 0.)
@@ -288,7 +288,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1.e-12
     val arrHilb = Array(2., 2., 0., 0., 0., 0., 0., 0.)
     showHilb(arrHilb)
-    val t = new Transform(new FastWaveletTransform(new Daub02()))
+    val t = new Transform(new FastWaveletTransform(Daub02))
     val arrTime = t.reverse(arrHilb)
     showTime(arrTime)
     val expected = Array(1., 1., 1., 1., 1., 1., 1., 1.)
@@ -306,7 +306,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1.e-12
     val arrTime = Array(1., 1., 1., 1., 1., 1., 1., 1.)
     showTime(arrTime)
-    val t = new Transform(new FastWaveletTransform(new Lege04()))
+    val t = new Transform(new FastWaveletTransform(Lege04))
     val arrHilb = t.forward(arrTime)
     showHilb(arrHilb)
     val expected = Array(2., 2., 0., 0., 0., 0., 0., 0.)
@@ -324,7 +324,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1.e-12
     val arrHilb = Array(2., 2., 0., 0., 0., 0., 0., 0.)
     showHilb(arrHilb)
-    val t = new Transform(new FastWaveletTransform(new Lege04()))
+    val t = new Transform(new FastWaveletTransform(Lege04))
     val arrTime = t.reverse(arrHilb)
     showTime(arrTime)
     val expected = Array(1., 1., 1., 1., 1., 1., 1., 1.)
@@ -342,7 +342,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1.e-12
     val arrTime = Array(1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.)
     showTime(arrTime)
-    val t = new Transform(new FastWaveletTransform(new Daub03()))
+    val t = new Transform(new FastWaveletTransform(Daub03))
     val arrHilb = t.forward(arrTime)
     showHilb(arrHilb)
     val expected = Array(2., 2., 2., 0., 0., 0., 0., 0., 0., 0., 0., 0.)
@@ -360,7 +360,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1.e-12
     val arrHilb = Array(2., 2., 2., 0., 0., 0., 0., 0., 0., 0., 0., 0.)
     showHilb(arrHilb)
-    val t = new Transform(new FastWaveletTransform(new Daub03()))
+    val t = new Transform(new FastWaveletTransform(Daub03))
     val arrTime = t.reverse(arrHilb)
     showTime(arrTime)
     val expected = Array(1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.)
@@ -378,7 +378,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1.e-12
     val arrTime = Array(1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.)
     showTime(arrTime)
-    val t = new Transform(new FastWaveletTransform(new Lege06()))
+    val t = new Transform(new FastWaveletTransform(Lege06))
     val arrHilb = t.forward(arrTime)
     showHilb(arrHilb)
     val expected = Array(2., 2., 2., 0., 0., 0., 0., 0., 0., 0., 0., 0.)
@@ -396,7 +396,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1.e-12
     val arrHilb = Array(2., 2., 2., 0., 0., 0., 0., 0., 0., 0., 0., 0.)
     showHilb(arrHilb)
-    val t = new Transform(new FastWaveletTransform(new Lege06()))
+    val t = new Transform(new FastWaveletTransform(Lege06))
     val arrTime = t.reverse(arrHilb)
     showTime(arrTime)
     val expected = Array(1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.)
@@ -414,7 +414,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1.e-12
     val arrTime = Array(1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.)
     showTime(arrTime)
-    val t = new Transform(new FastWaveletTransform(new Coif06()))
+    val t = new Transform(new FastWaveletTransform(Coif06))
     val arrHilb = t.forward(arrTime)
     showHilb(arrHilb)
     val expected = Array(2., 2., 2., 0., 0., 0., 0., 0., 0., 0., 0., 0.)
@@ -432,7 +432,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1.e-12
     val arrHilb = Array(2., 2., 2., 0., 0., 0., 0., 0., 0., 0., 0., 0.)
     showHilb(arrHilb)
-    val t = new Transform(new FastWaveletTransform(new Coif06()))
+    val t = new Transform(new FastWaveletTransform(Coif06))
     val arrTime = t.reverse(arrHilb)
     showTime(arrTime)
     val expected = Array(1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.)
@@ -450,7 +450,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1.e-3
     val arrTime = Array(1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.)
     showTime(arrTime)
-    val t = new Transform(new FastWaveletTransform(new Daub04()))
+    val t = new Transform(new FastWaveletTransform(Daub04))
     val arrHilb = t.forward(arrTime)
     showHilb(arrHilb)
     val expected = Array(2., 2., 2., 2., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.)
@@ -468,7 +468,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1.e-3
     val arrHilb = Array(2., 2., 2., 2., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.)
     showHilb(arrHilb)
-    val t = new Transform(new FastWaveletTransform(new Daub04()))
+    val t = new Transform(new FastWaveletTransform(Daub04))
     val arrTime = t.reverse(arrHilb)
     showTime(arrTime)
     val expected = Array(1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.)
@@ -482,7 +482,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1.e-2
     val arrTime = Array(1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.)
     showTime(arrTime)
-    val t = new Transform(new FastWaveletTransform(new Daub04()))
+    val t = new Transform(new FastWaveletTransform(Daub04))
     val arrHilb = t.forward(arrTime)
     showHilb(arrHilb)
     val expected = Array(4., 4., 4., 4., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.)
@@ -496,7 +496,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1e-2
     val arrHilb = Array(4., 4., 4., 4., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.)
     showHilb(arrHilb)
-    val t = new Transform(new FastWaveletTransform(new Daub04()))
+    val t = new Transform(new FastWaveletTransform(Daub04))
     val arrTime = t.reverse(arrHilb)
     showTime(arrTime)
     val expected = Array(1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.)
@@ -514,7 +514,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1.e-12
     val arrTime = Array(1., 1., 1., 1.)
     showTime(arrTime)
-    val t = new Transform(new FastWaveletTransform(new Haar02(), 1))
+    val t = new Transform(new FastWaveletTransform(Haar02, 1))
     val arrHilb = t.forward(arrTime)
     showHilb(arrHilb)
     val expected = Array(Math.sqrt(2.), Math.sqrt(2.), 0., 0.)
@@ -532,7 +532,7 @@ class FastWaveletTransformTest extends JUnitTests {
     val delta = 1e-12
     val arrHilb = Array(2., 0, 0., 0.)
     showHilb(arrHilb)
-    val t = new Transform(new FastWaveletTransform(new Haar02(), 1))
+    val t = new Transform(new FastWaveletTransform(Haar02, 1))
     val arrTime = t.reverse(arrHilb)
     showTime(arrTime)
     val sqrt2 = Math.sqrt(2.)

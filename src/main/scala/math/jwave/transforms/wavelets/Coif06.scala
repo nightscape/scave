@@ -24,6 +24,8 @@
  */
 package math.jwave.transforms.wavelets
 
+import Wavelet._
+
 /**
  * Ingrid Daubechies' orthonormal Coiflet wavelet of six coefficients and the
  * scales; normed, due to ||*||2 - euclidean norm.
@@ -32,34 +34,17 @@ package math.jwave.transforms.wavelets
  * @author Christian Scheiblich
  */
 @Deprecated
-class Coif06 extends Wavelet {
+object Coif06 extends Wavelet(6, Wavelet.coefficientsFromScales(Coif06Constants.scales), Coif06Constants.scales)
 
-  /**
-   * Constructor setting up the orthonormal Coiflet6 wavelet coeffs and the
-   * scales; normed, due to ||*||2 - euclidean norm.
-   *
-   * @date 10.02.2010 16:32:38
-   * @author Christian Scheiblich
-   */
-
-  wavelength = 6; // minimal array size for transform
+object Coif06Constants {
 
   val sqrt15 = Math.sqrt(15.);
 
-  _scales = Array[Double](
+  val scales = Array[Double](
     1.4142135623730951 * (sqrt15 - 3.) / 32.,
     1.4142135623730951 * (1. - sqrt15) / 32.,
     1.4142135623730951 * (6. - 2 * sqrt15) / 32.,
     1.4142135623730951 * (2. * sqrt15 + 6.) / 32.,
     1.4142135623730951 * (sqrt15 + 13.) / 32.,
     1.4142135623730951 * (9. - sqrt15) / 32.)
-
-  _coeffs = Array[Double](
-    _scales(5),
-    -_scales(4),
-    _scales(3),
-    -_scales(2),
-    _scales(1),
-    -_scales(0))
-
 }

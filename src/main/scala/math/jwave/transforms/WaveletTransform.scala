@@ -24,7 +24,7 @@ abstract class WaveletTransform protected (protected val wavelet: Wavelet, val s
   require(wavelet != null, "WaveletTransfrom#checkConfig -- given object Wavelet is null")
   require(steps > 0 || steps == -1, s"WaveletTransfrom#checkConfig -- given steps are not valid: $steps")
 
-  final def minWaveLength = wavelet.getWaveLength
+  final def minWaveLength = wavelet.wavelength
 
   override def forward(arrTime: Array[Double]): Array[Double] = {
     @tailrec

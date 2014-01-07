@@ -32,16 +32,11 @@ import scala.annotation.meta.beanSetter
  * reverse transform method.
  *
  * @param wavelength minimal wavelength of the used wavelet and scaling coefficients
- * @param _coeffs coefficients of the wavelet; wavelet function
- * @param _scales coefficients of the scales; scaling function
+ * @param coefficients coefficients of the wavelet; wavelet function
+ * @param scales coefficients of the scales; scaling function
  */
 
-class Wavelet(var wavelength: Int, var _coeffs: Array[Double], var _scales: Array[Double]) extends WaveletInterface {
-
-  /**
-   * Constructor; predefine members to init values
-   */
-  def this() = this(0, null, null)
+class Wavelet(val wavelength: Int, val coefficients: Array[Double], val scales: Array[Double]) extends WaveletInterface {
 
   /**
    * Performs the forward transform for the given array from time domain to
@@ -65,8 +60,8 @@ class Wavelet(var wavelength: Int, var _coeffs: Array[Double], var _scales: Arra
         k = (i << 1) + j;
         while (k >= arrTime.length)
           k -= arrTime.length;
-        arrHilb(i) += arrTime(k) * _scales(j) // low pass filter - energy (approximation)
-        arrHilb(i + h) += arrTime(k) * _coeffs(j) // high pass filter - details 
+        arrHilb(i) += arrTime(k) * scales(j) // low pass filter - energy (approximation)
+        arrHilb(i + h) += arrTime(k) * coefficients(j) // high pass filter - details 
 
       } // wavelet
 
@@ -99,7 +94,7 @@ class Wavelet(var wavelength: Int, var _coeffs: Array[Double], var _scales: Arra
         while (k >= arrHilb.length)
           k -= arrHilb.length;
 
-        arrTime(k) += (arrHilb(i) * _scales(j) + arrHilb(i + h) * _coeffs(j)) // adding up details times energy (approximation)
+        arrTime(k) += (arrHilb(i) * scales(j) + arrHilb(i + h) * coefficients(j)) // adding up details times energy (approximation)
 
       } // wavelet
 
@@ -109,38 +104,19 @@ class Wavelet(var wavelength: Int, var _coeffs: Array[Double], var _scales: Arra
   }
 
   /**
-   * Returns the minimal wavelength for the used wavelet.
-   *
-   * @date 10.02.2010 08:13:59
-   * @author Christian Scheiblich
-   * @return the minimal wavelength for this basic wave
-   */
-  def getWaveLength(): Int = wavelength
-
-  /**
    * Returns the number of coeffs (and scales).
    *
    * @date 08.02.2010 13:11:47
    * @author Christian Scheiblich
    * @return integer representing the number of coeffs.
    */
-  def getLength(): Int = _coeffs.length;
-
-  /**
-   * Returns a double array with the coeffs.
-   *
-   * @date 08.02.2010 13:14:54
-   * @author Christian Scheiblich
-   * @return double array keeping the coeffs.
-   */
-  def getCoeffs(): Array[Double] = _coeffs.clone
-
-  /**
-   * Returns a double array with the scales (of a wavelet).
-   *
-   * @date 08.02.2010 13:15:25
-   * @author Christian Scheiblich
-   * @return double array keeping the scales.
-   */
-  def getScales(): Array[Double] = _scales.clone
+  def getLength(): Int = coefficients.length;
 }
+
+object Wavelet {
+  def coefficientsFromScales(coefficients: Array[Double], negate: Boolean = false): Array[Double] = {
+    val rev = coefficients.reverse.zipWithIndex.map { case (e, i) => if(i % 2 == 0) e else -e }
+    rev
+  }
+}
+

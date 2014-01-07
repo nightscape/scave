@@ -26,35 +26,14 @@ package math.jwave.transforms.wavelets;
 /**
  * Legendre's orthonormal wavelet of four coefficients and the scales; normed,
  * due to ||*||2 - euclidean norm.
- *
- * @date 03.06.2010 21:19:04
- * @author Christian Scheiblich
  */
 @Deprecated
-class Lege04 extends Wavelet {
+object Lege04 extends Wavelet(4, Wavelet.coefficientsFromScales(Lege04Constants.scales), Lege04Constants.scales)
 
-  /**
-   * Constructor setting up the orthonormal Legendre4 wavelet coeffs and the
-   * scales; normed, due to ||*||2 - euclidean norm.
-   *
-   * @date 03.06.2010 21:19:04
-   * @author Christian Scheiblich
-   */
-
-  wavelength = 4;
-
-  _scales = Array[Double]( // can be done in static way also; faster?
-
+object Lege04Constants {
+  val scales = Array[Double](
     (-5. / 8.) / 1.4142135623730951,
     (-3. / 8.) / 1.4142135623730951,
     (-3. / 8.) / 1.4142135623730951,
     (-5. / 8.) / 1.4142135623730951)
-
-  _coeffs = Array[Double]( // can be done in static way also; faster?
-
-    _scales(3),
-    -_scales(2),
-    _scales(1),
-    -_scales(0))
-
-} // class
+}
