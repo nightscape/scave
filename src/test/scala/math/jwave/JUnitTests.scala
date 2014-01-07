@@ -14,81 +14,34 @@ import org.junit.Test
  * @date 10.02.2010 09:43:08
  * @author Christian Scheiblich
  */
-class JUnitTests {
+class JUnitTests extends org.scalatest.Matchers {
   type Complex = spire.math.Complex[Double]
 
   def assertArray(expected: Array[Complex], actual: Array[Complex], delta: Double) {
-    val expectedLength = expected.length
-    val actualLength = actual.length
-    assertEquals(expectedLength, actualLength)
-    for (c <- 0 until expectedLength) {
-      val expectedReal = expected(c).real
-      val expectedImag = expected(c).imag
-      val actualReal = actual(c).real
-      val actualImag = actual(c).imag
-      assertEquals(expectedReal, actualReal, delta)
-      assertEquals(expectedImag, actualImag, delta)
-    }
+    actual should have length(expected.length)
+    val diff = actual.zip(expected).map { case (a, e) => a - e }
+    all(diff.map(_.norm)) should be < delta * delta
   }
 
-  /**
-   * Test method to check the rounding error of several forward and reverse
-   * transforms.
-   *
-   * @date 10.02.2010 10:28:00
-   * @author Christian Scheiblich
-   * @throws JWaveException
-   */
+
   @Test
   def testRoundingHaar02FWT() {
-    println("")
-    println("testRoundingHaar02FWT")
-    val delta = 1.e-8
-    val arrTime = Array(1., 1.)
-    testFastBasicTransformRounding(arrTime, new Haar02(), delta)
+    testFastBasicTransformRounding(Array(1., 1.), new Haar02(), 1.e-8)
   }
 
-  /**
-   * Test method to check the rounding error of several forward and reverse
-   * transforms.
-   *
-   * @date 10.02.2010 10:28:00
-   * @author Christian Scheiblich
-   * @throws JWaveException
-   */
   @Test
   def testRoundingDaub04FWT() {
-    println("")
-    println("testRoundingDaub04FWT")
-    val delta = 1.e-8
-    val arrTime = Array(1., 1., 1., 1.)
-    testFastBasicTransformRounding(arrTime, new Daub02(), delta)
+    testFastBasicTransformRounding(Array(1., 1., 1., 1.), new Daub02(), 1.e-8)
   }
 
-  /**
-   * Test method to check the rounding error of several forward and reverse
-   * transforms.
-   *
-   * @date 10.02.2010 10:28:00
-   * @author Christian Scheiblich
-   * @throws JWaveException
-   */
   @Test
   def testRoundingCoif06FWT() {
-    println("")
-    println("testRoundingCoif06FWT")
-    val delta = 1.e-8
-    val arrTime = Array(1., 1., 1., 1., 1., 1.)
-    testFastBasicTransformRounding(arrTime, new Coif06(), delta)
+    testFastBasicTransformRounding(Array(1., 1., 1., 1., 1., 1.), new Coif06(), 1.e-8)
   }
 
   /**
    * Test method to check the rounding error of several forward and reverse
    * transforms.
-   *
-   * @date 10.02.2010 10:28:00
-   * @author Christian Scheiblich
-   * @throws JWaveException
    */
   def testFastBasicTransformRounding(arr: Array[Double], wavelet: Wavelet, delta: Double) {
     var noOfSteps = 10000000
@@ -97,30 +50,13 @@ class JUnitTests {
     showTime(arrTime)
     var arrTimeRound = arrTime.clone
     val t = new Transform(new FastWaveletTransform(wavelet))
-    println("")
-    println("")
-    System.out.print("Performing: " + noOfSteps + " forward and reverse transforms ...")
     for (s <- 0 until noOfSteps) {
       arrTimeRound = t.reverse(t.forward(arrTimeRound))
     }
-    println("")
-    println("")
     assertArray(arrTime, arrTimeRound, delta)
-    println("Input ...")
-    showTime(arrTime)
-    println("")
-    println("Result ...")
-    showTime(arrTimeRound)
-    println("")
     val arrTimeErrorAbs = arrTimeRound.zip(arrTime).map{ case (a,b) => (a - b).abs }
-    println("Absolute error")
-    showTime(arrTimeErrorAbs)
-    println("")
     val arrTimeErrorRel = arrTimeRound.zip(arrTime).map{ case (a,b) => (a - b).abs * 100 / b }
-    println("Relative error [%] ...")
-    showTime(arrTimeErrorRel)
-    println("")
-    assertTrue(arrTimeErrorRel.max < 1.0E-10)
+    assertTrue(arrTimeErrorRel.max < delta)
   }
 
   protected def assertArray(expected: Array[Double], actual: Array[Double], delta: Double) {
