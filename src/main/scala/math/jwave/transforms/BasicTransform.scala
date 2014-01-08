@@ -18,10 +18,7 @@ abstract class BasicTransform {
    * domain for a given array depending on the used transform algorithm by
    * inheritance.
    *
-   * @date 10.02.2010 08:23:24
-   * @author Christian Scheiblich
-   * @param arrTime
-   *          coefficients of 1-D time domain
+   * @param arrTime coefficients of 1-D time domain
    * @return coefficients of 1-D frequency or Hilbert domain
    */
   def forward(arrTime: Array[Double]): Array[Double]
@@ -31,10 +28,7 @@ abstract class BasicTransform {
    * domain for a given array depending on the used transform algorithm by
    * inheritance.
    *
-   * @date 10.02.2010 08:23:24
-   * @author Christian Scheiblich
-   * @param arrFreq
-   *          coefficients of 1-D frequency or Hilbert domain
+   * @param arrFreq coefficients of 1-D frequency or Hilbert domain
    * @return coefficients of 1-D time domain
    */
   def reverse(arrFreq: Array[Double]): Array[Double]
@@ -44,10 +38,7 @@ abstract class BasicTransform {
    * domain for a given array depending on the used transform algorithm by
    * inheritance.
    *
-   * @date 23.11.2010 19:17:46
-   * @author Christian Scheiblich
-   * @param arrTime
-   *          coefficients of 1-D time domain
+   * @param arrTime coefficients of 1-D time domain
    * @return coefficients of 1-D frequency or Hilbert domain
    */
   def forward(arrTime: Array[Complex]): Array[Complex] = null
@@ -57,10 +48,7 @@ abstract class BasicTransform {
    * domain for a given array depending on the used transform algorithm by
    * inheritance.
    *
-   * @date 23.11.2010 19:17:59
-   * @author Christian Scheiblich
-   * @param arrFreq
-   *          coefficients of 1-D frequency or Hilbert domain
+   * @param arrFreq coefficients of 1-D frequency or Hilbert domain
    * @return coefficients of 1-D time domain
    */
   def reverse(arrFreq: Array[Complex]): Array[Complex] = null
@@ -70,10 +58,7 @@ abstract class BasicTransform {
    * domain for a given array depending on the used transform algorithm by
    * inheritance.
    *
-   * @date 10.02.2010 11:00:29
-   * @author Christian Scheiblich
-   * @param matTime
-   *          coefficients of 2-D time domain
+   * @param matTime coefficients of 2-D time domain
    * @return coefficients of 2-D frequency or Hilbert domain
    */
   def forward(matTime: Array[Array[Double]]): Array[Array[Double]] = {
@@ -100,10 +85,7 @@ abstract class BasicTransform {
    * to time domain for a given array depending on the used transform algorithm
    * by inheritance.
    *
-   * @date 10.02.2010 11:01:38
-   * @author Christian Scheiblich
-   * @param matFreq
-   *          coefficients of 2-D frequency or Hilbert domain
+   * @param matFreq coefficients of 2-D frequency or Hilbert domain
    * @return coefficients of 2-D time domain
    */
   def reverse(matFreq: Array[Array[Double]]): Array[Array[Double]] = {
@@ -130,10 +112,7 @@ abstract class BasicTransform {
    * domain for a given array depending on the used transform algorithm by
    * inheritance.
    *
-   * @date 10.07.2010 18:08:17
-   * @author Christian Scheiblich
-   * @param spcTime
-   *          coefficients of 3-D time domain domain
+   * @param spcTime coefficients of 3-D time domain domain
    * @return coefficients of 3-D frequency or Hilbert domain
    */
   def forward(spcTime: Array[Array[Array[Double]]]): Array[Array[Array[Double]]] = {
@@ -165,10 +144,7 @@ abstract class BasicTransform {
    * domain for a given array depending on the used transform algorithm by
    * inheritance.
    *
-   * @date 10.07.2010 18:09:54
-   * @author Christian Scheiblich
-   * @param spcHilb
-   *          coefficients of 3-D frequency or Hilbert domain
+   * @param spcHilb coefficients of 3-D frequency or Hilbert domain
    * @return coefficients of 3-D time domain
    */
   def reverse(spcHilb: Array[Array[Array[Double]]]): Array[Array[Array[Double]]] = {
