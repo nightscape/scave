@@ -53,17 +53,17 @@ class Wavelet(val wavelength: Int, val coefficients: Array[Double], val scales: 
     val arrHilb = new Array[Double](arrTime.length);
 
     val h = arrTime.length >> 1;
-
+    val arrView = arrTime.view ++ arrTime
     for (i <- 0 until h) {
-      for (j <- 0 until wavelength) {
-        val k = ((i << 1) + j) % arrTime.length
-        arrHilb(i) += arrTime(k) * scales(j) // low pass filter - energy (approximation)
-        arrHilb(i + h) += arrTime(k) * coefficients(j) // high pass filter - details 
-      }
+      val arrTimeWindowed = arrView.drop(i * 2).take(wavelength)
+      arrHilb(i) = dot(scales, arrTimeWindowed) // low pass filter - energy (approximation)
+      arrHilb(i + h) = dot(coefficients, arrTimeWindowed) // high pass filter - details
     }
     arrHilb
   }
 
+  final def dot(a: Seq[Double], b: Seq[Double]) =
+    (0 until a.size).foldLeft(0.0) { case (sum, i) => sum + a(i) * b(i) }
   /**
    * Performs the reverse transform for the given array from Hilbert domain to
    * time domain and returns a new array of the same size keeping coefficients
