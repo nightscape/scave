@@ -52,12 +52,13 @@ class Wavelet(val wavelength: Int, val coefficients: Array[Double], val scales: 
 
     val arrHilb = new Array[Double](arrTime.length);
 
-    val h = arrTime.length >> 1;
+
+    val halfArrayLength = arrTime.length / 2;
     val arrView = arrTime.view ++ arrTime
-    for (i <- 0 until h) {
-      val arrTimeWindowed = arrView.drop(i * 2).take(wavelength)
+    for (i <- 0 until halfArrayLength) {
+      val arrTimeWindowed = arrView.slice(i * 2, i * 2 + wavelength)
       arrHilb(i) = dot(scales, arrTimeWindowed) // low pass filter - energy (approximation)
-      arrHilb(i + h) = dot(coefficients, arrTimeWindowed) // high pass filter - details
+      arrHilb(i + halfArrayLength) = dot(coefficients, arrTimeWindowed) // high pass filter - details
     }
     arrHilb
   }
@@ -78,11 +79,13 @@ class Wavelet(val wavelength: Int, val coefficients: Array[Double], val scales: 
 
     val arrTime = new Array[Double](arrHilb.length)
 
-    val h = arrHilb.length >> 1;
-    for (i <- 0 until h) {
+    val halfArrayLength = arrHilb.length / 2;
+
+
+    for (i <- 0 until halfArrayLength) {
       for (j <- 0 until wavelength) {
-        val k = ((i << 1) + j) % arrHilb.length
-        arrTime(k) += (arrHilb(i) * scales(j) + arrHilb(i + h) * coefficients(j)) // adding up details times energy (approximation)
+        val k = (i * 2 + j) % arrHilb.length
+        arrTime(k) += (arrHilb(i) * scales(j) + arrHilb(i + halfArrayLength) * coefficients(j)) // adding up details times energy (approximation)
       }
     }
     arrTime
