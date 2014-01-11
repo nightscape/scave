@@ -1,0 +1,9 @@
+# Eclipse
+.cache
+.project
+.settings
+.worksheet
+.classpath
+
+# SBT
+target/
