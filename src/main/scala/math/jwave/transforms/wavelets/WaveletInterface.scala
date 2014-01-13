@@ -35,9 +35,9 @@ package math.jwave.transforms.wavelets;
  */
 trait WaveletInterface {
 
-  def forward(values: Array[Double]): Array[Double]
+  def forward(values: IndexedSeq[Double]): Array[Double]
 
-  def reverse(values: Array[Double]): Array[Double]
+  def reverse(values: IndexedSeq[Double]): Array[Double]
 
   def wavelength: Int
 

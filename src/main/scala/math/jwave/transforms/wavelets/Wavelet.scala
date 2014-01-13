@@ -47,7 +47,7 @@ class Wavelet(val wavelength: Int, val coefficients: Array[Double], val scales: 
    * @param arrTime array keeping time domain coefficients
    * @return coefficients represented by frequency domain
    */
-  def forward(arrTime: Array[Double]): Array[Double] = {
+  def forward(arrTime: IndexedSeq[Double]): Array[Double] = {
 
     val arrHilb = new Array[Double](arrTime.length);
 
@@ -84,7 +84,7 @@ class Wavelet(val wavelength: Int, val coefficients: Array[Double], val scales: 
    *          array keeping frequency domain coefficients
    * @return coefficients represented by time domain
    */
-  def reverse(arrHilb: Array[Double]): Array[Double] = {
+  def reverse(arrHilb: IndexedSeq[Double]): Array[Double] = {
 
     val arrTime = new Array[Double](arrHilb.length)
 

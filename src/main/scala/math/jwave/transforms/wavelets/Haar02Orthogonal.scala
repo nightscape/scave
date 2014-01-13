@@ -77,7 +77,7 @@ object Haar02Orthogonal extends Wavelet(2, Haar02OrthogonalConstants.coefficient
    * @see math.jwave.transforms.wavelets.Wavelet#forward(double[])
    */
 
-  override def forward(arrTime: Array[Double]): Array[Double] = {
+  override def forward(arrTime: IndexedSeq[Double]): Array[Double] = {
     val arrHilb = Array.ofDim[Double](arrTime.length)
     var k = 0
     val h = arrTime.length >> 1
@@ -103,7 +103,7 @@ object Haar02Orthogonal extends Wavelet(2, Haar02OrthogonalConstants.coefficient
    * @see math.jwave.transforms.wavelets.Wavelet#reverse(double[])
    */
 
-  override def reverse(arrHilb: Array[Double]): Array[Double] = {
+  override def reverse(arrHilb: IndexedSeq[Double]): Array[Double] = {
     val arrTime = Array.ofDim[Double](arrHilb.length)
     var k = 0
     val h = arrHilb.length >> 1

@@ -20,7 +20,7 @@ class FastWaveletTransform(wavelet: Wavelet, steps: Int) extends WaveletTransfor
    * @see math.jwave.transforms.BasicTransform#forward(double[])
    */
   protected def forwardTransform(arrHilb: Array[Double], windowSize: Int) = {
-    val oBuf = wavelet.forward(arrHilb.slice(0, windowSize))
+    val oBuf = wavelet.forward(arrHilb.view.slice(0, windowSize))
     Array.copy(oBuf, 0, arrHilb, 0, windowSize)
     arrHilb
   }

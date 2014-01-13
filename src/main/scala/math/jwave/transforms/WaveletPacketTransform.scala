@@ -20,7 +20,7 @@ class WaveletPacketTransform(wavelet: Wavelet, steps: Int) extends WaveletTransf
   protected def forwardTransform(arrHilb: Array[Double], windowSize: Int) = {
     val g = arrHilb.length / windowSize
     for (p <- 0 until g) {
-      val iBuf = arrHilb.slice(p * windowSize, (p + 1) * windowSize)
+      val iBuf = arrHilb.view.slice(p * windowSize, (p + 1) * windowSize)
       val oBuf = wavelet.forward(iBuf)
       Array.copy(oBuf, 0, arrHilb, p * windowSize, windowSize)
     }
@@ -37,7 +37,7 @@ class WaveletPacketTransform(wavelet: Wavelet, steps: Int) extends WaveletTransf
   protected def reverseTransform(arrTime: Array[Double], h: Int) = {
     val g = arrTime.length / h
     for (p <- 0 until g) {
-      val iBuf = arrTime.slice(p * h, (p + 1) * h)
+      val iBuf = arrTime.view.slice(p * h, (p + 1) * h)
       val oBuf = wavelet.reverse(iBuf)
       Array.copy(oBuf, 0, arrTime, p * h, h)
     }
