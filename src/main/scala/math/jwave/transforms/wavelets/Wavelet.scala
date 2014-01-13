@@ -44,8 +44,7 @@ class Wavelet(val wavelength: Int, val coefficients: Array[Double], val scales: 
    * coefficients of Hilbert domain and should be of length 2 to the power of p
    * -- length = 2^p where p is a positive integer.
    *
-   * @param arrTime
-   *          array keeping time domain coefficients
+   * @param arrTime array keeping time domain coefficients
    * @return coefficients represented by frequency domain
    */
   def forward(arrTime: Array[Double]): Array[Double] = {
@@ -57,11 +56,21 @@ class Wavelet(val wavelength: Int, val coefficients: Array[Double], val scales: 
     val arrView = arrTime.view ++ arrTime
     for (i <- 0 until halfArrayLength) {
       val arrTimeWindowed = arrView.slice(i * 2, i * 2 + wavelength)
-      arrHilb(i) = dot(scales, arrTimeWindowed) // low pass filter - energy (approximation)
-      arrHilb(i + halfArrayLength) = dot(coefficients, arrTimeWindowed) // high pass filter - details
+      arrHilb(i) = lowPass(arrTimeWindowed)
+      arrHilb(i + halfArrayLength) = highPass(arrTimeWindowed)
     }
     arrHilb
   }
+
+  /**
+   *  low pass filter - energy (approximation)
+   */
+  final def lowPass(a: Seq[Double]) = dot(scales, a)
+
+  /**
+   *  high pass filter - details
+   */
+  final def highPass(a: Seq[Double]) = dot(coefficients, a)
 
   final def dot(a: Seq[Double], b: Seq[Double]) =
     (0 until a.size).foldLeft(0.0) { case (sum, i) => sum + a(i) * b(i) }
@@ -80,7 +89,6 @@ class Wavelet(val wavelength: Int, val coefficients: Array[Double], val scales: 
     val arrTime = new Array[Double](arrHilb.length)
 
     val halfArrayLength = arrHilb.length / 2;
-
 
     for (i <- 0 until halfArrayLength) {
       for (j <- 0 until wavelength) {
@@ -101,7 +109,7 @@ class Wavelet(val wavelength: Int, val coefficients: Array[Double], val scales: 
 
 object Wavelet {
   def coefficientsFromScales(coefficients: Array[Double], negate: Boolean = false): Array[Double] = {
-    val rev = coefficients.reverse.zipWithIndex.map { case (e, i) => if(i % 2 == 0) e else -e }
+    val rev = coefficients.reverse.zipWithIndex.map { case (e, i) => if (i % 2 == 0) e else -e }
     rev
   }
 }

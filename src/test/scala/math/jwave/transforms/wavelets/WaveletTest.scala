@@ -41,6 +41,21 @@ class WaveletTest extends PropSpec with PropertyChecks with Matchers with Numeri
       exactly(1, wavelet.forward(wavelet.coefficients)) should be(1.0 +- 1.0E-4)
     }
   }
+
+  wavelets.foreach { wavelet =>
+    property(s"${wavelet.getClass().getSimpleName()} has a mean of zero") {
+      wavelet.coefficients.sum should be(0.0 +- 1.0E-4)
+    }
+  }
+
+  wavelets.foreach { wavelet =>
+    property(s"${wavelet.getClass().getSimpleName()} recognizes a sine wave with period of its wavelength") {
+      val sine = (0 until wavelet.wavelength * 4).map(x => scala.math.sin(x * scala.math.Pi * 2 / wavelet.wavelength)).toArray
+      println(s"${wavelet.getClass().getSimpleName()} length = ${wavelet.wavelength}")
+      println(sine.mkString(","))
+      println(wavelet.forward(sine).mkString(","))
+    }
+  }
 }
 
 trait NumericArrayMatchers {

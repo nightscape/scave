@@ -17,12 +17,12 @@ class WaveletPacketTransform(wavelet: Wavelet, steps: Int) extends WaveletTransf
    *
    * @see math.jwave.transforms.BasicTransform#forward(double[])
    */
-  protected def forwardTransform(arrHilb: Array[Double], h: Int) = {
-    val g = arrHilb.length / h
+  protected def forwardTransform(arrHilb: Array[Double], windowSize: Int) = {
+    val g = arrHilb.length / windowSize
     for (p <- 0 until g) {
-      val iBuf = arrHilb.slice(p * h, (p + 1) * h)
+      val iBuf = arrHilb.slice(p * windowSize, (p + 1) * windowSize)
       val oBuf = wavelet.forward(iBuf)
-      Array.copy(oBuf, 0, arrHilb, p * h, h)
+      Array.copy(oBuf, 0, arrHilb, p * windowSize, windowSize)
     }
     arrHilb
   }

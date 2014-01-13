@@ -28,9 +28,9 @@ abstract class WaveletTransform protected (protected val wavelet: Wavelet, val s
 
   override def forward(arrTime: Array[Double]): Array[Double] = {
     @tailrec
-    def innerForward(level: Int, h: Int, arrHilb: Array[Double]): Array[Double] = {
-      if (h >= minWaveLength && (level < steps || steps == -1)) {
-        innerForward(level + 1, h >> 1, forwardTransform(arrHilb, h))
+    def innerForward(level: Int, windowSize: Int, arrHilb: Array[Double]): Array[Double] = {
+      if (windowSize >= minWaveLength && (level < steps || steps == -1)) {
+        innerForward(level + 1, windowSize / 2, forwardTransform(arrHilb, windowSize))
       } else {
         arrHilb
       }
