@@ -8,10 +8,7 @@ import math.jwave.transforms.wavelets.Wavelet
  * @date 10.02.2010 08:10:42
  * @author Christian Scheiblich
  */
-class FastWaveletTransform(wavelet: Wavelet, steps: Int) extends WaveletTransform(wavelet, steps) {
-
-  def this(wavelet: Wavelet) = this(wavelet, -1)
-
+class FastWaveletTransform(wavelet: Wavelet, steps: Int = -1) extends WaveletTransform(wavelet, steps) {
   /**
    * Performs the 1-D forward transform for arrays of dim N from time domain to
    * Hilbert domain for the given array using the Fast Wavelet Transform (FWT)

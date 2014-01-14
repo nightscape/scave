@@ -104,7 +104,9 @@ class Wavelet(val wavelength: Int, val coefficients: Array[Double], val scales: 
    *
    * @return integer representing the number of coeffs.
    */
-  def getLength(): Int = coefficients.length;
+  def getLength(): Int = coefficients.length
+
+  override def toString = getClass.getSimpleName.replaceAll("\\$", "")
 }
 
 object Wavelet {

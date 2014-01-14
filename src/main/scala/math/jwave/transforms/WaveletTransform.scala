@@ -17,9 +17,7 @@ import _root_.scala.annotation.tailrec
  *
  * @throws JWaveException
  */
-abstract class WaveletTransform protected (protected val wavelet: Wavelet, val steps: Int, val transformMode: TransformMode = null) extends BasicTransform {
-
-  protected def this(wavelet: Wavelet) = this(wavelet, -1, null)
+abstract class WaveletTransform protected (protected val wavelet: Wavelet, val steps: Int = -1, val transformMode: TransformMode = null) extends BasicTransform {
 
   require(wavelet != null, "WaveletTransfrom#checkConfig -- given object Wavelet is null")
   require(steps > 0 || steps == -1, s"WaveletTransfrom#checkConfig -- given steps are not valid: $steps")

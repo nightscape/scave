@@ -7,8 +7,7 @@ import math.jwave.transforms.wavelets.Wavelet
  * inheriting class.
  */
 
-class WaveletPacketTransform(wavelet: Wavelet, steps: Int) extends WaveletTransform(wavelet, steps) {
-  def this(wavelet: Wavelet) = this(wavelet, -1)
+class WaveletPacketTransform(wavelet: Wavelet, steps: Int = -1) extends WaveletTransform(wavelet, steps) {
   /**
    * Implementation of the 1-D forward wavelet packet transform for arrays of
    * dim N by filtering with the longest wavelet first and then always with both
