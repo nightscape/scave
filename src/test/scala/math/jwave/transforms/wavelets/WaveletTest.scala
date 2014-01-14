@@ -8,6 +8,7 @@ import org.scalatest.Matchers
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.matchers.Matcher
 import org.scalatest.matchers.MatchResult
+import math.jwave.test.matchers.NumericArrayMatchers
 
 @RunWith(classOf[JUnitRunner])
 class WaveletTest extends PropSpec with PropertyChecks with Matchers with NumericArrayMatchers {
@@ -56,16 +57,4 @@ class WaveletTest extends PropSpec with PropertyChecks with Matchers with Numeri
       println(wavelet.forward(sine).mkString(","))
     }
   }
-}
-
-trait NumericArrayMatchers {
-  def pretty(a: Array[Double]) = a.mkString("Array(", ",", ")")
-
-  def equalWithTolerance(right: Array[Double], tol: Double) =
-    Matcher[Array[Double]] { (left: Array[Double]) =>
-      MatchResult(
-        (left zip right) forall { case (a, b) => a <= b + tol && a >= b - tol },
-        s"${pretty(left)} did not equal ${pretty(right)} with tolerance $tol",
-        s"${pretty(left)} equaled ${pretty(right)} with tolerance $tol")
-    }
 }
