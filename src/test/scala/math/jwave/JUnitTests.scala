@@ -45,8 +45,8 @@ class JUnitTests extends org.scalatest.Matchers {
     noOfSteps = 1000
     val arrTime = arr
     showTime(arrTime)
-    var arrTimeRound = arrTime.clone
-    val t = new Transform(new FastWaveletTransform(wavelet))
+    var arrTimeRound: Seq[Double] = arrTime.clone
+    val t = new FastWaveletTransform(wavelet)
     for (s <- 0 until noOfSteps) {
       arrTimeRound = t.reverse(t.forward(arrTimeRound))
     }
@@ -54,6 +54,10 @@ class JUnitTests extends org.scalatest.Matchers {
     val arrTimeErrorAbs = arrTimeRound.zip(arrTime).map{ case (a,b) => (a - b).abs }
     val arrTimeErrorRel = arrTimeRound.zip(arrTime).map{ case (a,b) => (a - b).abs * 100 / b }
     assertTrue(arrTimeErrorRel.max < delta)
+  }
+
+  def assertArray(expected: Seq[Double], actual: Seq[Double], delta: Double) {
+    assertArray(expected.toArray, actual.toArray, delta)
   }
 
   protected def assertArray(expected: Array[Double], actual: Array[Double], delta: Double) {

@@ -17,44 +17,16 @@ import _root_.scala.annotation.tailrec
  *
  * @throws JWaveException
  */
-abstract class WaveletTransform protected (protected val wavelet: Wavelet, val steps: Int = -1, val transformMode: TransformMode = null) extends BasicTransform {
+abstract class WaveletTransform protected (val wavelet: Wavelet, val steps: Int = -1, val transformMode: TransformMode = null) extends BasicTransform[WaveletFilterTree] {
 
   require(wavelet != null, "WaveletTransfrom#checkConfig -- given object Wavelet is null")
   require(steps > 0 || steps == -1, s"WaveletTransfrom#checkConfig -- given steps are not valid: $steps")
 
   final def minWaveLength = wavelet.wavelength
 
-  override def forward(arrTime: Array[Double]): Array[Double] = {
-    @tailrec
-    def innerForward(level: Int, windowSize: Int, arrHilb: Array[Double]): Array[Double] = {
-      if (windowSize >= minWaveLength && (level < steps || steps == -1)) {
-        innerForward(level + 1, windowSize / 2, forwardTransform(arrHilb, windowSize))
-      } else {
-        arrHilb
-      }
-    }
-    if (arrTime.length >= minWaveLength) {
-      innerForward(0, arrTime.length, arrTime.clone)
-    } else
-      arrTime
+  override def reverse(arrHilb: TimeFrequencyRepresentation): Seq[Double] = {
+    arrHilb.restoreSignal
   }
 
-  protected def forwardTransform(arrTime: Array[Double], h: Int): Array[Double]
-
-  override def reverse(arrHilb: Array[Double]): Array[Double] = {
-    @tailrec
-    def innerReverse(level: Int, h: Int, arrTime: Array[Double]): Array[Double] = {
-      if (h <= arrTime.length && (level < steps || steps == -1)) {
-        innerReverse(level + 1, h << 1, reverseTransform(arrTime, h))
-      } else {
-        arrTime
-      }
-    }
-    if (arrHilb.length >= minWaveLength) {
-      innerReverse(0, minWaveLength, arrHilb.clone)
-    } else
-      arrHilb
-  }
-
-  protected def reverseTransform(arrTime: Array[Double], h: Int): Array[Double]
+  override def toString = s"${this.getClass.getSimpleName()} with wavelet type ${wavelet}"
 }

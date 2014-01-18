@@ -77,21 +77,21 @@ object Haar02Orthogonal extends Wavelet(2, Haar02OrthogonalConstants.coefficient
    * @see math.jwave.transforms.wavelets.Wavelet#forward(double[])
    */
 
-  override def forward(arrTime: IndexedSeq[Double]): Array[Double] = {
-    val arrHilb = Array.ofDim[Double](arrTime.length)
-    var k = 0
-    val h = arrTime.length >> 1
-    for (i <- 0 until h; j <- 0 until wavelength) {
-      k = (i << 1) + j
-      if (k >= arrTime.length) k -= arrTime.length
-      // low pass filter - energy
-      arrHilb(i) += arrTime(k) * scales(j)
-      // high pass filter - details
-      arrHilb(i + h) += arrTime(k) * coefficients(j)
-      // by each summation, "energy" is added, due to the orthogonal Haar Wavelet.
-    }
-    arrHilb
-  }
+//  override def forward(arrTime: Seq[Double]): Seq[Double] = {
+//    val arrHilb = Array.ofDim[Double](arrTime.length)
+//    var k = 0
+//    val h = arrTime.length >> 1
+//    for (i <- 0 until h; j <- 0 until wavelength) {
+//      k = (i << 1) + j
+//      if (k >= arrTime.length) k -= arrTime.length
+//      // low pass filter - energy
+//      arrHilb(i) += arrTime(k) * scales(j)
+//      // high pass filter - details
+//      arrHilb(i + h) += arrTime(k) * coefficients(j)
+//      // by each summation, "energy" is added, due to the orthogonal Haar Wavelet.
+//    }
+//    arrHilb
+//  }
 
   /**
    * The reverse wavelet transform using the Alfred Haar's wavelet. The arrHilb
@@ -103,21 +103,21 @@ object Haar02Orthogonal extends Wavelet(2, Haar02OrthogonalConstants.coefficient
    * @see math.jwave.transforms.wavelets.Wavelet#reverse(double[])
    */
 
-  override def reverse(arrHilb: IndexedSeq[Double]): Array[Double] = {
-    val arrTime = Array.ofDim[Double](arrHilb.length)
-    var k = 0
-    val h = arrHilb.length >> 1
-    for (i <- 0 until h; j <- 0 until wavelength) {
-      k = (i << 1) + j
-      if (k >= arrHilb.length) k -= arrHilb.length
-      // adding up details times energy
-      arrTime(k) += (arrHilb(i) * scales(j) + arrHilb(i + h) * coefficients(j))
-      // The factor .5 gets necessary here to reduce the added "energy" of the forward method
-      // correction of the up sampled "energy" -- ||.||_2 euclidean norm
-      arrTime(k) *= .5
-    }
-    arrTime
-  }
+//  override def reverse(arrHilb: Seq[Double]): Seq[Double] = {
+//    val arrTime = Array.ofDim[Double](arrHilb.length)
+//    var k = 0
+//    val h = arrHilb.length >> 1
+//    for (i <- 0 until h; j <- 0 until wavelength) {
+//      k = (i << 1) + j
+//      if (k >= arrHilb.length) k -= arrHilb.length
+//      // adding up details times energy
+//      arrTime(k) += (arrHilb(i) * scales(j) + arrHilb(i + h) * coefficients(j))
+//      // The factor .5 gets necessary here to reduce the added "energy" of the forward method
+//      // correction of the up sampled "energy" -- ||.||_2 euclidean norm
+//      arrTime(k) *= .5
+//    }
+//    arrTime
+//  }
 }
 
 object Haar02OrthogonalConstants {

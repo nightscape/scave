@@ -47,21 +47,19 @@ class Wavelet(val wavelength: Int, val coefficients: Array[Double], val scales: 
    * @param arrTime array keeping time domain coefficients
    * @return coefficients represented by frequency domain
    */
-  def forward(arrTime: IndexedSeq[Double]): Array[Double] = {
+  def splitSignal(s: Seq[Double]): (Seq[Double], Seq[Double]) = {
+    val approximation = new Array[Double](s.length / 2);
+    val details = new Array[Double](s.length / 2);
 
-    val arrHilb = new Array[Double](arrTime.length);
-
-
-    val halfArrayLength = arrTime.length / 2;
-    val arrView = arrTime.view ++ arrTime
+    val halfArrayLength = s.length / 2;
+    val arrView = s.view ++ s
     for (i <- 0 until halfArrayLength) {
       val arrTimeWindowed = arrView.slice(i * 2, i * 2 + wavelength)
-      arrHilb(i) = lowPass(arrTimeWindowed)
-      arrHilb(i + halfArrayLength) = highPass(arrTimeWindowed)
+      approximation(i) = lowPass(arrTimeWindowed)
+      details(i) = highPass(arrTimeWindowed)
     }
-    arrHilb
+    (approximation, details)
   }
-
   /**
    *  low pass filter - energy (approximation)
    */
@@ -74,6 +72,7 @@ class Wavelet(val wavelength: Int, val coefficients: Array[Double], val scales: 
 
   final def dot(a: Seq[Double], b: Seq[Double]) =
     (0 until a.size).foldLeft(0.0) { case (sum, i) => sum + a(i) * b(i) }
+
   /**
    * Performs the reverse transform for the given array from Hilbert domain to
    * time domain and returns a new array of the same size keeping coefficients
@@ -84,16 +83,15 @@ class Wavelet(val wavelength: Int, val coefficients: Array[Double], val scales: 
    *          array keeping frequency domain coefficients
    * @return coefficients represented by time domain
    */
-  def reverse(arrHilb: IndexedSeq[Double]): Array[Double] = {
+  def mergeSignals(approximation: Seq[Double], details: Seq[Double]): Seq[Double] = {
+    val arrTime = new Array[Double](approximation.length + details.length)
 
-    val arrTime = new Array[Double](arrHilb.length)
-
-    val halfArrayLength = arrHilb.length / 2;
+    val halfArrayLength = approximation.length;
 
     for (i <- 0 until halfArrayLength) {
       for (j <- 0 until wavelength) {
-        val k = (i * 2 + j) % arrHilb.length
-        arrTime(k) += (arrHilb(i) * scales(j) + arrHilb(i + halfArrayLength) * coefficients(j)) // adding up details times energy (approximation)
+        val k = (i * 2 + j) % arrTime.length
+        arrTime(k) += (approximation(i) * scales(j) + details(i) * coefficients(j)) // adding up details times energy (approximation)
       }
     }
     arrTime

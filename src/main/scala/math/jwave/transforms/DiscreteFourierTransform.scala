@@ -13,7 +13,7 @@ import spire.implicits._
  * @date 25.03.2010 19:56:29
  * @author Christian Scheiblich
  */
-class DiscreteFourierTransform extends BasicTransform {
+class DiscreteFourierTransform extends BasicTransform[Seq[Double]] {
 
   /**
    * The 1-D forward version of the Discrete Fourier Transform (DFT); The input
@@ -26,7 +26,7 @@ class DiscreteFourierTransform extends BasicTransform {
    * @author Christian Scheiblich
    * @see math.jwave.transforms.BasicTransform#forward(double[])
    */
-  override def forward(arrTime: Array[Double]): Array[Double] = {
+  override def forward(arrTime: Seq[Double]): TimeFrequencyRepresentation = {
     val m = arrTime.length
     val arrFreq = Array.ofDim[Double](m)
     val n = m >> 1
@@ -61,7 +61,7 @@ class DiscreteFourierTransform extends BasicTransform {
    * @author Christian Scheiblich
    * @see math.jwave.transforms.BasicTransform#reverse(double[])
    */
-  override def reverse(arrFreq: Array[Double]): Array[Double] = {
+  override def reverse(arrFreq: TimeFrequencyRepresentation): Seq[Double] = {
     val m = arrFreq.length
     val arrTime = Array.ofDim[Double](m)
     val n = m >> 1
@@ -157,7 +157,7 @@ class DiscreteFourierTransform extends BasicTransform {
    * @author Christian Scheiblich
    * @see math.jwave.transforms.BasicTransform#forward(double[][])
    */
-  override def forward(matTime: Array[Array[Double]]): Array[Array[Double]] = null
+//  override def forward(matTime: Array[Array[Double]]): Array[Array[Double]] = null
 
   /**
    * The 2-D reverse version of the Discrete Fourier Transform (DFT); The input
@@ -172,7 +172,7 @@ class DiscreteFourierTransform extends BasicTransform {
    * @author Christian Scheiblich
    * @see math.jwave.transforms.BasicTransform#reverse(double[][])
    */
-  override def reverse(matFreq: Array[Array[Double]]): Array[Array[Double]] = null
+//  override def reverse(matFreq: Array[Array[Double]]): Array[Array[Double]] = null
 
   /**
    * The 3-D forward version of the Discrete Fourier Transform (DFT);
@@ -181,7 +181,7 @@ class DiscreteFourierTransform extends BasicTransform {
    * @author Christian Scheiblich
    * @see math.jwave.transforms.BasicTransform#forward(double[][][])
    */
-  override def forward(spcTime: Array[Array[Array[Double]]]): Array[Array[Array[Double]]] = null
+//  override def forward(spcTime: Array[Array[Array[Double]]]): Array[Array[Array[Double]]] = null
 
   /**
    * The 3-D reverse version of the Discrete Fourier Transform (DFT);
@@ -190,5 +190,5 @@ class DiscreteFourierTransform extends BasicTransform {
    * @author Christian Scheiblich
    * @see math.jwave.transforms.BasicTransform#reverse(double[][][])
    */
-  override def reverse(spcHilb: Array[Array[Array[Double]]]): Array[Array[Array[Double]]] = null
+//  override def reverse(spcHilb: Array[Array[Array[Double]]]): Array[Array[Array[Double]]] = null
 }

@@ -35,9 +35,16 @@ package math.jwave.transforms.wavelets;
  */
 trait WaveletInterface {
 
-  def forward(values: IndexedSeq[Double]): Array[Double]
+  //def forward(values: Seq[Double]): Seq[Double]
 
-  def reverse(values: IndexedSeq[Double]): Array[Double]
+  def splitSignal(s: Seq[Double]): (Seq[Double], Seq[Double])
+
+  //def reverse(values: Seq[Double]): Seq[Double]
+
+  def mergeSignals(approximation: Seq[Double], details: Seq[Double]): Seq[Double]
+
+  def mergeSignals(approximationAndDetails: (Seq[Double], Seq[Double])): Seq[Double] =
+    mergeSignals(approximationAndDetails._1, approximationAndDetails._2)
 
   def wavelength: Int
 
