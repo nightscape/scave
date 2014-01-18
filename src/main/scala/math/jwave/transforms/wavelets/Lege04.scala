@@ -28,12 +28,9 @@ package math.jwave.transforms.wavelets;
  * due to ||*||2 - euclidean norm.
  */
 @Deprecated
-object Lege04 extends Wavelet(4, Wavelet.coefficientsFromScales(Lege04Constants.scales), Lege04Constants.scales)
-
-object Lege04Constants {
-  val scales = Array[Double](
+object Lege04 extends Wavelet(Array(
     (-5. / 8.) / 1.4142135623730951,
     (-3. / 8.) / 1.4142135623730951,
     (-3. / 8.) / 1.4142135623730951,
     (-5. / 8.) / 1.4142135623730951)
-}
+)

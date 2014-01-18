@@ -28,14 +28,11 @@ package math.jwave.transforms.wavelets;
  * due to ||*||2 - euclidean norm.
  */
 @Deprecated
-object Lege06 extends Wavelet(6, Wavelet.coefficientsFromScales(Lege06Constants.scales), Lege06Constants.scales)
-
-object Lege06Constants {
-  val scales = Array[Double](
+object Lege06 extends Wavelet(Array[Double](
     -63. / 128. / 1.4142135623730951,
     -35. / 128. / 1.4142135623730951,
     -30. / 128. / 1.4142135623730951,
     -30. / 128. / 1.4142135623730951,
     -35. / 128. / 1.4142135623730951,
     -63. / 128. / 1.4142135623730951)
-}
+)

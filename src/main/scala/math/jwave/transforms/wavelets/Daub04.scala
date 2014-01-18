@@ -27,7 +27,7 @@ package math.jwave.transforms.wavelets;
  * Ingrid Daubechies' orthonormal wavelet of eight coefficients and the scales;
  * normed, due to ||*||2 - euclidean norm.
  */
-object Daub04 extends Wavelet(8, Wavelet.coefficientsFromScales(Daub04Constants.scales), Daub04Constants.scales)
+object Daub04 extends Wavelet(Daub04Constants.scales)
 
 object Daub04Constants {
 

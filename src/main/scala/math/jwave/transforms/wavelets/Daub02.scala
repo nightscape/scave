@@ -10,7 +10,7 @@ package math.jwave.transforms.wavelets;
  */
 import Daub02Constants._
 @Deprecated
-object Daub02 extends Wavelet(4, Wavelet.coefficientsFromScales(scales), scales)
+object Daub02 extends Wavelet(Daub02Constants.scales)
 
 object Daub02Constants {
   val sqrt3 = Math.sqrt(3.) // 1.7320508075688772

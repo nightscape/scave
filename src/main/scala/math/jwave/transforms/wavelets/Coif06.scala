@@ -34,7 +34,7 @@ import Wavelet._
  * @author Christian Scheiblich
  */
 @Deprecated
-object Coif06 extends Wavelet(6, Wavelet.coefficientsFromScales(Coif06Constants.scales), Coif06Constants.scales)
+object Coif06 extends Wavelet(Coif06Constants.scales)
 
 object Coif06Constants {
 

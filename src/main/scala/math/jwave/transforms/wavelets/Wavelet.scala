@@ -37,7 +37,7 @@ import scala.annotation.meta.beanSetter
  */
 
 class Wavelet(val wavelength: Int, val coefficients: Array[Double], val scales: Array[Double]) extends WaveletInterface {
-
+  def this(scales: Array[Double]) = this(scales.length, Wavelet.coefficientsFromScales(scales), scales)
   /**
    * Performs the forward transform for the given array from time domain to
    * Hilbert domain and returns a new array of the same size keeping
