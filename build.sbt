@@ -9,5 +9,7 @@ libraryDependencies ++= Seq(
   "org.scalautils" %% "scalautils" % "2.0" % "test",
   "org.scalacheck" %% "scalacheck" % "1.11.1" % "test",
   "junit" % "junit" % "4.11" % "test",
-  "com.google.caliper" % "caliper" % "1.0-beta-1"
+  "com.google.caliper" % "caliper" % "0.5-rc1"
 )
+
+seq(cappiSettings:_*)
