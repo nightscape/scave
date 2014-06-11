@@ -4,7 +4,7 @@ import org.junit.Assert._
 import math.jwave.transforms.FastWaveletTransform
 import math.jwave.transforms.wavelets.Coif06
 import math.jwave.transforms.wavelets.Daub02
-import math.jwave.transforms.wavelets.Haar02
+import math.jwave.transforms.wavelets.Haar1
 import math.jwave.transforms.wavelets.Wavelet
 import org.junit.Test
 import spire.implicits._
@@ -23,8 +23,8 @@ class JUnitTests extends org.scalatest.Matchers {
 
 
   @Test
-  def testRoundingHaar02FWT() {
-    testFastBasicTransformRounding(Array(1.0, 1.0), Haar02, 1.0e-8)
+  def testRoundingHaar1FWT() {
+    testFastBasicTransformRounding(Array(1.0, 1.0), Haar1, 1.0e-8)
   }
 
   @Test

@@ -12,7 +12,7 @@ class WaveletPacketTransformTest  extends WaveletTransformTest {
   val knownTransformResults =
     Table(
       ("wavelet", "signal", "transformed", "delta"),
-      (Haar02, Seq(2.0, 4.0, 7.0, 11.0), Seq(12.0, -6.0, -3.0, 1.0), 1.0e-12),
+      (Haar1, Seq(2.0, 4.0, 7.0, 11.0), Seq(12.0, -6.0, -3.0, 1.0), 1.0e-12),
       (Daub02, Seq(1.2, 2.3, 3.4, 4.5, 5.4, 4.3, 3.2, 2.1), Seq(7.432531754730547, 5.76746824526945, 2.2766660498395392, -2.276666049839541, 0.9580127018922185, -0.9580127018922194, 0.2566987298107781, -0.25669872981077807), 1.0e-12))
 
   //  @Test

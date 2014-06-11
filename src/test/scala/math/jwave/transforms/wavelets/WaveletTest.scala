@@ -14,7 +14,7 @@ import math.jwave.test.matchers.NumericArrayMatchers
 class WaveletTest extends PropSpec with PropertyChecks with Matchers with NumericArrayMatchers {
   def energy(arr: Seq[Double]): Double = arr.map(x => x * x).sum
   implicit val disableShrink: Shrink[Array[Double]] = Shrink(s => Stream.empty)
-  val wavelets = List(Coif06, Daub02, Daub03, Daub04, Haar02, Haar02Orthogonal, Lege02, Lege04, Lege06)
+  val wavelets = List(Coif06, Daub02, Daub03, Daub04, Haar1, Haar02Orthogonal, Lege02, Lege04, Lege06)
   def timeSeries(wavelet: Wavelet) = {
     val lengthExponent = Gen.choose(1, 10)
     val timeSeries = for {

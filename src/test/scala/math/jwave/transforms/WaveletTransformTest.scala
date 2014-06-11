@@ -17,7 +17,7 @@ abstract class WaveletTransformTest extends PropSpec with PropertyChecks with Ma
 
   def energy(arr: Array[Double]): Double = arr.map(x => x * x).sum
   implicit val disableShrink: Shrink[Array[Double]] = Shrink(s => Stream.empty)
-  val wavelets = List(Coif06, Daub02, Daub03, Daub04, Haar02, Lege02)
+  val wavelets = List(Coif06, Daub02, Daub03, Daub04, Haar1, Lege02)
   val transforms = wavelets.map(createTransform)
   def timeSeries(wavelet: Wavelet) = {
     val lengthExponent = Gen.choose(1, 10)
