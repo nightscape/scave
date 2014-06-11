@@ -13,7 +13,7 @@ object RadiantPlotter {
     val yAxes = (dataMap.keySet - "x").toList.sorted
     val xml = (<plot height="300" aspect="3" stroke-width="2" title={ datasetName }  zoom-x="">
                  {
-                   val colors = List("red", "green", "blue", "black")
+                   val colors = List("red", "green", "blue", "black", "yellow", "brown", "grey")
                    yAxes.zipWithIndex.map {
                      case (f, i) =>
                        <lines x={ vectorReference("x") } y={ vectorReference(f) } stroke={ colors(i) }/>
