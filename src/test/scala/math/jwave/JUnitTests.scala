@@ -23,17 +23,17 @@ class JUnitTests extends org.scalatest.Matchers {
 
   @Test
   def testRoundingHaar02FWT() {
-    testFastBasicTransformRounding(Array(1., 1.), Haar02, 1.e-8)
+    testFastBasicTransformRounding(Array(1.0, 1.0), Haar02, 1.0e-8)
   }
 
   @Test
   def testRoundingDaub04FWT() {
-    testFastBasicTransformRounding(Array(1., 1., 1., 1.), Daub02, 1.e-8)
+    testFastBasicTransformRounding(Array(1.0, 1.0, 1.0, 1.0), Daub02, 1.0e-8)
   }
 
   @Test
   def testRoundingCoif06FWT() {
-    testFastBasicTransformRounding(Array(1., 1., 1., 1., 1., 1.), Coif06, 1.e-8)
+    testFastBasicTransformRounding(Array(1.0, 1.0, 1.0, 1.0, 1.0, 1.0), Coif06, 1.0e-8)
   }
 
   /**

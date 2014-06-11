@@ -32,8 +32,8 @@ object Lege02 extends Wavelet(2, Lege02Constants.coefficients, Lege02Constants.s
 
 object Lege02Constants {
   val coefficients = Array[Double](
-    -1. / 1.4142135623730951,
-    1. / 1.4142135623730951)
+    -1.0 / 1.4142135623730951,
+    1.0 / 1.4142135623730951)
 
   val scales = Array[Double](
     -coefficients(1),

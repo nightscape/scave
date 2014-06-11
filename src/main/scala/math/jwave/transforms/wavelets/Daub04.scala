@@ -31,7 +31,7 @@ object Daub04 extends Wavelet(Daub04Constants.scales)
 
 object Daub04Constants {
 
-  // TODO Get analytical formulation, due to its precision; this is around 1.e-3 only
+  // TODO Get analytical formulation, due to its precision; this is around 1.0e-3 only
   // values are from: http://de.wikipedia.org/wiki/Daubechies-Wavelets
   val sqrt02 = 1.4142135623730951
 

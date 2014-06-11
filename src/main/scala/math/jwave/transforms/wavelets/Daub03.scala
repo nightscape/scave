@@ -32,15 +32,15 @@ package math.jwave.transforms.wavelets;
 object Daub03 extends Wavelet(Daub03Constants.scales)
 
 object Daub03Constants {
-  val sqrt02 = 1.4142135623730951; // Math.sqrt( 2. )
-  val sqrt10 = Math.sqrt(10.);
-  val constA = Math.sqrt(5. + 2. * sqrt10);
+  val sqrt02 = 1.4142135623730951; // Math.sqrt( 2.0 )
+  val sqrt10 = Math.sqrt(10.0);
+  val constA = Math.sqrt(5.0 + 2.0 * sqrt10);
 
   val scales = Array[Double](
-    (1. + 1. * sqrt10 + 1. * constA) / 16. / sqrt02,
-    (5. + 1. * sqrt10 + 3. * constA) / 16. / sqrt02,
-    (10. - 2. * sqrt10 + 2. * constA) / 16. / sqrt02,
-    (10. - 2. * sqrt10 - 2. * constA) / 16. / sqrt02,
-    (5. + 1. * sqrt10 - 3. * constA) / 16. / sqrt02,
-    (1. + 1. * sqrt10 - 1. * constA) / 16. / sqrt02)
+    (1.0 + 1.0 * sqrt10 + 1.0 * constA) / 16.0 / sqrt02,
+    (5.0 + 1.0 * sqrt10 + 3.0 * constA) / 16.0 / sqrt02,
+    (10.0 - 2.0 * sqrt10 + 2.0 * constA) / 16.0 / sqrt02,
+    (10.0 - 2.0 * sqrt10 - 2.0 * constA) / 16.0 / sqrt02,
+    (5.0 + 1.0 * sqrt10 - 3.0 * constA) / 16.0 / sqrt02,
+    (1.0 + 1.0 * sqrt10 - 1.0 * constA) / 16.0 / sqrt02)
 }

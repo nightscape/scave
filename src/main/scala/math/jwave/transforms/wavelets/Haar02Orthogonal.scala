@@ -122,9 +122,9 @@ object Haar02Orthogonal extends Wavelet(2, Haar02OrthogonalConstants.coefficient
 
 object Haar02OrthogonalConstants {
   val coefficients = Array[Double]( // can be done in static way also; faster?
-    // Orthogonal wavelet coefficients; NOT orthonormal, due to missing sqrt(2.) 
-    1.,
-    -1.)
+    // Orthogonal wavelet coefficients; NOT orthonormal, due to missing sqrt(2.0) 
+    1.0,
+    -1.0)
 
   val scales = Array[Double]( // can be done in static way also; faster?
     // Rule for constructing an orthogonal vector in R^2 -- scales

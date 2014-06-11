@@ -20,9 +20,9 @@ class ComplexTest {
    */
   @Test
   def testreal() {
-    val a = new Complex(1., 1.)
+    val a = new Complex(1.0, 1.0)
     val real = a.real
-    assertEquals(1., real, 0.)
+    assertEquals(1.0, real, 0.0)
   }
 
   /**
@@ -30,9 +30,9 @@ class ComplexTest {
    */
   @Test
   def testimag() {
-    val a = new Complex(1., 1.)
+    val a = new Complex(1.0, 1.0)
     val imag = a.imag
-    assertEquals(1., imag, 0.)
+    assertEquals(1.0, imag, 0.0)
   }
 
   /**
@@ -40,10 +40,10 @@ class ComplexTest {
    */
   @Test
   def testNorm() {
-    var mag = 0.
-    val a1 = new Complex(Math.sqrt(2.), Math.sqrt(2.))
+    var mag = 0.0
+    val a1 = new Complex(Math.sqrt(2.0), Math.sqrt(2.0))
     mag = a1.norm
-    assertEquals(4., mag, 0.00000001)
+    assertEquals(4.0, mag, 0.00000001)
   }
 
   /**
@@ -52,11 +52,11 @@ class ComplexTest {
    */
   @Test
   def testAdd() {
-    val a = new Complex(1., 1.)
-    val b = new Complex(1., 1.)
+    val a = new Complex(1.0, 1.0)
+    val b = new Complex(1.0, 1.0)
     val c = a + b
-    assertEquals(2., c.real, 0.)
-    assertEquals(2., c.imag, 0.)
+    assertEquals(2.0, c.real, 0.0)
+    assertEquals(2.0, c.imag, 0.0)
   }
 
   /**
@@ -65,11 +65,11 @@ class ComplexTest {
    */
   @Test
   def testSub() {
-    val a = new Complex(2., 2.)
-    val b = new Complex(1., 1.)
+    val a = new Complex(2.0, 2.0)
+    val b = new Complex(1.0, 1.0)
     val c = a - b
-    assertEquals(1., c.real, 0.)
-    assertEquals(1., c.imag, 0.)
+    assertEquals(1.0, c.real, 0.0)
+    assertEquals(1.0, c.imag, 0.0)
   }
 
   /**
@@ -78,11 +78,11 @@ class ComplexTest {
    */
   @Test
   def testMulComplex() {
-    val a = new Complex(1., 1.)
-    val b = new Complex(1., 1.)
+    val a = new Complex(1.0, 1.0)
+    val b = new Complex(1.0, 1.0)
     val c = a * b
-    assertEquals(0., c.real, 0.)
-    assertEquals(2., c.imag, 0.)
+    assertEquals(0.0, c.real, 0.0)
+    assertEquals(2.0, c.imag, 0.0)
   }
 
   /**
@@ -90,11 +90,11 @@ class ComplexTest {
    */
   @Test
   def testMulDouble() {
-    val a = new Complex(1., 1.)
-    val s = 2.
+    val a = new Complex(1.0, 1.0)
+    val s = 2.0
     val c = a * s
-    assertEquals(2., c.real, 0.)
-    assertEquals(2., c.imag, 0.)
+    assertEquals(2.0, c.real, 0.0)
+    assertEquals(2.0, c.imag, 0.0)
   }
 
   /**
@@ -103,11 +103,11 @@ class ComplexTest {
    */
   @Test
   def testDivComplex() {
-    val a = new Complex(0., 2.)
-    val b = new Complex(1., 1.)
+    val a = new Complex(0.0, 2.0)
+    val b = new Complex(1.0, 1.0)
     val c = a / b
-    assertEquals(1., c.real, 0.)
-    assertEquals(1., c.imag, 0.)
+    assertEquals(1.0, c.real, 0.0)
+    assertEquals(1.0, c.imag, 0.0)
   }
 
   /**
@@ -115,11 +115,11 @@ class ComplexTest {
    */
   @Test
   def testDivDouble() {
-    val a = new Complex(1., 1.)
-    val s = 2.
+    val a = new Complex(1.0, 1.0)
+    val s = 2.0
     val c = a / s
-    assertEquals(.5, c.real, 0.)
-    assertEquals(.5, c.imag, 0.)
+    assertEquals(.5, c.real, 0.0)
+    assertEquals(.5, c.imag, 0.0)
   }
 
   /**
@@ -129,24 +129,24 @@ class ComplexTest {
   @Test
   def testEquals() {
     var isEqual = false
-    val a = new Complex(1., 1.)
-    val b = new Complex(1., 1.)
+    val a = new Complex(1.0, 1.0)
+    val b = new Complex(1.0, 1.0)
     isEqual = a == b
     assertTrue(isEqual)
-    val c = new Complex(1., 1.)
-    val d = new Complex(1., 2.)
+    val c = new Complex(1.0, 1.0)
+    val d = new Complex(1.0, 2.0)
     isEqual = c == d
     assertFalse(isEqual)
-    val e = new Complex(1., 2.)
-    val f = new Complex(1., 1.)
+    val e = new Complex(1.0, 2.0)
+    val f = new Complex(1.0, 1.0)
     isEqual = e == f
     assertFalse(isEqual)
-    val g = new Complex(2., 1.)
-    val h = new Complex(1., 1.)
+    val g = new Complex(2.0, 1.0)
+    val h = new Complex(1.0, 1.0)
     isEqual = g == h
     assertFalse(isEqual)
-    val i = new Complex(1., 1.)
-    val j = new Complex(2., 1.)
+    val i = new Complex(1.0, 1.0)
+    val j = new Complex(2.0, 1.0)
     isEqual = i == j
     assertFalse(isEqual)
   }

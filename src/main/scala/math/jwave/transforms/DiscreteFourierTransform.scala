@@ -33,9 +33,9 @@ class DiscreteFourierTransform extends BasicTransform[Seq[Double]] {
     for (i <- 0 until n) {
       val iR = i * 2
       val iC = i * 2 + 1
-      arrFreq(iR) = 0.
-      arrFreq(iC) = 0.
-      val arg = -2. * Math.PI * i.toDouble / n.toDouble
+      arrFreq(iR) = 0.0
+      arrFreq(iC) = 0.0
+      val arg = -2.0 * Math.PI * i.toDouble / n.toDouble
       for (k <- 0 until n) {
         val kR = k * 2
         val kC = k * 2 + 1
@@ -68,9 +68,9 @@ class DiscreteFourierTransform extends BasicTransform[Seq[Double]] {
     for (i <- 0 until n) {
       val iR = i * 2
       val iC = i * 2 + 1
-      arrTime(iR) = 0.
-      arrTime(iC) = 0.
-      val arg = 2. * Math.PI * i.toDouble / n.toDouble
+      arrTime(iR) = 0.0
+      arrTime(iC) = 0.0
+      val arg = 2.0 * Math.PI * i.toDouble / n.toDouble
       for (k <- 0 until n) {
         val kR = k * 2
         val kC = k * 2 + 1
@@ -100,8 +100,8 @@ class DiscreteFourierTransform extends BasicTransform[Seq[Double]] {
     val n = arrTime.length
     val arrFreq = Array.ofDim[Complex](n)
     for (i <- 0 until n) {
-      arrFreq(i) = new Complex(0., 0.)
-      val arg = -2. * Math.PI * i.toDouble / n.toDouble
+      arrFreq(i) = new Complex(0.0, 0.0)
+      val arg = -2.0 * Math.PI * i.toDouble / n.toDouble
       for (k <- 0 until n) {
         val cos = Math.cos(k * arg)
         val sin = Math.sin(k * arg)
@@ -109,7 +109,7 @@ class DiscreteFourierTransform extends BasicTransform[Seq[Double]] {
         val imag = arrTime(k).imag
         arrFreq(i) += new Complex(real * cos - imag * sin, real * sin + imag * cos)
       }
-      arrFreq(i) *= 1. / n.toDouble
+      arrFreq(i) *= 1.0 / n.toDouble
     }
     arrFreq
   }
@@ -131,8 +131,8 @@ class DiscreteFourierTransform extends BasicTransform[Seq[Double]] {
     val n = arrFreq.length
     val arrTime = Array.ofDim[Complex](n)
     for (i <- 0 until n) {
-      arrTime(i) = new Complex(0., 0.)
-      val arg = 2. * Math.PI * i.toDouble / n.toDouble
+      arrTime(i) = new Complex(0.0, 0.0)
+      val arg = 2.0 * Math.PI * i.toDouble / n.toDouble
       for (k <- 0 until n) {
         val cos = Math.cos(k * arg)
         val sin = Math.sin(k * arg)

@@ -5,7 +5,7 @@ class AncientEgyptianMultiplication {
   /**
    * The method converts a positive integer to the ancient Egyptian multipliers
    * which are actually the multipliers to display the number by a sum of the
-   * largest possible powers of two. E.g. 42 = 2^5 + 2^3 + 2^1 = 32 + 8 + 2.
+   * largest possible powers of two. E.g. 42 = 2^5 + 2^3 + 2^1 = 32 + 8 + 2.0
    * However, odd numbers always 2^0 = 1 as the last entry. Also see:
    * http://en.wikipedia.org/wiki/Ancient_Egyptian_multiplication
    *
@@ -19,10 +19,10 @@ class AncientEgyptianMultiplication {
     val tmpArr = Array.ofDim[Int](power + 1)
     var pos = 0
     var current = number.toDouble
-    while (current >= 1.) {
+    while (current >= 1.0) {
       power = getExponent(current)
       tmpArr(pos) = power
-      current = current - scalb(1., power)
+      current = current - scalb(1.0, power)
       pos += 1
     }
     val ancientEgyptianMultipliers = Array.ofDim[Int](pos)
@@ -34,7 +34,7 @@ class AncientEgyptianMultiplication {
    * The method converts a list of ancient Egyptian multipliers to the
    * corresponding integer. The ancient Egyptian multipliers are actually the
    * multipliers to display am integer by a sum of the largest possible powers
-   * of two. E.g. 42 = 2^5 + 2^3 + 2^1 = 32 + 8 + 2. Also see:
+   * of two. E.g. 42 = 2^5 + 2^3 + 2^1 = 32 + 8 + 2.0 Also see:
    * http://en.wikipedia.org/wiki/Ancient_Egyptian_multiplication
    *
    * @author Christian Scheiblich
@@ -51,7 +51,7 @@ class AncientEgyptianMultiplication {
     val noOfAncientEgyptianMultipliers = ancientEgyptianMultipliers.length
     for (m <- 0 until noOfAncientEgyptianMultipliers) {
       val ancientEgyptianMultiplier = ancientEgyptianMultipliers(m)
-      number += scalb(1., ancientEgyptianMultiplier).toInt
+      number += scalb(1.0, ancientEgyptianMultiplier).toInt
     }
     number
   }

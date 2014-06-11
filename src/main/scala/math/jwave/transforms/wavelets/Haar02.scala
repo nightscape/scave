@@ -44,8 +44,8 @@ object Haar02Constants {
 
   val coefficients = Array[Double](
 
-    1. / 1.4142135623730951,
-    -1. / 1.4142135623730951)
+    1.0 / 1.4142135623730951,
+    -1.0 / 1.4142135623730951)
   val scales = Array[Double](
     -coefficients(1),
     coefficients(0))

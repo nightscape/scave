@@ -13,11 +13,11 @@ import Daub02Constants._
 object Daub02 extends Wavelet(Daub02Constants.scales)
 
 object Daub02Constants {
-  val sqrt3 = Math.sqrt(3.) // 1.7320508075688772
+  val sqrt3 = Math.sqrt(3.0) // 1.7320508075688772
   val scales = Array[Double](
 
-    ((1. + sqrt3) / 4.) / 1.4142135623730951,
-    ((3. + sqrt3) / 4.) / 1.4142135623730951,
-    ((3. - sqrt3) / 4.) / 1.4142135623730951,
-    ((1. - sqrt3) / 4.) / 1.4142135623730951)
+    ((1.0 + sqrt3) / 4.0) / 1.4142135623730951,
+    ((3.0 + sqrt3) / 4.0) / 1.4142135623730951,
+    ((3.0 - sqrt3) / 4.0) / 1.4142135623730951,
+    ((1.0 - sqrt3) / 4.0) / 1.4142135623730951)
 }
