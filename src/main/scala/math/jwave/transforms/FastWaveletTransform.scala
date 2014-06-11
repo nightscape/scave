@@ -2,6 +2,7 @@ package math.jwave.transforms
 
 import math.jwave.transforms.wavelets.Wavelet
 import scala.annotation.tailrec
+import spire.implicits._
 /**
  * Base class for the forward and reverse Fast Wavelet Transform in 1-D, 2-D,
  * and 3-D using a specified Wavelet by inheriting class.

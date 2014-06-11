@@ -7,6 +7,7 @@ import math.jwave.transforms.wavelets.Daub02
 import math.jwave.transforms.wavelets.Haar02
 import math.jwave.transforms.wavelets.Wavelet
 import org.junit.Test
+import spire.implicits._
 
 /**
  * Tests for the class math.jwave.Transform.
