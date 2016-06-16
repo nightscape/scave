@@ -6,13 +6,13 @@ lazy val commonSettings = Seq(
 )
 
 libraryDependencies ++= Seq(
-  "org.spire-math" %% "spire" % "0.7.5",
+  "org.spire-math" %% "spire" % "0.11.0",
   "com.softwaremill.scalamacrodebug" %% "macros" % "0.4",
-  "org.scala-lang.modules" %% "scala-xml" % "1.0.1",
-  "org.scalatest" %% "scalatest" % "2.2.0" % "test",
-  "org.scalautils" %% "scalautils" % "2.1.7" % "test",
-  "org.scalacheck" %% "scalacheck" % "1.11.4" % "test",
-  "junit" % "junit" % "4.11" % "test"
+  "org.scala-lang.modules" %% "scala-xml" % "1.0.5",
+  "org.scalatest" %% "scalatest" % "2.2.6" % "test",
+  "org.scalactic" %% "scalactic" % "2.2.6" % "test",
+  "org.scalacheck" %% "scalacheck" % "1.12.5" % "test",
+  "junit" % "junit" % "4.12" % "test"
 )
 
 lazy val root = (project in file(".")).settings(commonSettings: _*)
